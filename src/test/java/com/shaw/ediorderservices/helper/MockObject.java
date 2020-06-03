@@ -12,11 +12,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.assertj.core.util.Arrays;
 
+import com.fasterxml.classmate.Annotations;
 import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.exception.ResourceCreationException;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate;
@@ -52,6 +55,7 @@ public class MockObject<Any> {
     	List<Field> fields = collectFields(clazz).collect(Collectors.toList());
 		fields = fields.parallelStream()
 				.filter(f->Modifier.isStatic(f.getModifiers())==false && Modifier.isFinal(f.getModifiers())==false)
+				.filter(f->f.getAnnotation(GeneratedValue.class)==null)
 				.collect(Collectors.toList());
 		fields.parallelStream().forEach(m->m.setAccessible(true));
 		Object obj;
@@ -157,7 +161,7 @@ public class MockObject<Any> {
 		}
 	}
 
-	public static EdiOrderHeader buildEdiOrderHeader()
+	public static EdiOrderHeader buildEdiOrderHeader(OrderType orderType)
 	{
 		EdiOrderHeader ediOrderHeader = build(EdiOrderHeader.class);
 		ediOrderHeader.addDate(buildEdiOrderDate());
@@ -165,7 +169,8 @@ public class MockObject<Any> {
 		ediOrderHeader.setConsumerAddress(MockObject.build(LegacyConsumerAddress.class));
 		ediOrderHeader.setShipToAddress(MockObject.build(LegacyShipToAddress.class));
 		ediOrderHeader.setThirdPartyAddress(MockObject.build(LegacyThirdPartyAddress.class));
-
+		ediOrderHeader.setOrderType(orderType.toString().substring(0,1));
+		ediOrderHeader.setOrderTypeDesc(orderType.toString());
 		logger.debug(ediOrderHeader.toString());
 		return ediOrderHeader;
 	}
@@ -173,7 +178,7 @@ public class MockObject<Any> {
 	public static EdiOrderDate buildEdiOrderDate()
 	{
 		EdiOrderDate ediOrderDate = build(EdiOrderDate.class);
-		ediOrderDate.setPk(new EdiOrderDatePK(randomAlphabetic(5),null));
+		ediOrderDate.setPk(new EdiOrderDatePK(randomAlphabetic(3),null));
 		logger.debug(ediOrderDate.toString());
 		return ediOrderDate;
 	}
@@ -181,7 +186,7 @@ public class MockObject<Any> {
 	public static EdiOrderLine buildEdiOrderLine()
 	{
 		EdiOrderLine ediOrderLine = build(EdiOrderLine.class);
-		ediOrderLine.setPk(new EdiOrderLinePK(null,randomAlphabetic(5)));
+		ediOrderLine.setPk(new EdiOrderLinePK(null,randomAlphabetic(10)));
 		logger.debug(ediOrderLine.toString());
 		return ediOrderLine;
 	}

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shaw.ediorderservices.ServiceConfig;
+import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.service.EdiOrderBean;
 import com.shaw.ediorderservices.service.IEmailService;

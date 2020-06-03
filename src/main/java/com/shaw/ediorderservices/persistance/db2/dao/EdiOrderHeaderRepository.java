@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,10 +22,10 @@ public interface EdiOrderHeaderRepository extends PagingAndSortingRepository<Edi
 	}
 	
 	@Query("SELECT oh FROM EdiOrderHeader oh LEFT JOIN FETCH oh.dates WHERE oh.legacyOrderNumber = :id")
-	Optional<EdiOrderHeader> getHeaderDates(Long id);
+	Optional<EdiOrderHeader> getHeaderDates(@Param("id") Long id);
 	
 	@Query("SELECT oh FROM EdiOrderHeader oh JOIN FETCH oh.lines WHERE oh.legacyOrderNumber = :id")
-	Optional<EdiOrderHeader> getHeaderLines(Long id);
+	Optional<EdiOrderHeader> getHeaderLines(@Param("id") Long id);
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Modifying @Query(name = "EdiOrderHeader.updateAgent")

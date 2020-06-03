@@ -22,12 +22,12 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.ThirdPartyAddress;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-02T14:56:42-0400",
+    date = "2020-06-03T10:39:34-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -59,9 +59,9 @@ public class LineMapperImpl implements LineMapper {
 
         SamplesEdiLine samplesEdiLine = new SamplesEdiLine();
 
-        samplesEdiLine.setStyle( line.getStyle() );
         samplesEdiLine.setColor( line.getColor() );
         samplesEdiLine.setCustReqShipDate( line.getCustReqShipDate() );
+        samplesEdiLine.setStyle( line.getStyle() );
 
         samplesEdiLine.setId( 0L );
 
@@ -76,9 +76,9 @@ public class LineMapperImpl implements LineMapper {
 
         CarpetEdiLine carpetEdiLine = new CarpetEdiLine();
 
-        carpetEdiLine.setStyle( line.getStyle() );
         carpetEdiLine.setColor( line.getColor() );
         carpetEdiLine.setCustReqShipDate( line.getCustReqShipDate() );
+        carpetEdiLine.setStyle( line.getStyle() );
 
         carpetEdiLine.setId( 0L );
 
@@ -93,9 +93,9 @@ public class LineMapperImpl implements LineMapper {
 
         HardsurfacesEdiLine hardsurfacesEdiLine = new HardsurfacesEdiLine();
 
-        hardsurfacesEdiLine.setStyle( line.getStyle() );
         hardsurfacesEdiLine.setColor( line.getColor() );
         hardsurfacesEdiLine.setCustReqShipDate( line.getCustReqShipDate() );
+        hardsurfacesEdiLine.setStyle( line.getStyle() );
 
         hardsurfacesEdiLine.setId( 0L );
 
@@ -130,15 +130,15 @@ public class LineMapperImpl implements LineMapper {
         samplesLine.setSamplesPrivateStyle( samplesInfo.getSamplesStyleNbr() );
         samplesLine.setTypesetDesc( samplesInfo.getDelVehName() );
         samplesLine.setColorNbr( samplesInfo.getSamplesColorNbr() );
-        samplesLine.setSubset( samplesInfo.getSubset() );
-        samplesLine.setDelVehName( samplesInfo.getDelVehName() );
         samplesLine.setCartonQty( samplesInfo.getCartonQty() );
+        samplesLine.setDelVehName( samplesInfo.getDelVehName() );
         samplesLine.setDelVehNbr( samplesInfo.getDelVehNbr() );
+        samplesLine.setInvPartNbr( samplesInfo.getInvPartNbr() );
         samplesLine.setPackType( samplesInfo.getPackType() );
         samplesLine.setPartNbr( samplesInfo.getPartNbr() );
         samplesLine.setSamplesColorNbr( samplesInfo.getSamplesColorNbr() );
         samplesLine.setSamplesStyleNbr( samplesInfo.getSamplesStyleNbr() );
-        samplesLine.setInvPartNbr( samplesInfo.getInvPartNbr() );
+        samplesLine.setSubset( samplesInfo.getSubset() );
 
         samplesLine.setSidemarkType1( "S" );
         samplesLine.setSidemarkType2( "S" );
@@ -160,10 +160,10 @@ public class LineMapperImpl implements LineMapper {
 
         LegacyConsumerAddress legacyConsumerAddress = new LegacyConsumerAddress();
 
-        legacyConsumerAddress.setName( consumerAddress.getName() );
         legacyConsumerAddress.setAddressLine1( consumerAddress.getAddressLine1() );
         legacyConsumerAddress.setAddressLine2( consumerAddress.getAddressLine2() );
         legacyConsumerAddress.setCity( consumerAddress.getCity() );
+        legacyConsumerAddress.setName( consumerAddress.getName() );
         legacyConsumerAddress.setState( consumerAddress.getState() );
         legacyConsumerAddress.setZip( consumerAddress.getZip() );
 
@@ -177,17 +177,17 @@ public class LineMapperImpl implements LineMapper {
 
         LegacyShipToAddress legacyShipToAddress = new LegacyShipToAddress();
 
-        legacyShipToAddress.setName( shipToAddress.getName() );
         legacyShipToAddress.setAddressLine1( shipToAddress.getAddressLine1() );
         legacyShipToAddress.setAddressLine2( shipToAddress.getAddressLine2() );
         legacyShipToAddress.setCity( shipToAddress.getCity() );
-        legacyShipToAddress.setState( shipToAddress.getState() );
-        legacyShipToAddress.setProvince( shipToAddress.getProvince() );
         legacyShipToAddress.setCountry( shipToAddress.getCountry() );
-        legacyShipToAddress.setZip( shipToAddress.getZip() );
-        legacyShipToAddress.setPhone( shipToAddress.getPhone() );
         legacyShipToAddress.setCustNbr( shipToAddress.getCustNbr() );
+        legacyShipToAddress.setName( shipToAddress.getName() );
+        legacyShipToAddress.setPhone( shipToAddress.getPhone() );
+        legacyShipToAddress.setProvince( shipToAddress.getProvince() );
+        legacyShipToAddress.setState( shipToAddress.getState() );
         legacyShipToAddress.setTruncFlag( shipToAddress.getTruncFlag() );
+        legacyShipToAddress.setZip( shipToAddress.getZip() );
 
         return legacyShipToAddress;
     }
@@ -199,14 +199,14 @@ public class LineMapperImpl implements LineMapper {
 
         LegacyThirdPartyAddress legacyThirdPartyAddress = new LegacyThirdPartyAddress();
 
-        legacyThirdPartyAddress.setName( thirdPartyAddress.getName() );
+        legacyThirdPartyAddress.setAccountNbr( thirdPartyAddress.getAccountNbr() );
         legacyThirdPartyAddress.setAddressLine1( thirdPartyAddress.getAddressLine1() );
         legacyThirdPartyAddress.setAddressLine2( thirdPartyAddress.getAddressLine2() );
+        legacyThirdPartyAddress.setBillFlag( thirdPartyAddress.getBillFlag() );
         legacyThirdPartyAddress.setCity( thirdPartyAddress.getCity() );
+        legacyThirdPartyAddress.setName( thirdPartyAddress.getName() );
         legacyThirdPartyAddress.setState( thirdPartyAddress.getState() );
         legacyThirdPartyAddress.setZip( thirdPartyAddress.getZip() );
-        legacyThirdPartyAddress.setAccountNbr( thirdPartyAddress.getAccountNbr() );
-        legacyThirdPartyAddress.setBillFlag( thirdPartyAddress.getBillFlag() );
 
         return legacyThirdPartyAddress;
     }
@@ -275,8 +275,18 @@ public class LineMapperImpl implements LineMapper {
         ediOrderHeader.setConsumerAddress( consumerAddressToLegacyConsumerAddress( ediOrder.getConsumerAddress() ) );
         ediOrderHeader.setShipToAddress( shipToAddressToLegacyShipToAddress( ediOrder.getShipToAddress() ) );
         ediOrderHeader.setThirdPartyAddress( thirdPartyAddressToLegacyThirdPartyAddress( ediOrder.getThirdPartyAddress() ) );
-        ediOrderHeader.setDates( genericDateListToEdiOrderDateList( ediOrder.getDates() ) );
-        ediOrderHeader.setLines( ediLineListToEdiOrderLineList( ediOrder.getLines() ) );
+        if ( ediOrderHeader.getDates() != null ) {
+            List<EdiOrderDate> list = genericDateListToEdiOrderDateList( ediOrder.getDates() );
+            if ( list != null ) {
+                ediOrderHeader.getDates().addAll( list );
+            }
+        }
+        if ( ediOrderHeader.getLines() != null ) {
+            List<EdiOrderLine> list1 = ediLineListToEdiOrderLineList( ediOrder.getLines() );
+            if ( list1 != null ) {
+                ediOrderHeader.getLines().addAll( list1 );
+            }
+        }
 
         return ediOrderHeader;
     }

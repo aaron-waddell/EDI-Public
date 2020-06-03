@@ -24,13 +24,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-02T14:56:42-0400",
+    date = "2020-06-03T10:37:34-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -64,6 +64,7 @@ public class OrderMapperImpl implements OrderMapper {
         ediOrderHeader.setBillToStore( ediOrder.getBillToStore() );
         ediOrderHeader.setCarrierCode( ediOrder.getCarrierCode() );
         ediOrderHeader.setCommCust( ediOrder.getCommCust() );
+        ediOrderHeader.setConsumerAddress( addressMapper.consumerAddressToLegacyConsumerAddress( ediOrder.getConsumerAddress() ) );
         ediOrderHeader.setCustDept( ediOrder.getCustDept() );
         ediOrderHeader.setCustomerCode( ediOrder.getCustomerCode() );
         ediOrderHeader.setDunsNbr( ediOrder.getDunsNbr() );
@@ -72,13 +73,22 @@ public class OrderMapperImpl implements OrderMapper {
         ediOrderHeader.setPoNumber( ediOrder.getPoNumber() );
         ediOrderHeader.setShipByDate( ediOrder.getShipByDate() );
         ediOrderHeader.setShipCancelDate( ediOrder.getShipCancelDate() );
-        ediOrderHeader.setStoreName( ediOrder.getStoreName() );
-        ediOrderHeader.setVendorNo( ediOrder.getVendorNo() );
-        ediOrderHeader.setConsumerAddress( addressMapper.consumerAddressToLegacyConsumerAddress( ediOrder.getConsumerAddress() ) );
         ediOrderHeader.setShipToAddress( addressMapper.shipToAddressToLegacyShipToAddress( ediOrder.getShipToAddress() ) );
+        ediOrderHeader.setStoreName( ediOrder.getStoreName() );
         ediOrderHeader.setThirdPartyAddress( addressMapper.thirdPartyAddressToLegacyThirdPartyAddress( ediOrder.getThirdPartyAddress() ) );
-        ediOrderHeader.setDates( genericDateListToEdiOrderDateList( ediOrder.getDates() ) );
-        ediOrderHeader.setLines( ediLineListToEdiOrderLineList( ediOrder.getLines() ) );
+        ediOrderHeader.setVendorNo( ediOrder.getVendorNo() );
+        if ( ediOrderHeader.getDates() != null ) {
+            List<EdiOrderDate> list = genericDateListToEdiOrderDateList( ediOrder.getDates() );
+            if ( list != null ) {
+                ediOrderHeader.getDates().addAll( list );
+            }
+        }
+        if ( ediOrderHeader.getLines() != null ) {
+            List<EdiOrderLine> list1 = ediLineListToEdiOrderLineList( ediOrder.getLines() );
+            if ( list1 != null ) {
+                ediOrderHeader.getLines().addAll( list1 );
+            }
+        }
 
         ediOrderHeader.setOrderType( ediOrder.getOrderType().substring(0,1) );
 
@@ -94,27 +104,27 @@ public class OrderMapperImpl implements OrderMapper {
         SamplesEdiOrder samplesEdiOrder = ediOrderFactory.createMapperInstance( header, SamplesEdiOrder.class );
 
         samplesEdiOrder.setLegacyId( header.getLegacyOrderNumber() );
-        samplesEdiOrder.setCustomerCode( header.getCustomerCode() );
-        samplesEdiOrder.setOrderingSystem( header.getOrderingSystem() );
-        samplesEdiOrder.setOrderType( header.getOrderType() );
+        samplesEdiOrder.setAgreementNumber( header.getAgreementNumber() );
+        samplesEdiOrder.setBeg( header.getBeg() );
+        samplesEdiOrder.setBillToStore( header.getBillToStore() );
         samplesEdiOrder.setCarrierCode( header.getCarrierCode() );
         samplesEdiOrder.setCommCust( header.getCommCust() );
-        samplesEdiOrder.setPoNumber( header.getPoNumber() );
-        samplesEdiOrder.setBillToStore( header.getBillToStore() );
-        samplesEdiOrder.setAgreementNumber( header.getAgreementNumber() );
-        samplesEdiOrder.setCustDept( header.getCustDept() );
-        samplesEdiOrder.setStoreName( header.getStoreName() );
-        samplesEdiOrder.setVendorNo( header.getVendorNo() );
-        samplesEdiOrder.setDunsNbr( header.getDunsNbr() );
-        samplesEdiOrder.setBeg( header.getBeg() );
-        samplesEdiOrder.setShipCancelDate( header.getShipCancelDate() );
-        samplesEdiOrder.setShipByDate( header.getShipByDate() );
-        samplesEdiOrder.setNbDate( header.getNbDate() );
-        samplesEdiOrder.setShipToAddress( addressMapper.legacyShipToAddressToShipToAddress( header.getShipToAddress() ) );
         samplesEdiOrder.setConsumerAddress( legacyConsumerAddressToConsumerAddress( header.getConsumerAddress() ) );
-        samplesEdiOrder.setThirdPartyAddress( legacyThirdPartyAddressToThirdPartyAddress( header.getThirdPartyAddress() ) );
+        samplesEdiOrder.setCustDept( header.getCustDept() );
+        samplesEdiOrder.setCustomerCode( header.getCustomerCode() );
         samplesEdiOrder.setDates( ediOrderDateListToGenericDateList( header.getDates() ) );
+        samplesEdiOrder.setDunsNbr( header.getDunsNbr() );
         samplesEdiOrder.setLines( ediOrderLineListToEdiLineList( header.getLines() ) );
+        samplesEdiOrder.setNbDate( header.getNbDate() );
+        samplesEdiOrder.setOrderType( header.getOrderType() );
+        samplesEdiOrder.setOrderingSystem( header.getOrderingSystem() );
+        samplesEdiOrder.setPoNumber( header.getPoNumber() );
+        samplesEdiOrder.setShipByDate( header.getShipByDate() );
+        samplesEdiOrder.setShipCancelDate( header.getShipCancelDate() );
+        samplesEdiOrder.setShipToAddress( addressMapper.legacyShipToAddressToShipToAddress( header.getShipToAddress() ) );
+        samplesEdiOrder.setStoreName( header.getStoreName() );
+        samplesEdiOrder.setThirdPartyAddress( legacyThirdPartyAddressToThirdPartyAddress( header.getThirdPartyAddress() ) );
+        samplesEdiOrder.setVendorNo( header.getVendorNo() );
 
         samplesEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
         samplesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
@@ -133,38 +143,38 @@ public class OrderMapperImpl implements OrderMapper {
         CarpetEdiOrder carpetEdiOrder = ediOrderFactory.createMapperInstance( header, CarpetEdiOrder.class );
 
         carpetEdiOrder.setLegacyId( header.getLegacyOrderNumber() );
-        carpetEdiOrder.setCustomerCode( header.getCustomerCode() );
-        carpetEdiOrder.setOrderingSystem( header.getOrderingSystem() );
-        carpetEdiOrder.setOrderType( header.getOrderType() );
+        carpetEdiOrder.setAgreementNumber( header.getAgreementNumber() );
+        carpetEdiOrder.setBeg( header.getBeg() );
+        carpetEdiOrder.setBillToStore( header.getBillToStore() );
         carpetEdiOrder.setCarrierCode( header.getCarrierCode() );
         carpetEdiOrder.setCommCust( header.getCommCust() );
-        carpetEdiOrder.setPoNumber( header.getPoNumber() );
-        carpetEdiOrder.setBillToStore( header.getBillToStore() );
-        carpetEdiOrder.setAgreementNumber( header.getAgreementNumber() );
-        carpetEdiOrder.setCustDept( header.getCustDept() );
-        carpetEdiOrder.setStoreName( header.getStoreName() );
-        carpetEdiOrder.setVendorNo( header.getVendorNo() );
-        carpetEdiOrder.setDunsNbr( header.getDunsNbr() );
-        carpetEdiOrder.setBeg( header.getBeg() );
-        carpetEdiOrder.setShipCancelDate( header.getShipCancelDate() );
-        carpetEdiOrder.setShipByDate( header.getShipByDate() );
-        carpetEdiOrder.setNbDate( header.getNbDate() );
-        carpetEdiOrder.setShipToAddress( addressMapper.legacyShipToAddressToShipToAddress( header.getShipToAddress() ) );
         carpetEdiOrder.setConsumerAddress( legacyConsumerAddressToConsumerAddress( header.getConsumerAddress() ) );
-        carpetEdiOrder.setThirdPartyAddress( legacyThirdPartyAddressToThirdPartyAddress( header.getThirdPartyAddress() ) );
+        carpetEdiOrder.setCustDept( header.getCustDept() );
+        carpetEdiOrder.setCustomerCode( header.getCustomerCode() );
         carpetEdiOrder.setDates( ediOrderDateListToGenericDateList( header.getDates() ) );
+        carpetEdiOrder.setDunsNbr( header.getDunsNbr() );
         carpetEdiOrder.setLines( ediOrderLineListToEdiLineList1( header.getLines() ) );
-        carpetEdiOrder.setSalesCheckNumber( header.getSalesCheckNumber() );
-        carpetEdiOrder.setNewStoreInd( header.getNewStoreInd() );
-        carpetEdiOrder.setHostAlertFlag( header.getHostAlertFlag() );
-        carpetEdiOrder.setFobPoint( header.getFobPoint() );
-        carpetEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
-        carpetEdiOrder.setReserveOrderInd( header.getReserveOrderInd() );
+        carpetEdiOrder.setNbDate( header.getNbDate() );
+        carpetEdiOrder.setOrderType( header.getOrderType() );
+        carpetEdiOrder.setOrderingSystem( header.getOrderingSystem() );
+        carpetEdiOrder.setPoNumber( header.getPoNumber() );
+        carpetEdiOrder.setShipByDate( header.getShipByDate() );
+        carpetEdiOrder.setShipCancelDate( header.getShipCancelDate() );
+        carpetEdiOrder.setShipToAddress( addressMapper.legacyShipToAddressToShipToAddress( header.getShipToAddress() ) );
+        carpetEdiOrder.setStoreName( header.getStoreName() );
+        carpetEdiOrder.setThirdPartyAddress( legacyThirdPartyAddressToThirdPartyAddress( header.getThirdPartyAddress() ) );
+        carpetEdiOrder.setVendorNo( header.getVendorNo() );
         carpetEdiOrder.setAuthorizationNo( header.getAuthorizationNo() );
-        carpetEdiOrder.setNoAsnFlag( header.getNoAsnFlag() );
-        carpetEdiOrder.setMarkForStore( header.getMarkForStore() );
         carpetEdiOrder.setDeliveryDate( header.getDeliveryDate() );
+        carpetEdiOrder.setFobPoint( header.getFobPoint() );
+        carpetEdiOrder.setHostAlertFlag( header.getHostAlertFlag() );
+        carpetEdiOrder.setMarkForStore( header.getMarkForStore() );
+        carpetEdiOrder.setNewStoreInd( header.getNewStoreInd() );
+        carpetEdiOrder.setNoAsnFlag( header.getNoAsnFlag() );
+        carpetEdiOrder.setReserveOrderInd( header.getReserveOrderInd() );
         carpetEdiOrder.setRouteByDate( header.getRouteByDate() );
+        carpetEdiOrder.setSalesCheckNumber( header.getSalesCheckNumber() );
+        carpetEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
 
         carpetEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
         carpetEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
@@ -183,38 +193,38 @@ public class OrderMapperImpl implements OrderMapper {
         HardsurfacesEdiOrder hardsurfacesEdiOrder = ediOrderFactory.createMapperInstance( header, HardsurfacesEdiOrder.class );
 
         hardsurfacesEdiOrder.setLegacyId( header.getLegacyOrderNumber() );
-        hardsurfacesEdiOrder.setCustomerCode( header.getCustomerCode() );
-        hardsurfacesEdiOrder.setOrderingSystem( header.getOrderingSystem() );
-        hardsurfacesEdiOrder.setOrderType( header.getOrderType() );
+        hardsurfacesEdiOrder.setAgreementNumber( header.getAgreementNumber() );
+        hardsurfacesEdiOrder.setBeg( header.getBeg() );
+        hardsurfacesEdiOrder.setBillToStore( header.getBillToStore() );
         hardsurfacesEdiOrder.setCarrierCode( header.getCarrierCode() );
         hardsurfacesEdiOrder.setCommCust( header.getCommCust() );
-        hardsurfacesEdiOrder.setPoNumber( header.getPoNumber() );
-        hardsurfacesEdiOrder.setBillToStore( header.getBillToStore() );
-        hardsurfacesEdiOrder.setAgreementNumber( header.getAgreementNumber() );
-        hardsurfacesEdiOrder.setCustDept( header.getCustDept() );
-        hardsurfacesEdiOrder.setStoreName( header.getStoreName() );
-        hardsurfacesEdiOrder.setVendorNo( header.getVendorNo() );
-        hardsurfacesEdiOrder.setDunsNbr( header.getDunsNbr() );
-        hardsurfacesEdiOrder.setBeg( header.getBeg() );
-        hardsurfacesEdiOrder.setShipCancelDate( header.getShipCancelDate() );
-        hardsurfacesEdiOrder.setShipByDate( header.getShipByDate() );
-        hardsurfacesEdiOrder.setNbDate( header.getNbDate() );
-        hardsurfacesEdiOrder.setShipToAddress( addressMapper.legacyShipToAddressToShipToAddress( header.getShipToAddress() ) );
         hardsurfacesEdiOrder.setConsumerAddress( legacyConsumerAddressToConsumerAddress( header.getConsumerAddress() ) );
-        hardsurfacesEdiOrder.setThirdPartyAddress( legacyThirdPartyAddressToThirdPartyAddress( header.getThirdPartyAddress() ) );
+        hardsurfacesEdiOrder.setCustDept( header.getCustDept() );
+        hardsurfacesEdiOrder.setCustomerCode( header.getCustomerCode() );
         hardsurfacesEdiOrder.setDates( ediOrderDateListToGenericDateList( header.getDates() ) );
+        hardsurfacesEdiOrder.setDunsNbr( header.getDunsNbr() );
         hardsurfacesEdiOrder.setLines( ediOrderLineListToEdiLineList2( header.getLines() ) );
-        hardsurfacesEdiOrder.setSalesCheckNumber( header.getSalesCheckNumber() );
-        hardsurfacesEdiOrder.setNewStoreInd( header.getNewStoreInd() );
-        hardsurfacesEdiOrder.setHostAlertFlag( header.getHostAlertFlag() );
-        hardsurfacesEdiOrder.setFobPoint( header.getFobPoint() );
-        hardsurfacesEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
-        hardsurfacesEdiOrder.setReserveOrderInd( header.getReserveOrderInd() );
+        hardsurfacesEdiOrder.setNbDate( header.getNbDate() );
+        hardsurfacesEdiOrder.setOrderType( header.getOrderType() );
+        hardsurfacesEdiOrder.setOrderingSystem( header.getOrderingSystem() );
+        hardsurfacesEdiOrder.setPoNumber( header.getPoNumber() );
+        hardsurfacesEdiOrder.setShipByDate( header.getShipByDate() );
+        hardsurfacesEdiOrder.setShipCancelDate( header.getShipCancelDate() );
+        hardsurfacesEdiOrder.setShipToAddress( addressMapper.legacyShipToAddressToShipToAddress( header.getShipToAddress() ) );
+        hardsurfacesEdiOrder.setStoreName( header.getStoreName() );
+        hardsurfacesEdiOrder.setThirdPartyAddress( legacyThirdPartyAddressToThirdPartyAddress( header.getThirdPartyAddress() ) );
+        hardsurfacesEdiOrder.setVendorNo( header.getVendorNo() );
         hardsurfacesEdiOrder.setAuthorizationNo( header.getAuthorizationNo() );
-        hardsurfacesEdiOrder.setNoAsnFlag( header.getNoAsnFlag() );
-        hardsurfacesEdiOrder.setMarkForStore( header.getMarkForStore() );
         hardsurfacesEdiOrder.setDeliveryDate( header.getDeliveryDate() );
+        hardsurfacesEdiOrder.setFobPoint( header.getFobPoint() );
+        hardsurfacesEdiOrder.setHostAlertFlag( header.getHostAlertFlag() );
+        hardsurfacesEdiOrder.setMarkForStore( header.getMarkForStore() );
+        hardsurfacesEdiOrder.setNewStoreInd( header.getNewStoreInd() );
+        hardsurfacesEdiOrder.setNoAsnFlag( header.getNoAsnFlag() );
+        hardsurfacesEdiOrder.setReserveOrderInd( header.getReserveOrderInd() );
         hardsurfacesEdiOrder.setRouteByDate( header.getRouteByDate() );
+        hardsurfacesEdiOrder.setSalesCheckNumber( header.getSalesCheckNumber() );
+        hardsurfacesEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
 
         hardsurfacesEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
         hardsurfacesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
@@ -245,13 +255,13 @@ public class OrderMapperImpl implements OrderMapper {
         }
         if ( custInfo != null ) {
             shipInfo.setCustNbr( custInfo.getCustNbr() );
+            shipInfo.setDistrict( custInfo.getDistrict() );
+            shipInfo.setRegion( custInfo.getRegion() );
             shipInfo.setSpecialInst1( custInfo.getSpecialInst1() );
             shipInfo.setSpecialInst2( custInfo.getSpecialInst2() );
             shipInfo.setSpecialInst3( custInfo.getSpecialInst3() );
             shipInfo.setSpecialInst4( custInfo.getSpecialInst4() );
             shipInfo.setTerritory( custInfo.getTerritory() );
-            shipInfo.setDistrict( custInfo.getDistrict() );
-            shipInfo.setRegion( custInfo.getRegion() );
         }
         shipInfo.setHeaderSidemarkCode1( "S" );
         shipInfo.setHeaderSidemarkCode2( "S" );
@@ -405,33 +415,14 @@ public class OrderMapperImpl implements OrderMapper {
 
         ConsumerAddress consumerAddress = new ConsumerAddress();
 
-        consumerAddress.setName( legacyConsumerAddress.getName() );
         consumerAddress.setAddressLine1( legacyConsumerAddress.getAddressLine1() );
         consumerAddress.setAddressLine2( legacyConsumerAddress.getAddressLine2() );
         consumerAddress.setCity( legacyConsumerAddress.getCity() );
+        consumerAddress.setName( legacyConsumerAddress.getName() );
         consumerAddress.setState( legacyConsumerAddress.getState() );
         consumerAddress.setZip( legacyConsumerAddress.getZip() );
 
         return consumerAddress;
-    }
-
-    protected ThirdPartyAddress legacyThirdPartyAddressToThirdPartyAddress(LegacyThirdPartyAddress legacyThirdPartyAddress) {
-        if ( legacyThirdPartyAddress == null ) {
-            return null;
-        }
-
-        ThirdPartyAddress thirdPartyAddress = new ThirdPartyAddress();
-
-        thirdPartyAddress.setName( legacyThirdPartyAddress.getName() );
-        thirdPartyAddress.setAddressLine1( legacyThirdPartyAddress.getAddressLine1() );
-        thirdPartyAddress.setAddressLine2( legacyThirdPartyAddress.getAddressLine2() );
-        thirdPartyAddress.setCity( legacyThirdPartyAddress.getCity() );
-        thirdPartyAddress.setState( legacyThirdPartyAddress.getState() );
-        thirdPartyAddress.setZip( legacyThirdPartyAddress.getZip() );
-        thirdPartyAddress.setAccountNbr( legacyThirdPartyAddress.getAccountNbr() );
-        thirdPartyAddress.setBillFlag( legacyThirdPartyAddress.getBillFlag() );
-
-        return thirdPartyAddress;
     }
 
     protected List<GenericDate> ediOrderDateListToGenericDateList(List<EdiOrderDate> list) {
@@ -458,6 +449,25 @@ public class OrderMapperImpl implements OrderMapper {
         }
 
         return list1;
+    }
+
+    protected ThirdPartyAddress legacyThirdPartyAddressToThirdPartyAddress(LegacyThirdPartyAddress legacyThirdPartyAddress) {
+        if ( legacyThirdPartyAddress == null ) {
+            return null;
+        }
+
+        ThirdPartyAddress thirdPartyAddress = new ThirdPartyAddress();
+
+        thirdPartyAddress.setAddressLine1( legacyThirdPartyAddress.getAddressLine1() );
+        thirdPartyAddress.setAddressLine2( legacyThirdPartyAddress.getAddressLine2() );
+        thirdPartyAddress.setCity( legacyThirdPartyAddress.getCity() );
+        thirdPartyAddress.setName( legacyThirdPartyAddress.getName() );
+        thirdPartyAddress.setState( legacyThirdPartyAddress.getState() );
+        thirdPartyAddress.setZip( legacyThirdPartyAddress.getZip() );
+        thirdPartyAddress.setAccountNbr( legacyThirdPartyAddress.getAccountNbr() );
+        thirdPartyAddress.setBillFlag( legacyThirdPartyAddress.getBillFlag() );
+
+        return thirdPartyAddress;
     }
 
     protected List<EdiLine> ediOrderLineListToEdiLineList1(List<EdiOrderLine> list) {

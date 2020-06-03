@@ -294,7 +294,7 @@ public class EdiShipInfo implements Serializable {
 	@Column(name="VENDOR_NO", nullable=false, length=15)
 	private String vendorNo;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pk.ediShipInfo", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "id.ediShipInfo", orphanRemoval = true)
 	private List<EdiShipInfoLn> lines;
 
 	public EdiShipInfo() {

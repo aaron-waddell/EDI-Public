@@ -48,7 +48,7 @@ class ShipInfoServiceTest extends MockTest {
 	void testCreateShipInfo() {
 		ediOrderBean.setLegacyHeader(ediOrderHeader);
 		service.createShipInfo();
-		EdiShipInfo shipInfo = shipInfoRepository.findById(new EdiShipInfoPK(samplesEdiOrder.getShawOrderNbr(), LocalDate.now())).orElseThrow(()->new ResourceNotFoundException());
+		EdiShipInfo shipInfo = shipInfoRepository.findById(new EdiShipInfoPK(ediOrderHeader.getShawOrderNumber(), LocalDate.now())).orElseThrow(()->new ResourceNotFoundException());
 		logger.info(shipInfo.toString());
 		assertEquals(ediOrderHeader.getCustDept(),shipInfo.getDepartment());
 		EdiShipInfoLn ln = shipInfo.getLines().get(0);

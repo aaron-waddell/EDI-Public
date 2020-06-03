@@ -22,7 +22,7 @@ public interface EdiOrdValidationRepository extends JpaRepository<EdiOrdValidati
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Modifying(flushAutomatically = true)
 	@Query("update EdiOrdValidation v set v.status = :status where id.ediOrderNbr = :ediOrderNbr")
-	int updateStatusByIdEdiOrderNbr(String status, long ediOrderNbr);
+	int updateStatusByIdEdiOrderNbr(@Param("status")String status, @Param("ediOrderNbr") long ediOrderNbr);
 
 	List<EdiOrdValidation> findByIdEdiOrderNbr(long ediOrderNbr);
 

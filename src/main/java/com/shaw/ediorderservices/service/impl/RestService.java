@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.shaw.ediorderservices.ServiceConfig;
+import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.service.IRestService;
 import com.shaw.ediorderservices.service.common.HttpHeadersBuilder;
 import com.shaw.ediorderservices.service.common.IEntityBody;

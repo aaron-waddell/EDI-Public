@@ -63,7 +63,7 @@ class LegacyOrderServiceTest extends MockTest {
 	@Test
 	void testConvertLegacyOrder() {
 		EdiOrderHeader header = ediOrderHeaderRepository.findFirstByOrderType("H").orElseThrow(ResourceNotFoundException::new);
-		EdiOrderLine line = ediOrderLineRepository.findById(new EdiOrderLinePK(header, "001")).orElseThrow(ResourceNotFoundException::new);
+		EdiOrderLine line = ediOrderLineRepository.findByIdEdiOrderHeader(header).get(0);
 //		when(ediOrderHeaderRepository.save(any(EdiOrderHeader.class))).thenCallRealMethod();
 		legacyOrderService.getOrder(header.getLegacyOrderNumber());
 		assertNotNull(ediOrderBean.getLegacyHeader());
@@ -81,7 +81,7 @@ class LegacyOrderServiceTest extends MockTest {
 	@Test
 	void testGetOrder() {
 		EdiOrderHeader header = ediOrderHeaderRepository.findFirstByOrderType("H").orElseThrow(ResourceNotFoundException::new);
-		EdiOrderLine line = ediOrderLineRepository.findById(new EdiOrderLinePK(header, "001")).orElseThrow(ResourceNotFoundException::new);
+		EdiOrderLine line = ediOrderLineRepository.findByIdEdiOrderHeader(header).get(0);
 //		when(ediOrderHeaderRepository.findById(testEdiOrder.getLegacyId())).thenReturn(Optional.of(ediOrderHeader));
 //		EdiOrderHeader result = ediOrderHeaderRepository.save(ediOrderHeader);
 		legacyOrderService.getOrder(header.getLegacyOrderNumber());

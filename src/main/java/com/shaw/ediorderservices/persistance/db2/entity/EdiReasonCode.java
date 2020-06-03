@@ -5,8 +5,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -58,7 +60,7 @@ public class EdiReasonCode implements Serializable {
 	@Column(nullable=false, precision=3)
 	private Double precedence;
 
-	@OneToMany(mappedBy = "ediReasonCode")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ediReasonCode")
 	@Nullable
 	List<EdiOrdValidation> ediOrdValidations;
 	

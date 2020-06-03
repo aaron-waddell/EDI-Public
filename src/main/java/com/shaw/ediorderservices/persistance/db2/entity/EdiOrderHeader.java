@@ -380,11 +380,11 @@ public class EdiOrderHeader implements Serializable {
 	@Embedded
 	private LegacyThirdPartyAddress thirdPartyAddress;
 	
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pk.ediOrderHeader", orphanRemoval = true)
-    private List<EdiOrderDate> dates;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "id.ediOrderHeader", orphanRemoval = true)
+    private List<EdiOrderDate> dates = new ArrayList<EdiOrderDate>();
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pk.ediOrderHeader", orphanRemoval = true)
-	private List<EdiOrderLine> lines;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "id.ediOrderHeader", orphanRemoval = true)
+	private List<EdiOrderLine> lines = new ArrayList<EdiOrderLine>();
 
 
 	public EdiOrderHeader() {
@@ -1293,31 +1293,33 @@ public class EdiOrderHeader implements Serializable {
 		return dates;
 	}
 
-	public void setDates(List<EdiOrderDate> dates) {
-		this.dates = new ArrayList<EdiOrderDate>();
-		if (dates!=null)
-			dates.stream().forEach(this::addDate);
+	private void setDates(List<EdiOrderDate> dates) {
+		this.dates = dates;
+//		this.dates = new ArrayList<EdiOrderDate>();
+//		if (dates!=null)
+//			dates.stream().forEach(this::addDate);
 	}
 
 	public void addDate(EdiOrderDate d) {
 		if (dates==null)
 			this.dates = new ArrayList<EdiOrderDate>();			
 		dates.add(d);
-	    d.pk.setEdiOrderHeader(this);
+	    d.id.setEdiOrderHeader(this);
 	}
 	 
 	public void removeDate(EdiOrderDate d) {
 	    dates.remove(d);
-	    d.pk.setEdiOrderHeader(null);
+	    d.id.setEdiOrderHeader(null);
 	}
 
 	public List<EdiOrderLine> getLines() {
 		return lines;
 	}
 
-	public void setLines(List<EdiOrderLine> lines) {
-		this.lines = new ArrayList<EdiOrderLine>();
-		lines.stream().forEach(this::addLine);
+	private void setLines(List<EdiOrderLine> lines) {
+		this.lines= lines;
+//		this.lines = new ArrayList<EdiOrderLine>();
+//		lines.stream().forEach(this::addLine);
 	}
 	public void addLine(EdiOrderLine l) {
 		if (lines==null)

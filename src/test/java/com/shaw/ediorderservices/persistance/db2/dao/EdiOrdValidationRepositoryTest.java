@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -19,19 +22,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.helper.MockObject;
+import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation.EdiOrdValidationPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
-class EdiOrdValidationRepositoryTest {
+class EdiOrdValidationRepositoryTest extends MockTest {
 
 	final static Logger logger = LoggerFactory.getLogger(EdiOrdValidationRepositoryTest.class);
 
 	private static long EDI_ORDER_NBR = 0;
 
 	private static final String PO_LINE_NBR = "1";
+	
+	@PersistenceContext(unitName = "db2PU")
+	private EntityManager em;
 	
 	@Autowired
 	EdiOrdValidationRepository ediOrdValidationRepository;
@@ -79,17 +86,28 @@ class EdiOrdValidationRepositoryTest {
 		ediOrdValidationRepository.save(ediOrdValidation);
 
 		int result = ediOrdValidationRepository.updateStatusByIdEdiOrderNbr("Q", EDI_ORDER_NBR);
-		logger.info(result + " row updated");
+		logger.info(result + " row status set");
 		assertNotEquals(0,result);
-		
+
+		em.clear();
 		EdiOrdValidation ordVal = ediOrdValidationRepository.findByIdEdiOrderNbr(EDI_ORDER_NBR).get(0);
 		logger.info(ordVal.toString());
 		assertEquals("Q",ordVal.getStatus());
 
-		result = ediOrdValidationRepository.updateStatusByIdEdiOrderNbr("", EDI_ORDER_NBR);
+		result = ediOrdValidationRepository.updateStatusByIdEdiOrderNbr("X", EDI_ORDER_NBR);
+		logger.info(result + " row status updated");
+		assertNotEquals(0,result);
+		
+		em.clear();
+		ordVal = ediOrdValidationRepository.findByIdEdiOrderNbr(EDI_ORDER_NBR).get(0);
+		logger.info(ordVal.toString());
+		assertEquals("X",ordVal.getStatus().trim());
+
+		result = ediOrdValidationRepository.updateStatusByIdEdiOrderNbr(" ", EDI_ORDER_NBR);
 		logger.info(result + " row status cleared");
 		assertNotEquals(0,result);
 		
+		em.clear();
 		ordVal = ediOrdValidationRepository.findByIdEdiOrderNbr(EDI_ORDER_NBR).get(0);
 		logger.info(ordVal.toString());
 		assertEquals("",ordVal.getStatus().trim());

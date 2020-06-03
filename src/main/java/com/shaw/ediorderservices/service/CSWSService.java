@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriTemplate;
 
 import com.google.gson.Gson;
-import com.shaw.ediorderservices.ServiceConfig;
 import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.CartRequest;
@@ -20,6 +19,7 @@ import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
 import com.shaw.ediorderservices.csws.ProcessCartRequest;
 import com.shaw.ediorderservices.csws.ShipInfo;
+import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.mapping.LineMapper;
 import com.shaw.ediorderservices.mapping.OrderMapper;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;

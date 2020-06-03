@@ -33,7 +33,7 @@ public class EdiOrderDate implements Serializable {
 		@Column(name="DATE_QUALIFIER", nullable=false, length=3)
 		private String qualifier;
 		
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne(optional = false, fetch = FetchType.LAZY)
 		@JoinColumn(name = "edi_order_number")
 		private EdiOrderHeader ediOrderHeader;
 
@@ -108,7 +108,7 @@ public class EdiOrderDate implements Serializable {
 //	private long id;
 
 	@EmbeddedId
-	EdiOrderDatePK pk;
+	EdiOrderDatePK id;
 	
 	@Column(name="HEADER_DATE", nullable=false)
 	private LocalDate dateValue;
@@ -117,7 +117,7 @@ public class EdiOrderDate implements Serializable {
 	}
 
 	public EdiOrderDate(EdiOrderDatePK pk, LocalDate dt) {
-		this.pk = pk;
+		this.id = pk;
 		this.dateValue = dt;
 	}
 	
@@ -138,11 +138,11 @@ public class EdiOrderDate implements Serializable {
 //	}
 
 	public EdiOrderDatePK getPk() {
-		return pk;
+		return id;
 	}
 
 	public void setPk(EdiOrderDatePK pk) {
-		this.pk = pk;
+		this.id = pk;
 	}
 
 	public LocalDate getDateValue() {
@@ -156,7 +156,7 @@ public class EdiOrderDate implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EdiOrderDate [pk =" + pk.toString() 
+		return "EdiOrderDate [pk =" + id.toString() 
 				+ ", dateValue=" + dateValue + "]";
 	}
 
@@ -165,7 +165,7 @@ public class EdiOrderDate implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dateValue == null) ? 0 : dateValue.hashCode());
-		result = prime * result + ((pk == null) ? 0 : pk.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -183,10 +183,10 @@ public class EdiOrderDate implements Serializable {
 				return false;
 		} else if (!dateValue.equals(other.dateValue))
 			return false;
-		if (pk == null) {
-			if (other.pk != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!pk.equals(other.pk))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

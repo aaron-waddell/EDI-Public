@@ -32,7 +32,7 @@ class MockObjectTest extends MockTest{
 
 	@Test
 	void testHeader() throws Exception {
-		EdiOrderHeader h = MockObject.buildEdiOrderHeader();
+		EdiOrderHeader h = MockObject.buildEdiOrderHeader(OrderType.CARPET);
 		logger.info(h.toString());
 		assertNotNull(h.getConsumerAddress());
 		assertNotNull(h.getConsumerAddress().getAddressLine1());

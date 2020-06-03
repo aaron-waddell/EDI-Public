@@ -44,7 +44,7 @@ public class EdiOrderLine implements Serializable {
 		@Column(name="PO_LINE_NO", unique=true, nullable=false, length=10)
 		private String poLineNo = "";
 
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	    @JoinColumn(name = "edi_order_number")
 		private EdiOrderHeader ediOrderHeader;
 
@@ -108,7 +108,7 @@ public class EdiOrderLine implements Serializable {
 	}
 	
 	@EmbeddedId
-	private EdiOrderLinePK pk;
+	private EdiOrderLinePK id;
 	
 	@Column(name="ADD_CUST_PROD_INFO", nullable=false, length=40)
 	private String addCustProdInfo = "";
@@ -335,11 +335,11 @@ public class EdiOrderLine implements Serializable {
 //	}
 
 	public EdiOrderLinePK getPk() {
-		return pk;
+		return id;
 	}
 
 	public void setPk(EdiOrderLinePK pk) {
-		this.pk = pk;
+		this.id = pk;
 	}
 
 	public String getAddCustProdInfo() {
@@ -921,7 +921,7 @@ public class EdiOrderLine implements Serializable {
 	@Override
 	public String toString() {
 //		return "EdiOrderLine [id=" + id + ", poLineNo=" + pk.getPoLineNo() + ", addCustProdInfo=" + addCustProdInfo + ", agreementPrice="
-		return "EdiOrderLine [poLineNo=" + pk.getPoLineNo() + ", addCustProdInfo=" + addCustProdInfo + ", agreementPrice="
+		return "EdiOrderLine [poLineNo=" + id.getPoLineNo() + ", addCustProdInfo=" + addCustProdInfo + ", agreementPrice="
 				+ agreementPrice + ", agreementUom=" + agreementUom + ", backorderedFlag=" + backorderedFlag
 				+ ", billToStore=" + billToStore + ", bindingFt=" + bindingFt + ", calcPrice=" + calcPrice
 				+ ", chngLid=" + chngLid + ", chngTimestamp=" + chngTimestamp + ", consMsg=" + consMsg + ", convFactor="
@@ -945,7 +945,7 @@ public class EdiOrderLine implements Serializable {
 				+ color + ", style=" + style + ", shipDate=" + shipDateTime
 				+ ", shipDateQualifier=" + shipDateQualifier + ", statusCode=" + statusCode + ", summarizeFlag="
 				+ summarizeFlag + ", unitPrice=" + unitPrice + ", uomCode=" + uomCode + ", upcCode=" + upcCode
-				+ ", ediOrderHeader=" + (pk.getEdiOrderHeader()!=null?pk.getEdiOrderHeader().getLegacyOrderNumber():"null") + "]";
+				+ ", ediOrderHeader=" + (id.getEdiOrderHeader()!=null?id.getEdiOrderHeader().getLegacyOrderNumber():"null") + "]";
 	}
 
 }
