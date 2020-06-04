@@ -75,7 +75,7 @@ class LegacyOrderServiceTest extends MockTest {
 		assertEquals(header.getShipDateValue(), result.getShipDate().getDateValue());
 		assertEquals(line.getColor(), result.getLines().get(0).getColor());
 //		verify(ediOrderBeanRepository).save(ediOrderHeader);
-		assertNotEquals(0,result.getLegacyId());
+		assertNotEquals(0,result.getLegacyOrderNumber());
 	}
 	
 	@Test

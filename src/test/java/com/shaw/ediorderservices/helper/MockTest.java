@@ -13,6 +13,7 @@ import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
+import com.shaw.ediorderservices.csws.OrderHeader;
 import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
@@ -60,7 +61,7 @@ public abstract class MockTest {
 	protected static Cart cart = MockObject.build(Cart.class);
 	protected static HashMap<String, String> validationMap = new HashMap<String,String>();
 	protected static EdiOrdValidation ediOrdValidation = MockObject.build(EdiOrdValidation.class);
-
+	protected static OrderHeader orderHeaderView = MockObject.build(OrderHeader.class);
 	
 	static {
 		hsEdiOrder.setOrderType(OrderType.HARDSURFACES.toString());

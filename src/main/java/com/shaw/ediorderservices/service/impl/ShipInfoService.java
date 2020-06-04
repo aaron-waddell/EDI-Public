@@ -6,10 +6,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shaw.ediorderservices.csws.OrderHeader;
 import com.shaw.ediorderservices.mapping.ShipInfoMapper;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.service.EdiOrderBean;
+import com.shaw.ediorderservices.service.ILegacyOrderService;
 import com.shaw.ediorderservices.service.IShipInfoService;
 import com.shaw.ediorderservices.service.common.AbstractService;
 
@@ -21,14 +24,20 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 	EdiShipInfoRepository ediShipInfoRepository;
 
 	@Autowired
-	ShipInfoMapper shipInfoMapper;
+	ShipInfoMapper mapper;
 	
 	@Autowired
 	EdiOrderBean ediOrderBean;
 
+	@Autowired
+	ILegacyOrderService legacyService;
+
 	@Override
 	public void createShipInfo() {
-		// TODO Auto-generated method stub
+		EdiOrderHeader ediHeader = ediOrderBean.getLegacyHeader();
+		OrderHeader header = legacyService.getOrderView(ediHeader.getShawOrderNumber());
+		EdiShipInfo ediShipInfo = mapper.orderHeaderToShipInfo(header);
+		ediShipInfoRepository.save(ediShipInfo);
 
 	}
 

@@ -52,7 +52,7 @@ public abstract class OrderService extends AbstractService<EdiOrder> implements 
 			//TODO clear validations?
 			ediOrderBean.setEdiOrder(ediOrderRepository.save(ediOrder));
 
-			if (ediOrder.getLegacyId()==null)
+			if (ediOrder.getLegacyOrderNumber()==null)
 			{
 				legacyService.createLegacyOrder();
 			}

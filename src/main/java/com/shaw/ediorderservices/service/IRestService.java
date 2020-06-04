@@ -12,4 +12,6 @@ public interface IRestService {
 
 	String postForObject(URI uri);
 
+	String getForObject(URI uri);
+
 }

@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.shaw.ediorderservices.persistance.AuditableEntity;
+
 //@JsonTypeInfo(
 //		  use = JsonTypeInfo.Id.NAME, 
 //		  include = JsonTypeInfo.As.PROPERTY, 
@@ -30,7 +32,7 @@ import javax.persistence.Transient;
 @Entity @Table(schema = "CSD")
 @Inheritance(strategy = InheritanceType.JOINED)
 //@DiscriminatorColumn(name="orderType", discriminatorType = DiscriminatorType.STRING)
-public abstract class EdiOrder implements Serializable,IEdiOrder {
+public abstract class EdiOrder  extends AuditableEntity implements Serializable,IEdiOrder {
 
 	private static final long serialVersionUID = 1L;
 
@@ -52,13 +54,13 @@ public abstract class EdiOrder implements Serializable,IEdiOrder {
 	@Column
 	private String orderType = "";
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	/**
 	 * link to legacy table
 	 */
-	private Long legacyId;
+	private Long legacyOrderNumber;
 
-	@Column (nullable = true)
+	@Column (nullable = true, length = 6)
 	private String shawOrderNbr = "";
 	@Column (nullable = true, length = 2)
 	private String carrierCode = "";
@@ -201,12 +203,12 @@ public abstract class EdiOrder implements Serializable,IEdiOrder {
 		this.type = orderType; //gson factory
 	}
 
-	public Long getLegacyId() {
-		return legacyId;
+	public Long getLegacyOrderNumber() {
+		return legacyOrderNumber;
 	}
 
-	public void setLegacyId(Long legacyId) {
-		this.legacyId = legacyId;
+	public void setLegacyOrderNumber(Long legacyOrderNumber) {
+		this.legacyOrderNumber = legacyOrderNumber;
 	}
 
 	public String getShawOrderNbr() {
@@ -460,7 +462,7 @@ public abstract class EdiOrder implements Serializable,IEdiOrder {
 	@Override
 	public String toString() {
 		return "EdiOrder [id=" + id + ", customerCode=" + customerCode
-				+ ", orderingSystem=" + orderingSystem + ", type=" + orderType + ", legacyId=" + legacyId + ", shawOrderNbr="
+				+ ", orderingSystem=" + orderingSystem + ", type=" + orderType + ", legacyId=" + legacyOrderNumber + ", shawOrderNbr="
 				+ shawOrderNbr + ", carrierCode=" + carrierCode + ", customerNumber=" + customerNumber + ", commCust="
 				+ commCust + ", poNumber=" + poNumber + ", freightType=" + freightType + ", serviceCode=" + serviceCode
 				+ ", billToStore=" + billToStore + ", agreementNumber=" + agreementNumber + ", custDept=" + custDept

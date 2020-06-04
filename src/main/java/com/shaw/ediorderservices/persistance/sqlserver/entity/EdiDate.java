@@ -12,10 +12,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.shaw.ediorderservices.persistance.AuditableEntity;
+
 @Entity @Table(schema = "CSD")
 @Inheritance(strategy = InheritanceType.JOINED)
 
-public abstract class EdiDate implements Serializable, IEdiDate {
+public abstract class EdiDate extends AuditableEntity  implements Serializable, IEdiDate {
 
 	private static final long serialVersionUID = 1L;
 

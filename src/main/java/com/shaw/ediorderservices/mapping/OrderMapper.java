@@ -27,7 +27,6 @@ public interface OrderMapper {
     EdiOrderHeader ediOrderToLegacy(EdiOrder ediOrder);//, EdiDate poDate, EdiDate cancelDate, EdiDate shipDate);
 
     @Mapping(target = "id", constant =  "0L")
-    @Mapping(target = "legacyId", source =  "header.legacyOrderNumber")
     @Mapping(target = "shipDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
     @Mapping(target = "poDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
     @Mapping(target = "cancelDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
@@ -36,7 +35,6 @@ public interface OrderMapper {
     SamplesEdiOrder legacyHeaderToSamplesEdiOrder(EdiOrderHeader header);
 
     @Mapping(target = "id", constant =  "0L")
-    @Mapping(target = "legacyId", source =  "header.legacyOrderNumber")
     @Mapping(target = "shipDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
     @Mapping(target = "poDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
     @Mapping(target = "cancelDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
@@ -44,7 +42,6 @@ public interface OrderMapper {
     CarpetEdiOrder legacyHeaderToCarpetEdiOrder(EdiOrderHeader header);
 
     @Mapping(target = "id", constant =  "0L")
-    @Mapping(target = "legacyId", source =  "header.legacyOrderNumber")
     @Mapping(target = "shipDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
     @Mapping(target = "poDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
     @Mapping(target = "cancelDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")

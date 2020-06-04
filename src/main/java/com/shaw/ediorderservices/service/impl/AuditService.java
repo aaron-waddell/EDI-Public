@@ -2,6 +2,7 @@ package com.shaw.ediorderservices.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Service;
 
 import com.shaw.ediorderservices.mapping.AuditMapper;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiAuditRepository;
@@ -12,6 +13,7 @@ import com.shaw.ediorderservices.service.EdiOrderBean;
 import com.shaw.ediorderservices.service.IAuditService;
 import com.shaw.ediorderservices.service.common.AbstractService;
 
+@Service
 public class AuditService extends AbstractService<EdiAudit> implements IAuditService {
 
 	@Autowired

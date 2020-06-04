@@ -88,4 +88,19 @@ public class RestService implements IRestService {
 		}
 	}
 
+	@Override
+	public String getForObject(URI uri) {
+		String response;
+		try {
+			RestTemplate restTemplate = new RestTemplate();
+			logger.debug("calling rest service (get): " + uri.getPath());
+			response = restTemplate.getForObject(uri, String.class);
+			return response;
+		}
+		catch (Exception e) {
+			logger.error("Error in Rest Service : " + e.toString());
+			throw new RuntimeException(e);
+		}
+	}
+
 }

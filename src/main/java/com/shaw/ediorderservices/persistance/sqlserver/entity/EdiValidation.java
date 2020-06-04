@@ -13,8 +13,10 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.lang.Nullable;
 
+import com.shaw.ediorderservices.persistance.AuditableEntity;
+
 @Entity @Table(schema = "CSD")
-public class EdiValidation implements Serializable {
+public class EdiValidation  extends AuditableEntity implements Serializable {
 
 	/**
 	 * 

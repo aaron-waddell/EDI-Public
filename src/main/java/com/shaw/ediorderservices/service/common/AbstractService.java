@@ -3,6 +3,7 @@ package com.shaw.ediorderservices.service.common;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 import com.shaw.ediorderservices.IOperations;
+import com.shaw.ediorderservices.hibernate.ServiceConfig;
 
 @Transactional
 public abstract class AbstractService<T extends Serializable> implements IOperations<T> {

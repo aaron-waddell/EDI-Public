@@ -1,6 +1,7 @@
 package com.shaw.ediorderservices.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -24,6 +26,7 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo.EdiShipInfoPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
+import com.shaw.ediorderservices.service.ILegacyOrderService;
 
 @WebAppConfiguration
 @ContextConfiguration
@@ -37,6 +40,9 @@ class ShipInfoServiceTest extends MockTest {
 	
 	@Autowired
 	EdiShipInfoRepository shipInfoRepository;
+	
+	@MockBean
+	ILegacyOrderService orderService;
 
 	final static Logger logger = LoggerFactory.getLogger(ShipInfoServiceTest.class);
 
@@ -46,6 +52,7 @@ class ShipInfoServiceTest extends MockTest {
 
 	@Test
 	void testCreateShipInfo() {
+		when(orderService.getOrderView(ediOrderHeader.getShawOrderNumber())).thenReturn(orderHeaderView);
 		ediOrderBean.setLegacyHeader(ediOrderHeader);
 		service.createShipInfo();
 		EdiShipInfo shipInfo = shipInfoRepository.findById(new EdiShipInfoPK(ediOrderHeader.getShawOrderNumber(), LocalDate.now())).orElseThrow(()->new ResourceNotFoundException());
@@ -54,7 +61,7 @@ class ShipInfoServiceTest extends MockTest {
 		EdiShipInfoLn ln = shipInfo.getLines().get(0);
 		EdiOrderLine samplesLine = ediOrderHeader.getLines().get(0);
 		logger.info(ln.toString());
-		assertEquals(samplesLine.getColor() , ln.getColorNbr());
+		assertEquals(samplesLine.getColor(), ln.getColorNbr());
 	}
 
 }

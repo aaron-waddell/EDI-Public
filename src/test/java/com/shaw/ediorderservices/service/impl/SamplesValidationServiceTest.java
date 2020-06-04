@@ -57,11 +57,11 @@ class SamplesValidationServiceTest extends MockTest {
 	@Test
 	void testFillPreorder() {
 		ediOrderBean.setEdiOrder(samplesEdiOrder);
-		when(ediOrdValidationRepository.preorderUpdate(samplesEdiOrder.getLegacyId())).thenReturn(validationMap);
+		when(ediOrdValidationRepository.preorderUpdate(samplesEdiOrder.getLegacyOrderNumber())).thenReturn(validationMap);
 //		when(legacyService.getOrder(samplesEdiOrder.getLegacyId())).thenReturn(samplesEdiOrder);
 		service.fillPreorder();
-		verify(ediOrdValidationRepository).preorderUpdate(samplesEdiOrder.getLegacyId());
-		verify(legacyService).getOrder(samplesEdiOrder.getLegacyId());
+		verify(ediOrdValidationRepository).preorderUpdate(samplesEdiOrder.getLegacyOrderNumber());
+		verify(legacyService).getOrder(samplesEdiOrder.getLegacyOrderNumber());
 		assertNotNull(ediOrderBean);
 		logger.info(ediOrderBean.toString());
 	}

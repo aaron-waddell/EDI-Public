@@ -30,7 +30,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-03T10:37:34-0400",
+    date = "2020-06-03T15:01:16-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -68,6 +68,7 @@ public class OrderMapperImpl implements OrderMapper {
         ediOrderHeader.setCustDept( ediOrder.getCustDept() );
         ediOrderHeader.setCustomerCode( ediOrder.getCustomerCode() );
         ediOrderHeader.setDunsNbr( ediOrder.getDunsNbr() );
+        ediOrderHeader.setLegacyOrderNumber( ediOrder.getLegacyOrderNumber() );
         ediOrderHeader.setNbDate( ediOrder.getNbDate() );
         ediOrderHeader.setOrderingSystem( ediOrder.getOrderingSystem() );
         ediOrderHeader.setPoNumber( ediOrder.getPoNumber() );
@@ -103,7 +104,6 @@ public class OrderMapperImpl implements OrderMapper {
 
         SamplesEdiOrder samplesEdiOrder = ediOrderFactory.createMapperInstance( header, SamplesEdiOrder.class );
 
-        samplesEdiOrder.setLegacyId( header.getLegacyOrderNumber() );
         samplesEdiOrder.setAgreementNumber( header.getAgreementNumber() );
         samplesEdiOrder.setBeg( header.getBeg() );
         samplesEdiOrder.setBillToStore( header.getBillToStore() );
@@ -114,6 +114,7 @@ public class OrderMapperImpl implements OrderMapper {
         samplesEdiOrder.setCustomerCode( header.getCustomerCode() );
         samplesEdiOrder.setDates( ediOrderDateListToGenericDateList( header.getDates() ) );
         samplesEdiOrder.setDunsNbr( header.getDunsNbr() );
+        samplesEdiOrder.setLegacyOrderNumber( header.getLegacyOrderNumber() );
         samplesEdiOrder.setLines( ediOrderLineListToEdiLineList( header.getLines() ) );
         samplesEdiOrder.setNbDate( header.getNbDate() );
         samplesEdiOrder.setOrderType( header.getOrderType() );
@@ -127,9 +128,9 @@ public class OrderMapperImpl implements OrderMapper {
         samplesEdiOrder.setVendorNo( header.getVendorNo() );
 
         samplesEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
-        samplesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
         samplesEdiOrder.setId( (long) 0L );
         samplesEdiOrder.setShipDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
+        samplesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
 
         return samplesEdiOrder;
     }
@@ -142,7 +143,6 @@ public class OrderMapperImpl implements OrderMapper {
 
         CarpetEdiOrder carpetEdiOrder = ediOrderFactory.createMapperInstance( header, CarpetEdiOrder.class );
 
-        carpetEdiOrder.setLegacyId( header.getLegacyOrderNumber() );
         carpetEdiOrder.setAgreementNumber( header.getAgreementNumber() );
         carpetEdiOrder.setBeg( header.getBeg() );
         carpetEdiOrder.setBillToStore( header.getBillToStore() );
@@ -153,6 +153,7 @@ public class OrderMapperImpl implements OrderMapper {
         carpetEdiOrder.setCustomerCode( header.getCustomerCode() );
         carpetEdiOrder.setDates( ediOrderDateListToGenericDateList( header.getDates() ) );
         carpetEdiOrder.setDunsNbr( header.getDunsNbr() );
+        carpetEdiOrder.setLegacyOrderNumber( header.getLegacyOrderNumber() );
         carpetEdiOrder.setLines( ediOrderLineListToEdiLineList1( header.getLines() ) );
         carpetEdiOrder.setNbDate( header.getNbDate() );
         carpetEdiOrder.setOrderType( header.getOrderType() );
@@ -177,9 +178,9 @@ public class OrderMapperImpl implements OrderMapper {
         carpetEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
 
         carpetEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
-        carpetEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
         carpetEdiOrder.setId( (long) 0L );
         carpetEdiOrder.setShipDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
+        carpetEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
 
         return carpetEdiOrder;
     }
@@ -192,7 +193,6 @@ public class OrderMapperImpl implements OrderMapper {
 
         HardsurfacesEdiOrder hardsurfacesEdiOrder = ediOrderFactory.createMapperInstance( header, HardsurfacesEdiOrder.class );
 
-        hardsurfacesEdiOrder.setLegacyId( header.getLegacyOrderNumber() );
         hardsurfacesEdiOrder.setAgreementNumber( header.getAgreementNumber() );
         hardsurfacesEdiOrder.setBeg( header.getBeg() );
         hardsurfacesEdiOrder.setBillToStore( header.getBillToStore() );
@@ -203,6 +203,7 @@ public class OrderMapperImpl implements OrderMapper {
         hardsurfacesEdiOrder.setCustomerCode( header.getCustomerCode() );
         hardsurfacesEdiOrder.setDates( ediOrderDateListToGenericDateList( header.getDates() ) );
         hardsurfacesEdiOrder.setDunsNbr( header.getDunsNbr() );
+        hardsurfacesEdiOrder.setLegacyOrderNumber( header.getLegacyOrderNumber() );
         hardsurfacesEdiOrder.setLines( ediOrderLineListToEdiLineList2( header.getLines() ) );
         hardsurfacesEdiOrder.setNbDate( header.getNbDate() );
         hardsurfacesEdiOrder.setOrderType( header.getOrderType() );
@@ -227,9 +228,9 @@ public class OrderMapperImpl implements OrderMapper {
         hardsurfacesEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
 
         hardsurfacesEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
-        hardsurfacesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
         hardsurfacesEdiOrder.setId( (long) 0L );
         hardsurfacesEdiOrder.setShipDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
+        hardsurfacesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
 
         return hardsurfacesEdiOrder;
     }
@@ -388,8 +389,8 @@ public class OrderMapperImpl implements OrderMapper {
 
         EdiOrderLine ediOrderLine = new EdiOrderLine();
 
-        ediOrderLine.setCustReqShipDate( ediLine.getCustReqShipDate() );
         ediOrderLine.setColor( ediLine.getColor() );
+        ediOrderLine.setCustReqShipDate( ediLine.getCustReqShipDate() );
         ediOrderLine.setStyle( ediLine.getStyle() );
 
         return ediOrderLine;

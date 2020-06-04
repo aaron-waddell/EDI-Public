@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-03T10:39:34-0400",
+    date = "2020-06-03T14:05:25-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -261,6 +261,7 @@ public class LineMapperImpl implements LineMapper {
         ediOrderHeader.setBillToStore( ediOrder.getBillToStore() );
         ediOrderHeader.setCarrierCode( ediOrder.getCarrierCode() );
         ediOrderHeader.setCommCust( ediOrder.getCommCust() );
+        ediOrderHeader.setConsumerAddress( consumerAddressToLegacyConsumerAddress( ediOrder.getConsumerAddress() ) );
         ediOrderHeader.setCustDept( ediOrder.getCustDept() );
         ediOrderHeader.setCustomerCode( ediOrder.getCustomerCode() );
         ediOrderHeader.setDunsNbr( ediOrder.getDunsNbr() );
@@ -270,11 +271,10 @@ public class LineMapperImpl implements LineMapper {
         ediOrderHeader.setPoNumber( ediOrder.getPoNumber() );
         ediOrderHeader.setShipByDate( ediOrder.getShipByDate() );
         ediOrderHeader.setShipCancelDate( ediOrder.getShipCancelDate() );
-        ediOrderHeader.setStoreName( ediOrder.getStoreName() );
-        ediOrderHeader.setVendorNo( ediOrder.getVendorNo() );
-        ediOrderHeader.setConsumerAddress( consumerAddressToLegacyConsumerAddress( ediOrder.getConsumerAddress() ) );
         ediOrderHeader.setShipToAddress( shipToAddressToLegacyShipToAddress( ediOrder.getShipToAddress() ) );
+        ediOrderHeader.setStoreName( ediOrder.getStoreName() );
         ediOrderHeader.setThirdPartyAddress( thirdPartyAddressToLegacyThirdPartyAddress( ediOrder.getThirdPartyAddress() ) );
+        ediOrderHeader.setVendorNo( ediOrder.getVendorNo() );
         if ( ediOrderHeader.getDates() != null ) {
             List<EdiOrderDate> list = genericDateListToEdiOrderDateList( ediOrder.getDates() );
             if ( list != null ) {

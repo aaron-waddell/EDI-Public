@@ -1,5 +1,7 @@
 package com.shaw.ediorderservices.service;
 
+import static com.shaw.ediorderservices.gson.myGson.gson;
+
 import java.net.URI;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -11,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriTemplate;
 
-import com.google.gson.Gson;
 import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.CartRequest;
@@ -31,21 +32,19 @@ public abstract class CSWSService implements ICSWSService {
 
 	protected final static Logger logger = LoggerFactory.getLogger(SamplesOrderService.class);
 
-	protected static final Gson gson = new Gson();
-
 	public static final DateTimeFormatter USA_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
 	@Autowired
 	protected EdiOrderBean ediOrderBean;
 
+    @Autowired
+	protected ServiceConfig config;
+	
 	@Autowired
 	protected OrderMapper orderMapper;
 
 	@Autowired
 	protected LineMapper lineMapper;
-
-    @Autowired
-	protected ServiceConfig config;
 
     @Autowired
 	protected RestService restService;

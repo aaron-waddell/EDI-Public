@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-03T08:36:01-0400",
+    date = "2020-06-03T14:59:28-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -23,13 +23,21 @@ public class AuditMapperImpl implements AuditMapper {
 
         EdiAudit ediAudit = new EdiAudit();
 
+        ediAudit.setOrderNumber( ediOrder.getShawOrderNbr() );
+        if ( ediOrder.getLegacyOrderNumber() != null ) {
+            ediAudit.setEdiOrderNumber( ediOrder.getLegacyOrderNumber() );
+        }
         ediAudit.setPoDate( ediOrderPoDateDateValue( ediOrder ) );
+        ediAudit.setOrderingSys( ediOrder.getOrderingSystem() );
         ediAudit.setBillToStore( ediOrder.getBillToStore() );
         ediAudit.setCustomerCode( ediOrder.getCustomerCode() );
         ediAudit.setPoNumber( ediOrder.getPoNumber() );
 
-        ediAudit.setChngFunction( "CARR" );
+        ediAudit.setPoLineNo( "0" );
         ediAudit.setChngLid( "CARR" );
+        ediAudit.setChngFunction( "CARR" );
+        ediAudit.setLineNumber( 0L );
+        ediAudit.setOrderDate( java.time.LocalDateTime.now() );
 
         return ediAudit;
     }

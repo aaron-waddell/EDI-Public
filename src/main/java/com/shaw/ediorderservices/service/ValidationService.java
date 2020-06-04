@@ -70,7 +70,7 @@ public abstract class ValidationService extends AbstractService<EdiValidation> i
 	public void fillPreorder()
 	{
 		logger.info("calling 98...");
-		long ediOrderNbr = ediOrderBean.getEdiOrder().getLegacyId();
+		long ediOrderNbr = ediOrderBean.getEdiOrder().getLegacyOrderNumber();
 //TODO uncomment 
 		Map<String, String> outMap = ediOrdValidationRepository.preorderUpdate(ediOrderNbr );
 		logger.info(outMap.toString());
@@ -84,7 +84,7 @@ public abstract class ValidationService extends AbstractService<EdiValidation> i
 	public void validate()
 	{
 		logger.info("calling 94...");
-		long legacyId = ediOrderBean.getEdiOrder().getLegacyId();
+		long legacyId = ediOrderBean.getEdiOrder().getLegacyOrderNumber();
 		Map<String, String> outMap = ediOrdValidationRepository.validateEdiOrder(legacyId , "1");		
 
 		logger.info(outMap.toString());

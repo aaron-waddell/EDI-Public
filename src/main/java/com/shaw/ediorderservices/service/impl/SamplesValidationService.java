@@ -48,7 +48,7 @@ public class SamplesValidationService extends ValidationService {
 			//TODO add validation to order
 			throw new ResourceNotFoundException("Invalid Order Type: " + ediOrder.getOrderType());
 
-		long legacyId = ediOrder.getLegacyId();
+		long legacyId = ediOrder.getLegacyOrderNumber();
 //		EdiOrderHeader header = this.getLegacyOrderHeader();
 		EdiCustCode ediCustCode = ediCustCodeRepository.findById(new EdiCustCode().newEdiCustCodePK(ediOrder.getCustomerCode()
 				,ediOrder.getOrderingSystem())).orElse(null);
@@ -85,12 +85,12 @@ public class SamplesValidationService extends ValidationService {
 		{
 			if (ediCustCodeRepository.findById(new EdiCustCode().newEdiCustCodePK(ediOrder.getCustomerCode()
 														,ediOrder.getOrderingSystem()))==null)
-				return new EdiOrdValidation(ediOrder.getLegacyId(),rule);			
+				return new EdiOrdValidation(ediOrder.getLegacyOrderNumber(),rule);			
 		}
 		if (rule.getDescription().equals("CUST NUMBER INVALID"))
 		{
 			if (ediOrder.getCustomerNumber().length()==0)
-				return new EdiOrdValidation(ediOrder.getLegacyId(),rule);
+				return new EdiOrdValidation(ediOrder.getLegacyOrderNumber(),rule);
 		}
 		return null;  //no exception
 	}
@@ -104,12 +104,12 @@ public class SamplesValidationService extends ValidationService {
 			if (ediOrder.getShipToAddress().getAddressLine1().length()==0
 				|| ediOrder.getShipToAddress().getCity().length()==0
 				|| ediOrder.getShipToAddress().getZip().length()==0)
-				return new EdiOrdValidation(ediOrder.getLegacyId(),rule);			
+				return new EdiOrdValidation(ediOrder.getLegacyOrderNumber(),rule);			
 		}
 		if (rule.getDescription().equals("INVALID CARRIER"))
 		{
 			if (ediOrder.getCarrierCode().length()==0)
-				return new EdiOrdValidation(ediOrder.getLegacyId(),rule);
+				return new EdiOrdValidation(ediOrder.getLegacyOrderNumber(),rule);
 		}
 		return null;  //no exception
 
@@ -143,7 +143,7 @@ public class SamplesValidationService extends ValidationService {
 			if (rule.getDescription().equals("INVALID VENDOR ITEM OR COLOR CODE"))
 			{
 				if (isValidSKU(ediLine, commCust))
-					return new EdiOrdValidation(ediLine.getEdiOrder().getLegacyId(),rule);
+					return new EdiOrdValidation(ediLine.getEdiOrder().getLegacyOrderNumber(),rule);
 			}
 			return null;  //no exception
 		}

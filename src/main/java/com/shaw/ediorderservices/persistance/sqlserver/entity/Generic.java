@@ -8,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.shaw.ediorderservices.persistance.AuditableEntity;
+
 @Entity @Table(schema = "CSD")
-public class Generic implements Serializable {
+public class Generic extends AuditableEntity implements Serializable {
 
 	/**
 	 * give extensibility to EdiOrder 

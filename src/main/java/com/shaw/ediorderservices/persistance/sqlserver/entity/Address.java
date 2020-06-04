@@ -11,10 +11,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.shaw.ediorderservices.persistance.AuditableEntity;
+
 @Entity
 @Table(schema = "CSD")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Address implements Serializable {
+public abstract class Address extends AuditableEntity implements Serializable {
 
 	/**
 	 * 

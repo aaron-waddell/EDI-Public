@@ -46,14 +46,14 @@ class HardsurfacesValidationServiceTest extends MockTest {
 	@Test
 	final void testValidate() {
 		ediOrderBean.setEdiOrder(hsEdiOrder);
-		when(ediOrdValidationRepository.validateEdiOrder(hsEdiOrder.getLegacyId(), "1")).thenReturn(validationMap);
+		when(ediOrdValidationRepository.validateEdiOrder(hsEdiOrder.getLegacyOrderNumber(), "1")).thenReturn(validationMap);
 //		when(ediOrderHeaderRepository.findById(testEdiOrder.getLegacyId())).thenReturn(Optional.of(ediOrderHeader));
 //		doAnswer(i->{ediOrderBean.setEdiOrder(invalidOrder2);return null;}).when(legacyService).getOrder(testEdiOrder.getLegacyId());
 		doAnswer(i->{ediOrderBean.setEdiOrder(invalidOrder2);return null;}).when(legacyService).convertLegacyOrder();
 		service.validate();
-		verify(ediOrdValidationRepository).validateEdiOrder(hsEdiOrder.getLegacyId(), "1");
+		verify(ediOrdValidationRepository).validateEdiOrder(hsEdiOrder.getLegacyOrderNumber(), "1");
 //		verify(ediOrderHeaderRepository).findById(testEdiOrder.getLegacyId());
-		verify(legacyService).getOrder(hsEdiOrder.getLegacyId());
+		verify(legacyService).getOrder(hsEdiOrder.getLegacyOrderNumber());
 		verify(legacyService).convertLegacyOrder();
 		logger.info(ediOrderBean.getEdiOrder().toString());
 		assertNotNull(ediOrderBean.getEdiOrder().getValidations());
@@ -67,13 +67,13 @@ class HardsurfacesValidationServiceTest extends MockTest {
 	@Test
 	final void testFillPreorder() {
 		ediOrderBean.setEdiOrder(hsEdiOrder);
-		when(ediOrdValidationRepository.preorderUpdate(hsEdiOrder.getLegacyId())).thenReturn(validationMap);
+		when(ediOrdValidationRepository.preorderUpdate(hsEdiOrder.getLegacyOrderNumber())).thenReturn(validationMap);
 //		when(legacyService.getOrder(testEdiOrder.getLegacyId())).thenReturn(testEdiOrder);
 		service.fillPreorder();
 		logger.info(ediOrderBean.toString());
 		assertEquals(ediOrderBean.getEdiOrder(),hsEdiOrder);
-		verify(ediOrdValidationRepository).preorderUpdate(hsEdiOrder.getLegacyId());
-		verify(legacyService).getOrder(hsEdiOrder.getLegacyId());
+		verify(ediOrdValidationRepository).preorderUpdate(hsEdiOrder.getLegacyOrderNumber());
+		verify(legacyService).getOrder(hsEdiOrder.getLegacyOrderNumber());
 	}
 
 }

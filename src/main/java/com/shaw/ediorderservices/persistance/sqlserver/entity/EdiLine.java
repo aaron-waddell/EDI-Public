@@ -18,10 +18,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.shaw.ediorderservices.persistance.AuditableEntity;
+
 
 @Entity @Table(schema = "CSD")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class EdiLine implements Serializable, IEdiLine {
+public abstract class EdiLine extends AuditableEntity implements Serializable, IEdiLine {
 
 	private static final long serialVersionUID = 1L;
 

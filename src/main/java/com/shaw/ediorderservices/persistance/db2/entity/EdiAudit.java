@@ -16,6 +16,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 
 /**
  * The persistent class for the EDI_AUDIT database table.
@@ -43,7 +46,8 @@ public class EdiAudit implements Serializable {
 	@Column(name="CHNG_LID", nullable=false, length=8)
 	private String chngLid;
 
-	@Column(name="CHNG_TIMESTAMP", nullable=false)
+	@Column(name="CHNG_TIMESTAMP", nullable=false, insertable=false)
+	@ColumnDefault( value = "CURRENT_TIMESTAMP" ) 
 	private LocalDateTime chngTimestamp;
 
 	@Column(name="CUSTOMER_CODE", nullable=false, length=2)

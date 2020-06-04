@@ -171,6 +171,7 @@ public class MockObject<Any> {
 		ediOrderHeader.setThirdPartyAddress(MockObject.build(LegacyThirdPartyAddress.class));
 		ediOrderHeader.setOrderType(orderType.toString().substring(0,1));
 		ediOrderHeader.setOrderTypeDesc(orderType.toString());
+		ediOrderHeader.setOrderLoc("01");
 		logger.debug(ediOrderHeader.toString());
 		return ediOrderHeader;
 	}
