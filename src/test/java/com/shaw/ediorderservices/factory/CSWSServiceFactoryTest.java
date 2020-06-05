@@ -14,8 +14,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
-import com.shaw.ediorderservices.service.csws.CSWSHardsurfacesService;
-import com.shaw.ediorderservices.service.csws.CSWSSamplesService;
+import com.shaw.ediorderservices.service.csws.HardsurfacesCSWSService;
+import com.shaw.ediorderservices.service.csws.SamplesCSWSService;
 import com.shaw.ediorderservices.service.csws.CSWSServiceFactory;
 import com.shaw.ediorderservices.service.csws.ICSWSService;
 
@@ -30,13 +30,13 @@ class CSWSServiceFactoryTest extends MockTest {
 	@Test
 	void test() {
 		ICSWSService s = cswsServiceFactory.getInstance(OrderType.SAMPLES.toString());
-		assertTrue(s.getClass().getSimpleName().contains(CSWSSamplesService.class.getSimpleName()));
+		assertTrue(s.getClass().getSimpleName().contains(SamplesCSWSService.class.getSimpleName()));
 		
 		//TODO check validations
 		assertNotNull(s.toString());
 
 		s = cswsServiceFactory.getInstance(OrderType.HARDSURFACES.toString());
-		assertTrue(s.getClass().getSimpleName().contains(CSWSHardsurfacesService.class.getSimpleName()));
+		assertTrue(s.getClass().getSimpleName().contains(HardsurfacesCSWSService.class.getSimpleName()));
 		assertNotNull(s.toString());
 		
 		assertThrows(UnsupportedOperationException.class, ()->cswsServiceFactory.getInstance(OrderType.CARPET.toString()));

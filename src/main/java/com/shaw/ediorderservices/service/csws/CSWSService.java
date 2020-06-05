@@ -3,7 +3,6 @@ package com.shaw.ediorderservices.service.csws;
 import static com.shaw.ediorderservices.gson.MyGson.gson;
 
 import java.net.URI;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -19,12 +18,13 @@ import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.CartRequest;
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
+import com.shaw.ediorderservices.csws.OrderHeader;
 import com.shaw.ediorderservices.csws.ProcessCartRequest;
 import com.shaw.ediorderservices.csws.ShipInfo;
+import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.mapping.LineMapper;
 import com.shaw.ediorderservices.mapping.OrderMapper;
-import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.service.EdiOrderBean;
 import com.shaw.ediorderservices.service.order.SamplesOrderService;
@@ -118,6 +118,18 @@ public abstract class CSWSService implements ICSWSService {
 		logger.info(gson.toJson(custInfo));
 		return custInfo;
 		
+	}
+
+	@Override
+	public OrderHeader getOrderView(String orderNbr) throws ResourceNotFoundException {
+		UriTemplate template = new UriTemplate(config.getCswsServername() + "/orders/{orderNbr}") ;
+		URI uri = template.expand(orderNbr);
+
+		String response = restService.getForObject(uri);
+
+		OrderHeader orderHeader = gson.fromJson(response, OrderHeader.class);
+		logger.info(gson.toJson(orderHeader));
+		return orderHeader ;
 	}
 
 }

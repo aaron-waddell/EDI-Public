@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import com.shaw.ediorderservices.helper.MockTest;
 
-class CSWSHardsurfacesServiceTest extends MockTest {
+class HardsurfacesCSWSServiceTest extends MockTest {
 
 	@Test
 	void testCreateCart() {

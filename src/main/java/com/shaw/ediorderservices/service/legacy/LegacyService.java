@@ -98,18 +98,6 @@ public abstract class LegacyService extends AbstractService<EdiOrderHeader> impl
 		ediOrderBean.setLegacyHeader(legacyHeader);
 	}
 
-//	@Override
-//	public OrderHeader getOrderView(String orderNbr) throws ResourceNotFoundException {
-//		UriTemplate template = new UriTemplate(config.getCswsServername() + "/orders/{orderNbr}") ;
-//		URI uri = template.expand(orderNbr);
-//
-//		String response = restService.getForObject(uri);
-//
-//		OrderHeader orderHeader = gson.fromJson(response, OrderHeader.class);
-//		logger.info(gson.toJson(orderHeader));
-//		return orderHeader ;
-//	}
-
 	@Override
 	public void updateOrderHeader(String shawOrderNbr)
 	{

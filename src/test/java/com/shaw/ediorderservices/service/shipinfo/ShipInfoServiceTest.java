@@ -1,8 +1,7 @@
 package com.shaw.ediorderservices.service.shipinfo;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 import static com.shaw.ediorderservices.gson.MyGson.gson;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
@@ -21,15 +20,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
-import com.shaw.ediorderservices.gson.MyGson;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo.EdiShipInfoPK;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
 import com.shaw.ediorderservices.service.legacy.LegacyService;
 import com.shaw.ediorderservices.service.shipInfo.ShipInfoService;
-import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
 
 @WebAppConfiguration
 @ContextConfiguration

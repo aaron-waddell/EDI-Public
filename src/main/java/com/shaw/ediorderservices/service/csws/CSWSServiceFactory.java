@@ -10,12 +10,12 @@ import com.shaw.ediorderservices.factory.IFactory;
 public class CSWSServiceFactory implements IFactory {
 
 	@Autowired
-	@Qualifier("cswsSamplesService")
-	ICSWSService cswsSamplesService;
+	@Qualifier("samplesCswsService")
+	ICSWSService samplesCswsService;
 
 	@Autowired
-	@Qualifier("cswsHardsurfacesService")
-	ICSWSService cswsHardsurfacesService;
+	@Qualifier("hardsurfacesCswsService")
+	ICSWSService hardsurfacesCswsService;
 	
 	public  CSWSServiceFactory() {
 		// TODO Auto-generated constructor stub
@@ -25,9 +25,9 @@ public class CSWSServiceFactory implements IFactory {
 	{
 		switch (orderType) {
 		case "SAMPLES":
-			return cswsSamplesService;
+			return samplesCswsService;
 		case "HARDSURFACES":
-			return cswsHardsurfacesService;
+			return hardsurfacesCswsService;
 
 		default:
 			throw new UnsupportedOperationException("Unsupported OrderType: " + orderType);

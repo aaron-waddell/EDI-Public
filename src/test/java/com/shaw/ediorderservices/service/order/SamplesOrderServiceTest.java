@@ -29,7 +29,7 @@ import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
 import com.shaw.ediorderservices.persistance.sqlserver.dao.EdiOrderRepository;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
-import com.shaw.ediorderservices.service.csws.CSWSSamplesService;
+import com.shaw.ediorderservices.service.csws.SamplesCSWSService;
 import com.shaw.ediorderservices.service.legacy.LegacyService;
 import com.shaw.ediorderservices.service.messaging.EmailService;
 import com.shaw.ediorderservices.service.order.OrderService;
@@ -47,11 +47,12 @@ class SamplesOrderServiceTest extends MockTest {
 	OrderService service;	
 	
 	@MockBean
+	@Qualifier("samplesLegacyService")
 	LegacyService legacyService;
 
 	@MockBean
-	@Qualifier("cswsSamplesService")
-	CSWSSamplesService cswsService;
+	@Qualifier("samplesCswsService")
+	SamplesCSWSService cswsService;
 	
 	@MockBean
 	@Qualifier("samplesValidationService")
@@ -84,13 +85,8 @@ class SamplesOrderServiceTest extends MockTest {
 //		when(ediOrderRepository.save(any(EdiOrder.class))).thenCallRealMethod();
 //		when(validationService.fillPreorder()).thenReturn(samplesEdiOrder);
 //		when(legacyService.convertLegacyOrder()).thenReturn(samplesEdiOrder);
+		when(cswsService.place()).thenReturn(shawOrder);
 		when(emailService.sendEmails()).thenReturn(Lists.newArrayList("SYSTEM ERROR"));
-	}
-	
-	@Test
-	void testPlace() {
-		ediOrderBean.setEdiOrder(samplesEdiOrder);
-		when(ediOrderRepository.save(samplesEdiOrder)).thenReturn(samplesEdiOrder);
         doAnswer(new Answer<Void>() {
 
             @Override
@@ -99,6 +95,13 @@ class SamplesOrderServiceTest extends MockTest {
                 return null;
             }
         }).when(validationService).validate();
+	}
+	
+	@Test
+	void testPlace() {
+		ediOrderBean.setEdiOrder(samplesEdiOrder);
+		when(ediOrderRepository.save(samplesEdiOrder)).thenReturn(samplesEdiOrder);
+//		when(cswsService.convert(cart)).thenReturn(shawOrder);
 //		when(validationService).thenAnswer(i->ediOrderBean.setEdiOrder(invalidOrder));
 		service.place();
 //		assertNotNull(result);
@@ -106,6 +109,7 @@ class SamplesOrderServiceTest extends MockTest {
 		verify(validationService).fillPreorder();
 		verify(validationService).validate();
 		verify(emailService).sendEmails();
+//		verify(cswsService).convert(cart);
 	}
 
 	@Test
@@ -118,6 +122,7 @@ class SamplesOrderServiceTest extends MockTest {
 		verify(validationService,never()).validate();
 		verify(emailService,never()).sendEmails();
 		verify(legacyService,never()).convertLegacyOrder();
+		verify(cswsService).place();
 		logger.info(ediOrderBean.toString());
 	}
 

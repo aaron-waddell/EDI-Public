@@ -23,13 +23,13 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 
 @Service
 @Transactional
-@Qualifier("cswsSamplesService")
-public class CSWSSamplesService extends CSWSService {
+@Qualifier("samplesCswsService")
+public class SamplesCSWSService extends CSWSService {
 
 	@Autowired
 	SamplesInfoRepository samplesInfoRepository;
 
-	public CSWSSamplesService() {
+	public SamplesCSWSService() {
 		// TODO Auto-generated constructor stub
 	}
 	

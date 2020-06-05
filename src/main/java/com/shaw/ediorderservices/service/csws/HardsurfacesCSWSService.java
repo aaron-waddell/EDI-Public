@@ -9,10 +9,10 @@ import com.shaw.ediorderservices.csws.CartRequest;
 
 @Service
 @Transactional
-@Qualifier("cswsHardsurfacesService")
-public class CSWSHardsurfacesService extends CSWSService {
+@Qualifier("hardsurfacesCswsService")
+public class HardsurfacesCSWSService extends CSWSService {
 
-	public CSWSHardsurfacesService() {
+	public HardsurfacesCSWSService() {
 		// TODO Auto-generated constructor stub
 	}
 

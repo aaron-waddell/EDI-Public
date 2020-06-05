@@ -13,7 +13,7 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.service.EdiOrderBean;
 import com.shaw.ediorderservices.service.common.AbstractService;
-import com.shaw.ediorderservices.service.legacy.ILegacyService;
+import com.shaw.ediorderservices.service.csws.CSWSService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
@@ -23,19 +23,20 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 	EdiShipInfoRepository ediShipInfoRepository;
 
 	@Autowired
+	CSWSService cswsService;
+
+	@Autowired
 	ShipInfoMapper mapper;
 	
 	@Autowired
 	EdiOrderBean ediOrderBean;
 
-	@Autowired
-	ILegacyService legacyService;
-
 	@Override
 	public void createShipInfo() {
-		EdiOrderHeader ediHeader = ediOrderBean.getLegacyHeader();
-//		OrderHeader header = legacyService.getOrderView(ediHeader.getShawOrderNumber());
-		EdiShipInfo ediShipInfo = mapper.orderHeaderToShipInfo(null);
+		EdiOrderHeader header = ediOrderBean.getLegacyHeader();
+		OrderHeader shawHeader = cswsService.getOrderView(header.getShawOrderNumber());
+		EdiShipInfo ediShipInfo = mapper.EdiOrderHeaderToShipInfo(header);
+		ediShipInfo.setCarrCode(carrCode);
 		ediShipInfoRepository.save(ediShipInfo);
 
 	}

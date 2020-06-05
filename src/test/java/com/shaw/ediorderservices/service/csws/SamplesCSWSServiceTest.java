@@ -35,7 +35,7 @@ import com.shaw.ediorderservices.persistance.db2.dao.SamplesInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 import com.shaw.ediorderservices.service.common.IEntityBody;
-import com.shaw.ediorderservices.service.csws.CSWSSamplesService;
+import com.shaw.ediorderservices.service.csws.SamplesCSWSService;
 import com.shaw.ediorderservices.service.csws.CSWSService;
 import com.shaw.ediorderservices.service.rest.RestService;
 
@@ -45,14 +45,14 @@ import com.shaw.ediorderservices.service.rest.RestService;
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(SpringExtension.class)
-class CSWSSamplesServiceTest extends MockTest{
+class SamplesCSWSServiceTest extends MockTest{
 
-	final static Logger logger = LoggerFactory.getLogger(CSWSSamplesServiceTest.class);
+	final static Logger logger = LoggerFactory.getLogger(SamplesCSWSServiceTest.class);
 	private static final String CUST_NBR = randomAlphabetic(6);
 
 	@Autowired
 //	@Qualifier("cswsSamplesService")
-	CSWSSamplesService service;	
+	SamplesCSWSService service;	
 
 	@MockBean
 	RestService restService;

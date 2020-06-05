@@ -9,12 +9,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn.EdiShipInfoLnPK;
 
@@ -24,7 +27,7 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn.EdiShipInf
  * 
  */
 @Entity
-@Table(name="EDI_SHIP_INFO")
+@Table(name="SHXP.EDI_SHIP_INFO")
 @NamedQuery(name="EdiShipInfo.findAll", query="SELECT e FROM EdiShipInfo e")
 public class EdiShipInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -91,15 +94,18 @@ public class EdiShipInfo implements Serializable {
 	private EdiShipInfoPK id;
 
 	@Column(name="ACCT_CONTACT", nullable=false, length=45)
+	@ColumnDefault("")
 	private String acctContact;
 
 	@Column(name="AGREEMENT_NBR", nullable=false, length=15)
 	private String agreementNbr;
 
 	@Column(name="AUTH_REP", nullable=false, length=45)
+	@ColumnDefault("")
 	private String authRep;
 
 	@Column(name="AUTHORIZATION_NO", nullable=false, length=10)
+	@ColumnDefault("")
 	private String authorizationNo;
 
 	@Column(name="BILL_TO_STORE_NBR", nullable=false, length=20)
@@ -115,35 +121,12 @@ public class EdiShipInfo implements Serializable {
 	private String commCust;
 
 	@Column(name="CONS_STATUS_MSG", nullable=false, length=35)
+	@ColumnDefault("")
 	private String consStatusMsg;
 
-	@Column(name="CONSUMER_ADDR", nullable=false, length=35)
-	private String consumerAddr;
-
-	@Column(name="CONSUMER_ADDR2", nullable=false, length=35)
-	private String consumerAddr2;
-
-	@Column(name="CONSUMER_CARRIER", nullable=false, length=4)
-	private String consumerCarrier;
-
-	@Column(name="CONSUMER_CITY", nullable=false, length=19)
-	private String consumerCity;
-
-	@Column(name="CONSUMER_NAME", nullable=false, length=20)
-	private String consumerName;
-
-	@Column(name="CONSUMER_PHONE_NO", nullable=false, length=11)
-	private String consumerPhoneNo;
-
-	@Column(name="CONSUMER_PO_DATE", nullable=false)
-	private LocalDate consumerPoDate;
-
-	@Column(name="CONSUMER_STATE", nullable=false, length=2)
-	private String consumerState;
-
-	@Column(name="CONSUMER_ZIP", nullable=false, length=9)
-	private String consumerZip;
-
+	@Embedded
+	LegacyConsumerAddress consumerAddress;
+	
 	@Column(name="CONTRACT_NBR", nullable=false, length=15)
 	private String contractNbr;
 
@@ -154,15 +137,18 @@ public class EdiShipInfo implements Serializable {
 	private String custNbr;
 
 	@Column(name="CUST_PMT_METH", nullable=false, length=30)
+	@ColumnDefault("")
 	private String custPmtMeth;
 
 	@Column(name="CUST_PO", nullable=false, length=22)
 	private String custPo;
 
 	@Column(name="CUST_SP_INST", nullable=false, length=45)
+	@ColumnDefault("")
 	private String custSpInst;
 
 	@Column(name="CUST_WH_NBR", nullable=false, length=4)
+	@ColumnDefault("")
 	private String custWhNbr;
 
 	@Column(name="CUSTOMER_CODE", nullable=false, length=2)
@@ -196,36 +182,46 @@ public class EdiShipInfo implements Serializable {
 	private String giftMessage2;
 
 	@Column(name="HDR_DROP_DATE", nullable=false)
+	@ColumnDefault("CURRENT_DATE")
 	private LocalDate hdrDropDate;
 
 	@Column(name="LAST_CHNG_DATE", nullable=false)
+	@ColumnDefault("CURRENT_DATE")
 	private LocalDateTime lastChngDate;
 
 	@Column(name="LAST_CHNG_ID", nullable=false, length=8)
+	@ColumnDefault("")
 	private String lastChngId;
 
 	@Column(name="NB_DATE", nullable=false)
+	@ColumnDefault("CURRENT_DATE")
 	private LocalDate nbDate;
 
 	@Column(name="NO_ASN_FLAG", nullable=false, length=1)
 	private String noAsnFlag;
 
 	@Column(name="ONLINE_TYPE", nullable=false, length=1)
+	@ColumnDefault("")
 	private String onlineType;
 
 	@Column(name="ORDER_MER_COST", nullable=false, precision=13, scale=4)
+	@ColumnDefault("")
 	private long orderMerCost;
 
 	@Column(name="ORDER_RET_HAND", nullable=false, precision=13, scale=4)
+	@ColumnDefault("")
 	private long orderRetHand;
 
 	@Column(name="ORDER_RET_SH", nullable=false, precision=13, scale=4)
+	@ColumnDefault("")
 	private long orderRetSh;
 
 	@Column(name="ORDER_RET_TAX", nullable=false, precision=13, scale=4)
+	@ColumnDefault("")
 	private long orderRetTax;
 
 	@Column(name="ORDER_RET_TOTAL", nullable=false, precision=13, scale=4)
+	@ColumnDefault("")
 	private long orderRetTotal;
 
 	@Column(name="ORDER_TYPE", nullable=false, length=1)
@@ -241,9 +237,11 @@ public class EdiShipInfo implements Serializable {
 	private LocalDate poDate;
 
 	@Column(name="PO_TYPE_SUFFIX", nullable=false, length=10)
+	@ColumnDefault("")
 	private String poTypeSuffix;
 
 	@Column(name="PS_MSG", nullable=false, length=255)
+	@ColumnDefault("")
 	private String psMsg;
 
 	@Column(name="PURCHASED_BY", nullable=false, length=45)
@@ -253,24 +251,30 @@ public class EdiShipInfo implements Serializable {
 	private String receivingStore;
 
 	@Column(name="REF_TC_NBR", nullable=false, length=20)
+	@ColumnDefault("")
 	private String refTcNbr;
 
 	@Column(name="RETURN_MSG", nullable=false, length=35)
+	@ColumnDefault("")
 	private String returnMsg;
 
 	@Column(name="ROUTE_BY_DATE", nullable=false)
+	@ColumnDefault("CURRENT_DATE")
 	private LocalDate routeByDate;
 
 	@Column(name="SALES_CHECK_NO", nullable=false, length=30)
 	private String salesCheckNo;
 
 	@Column(name="SALES_REQ_CODE", nullable=false, length=2)
+	@ColumnDefault("")
 	private String salesReqCode;
 
 	@Column(name="SHIP_BY_DATE")
+	@ColumnDefault("CURRENT_DATE")
 	private LocalDate shipByDate;
 
 	@Column(name="SHIP_CANCEL_DATE", nullable=false)
+	@ColumnDefault("CURRENT_DATE")
 	private LocalDate shipCancelDate;
 
 	@Column(name="SHIP_TO_DEST_CODE", nullable=false, length=2)
@@ -380,76 +384,12 @@ public class EdiShipInfo implements Serializable {
 		this.consStatusMsg = consStatusMsg;
 	}
 
-	public String getConsumerAddr() {
-		return this.consumerAddr;
+	public LegacyConsumerAddress getConsumerAddress() {
+		return consumerAddress;
 	}
 
-	public void setConsumerAddr(String consumerAddr) {
-		this.consumerAddr = consumerAddr;
-	}
-
-	public String getConsumerAddr2() {
-		return this.consumerAddr2;
-	}
-
-	public void setConsumerAddr2(String consumerAddr2) {
-		this.consumerAddr2 = consumerAddr2;
-	}
-
-	public String getConsumerCarrier() {
-		return this.consumerCarrier;
-	}
-
-	public void setConsumerCarrier(String consumerCarrier) {
-		this.consumerCarrier = consumerCarrier;
-	}
-
-	public String getConsumerCity() {
-		return this.consumerCity;
-	}
-
-	public void setConsumerCity(String consumerCity) {
-		this.consumerCity = consumerCity;
-	}
-
-	public String getConsumerName() {
-		return this.consumerName;
-	}
-
-	public void setConsumerName(String consumerName) {
-		this.consumerName = consumerName;
-	}
-
-	public String getConsumerPhoneNo() {
-		return this.consumerPhoneNo;
-	}
-
-	public void setConsumerPhoneNo(String consumerPhoneNo) {
-		this.consumerPhoneNo = consumerPhoneNo;
-	}
-
-	public LocalDate getConsumerPoDate() {
-		return this.consumerPoDate;
-	}
-
-	public void setConsumerPoDate(LocalDate consumerPoDate) {
-		this.consumerPoDate = consumerPoDate;
-	}
-
-	public String getConsumerState() {
-		return this.consumerState;
-	}
-
-	public void setConsumerState(String consumerState) {
-		this.consumerState = consumerState;
-	}
-
-	public String getConsumerZip() {
-		return this.consumerZip;
-	}
-
-	public void setConsumerZip(String consumerZip) {
-		this.consumerZip = consumerZip;
+	public void setConsumerAddress(LegacyConsumerAddress consumerAddress) {
+		this.consumerAddress = consumerAddress;
 	}
 
 	public String getContractNbr() {
@@ -877,10 +817,7 @@ public class EdiShipInfo implements Serializable {
 		return "EdiShipInfo [id=" + id + ", acctContact=" + acctContact + ", agreementNbr=" + agreementNbr
 				+ ", authRep=" + authRep + ", authorizationNo=" + authorizationNo + ", billToStoreNbr=" + billToStoreNbr
 				+ ", bsStoreNbr=" + bsStoreNbr + ", carrCode=" + carrCode + ", commCust=" + commCust
-				+ ", consStatusMsg=" + consStatusMsg + ", consumerAddr=" + consumerAddr + ", consumerAddr2="
-				+ consumerAddr2 + ", consumerCarrier=" + consumerCarrier + ", consumerCity=" + consumerCity
-				+ ", consumerName=" + consumerName + ", consumerPhoneNo=" + consumerPhoneNo + ", consumerPoDate="
-				+ consumerPoDate + ", consumerState=" + consumerState + ", consumerZip=" + consumerZip
+				+ ", consStatusMsg=" + consStatusMsg + ", consumerAddress=" + consumerAddress
 				+ ", contractNbr=" + contractNbr + ", crossDock=" + crossDock + ", custNbr=" + custNbr
 				+ ", custPmtMeth=" + custPmtMeth + ", custPo=" + custPo + ", custSpInst=" + custSpInst + ", custWhNbr="
 				+ custWhNbr + ", customerCode=" + customerCode + ", deliveryDate=" + deliveryDate + ", delvReqstDate="
