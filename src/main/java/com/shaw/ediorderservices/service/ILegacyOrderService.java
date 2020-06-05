@@ -20,4 +20,6 @@ public interface ILegacyOrderService extends IOperations<EdiOrderHeader> {
 
 	OrderHeader getOrderView(String orderNbr) throws ResourceNotFoundException;
 
+	void updateOrderHeader(String shawOrderNbr);
+
 }

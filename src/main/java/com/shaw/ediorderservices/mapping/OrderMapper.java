@@ -24,6 +24,9 @@ public interface OrderMapper {
     @Mapping(target = "shipDateValue", source = "ediOrder.shipDate.dateValue")
     @Mapping(target = "shipDateQualifier", source = "ediOrder.shipDate.qualifier")
     @Mapping(target = "orderType", expression = "java(ediOrder.getOrderType().substring(0,1))")
+    @Mapping(target = "legacyOrderNumber", ignore = true)
+//    @Mapping(target = "lines", source = "lines")
+    @Mapping(target = "lines", expression="java(ediOrder.getLines().stream().map(lineMapper::ediLineToLegacy).collect(java.util.stream.Collectors.toList()))")
     EdiOrderHeader ediOrderToLegacy(EdiOrder ediOrder);//, EdiDate poDate, EdiDate cancelDate, EdiDate shipDate);
 
     @Mapping(target = "id", constant =  "0L")

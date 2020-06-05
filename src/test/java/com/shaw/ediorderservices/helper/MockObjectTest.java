@@ -1,6 +1,6 @@
 package com.shaw.ediorderservices.helper;
 
-import static com.shaw.ediorderservices.gson.myGson.gson;
+import static com.shaw.ediorderservices.gson.MyGson.gson;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;

@@ -1,6 +1,6 @@
 package com.shaw.ediorderservices.service;
 
-import static com.shaw.ediorderservices.gson.myGson.gson;
+import static com.shaw.ediorderservices.gson.MyGson.gson;
 
 import java.util.List;
 
@@ -11,14 +11,16 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shaw.ediorderservices.IOperations;
+import com.shaw.ediorderservices.csws.Order;
 import com.shaw.ediorderservices.factory.CSWSServiceFactory;
+import com.shaw.ediorderservices.factory.LegacyOrderServiceFactory;
 import com.shaw.ediorderservices.factory.ValidationServiceFactory;
 import com.shaw.ediorderservices.persistance.sqlserver.dao.EdiOrderRepository;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.service.common.AbstractService;
 import com.shaw.ediorderservices.service.impl.EmailService;
-import com.shaw.ediorderservices.service.impl.LegacyOrderService;
+import com.shaw.ediorderservices.service.impl.LegacyService;
 import com.shaw.ediorderservices.service.impl.SamplesOrderService;
 
 public abstract class OrderService extends AbstractService<EdiOrder> implements IOperations<EdiOrder> {
@@ -28,7 +30,7 @@ public abstract class OrderService extends AbstractService<EdiOrder> implements 
 	protected EdiOrderBean ediOrderBean;
 	
 	@Autowired
-	LegacyOrderService legacyService;
+	LegacyOrderServiceFactory legacyServiceFactory;
 	@Autowired
 	EmailService emailService;
 	@Autowired
@@ -47,6 +49,7 @@ public abstract class OrderService extends AbstractService<EdiOrder> implements 
 		try {
 			EdiOrder ediOrder = ediOrderBean.getEdiOrder();
 			ValidationService validationService = validationServiceFactory.getInstance(ediOrder.getOrderType());
+			LegacyService legacyService = legacyServiceFactory.getInstance(ediOrder.getOrderType());
 			logger.info("placing order");
 			ediOrderBean.getEdiOrder().setRequestOrderJson(gson.toJson(ediOrder));
 			//TODO clear validations?
@@ -63,8 +66,11 @@ public abstract class OrderService extends AbstractService<EdiOrder> implements 
 				validationService.validate();
 			}
 			if (ediOrderBean.getEdiOrder().getValidations().parallelStream().allMatch(v->v.getStatus().equals("ACCEPTED")))
-			//Call CSWS Services (Cart/Convert)
-				convert();
+			{
+				//Call CSWS Services (Cart/Convert)
+				Order order = convert();
+				legacyService.updateOrderHeader(order.getOrderNbr());
+			}
 			else
 				emailService.sendEmails();
 		} catch (Exception e) {
@@ -83,9 +89,9 @@ public abstract class OrderService extends AbstractService<EdiOrder> implements 
 	
 	public abstract void resubmit();
 
-	public void convert() {
+	public Order convert() {
 		ICSWSService cswsService = cswsServiceFactory.getInstance(ediOrderBean.getEdiOrder().getOrderType());
-		cswsService.place();
+		return cswsService.place();
 	}
 
 }

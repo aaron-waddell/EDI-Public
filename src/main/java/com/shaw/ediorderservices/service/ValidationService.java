@@ -20,7 +20,7 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiReasonCode;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.service.common.AbstractService;
-import com.shaw.ediorderservices.service.impl.LegacyOrderService;
+import com.shaw.ediorderservices.service.impl.LegacyService;
 
 @Service
 public abstract class ValidationService extends AbstractService<EdiValidation> implements IValidationService {
@@ -48,7 +48,7 @@ public abstract class ValidationService extends AbstractService<EdiValidation> i
 	private EdiOrdValidationRepository ediOrdValidationRepository;
 
 	@Autowired
-	LegacyOrderService legacyService;
+	LegacyService legacyService;
 
 	@Autowired
 	ValidationMapper mapper;

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,9 +12,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import com.shaw.ediorderservices.persistance.AuditableEntity;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(schema = "CSD")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Address extends AuditableEntity implements Serializable {

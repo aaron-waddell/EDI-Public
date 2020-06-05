@@ -1,5 +1,7 @@
 package com.shaw.ediorderservices.service.impl;
 
+import static com.shaw.ediorderservices.gson.MyGson.gson;
+
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,9 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.UriTemplate;
 
-import static com.shaw.ediorderservices.gson.myGson.gson;
 import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.CartRequest;
+import com.shaw.ediorderservices.csws.Order;
 import com.shaw.ediorderservices.csws.SamplesLine;
 import com.shaw.ediorderservices.persistance.db2.dao.SamplesInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
@@ -32,6 +34,13 @@ public class CSWSSamplesService extends CSWSService {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
+	public Order place() {
+//		String custNbr = ediOrder.getShipCustNbr();
+		Cart cart = createCart();
+		return convert(cart);
+	}
+
 	@Override
 	public Cart createCart() {
 		// TODO Auto-generated method stub

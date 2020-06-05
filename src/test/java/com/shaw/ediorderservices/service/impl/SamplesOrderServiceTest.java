@@ -44,7 +44,7 @@ class SamplesOrderServiceTest extends MockTest {
 	OrderService service;	
 	
 	@MockBean
-	LegacyOrderService legacyService;
+	LegacyService legacyService;
 
 	@MockBean
 	@Qualifier("cswsSamplesService")

@@ -1,8 +1,9 @@
 package com.shaw.ediorderservices.service.impl;
 
 import java.net.URI;
+import java.time.LocalDate;
 
-import static com.shaw.ediorderservices.gson.myGson.gson;
+import static com.shaw.ediorderservices.gson.MyGson.gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.web.util.UriTemplate;
 
 import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.OrderHeader;
+import com.shaw.ediorderservices.enums.OrderStatus;
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.factory.EdiOrderFactory;
 import com.shaw.ediorderservices.hibernate.ServiceConfig;
@@ -25,8 +27,7 @@ import com.shaw.ediorderservices.service.ILegacyOrderService;
 import com.shaw.ediorderservices.service.common.AbstractService;
 
 @Transactional(propagation = Propagation.REQUIRED)
-@Service
-public class LegacyOrderService extends AbstractService<EdiOrderHeader> implements ILegacyOrderService {
+public abstract class LegacyService extends AbstractService<EdiOrderHeader> implements ILegacyOrderService {
 
 	@Autowired
 	EdiOrderBean ediOrderBean;
@@ -50,7 +51,7 @@ public class LegacyOrderService extends AbstractService<EdiOrderHeader> implemen
 	protected ServiceConfig config;
 
 
-	public LegacyOrderService() {
+	public LegacyService() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -104,6 +105,23 @@ public class LegacyOrderService extends AbstractService<EdiOrderHeader> implemen
 		OrderHeader orderHeader = gson.fromJson(response, OrderHeader.class);
 		logger.info(gson.toJson(orderHeader));
 		return orderHeader ;
+	}
+
+	@Override
+	public void updateOrderHeader(String shawOrderNbr)
+	{
+		EdiOrder ediOrder = ediOrderBean.getEdiOrder();
+		EdiOrderHeader header = ediOrderBean.getLegacyHeader();
+		ediOrder.setShawOrderNbr(shawOrderNbr);
+		header.setShawOrderNumber(shawOrderNbr);
+		header.setStatusCode(OrderStatus.COMPLETE);
+		header.getLines().forEach(l->l.setStatusCode(OrderStatus.COMPLETE));
+		header.setOrderDate(LocalDate.now());
+//TODO		
+//		OrderHeaderExt ext = new OrderHeaderExt(); 
+//		ediOrderBean.setEdiOrder(ediOrder);
+//		ediOrderHeaderRepository.save(header);
+//		orderHeaderExtRepository.save(ext);
 	}
 
 	@Override

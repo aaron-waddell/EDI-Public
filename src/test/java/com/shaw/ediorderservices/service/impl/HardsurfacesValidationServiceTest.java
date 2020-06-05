@@ -41,7 +41,7 @@ class HardsurfacesValidationServiceTest extends MockTest {
 	private EdiOrderHeaderRepository ediOrderHeaderRepository;
 
 	@MockBean
-	LegacyOrderService legacyService;
+	LegacyService legacyService;
 
 	@Test
 	final void testValidate() {

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.shaw.ediorderservices.persistance.AuditableEntity;
 
@@ -30,6 +33,7 @@ import com.shaw.ediorderservices.persistance.AuditableEntity;
 //		  @Type(value = CarpetEdiOrder.class, name = "CARPET") 		  
 //		})
 @Entity @Table(schema = "CSD")
+@EntityListeners(AuditingEntityListener.class)
 @Inheritance(strategy = InheritanceType.JOINED)
 //@DiscriminatorColumn(name="orderType", discriminatorType = DiscriminatorType.STRING)
 public abstract class EdiOrder  extends AuditableEntity implements Serializable,IEdiOrder {

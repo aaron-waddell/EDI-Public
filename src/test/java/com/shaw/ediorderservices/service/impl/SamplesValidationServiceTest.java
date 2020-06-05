@@ -41,7 +41,7 @@ class SamplesValidationServiceTest extends MockTest {
 	EdiOrdValidationRepository ediOrdValidationRepository;
 
 	@MockBean
-	LegacyOrderService legacyService;
+	LegacyService legacyService;
 	
 	@Test
 	final void testValidate() {

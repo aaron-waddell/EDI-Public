@@ -1,7 +1,9 @@
 package com.shaw.ediorderservices.service;
 
+import com.shaw.ediorderservices.csws.Order;
+
 public interface ICSWSService {
 
-	void place();
-
+	Order place();
+	
 }

@@ -28,7 +28,7 @@ import com.shaw.ediorderservices.service.ILegacyOrderService;
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(SpringExtension.class)
-class LegacyOrderServiceTest extends MockTest {
+class LegacyServiceTest extends MockTest {
 
 	final static Logger logger = LoggerFactory.getLogger(CSWSSamplesServiceTest.class);
 

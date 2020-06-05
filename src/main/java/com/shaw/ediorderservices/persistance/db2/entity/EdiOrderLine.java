@@ -103,7 +103,9 @@ public class EdiOrderLine implements Serializable {
 
 		@Override
 		public String toString() {
-			return "EdiOrderLinePK [poLineNo=" + poLineNo + ", ediOrderHeader=" + ediOrderHeader.hashCode() + "]";
+			return "EdiOrderLinePK [poLineNo=" + poLineNo 
+//					+ ", ediOrderHeader=" + ediOrderHeader!=null?"hdr":"null" 
+			+ "]";
 		}
 	}
 	
@@ -334,12 +336,12 @@ public class EdiOrderLine implements Serializable {
 //		this.id = id;
 //	}
 
-	public EdiOrderLinePK getPk() {
+	public EdiOrderLinePK getId() {
 		return id;
 	}
 
-	public void setPk(EdiOrderLinePK pk) {
-		this.id = pk;
+	public void setId(EdiOrderLinePK id) {
+		this.id = id;
 	}
 
 	public String getAddCustProdInfo() {
@@ -921,7 +923,7 @@ public class EdiOrderLine implements Serializable {
 	@Override
 	public String toString() {
 //		return "EdiOrderLine [id=" + id + ", poLineNo=" + pk.getPoLineNo() + ", addCustProdInfo=" + addCustProdInfo + ", agreementPrice="
-		return "EdiOrderLine [poLineNo=" + id.getPoLineNo() + ", addCustProdInfo=" + addCustProdInfo + ", agreementPrice="
+		return "EdiOrderLine [:id=" + id + ", addCustProdInfo=" + addCustProdInfo + ", agreementPrice="
 				+ agreementPrice + ", agreementUom=" + agreementUom + ", backorderedFlag=" + backorderedFlag
 				+ ", billToStore=" + billToStore + ", bindingFt=" + bindingFt + ", calcPrice=" + calcPrice
 				+ ", chngLid=" + chngLid + ", chngTimestamp=" + chngTimestamp + ", consMsg=" + consMsg + ", convFactor="
@@ -945,7 +947,8 @@ public class EdiOrderLine implements Serializable {
 				+ color + ", style=" + style + ", shipDate=" + shipDateTime
 				+ ", shipDateQualifier=" + shipDateQualifier + ", statusCode=" + statusCode + ", summarizeFlag="
 				+ summarizeFlag + ", unitPrice=" + unitPrice + ", uomCode=" + uomCode + ", upcCode=" + upcCode
-				+ ", ediOrderHeader=" + (id.getEdiOrderHeader()!=null?id.getEdiOrderHeader().getLegacyOrderNumber():"null") + "]";
+//				+ ", ediOrderHeader=" + (id.getEdiOrderHeader()!=null?id.getEdiOrderHeader().getLegacyOrderNumber():"null") 
+				+ "]";
 	}
 
 }

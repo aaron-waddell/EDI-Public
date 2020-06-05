@@ -31,7 +31,7 @@ public abstract class AuditableEntity implements Serializable {
 	@CreatedDate
 	private LocalDateTime createTimestamp;
 
-	@Column(name="CHANGED_BY", nullable=false, insertable = false, length=10)
+	@Column(name="CHANGED_BY", nullable=true, insertable = false, length=10)
 	@LastModifiedBy
 	private String changedBy;
 

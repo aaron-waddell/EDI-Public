@@ -16,7 +16,7 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiOrder;
 
 import javassist.Modifier;
 
-public class myGson {
+public class MyGson {
 
 	public static Gson gson = new Gson();
 	static {

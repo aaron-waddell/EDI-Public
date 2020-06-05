@@ -17,9 +17,7 @@ import javax.persistence.GeneratedValue;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.assertj.core.util.Arrays;
 
-import com.fasterxml.classmate.Annotations;
 import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.exception.ResourceCreationException;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate;
@@ -84,7 +82,9 @@ public class MockObject<Any> {
 		f.setAccessible(true);
 		int strLength = f.getAnnotation(Column.class)!=null?f.getAnnotation(Column.class).length():20;  //limit length of Strings for data columns
 		Object value = null;
-		if (f.getType().getSimpleName().equals("String"))
+		if (f.getType().getSimpleName().equals("String") && f.getName().toLowerCase().endsWith("date"))
+			value = randomDate().toString(); //added for OrderHeaderView
+		else if (f.getType().getSimpleName().equals("String"))
 			value = randomAlphabetic(Math.min(strLength,20));
 		else if (f.getType().getSimpleName().equals("int") || f.getType().isAssignableFrom(Integer.class))
 			value = RandomUtils.nextInt(0,999999);
@@ -187,7 +187,7 @@ public class MockObject<Any> {
 	public static EdiOrderLine buildEdiOrderLine()
 	{
 		EdiOrderLine ediOrderLine = build(EdiOrderLine.class);
-		ediOrderLine.setPk(new EdiOrderLinePK(null,randomAlphabetic(10)));
+		ediOrderLine.setId(new EdiOrderLinePK(null,randomAlphabetic(10)));
 		logger.debug(ediOrderLine.toString());
 		return ediOrderLine;
 	}

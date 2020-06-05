@@ -22,7 +22,7 @@ public class EdiCustCode implements Serializable {
 	 * 
 	 */
 	@Embeddable
-	public class EdiCustCodePK implements Serializable {
+	public static class EdiCustCodePK implements Serializable {
 		//default serial version id, required for serializable classes.
 		private static final long serialVersionUID = 1L;
 
@@ -35,7 +35,7 @@ public class EdiCustCode implements Serializable {
 		public EdiCustCodePK() {
 		}
 
-		private EdiCustCodePK(String customerCode, String orderingSys) {
+		public EdiCustCodePK(String customerCode, String orderingSys) {
 			this.customerCode = customerCode;
 			this.orderingSys = orderingSys;
 		}
@@ -74,10 +74,6 @@ public class EdiCustCode implements Serializable {
 			
 			return hash;
 		}
-	}
-
-	public EdiCustCodePK newEdiCustCodePK(String customerCode, String orderingSys) {
-		return this.new EdiCustCodePK(customerCode, orderingSys);
 	}
 
 	@EmbeddedId

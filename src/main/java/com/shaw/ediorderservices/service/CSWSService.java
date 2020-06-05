@@ -1,8 +1,9 @@
 package com.shaw.ediorderservices.service;
 
-import static com.shaw.ediorderservices.gson.myGson.gson;
+import static com.shaw.ediorderservices.gson.MyGson.gson;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -23,6 +24,7 @@ import com.shaw.ediorderservices.csws.ShipInfo;
 import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.mapping.LineMapper;
 import com.shaw.ediorderservices.mapping.OrderMapper;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
 import com.shaw.ediorderservices.service.impl.RestService;
 import com.shaw.ediorderservices.service.impl.SamplesOrderService;
@@ -52,16 +54,16 @@ public abstract class CSWSService implements ICSWSService {
 	protected abstract Cart createCart(); 
 
 	@Override
-	public void place() {
+	public Order place() {
 //		String custNbr = ediOrder.getShipCustNbr();
 		// TODO Auto-generated method stub
 		Cart cart = createCart();
-		convert(cart);
+		return convert(cart);
 	}
 
 	protected abstract CartRequest createCartRequest();
 
-	public void convert(Cart cart) {
+	public Order convert(Cart cart) {
 
 		ProcessCartRequest req = new ProcessCartRequest();
 		EdiOrder ediOrder = ediOrderBean.getEdiOrder();
@@ -86,8 +88,7 @@ public abstract class CSWSService implements ICSWSService {
 		logger.info(response);
 		Order order = gson.fromJson(response, Order.class);
 		logger.info(gson.toJson(order));
-		String shawOrderNbr = null;
-		ediOrderBean.getEdiOrder().setShawOrderNbr(shawOrderNbr);
+		return order;
 	}
 	
 	ShipInfo buildShipInfo(CustInfo custInfo) {

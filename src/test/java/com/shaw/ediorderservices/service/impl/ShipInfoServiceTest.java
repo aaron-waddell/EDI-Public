@@ -2,6 +2,7 @@ package com.shaw.ediorderservices.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
+import static com.shaw.ediorderservices.gson.MyGson.gson;
 
 import java.time.LocalDate;
 
@@ -20,13 +21,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
+import com.shaw.ediorderservices.gson.MyGson;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo.EdiShipInfoPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
-import com.shaw.ediorderservices.service.ILegacyOrderService;
 
 @WebAppConfiguration
 @ContextConfiguration
@@ -42,7 +43,7 @@ class ShipInfoServiceTest extends MockTest {
 	EdiShipInfoRepository shipInfoRepository;
 	
 	@MockBean
-	ILegacyOrderService orderService;
+	LegacyService orderService;
 
 	final static Logger logger = LoggerFactory.getLogger(ShipInfoServiceTest.class);
 
@@ -53,6 +54,7 @@ class ShipInfoServiceTest extends MockTest {
 	@Test
 	void testCreateShipInfo() {
 		when(orderService.getOrderView(ediOrderHeader.getShawOrderNumber())).thenReturn(orderHeaderView);
+		logger.info(gson.toJson(orderHeaderView));
 		ediOrderBean.setLegacyHeader(ediOrderHeader);
 		service.createShipInfo();
 		EdiShipInfo shipInfo = shipInfoRepository.findById(new EdiShipInfoPK(ediOrderHeader.getShawOrderNumber(), LocalDate.now())).orElseThrow(()->new ResourceNotFoundException());

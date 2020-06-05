@@ -24,13 +24,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.processing.Generated;
+import javax.annotation.Generated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-03T15:01:16-0400",
+    date = "2020-06-05T09:48:29-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -68,7 +68,6 @@ public class OrderMapperImpl implements OrderMapper {
         ediOrderHeader.setCustDept( ediOrder.getCustDept() );
         ediOrderHeader.setCustomerCode( ediOrder.getCustomerCode() );
         ediOrderHeader.setDunsNbr( ediOrder.getDunsNbr() );
-        ediOrderHeader.setLegacyOrderNumber( ediOrder.getLegacyOrderNumber() );
         ediOrderHeader.setNbDate( ediOrder.getNbDate() );
         ediOrderHeader.setOrderingSystem( ediOrder.getOrderingSystem() );
         ediOrderHeader.setPoNumber( ediOrder.getPoNumber() );
@@ -84,14 +83,9 @@ public class OrderMapperImpl implements OrderMapper {
                 ediOrderHeader.getDates().addAll( list );
             }
         }
-        if ( ediOrderHeader.getLines() != null ) {
-            List<EdiOrderLine> list1 = ediLineListToEdiOrderLineList( ediOrder.getLines() );
-            if ( list1 != null ) {
-                ediOrderHeader.getLines().addAll( list1 );
-            }
-        }
 
         ediOrderHeader.setOrderType( ediOrder.getOrderType().substring(0,1) );
+        ediOrderHeader.setLines( ediOrder.getLines().stream().map(lineMapper::ediLineToLegacy).collect(java.util.stream.Collectors.toList()) );
 
         return ediOrderHeader;
     }
@@ -377,33 +371,6 @@ public class OrderMapperImpl implements OrderMapper {
         List<EdiOrderDate> list1 = new ArrayList<EdiOrderDate>( list.size() );
         for ( GenericDate genericDate : list ) {
             list1.add( dateMapper.ediDateToLegacy( genericDate ) );
-        }
-
-        return list1;
-    }
-
-    protected EdiOrderLine ediLineToEdiOrderLine(EdiLine ediLine) {
-        if ( ediLine == null ) {
-            return null;
-        }
-
-        EdiOrderLine ediOrderLine = new EdiOrderLine();
-
-        ediOrderLine.setColor( ediLine.getColor() );
-        ediOrderLine.setCustReqShipDate( ediLine.getCustReqShipDate() );
-        ediOrderLine.setStyle( ediLine.getStyle() );
-
-        return ediOrderLine;
-    }
-
-    protected List<EdiOrderLine> ediLineListToEdiOrderLineList(List<EdiLine> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<EdiOrderLine> list1 = new ArrayList<EdiOrderLine>( list.size() );
-        for ( EdiLine ediLine : list ) {
-            list1.add( ediLineToEdiOrderLine( ediLine ) );
         }
 
         return list1;

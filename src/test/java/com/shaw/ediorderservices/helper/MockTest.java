@@ -1,5 +1,6 @@
 package com.shaw.ediorderservices.helper;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
@@ -74,13 +75,13 @@ public abstract class MockTest {
 		invalidOrder.addValidation(ediValidation);
 		invalidOrder2.setValidations(Lists.newArrayList(ediValidation,ediValidation2));
 		invalidOrder2.getLines().get(0).setValidations(Lists.newArrayList(ediValidation,ediValidation2));
-
+//		orderHeaderView.setDeliveryDate(MockObject.randomDate().toString());
 	}
 
 	@PostConstruct
 	private void setUpDB()
 	{
-		if (config.getDb2DdlAuto().equals("update"))
+		if (config.getDatabaseRegion().equals("embedded"))
 		{
 			EdiOrderHeader saveHeader = MockObject.buildEdiOrderHeader(OrderType.SAMPLES);
 			ediOrderHeaderRepository.save(saveHeader);

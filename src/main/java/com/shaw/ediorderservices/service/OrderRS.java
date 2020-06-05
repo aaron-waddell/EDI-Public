@@ -1,6 +1,6 @@
 	package com.shaw.ediorderservices.service;
 
-import static com.shaw.ediorderservices.gson.myGson.gson;
+import static com.shaw.ediorderservices.gson.MyGson.gson;
 
 import javax.servlet.http.HttpServletResponse;
 

@@ -16,6 +16,7 @@ import com.shaw.ediorderservices.persistance.db2.dao.EdiCustCodeRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.SamplesInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiCustCode;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiCustCode.EdiCustCodePK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiReasonCode;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiLine;
@@ -50,7 +51,7 @@ public class SamplesValidationService extends ValidationService {
 
 		long legacyId = ediOrder.getLegacyOrderNumber();
 //		EdiOrderHeader header = this.getLegacyOrderHeader();
-		EdiCustCode ediCustCode = ediCustCodeRepository.findById(new EdiCustCode().newEdiCustCodePK(ediOrder.getCustomerCode()
+		EdiCustCode ediCustCode = ediCustCodeRepository.findById(new EdiCustCodePK(ediOrder.getCustomerCode()
 				,ediOrder.getOrderingSystem())).orElse(null);
 		List<EdiOrdValidation> validations = new ArrayList<EdiOrdValidation>();
 //		db2Service.updateValidationStatus("R",ediOrderNbr );
@@ -83,7 +84,7 @@ public class SamplesValidationService extends ValidationService {
 		EdiOrder ediOrder = ediOrderBean.getEdiOrder();
 		if (rule.getDescription().equals("CUST CODE OR OS INVALID"))
 		{
-			if (ediCustCodeRepository.findById(new EdiCustCode().newEdiCustCodePK(ediOrder.getCustomerCode()
+			if (ediCustCodeRepository.findById(new EdiCustCodePK(ediOrder.getCustomerCode()
 														,ediOrder.getOrderingSystem()))==null)
 				return new EdiOrdValidation(ediOrder.getLegacyOrderNumber(),rule);			
 		}

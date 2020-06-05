@@ -847,6 +847,7 @@ public class EdiOrderHeader implements Serializable {
 
 	public void setShawOrderNumber(String shawOrderNumber) {
 		this.shawOrderNumber = shawOrderNumber;
+		lines.forEach(l->l.setOrderNumber(shawOrderNumber));  //keep lines in sync
 	}
 
 	public Double getOrderRetHand() {
@@ -1316,21 +1317,21 @@ public class EdiOrderHeader implements Serializable {
 		return lines;
 	}
 
-	private void setLines(List<EdiOrderLine> lines) {
-		this.lines= lines;
-//		this.lines = new ArrayList<EdiOrderLine>();
-//		lines.stream().forEach(this::addLine);
+	public void setLines(List<EdiOrderLine> lines) {
+//		this.lines= lines;
+		this.lines = new ArrayList<EdiOrderLine>();
+		lines.stream().forEach(this::addLine);
 	}
 	public void addLine(EdiOrderLine l) {
 		if (lines==null)
 			this.lines = new ArrayList<EdiOrderLine>();			
 		lines.add(l);
-		l.setPk(new EdiOrderLinePK(this,Integer.toString(l.getLineNumber())));
+		l.setId(new EdiOrderLinePK(this,Integer.toString(l.getLineNumber())));
 	}
 	 
 	public void removeLine(EdiOrderLine l) {
 		lines.remove(l);
-	    l.getPk().setEdiOrderHeader(null);
+	    l.getId().setEdiOrderHeader(null);
 	}
 
 	@Override

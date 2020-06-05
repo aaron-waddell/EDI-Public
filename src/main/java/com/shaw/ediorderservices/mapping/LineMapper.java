@@ -26,10 +26,10 @@ public interface LineMapper {
 //    @Mapping(target = "id", constant =  "0L")
     @Mapping(target = "roundedFlag", constant =  "N")
     @Mapping(source = "custReqShipDate", target = "custReqShipDate")
-//    @Mapping(expression = "java(new EdiOrderLinePK())", target = "pk")
-    @Mapping(source="ediOrder", target="pk.ediOrderHeader")
-    @Mapping(source="lineNbr", target="pk.poLineNo")
-//    @Mapping(target="pk", ignore = true)
+//    @Mapping(expression = "java(new EdiOrderLinePK(ediOrder,lineNbr))", target = "id")
+//    @Mapping(source="ediOrder", target="id.ediOrderHeader")
+    @Mapping(source="lineNbr", target="id.poLineNo")
+    @Mapping(target="id.ediOrderHeader", ignore = true)
     EdiOrderLine ediLineToLegacy(EdiLine ediLine);
 
     @Mapping(target = "id", constant =  "0L")

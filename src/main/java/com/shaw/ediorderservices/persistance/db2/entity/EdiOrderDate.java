@@ -66,7 +66,7 @@ public class EdiOrderDate implements Serializable {
 
 		@Override
 		public String toString() {
-			return "EdiOrderDatePK [qualifier=" + qualifier + ", ediOrderHeader=" + (ediOrderHeader!=null?ediOrderHeader.getLegacyOrderNumber():null) + "]";
+			return "EdiOrderDatePK [qualifier=" + qualifier + ", ediOrderHeader=" + (ediOrderHeader!=null?ediOrderHeader.getLegacyOrderNumber():"null") + "]";
 		}
 
 		@Override
@@ -156,7 +156,7 @@ public class EdiOrderDate implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EdiOrderDate [pk =" + id.toString() 
+		return "EdiOrderDate [pk =" + id 
 				+ ", dateValue=" + dateValue + "]";
 	}
 
