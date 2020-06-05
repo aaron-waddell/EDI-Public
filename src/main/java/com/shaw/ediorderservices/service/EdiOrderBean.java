@@ -3,7 +3,7 @@ package com.shaw.ediorderservices.service;
 import org.springframework.stereotype.Component;
 
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 
 @Component
 //@Scope(scopeName = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)

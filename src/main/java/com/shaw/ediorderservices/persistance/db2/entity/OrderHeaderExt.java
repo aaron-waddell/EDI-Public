@@ -1,9 +1,18 @@
-package entities;
+package com.shaw.ediorderservices.persistance.db2.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 /**
@@ -13,6 +22,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="ORDER_HEADER_EXT")
 @NamedQuery(name="OrderHeaderExt.findAll", query="SELECT o FROM OrderHeaderExt o")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class OrderHeaderExt implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -60,7 +70,7 @@ public class OrderHeaderExt implements Serializable {
 	private String marketFlag;
 
 	@Column(name="ORDER_TIMESTAMP", nullable=false)
-	private Timestamp orderTimestamp;
+	private LocalDateTime orderTimestamp;
 
 	@Column(name="PARENT_ORDER_NBR", nullable=false, length=6)
 	private String parentOrderNbr;
@@ -72,10 +82,10 @@ public class OrderHeaderExt implements Serializable {
 	private String projectNbr;
 
 	@Column(name="RATING_LANE_DTL", nullable=false, precision=12)
-	private BigDecimal ratingLaneDtl;
+	private int ratingLaneDtl;
 
 	@Column(name="RATING_LANE_ID", nullable=false, precision=8)
-	private BigDecimal ratingLaneId;
+	private int ratingLaneId;
 
 	@Column(name="RATING_METHOD", nullable=false, length=1)
 	private String ratingMethod;
@@ -83,67 +93,14 @@ public class OrderHeaderExt implements Serializable {
 	@Column(name="RESIDENTIAL_DELV_FLAG", nullable=false, length=1)
 	private String residentialDelvFlag;
 
-	@Column(name="SHIP_TO_ADDR_1", nullable=false, length=45)
-	private String shipToAddr1;
+	@Embedded
+	private LegacyShipToAddress shipToAddress;
 
-	@Column(name="SHIP_TO_ADDR_2", nullable=false, length=45)
-	private String shipToAddr2;
-
-	@Column(name="SHIP_TO_CITY", nullable=false, length=30)
-	private String shipToCity;
-
-	@Column(name="SHIP_TO_CNTRY_CD", nullable=false, length=2)
-	private String shipToCntryCd;
-
-	@Column(name="SHIP_TO_NAME", nullable=false, length=45)
-	private String shipToName;
-
-	@Column(name="SHIP_TO_NAME_2", nullable=false, length=45)
-	private String shipToName2;
-
-	@Column(name="SHIP_TO_PROVINCE", nullable=false, length=2)
-	private String shipToProvince;
-
-	@Column(name="SHIP_TO_STATE", nullable=false, length=2)
-	private String shipToState;
-
-	@Column(name="SHIP_TO_ZIP", nullable=false, length=16)
-	private String shipToZip;
-
-	@Column(name="THIRD_PARTY_ACCT_NBR", nullable=false, length=15)
-	private String thirdPartyAcctNbr;
-
-	@Column(name="THIRD_PARTY_ADDR_1", nullable=false, length=45)
-	private String thirdPartyAddr1;
-
-	@Column(name="THIRD_PARTY_ADDR_2", nullable=false, length=45)
-	private String thirdPartyAddr2;
-
-	@Column(name="THIRD_PARTY_BILL_FLAG", nullable=false, length=1)
-	private String thirdPartyBillFlag;
-
-	@Column(name="THIRD_PARTY_CITY", nullable=false, length=30)
-	private String thirdPartyCity;
-
-	@Column(name="THIRD_PARTY_NAME", nullable=false, length=45)
-	private String thirdPartyName;
-
-	@Column(name="THIRD_PARTY_NAME_2", nullable=false, length=45)
-	private String thirdPartyName2;
-
-	@Column(name="THIRD_PARTY_STATE", nullable=false, length=2)
-	private String thirdPartyState;
-
-	@Column(name="THIRD_PARTY_ZIP", nullable=false, length=16)
-	private String thirdPartyZip;
+	@Embedded
+	private LegacyThirdPartyAddress thirdPartyAddress;
 
 	@Column(name="WILL_ADVISE_FLAG", nullable=false, length=1)
 	private String willAdviseFlag;
-
-	//bi-directional one-to-one association to OrderHeader
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="ORDER_NBR", nullable=false, insertable=false, updatable=false)
-	private OrderHeader orderHeader;
 
 	public OrderHeaderExt() {
 	}
@@ -260,11 +217,11 @@ public class OrderHeaderExt implements Serializable {
 		this.marketFlag = marketFlag;
 	}
 
-	public Timestamp getOrderTimestamp() {
+	public LocalDateTime getOrderTimestamp() {
 		return this.orderTimestamp;
 	}
 
-	public void setOrderTimestamp(Timestamp orderTimestamp) {
+	public void setOrderTimestamp(LocalDateTime orderTimestamp) {
 		this.orderTimestamp = orderTimestamp;
 	}
 
@@ -292,19 +249,19 @@ public class OrderHeaderExt implements Serializable {
 		this.projectNbr = projectNbr;
 	}
 
-	public BigDecimal getRatingLaneDtl() {
+	public int getRatingLaneDtl() {
 		return this.ratingLaneDtl;
 	}
 
-	public void setRatingLaneDtl(BigDecimal ratingLaneDtl) {
+	public void setRatingLaneDtl(int ratingLaneDtl) {
 		this.ratingLaneDtl = ratingLaneDtl;
 	}
 
-	public BigDecimal getRatingLaneId() {
+	public int getRatingLaneId() {
 		return this.ratingLaneId;
 	}
 
-	public void setRatingLaneId(BigDecimal ratingLaneId) {
+	public void setRatingLaneId(int ratingLaneId) {
 		this.ratingLaneId = ratingLaneId;
 	}
 
@@ -324,148 +281,20 @@ public class OrderHeaderExt implements Serializable {
 		this.residentialDelvFlag = residentialDelvFlag;
 	}
 
-	public String getShipToAddr1() {
-		return this.shipToAddr1;
+	public LegacyShipToAddress getShipToAddress() {
+		return shipToAddress;
 	}
 
-	public void setShipToAddr1(String shipToAddr1) {
-		this.shipToAddr1 = shipToAddr1;
+	public void setShipToAddress(LegacyShipToAddress shipToAddress) {
+		this.shipToAddress = shipToAddress;
 	}
 
-	public String getShipToAddr2() {
-		return this.shipToAddr2;
+	public LegacyThirdPartyAddress getThirdPartyAddress() {
+		return thirdPartyAddress;
 	}
 
-	public void setShipToAddr2(String shipToAddr2) {
-		this.shipToAddr2 = shipToAddr2;
-	}
-
-	public String getShipToCity() {
-		return this.shipToCity;
-	}
-
-	public void setShipToCity(String shipToCity) {
-		this.shipToCity = shipToCity;
-	}
-
-	public String getShipToCntryCd() {
-		return this.shipToCntryCd;
-	}
-
-	public void setShipToCntryCd(String shipToCntryCd) {
-		this.shipToCntryCd = shipToCntryCd;
-	}
-
-	public String getShipToName() {
-		return this.shipToName;
-	}
-
-	public void setShipToName(String shipToName) {
-		this.shipToName = shipToName;
-	}
-
-	public String getShipToName2() {
-		return this.shipToName2;
-	}
-
-	public void setShipToName2(String shipToName2) {
-		this.shipToName2 = shipToName2;
-	}
-
-	public String getShipToProvince() {
-		return this.shipToProvince;
-	}
-
-	public void setShipToProvince(String shipToProvince) {
-		this.shipToProvince = shipToProvince;
-	}
-
-	public String getShipToState() {
-		return this.shipToState;
-	}
-
-	public void setShipToState(String shipToState) {
-		this.shipToState = shipToState;
-	}
-
-	public String getShipToZip() {
-		return this.shipToZip;
-	}
-
-	public void setShipToZip(String shipToZip) {
-		this.shipToZip = shipToZip;
-	}
-
-	public String getThirdPartyAcctNbr() {
-		return this.thirdPartyAcctNbr;
-	}
-
-	public void setThirdPartyAcctNbr(String thirdPartyAcctNbr) {
-		this.thirdPartyAcctNbr = thirdPartyAcctNbr;
-	}
-
-	public String getThirdPartyAddr1() {
-		return this.thirdPartyAddr1;
-	}
-
-	public void setThirdPartyAddr1(String thirdPartyAddr1) {
-		this.thirdPartyAddr1 = thirdPartyAddr1;
-	}
-
-	public String getThirdPartyAddr2() {
-		return this.thirdPartyAddr2;
-	}
-
-	public void setThirdPartyAddr2(String thirdPartyAddr2) {
-		this.thirdPartyAddr2 = thirdPartyAddr2;
-	}
-
-	public String getThirdPartyBillFlag() {
-		return this.thirdPartyBillFlag;
-	}
-
-	public void setThirdPartyBillFlag(String thirdPartyBillFlag) {
-		this.thirdPartyBillFlag = thirdPartyBillFlag;
-	}
-
-	public String getThirdPartyCity() {
-		return this.thirdPartyCity;
-	}
-
-	public void setThirdPartyCity(String thirdPartyCity) {
-		this.thirdPartyCity = thirdPartyCity;
-	}
-
-	public String getThirdPartyName() {
-		return this.thirdPartyName;
-	}
-
-	public void setThirdPartyName(String thirdPartyName) {
-		this.thirdPartyName = thirdPartyName;
-	}
-
-	public String getThirdPartyName2() {
-		return this.thirdPartyName2;
-	}
-
-	public void setThirdPartyName2(String thirdPartyName2) {
-		this.thirdPartyName2 = thirdPartyName2;
-	}
-
-	public String getThirdPartyState() {
-		return this.thirdPartyState;
-	}
-
-	public void setThirdPartyState(String thirdPartyState) {
-		this.thirdPartyState = thirdPartyState;
-	}
-
-	public String getThirdPartyZip() {
-		return this.thirdPartyZip;
-	}
-
-	public void setThirdPartyZip(String thirdPartyZip) {
-		this.thirdPartyZip = thirdPartyZip;
+	public void setThirdPartyAddress(LegacyThirdPartyAddress thirdPartyAddress) {
+		this.thirdPartyAddress = thirdPartyAddress;
 	}
 
 	public String getWillAdviseFlag() {
@@ -474,14 +303,6 @@ public class OrderHeaderExt implements Serializable {
 
 	public void setWillAdviseFlag(String willAdviseFlag) {
 		this.willAdviseFlag = willAdviseFlag;
-	}
-
-	public OrderHeader getOrderHeader() {
-		return this.orderHeader;
-	}
-
-	public void setOrderHeader(OrderHeader orderHeader) {
-		this.orderHeader = orderHeader;
 	}
 
 }

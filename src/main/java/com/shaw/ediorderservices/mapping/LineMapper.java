@@ -9,10 +9,10 @@ import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.SamplesLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.SamplesEdiLine;
 
 @Mapper(uses = ValidationMapper.class
 , unmappedTargetPolicy = ReportingPolicy.IGNORE

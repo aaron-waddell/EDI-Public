@@ -12,9 +12,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 
 class MockObjectTest extends MockTest{
 

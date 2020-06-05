@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.google.common.collect.Lists;
 import com.shaw.ediorderservices.helper.MockTest;
+import com.shaw.ediorderservices.service.order.OrderService;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)

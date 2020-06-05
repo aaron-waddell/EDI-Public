@@ -15,7 +15,6 @@ import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
 import com.shaw.ediorderservices.csws.OrderHeader;
-import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiReasonCodeRepository;
@@ -23,8 +22,9 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiReasonCode;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.ediorderservices.service.EdiOrderBean;
 
 @Transactional(propagation = Propagation.REQUIRED)

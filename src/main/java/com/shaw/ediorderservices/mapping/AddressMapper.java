@@ -4,13 +4,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
-import com.shaw.ediorderservices.factory.EdiOrderFactory;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyConsumerAddress;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyShipToAddress;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyThirdPartyAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ConsumerAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ShipToAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ThirdPartyAddress;
+import com.shaw.ediorderservices.persistance.db2.entity.OrderHeaderExt;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ConsumerAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ShipToAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ThirdPartyAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrderFactory;
 
 @Mapper(uses = EdiOrderFactory.class, unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AddressMapper {

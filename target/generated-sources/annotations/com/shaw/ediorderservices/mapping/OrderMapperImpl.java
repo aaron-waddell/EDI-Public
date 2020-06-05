@@ -2,24 +2,24 @@ package com.shaw.ediorderservices.mapping;
 
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.ShipInfo;
-import com.shaw.ediorderservices.factory.EdiOrderFactory;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyConsumerAddress;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyThirdPartyAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ConsumerAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.GenericDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ShipToAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ThirdPartyAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ConsumerAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ShipToAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ThirdPartyAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.CancelDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.GenericDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.PoDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.ShipDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrderFactory;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-05T09:48:29-0400",
+    date = "2020-06-05T15:16:11-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -121,10 +121,10 @@ public class OrderMapperImpl implements OrderMapper {
         samplesEdiOrder.setThirdPartyAddress( legacyThirdPartyAddressToThirdPartyAddress( header.getThirdPartyAddress() ) );
         samplesEdiOrder.setVendorNo( header.getVendorNo() );
 
-        samplesEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
+        samplesEdiOrder.setCancelDate( new CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
         samplesEdiOrder.setId( (long) 0L );
-        samplesEdiOrder.setShipDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
-        samplesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
+        samplesEdiOrder.setShipDate( new ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
+        samplesEdiOrder.setPoDate( new PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
 
         return samplesEdiOrder;
     }
@@ -171,10 +171,10 @@ public class OrderMapperImpl implements OrderMapper {
         carpetEdiOrder.setSalesCheckNumber( header.getSalesCheckNumber() );
         carpetEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
 
-        carpetEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
+        carpetEdiOrder.setCancelDate( new CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
         carpetEdiOrder.setId( (long) 0L );
-        carpetEdiOrder.setShipDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
-        carpetEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
+        carpetEdiOrder.setShipDate( new ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
+        carpetEdiOrder.setPoDate( new PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
 
         return carpetEdiOrder;
     }
@@ -221,10 +221,10 @@ public class OrderMapperImpl implements OrderMapper {
         hardsurfacesEdiOrder.setSalesCheckNumber( header.getSalesCheckNumber() );
         hardsurfacesEdiOrder.setShipPartCompInd( header.getShipPartCompInd() );
 
-        hardsurfacesEdiOrder.setCancelDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
+        hardsurfacesEdiOrder.setCancelDate( new CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()) );
         hardsurfacesEdiOrder.setId( (long) 0L );
-        hardsurfacesEdiOrder.setShipDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
-        hardsurfacesEdiOrder.setPoDate( new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
+        hardsurfacesEdiOrder.setShipDate( new ShipDate(header.getShipDateQualifier(), header.getShipDateValue()) );
+        hardsurfacesEdiOrder.setPoDate( new PoDate(header.getPoDateQualifier(), header.getPoDateValue()) );
 
         return hardsurfacesEdiOrder;
     }

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.shaw.ediorderservices.persistance.AuditableEntity;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 
 @Entity @Table(schema = "CSD")
 @EntityListeners(AuditingEntityListener.class)

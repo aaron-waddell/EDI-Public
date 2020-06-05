@@ -5,17 +5,17 @@ import com.shaw.ediorderservices.csws.SamplesLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine.EdiOrderLinePK;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.SamplesEdiLine;
 import java.time.format.DateTimeFormatter;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-05T09:44:13-0400",
+    date = "2020-06-05T15:09:11-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component

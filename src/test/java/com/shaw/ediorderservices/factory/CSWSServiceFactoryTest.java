@@ -12,11 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.helper.MockTest;
-import com.shaw.ediorderservices.service.ICSWSService;
-import com.shaw.ediorderservices.service.impl.CSWSHardsurfacesService;
-import com.shaw.ediorderservices.service.impl.CSWSSamplesService;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
+import com.shaw.ediorderservices.service.csws.CSWSHardsurfacesService;
+import com.shaw.ediorderservices.service.csws.CSWSSamplesService;
+import com.shaw.ediorderservices.service.csws.CSWSServiceFactory;
+import com.shaw.ediorderservices.service.csws.ICSWSService;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)

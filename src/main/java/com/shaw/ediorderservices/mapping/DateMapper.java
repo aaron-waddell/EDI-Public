@@ -4,10 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
-import com.shaw.ediorderservices.factory.EdiOrderFactory;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.GenericDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.IEdiDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.GenericDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.IEdiDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrderFactory;
 
 @Mapper(uses = EdiOrderFactory.class, unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface DateMapper {

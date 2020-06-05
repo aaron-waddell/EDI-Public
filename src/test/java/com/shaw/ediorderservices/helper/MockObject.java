@@ -18,7 +18,6 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.exception.ResourceCreationException;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate.EdiOrderDatePK;
@@ -28,20 +27,21 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine.EdiOrderLin
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyConsumerAddress;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyShipToAddress;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyThirdPartyAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ConsumerAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ShipToAddress;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.ThirdPartyAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ConsumerAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ShipToAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ThirdPartyAddress;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.CancelDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.PoDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.date.ShipDate;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.SamplesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
 
 public class MockObject<Any> {
 

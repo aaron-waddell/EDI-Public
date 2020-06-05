@@ -20,12 +20,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonSyntaxException;
-import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
-import com.shaw.ediorderservices.factory.EdiOrderFactory;
-import com.shaw.ediorderservices.factory.OrderServiceFactory;
 import com.shaw.ediorderservices.mapping.OrderMapper;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrderFactory;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
+import com.shaw.ediorderservices.service.legacy.ILegacyService;
+import com.shaw.ediorderservices.service.order.OrderService;
+import com.shaw.ediorderservices.service.order.OrderServiceFactory;
 import com.shaw.ediorderservices.util.RestPreconditions;
 
 @RestController
@@ -40,7 +42,7 @@ public class OrderRS {
 	OrderServiceFactory orderServiceFactory;
 
 	@Autowired
-	ILegacyOrderService legacyService;
+	ILegacyService legacyService;
 
 	@Autowired
 	EdiOrderFactory ediOrderFactory;

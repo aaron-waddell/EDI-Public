@@ -7,12 +7,12 @@ import org.mapstruct.ReportingPolicy;
 
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.ShipInfo;
-import com.shaw.ediorderservices.factory.EdiOrderFactory;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrderFactory;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
 
 @Mapper(uses = {EdiOrderFactory.class,LineMapper.class, DateMapper.class, AddressMapper.class, ValidationMapper.class}, unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface OrderMapper {
@@ -30,24 +30,24 @@ public interface OrderMapper {
     EdiOrderHeader ediOrderToLegacy(EdiOrder ediOrder);//, EdiDate poDate, EdiDate cancelDate, EdiDate shipDate);
 
     @Mapping(target = "id", constant =  "0L")
-    @Mapping(target = "shipDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
-    @Mapping(target = "poDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
-    @Mapping(target = "cancelDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
+    @Mapping(target = "shipDate", expression = "java(new ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
+    @Mapping(target = "poDate", expression = "java(new PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
+    @Mapping(target = "cancelDate", expression = "java(new CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
     @Mapping( target = "lines", qualifiedByName = "ToSamplesLine")
 //    @Mapping(target = "orderType", expression = "java(java.util.Arrays.asList(com.shaw.ediorderservices.enums.OrderType.values()).stream().filter(v->v.toString().startsWith(header.getOrderType())).map(Enum::toString).findFirst().orElse(null))")
     SamplesEdiOrder legacyHeaderToSamplesEdiOrder(EdiOrderHeader header);
 
     @Mapping(target = "id", constant =  "0L")
-    @Mapping(target = "shipDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
-    @Mapping(target = "poDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
-    @Mapping(target = "cancelDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
+    @Mapping(target = "shipDate", expression = "java(new ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
+    @Mapping(target = "poDate", expression = "java(new PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
+    @Mapping(target = "cancelDate", expression = "java(new CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
     @Mapping( target = "lines", qualifiedByName = "ToCarpetLine")
     CarpetEdiOrder legacyHeaderToCarpetEdiOrder(EdiOrderHeader header);
 
     @Mapping(target = "id", constant =  "0L")
-    @Mapping(target = "shipDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
-    @Mapping(target = "poDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
-    @Mapping(target = "cancelDate", expression = "java(new com.shaw.ediorderservices.persistance.sqlserver.entity.CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
+    @Mapping(target = "shipDate", expression = "java(new ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
+    @Mapping(target = "poDate", expression = "java(new PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
+    @Mapping(target = "cancelDate", expression = "java(new CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
     @Mapping( target = "lines", qualifiedByName = "ToHardsurfacesLine")
     HardsurfacesEdiOrder legacyHeaderToHardsurfacesEdiOrder(EdiOrderHeader header);
 

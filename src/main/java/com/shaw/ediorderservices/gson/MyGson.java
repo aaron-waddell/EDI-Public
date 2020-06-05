@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.shaw.ediorderservices.enums.OrderType;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.CarpetEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.HardsurfacesEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.SamplesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.SamplesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
 
 import javassist.Modifier;
 

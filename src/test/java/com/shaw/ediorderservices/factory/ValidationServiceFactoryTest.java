@@ -9,11 +9,12 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.shaw.ediorderservices.enums.OrderType;
 import com.shaw.ediorderservices.helper.MockTest;
-import com.shaw.ediorderservices.service.ValidationService;
-import com.shaw.ediorderservices.service.impl.HardsurfacesValidationService;
-import com.shaw.ediorderservices.service.impl.SamplesValidationService;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
+import com.shaw.ediorderservices.service.validation.HardsurfacesValidationService;
+import com.shaw.ediorderservices.service.validation.SamplesValidationService;
+import com.shaw.ediorderservices.service.validation.ValidationService;
+import com.shaw.ediorderservices.service.validation.ValidationServiceFactory;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
