@@ -128,6 +128,7 @@ public class EdiShipInfo implements Serializable {
 	LegacyConsumerAddress consumerAddress;
 	
 	@Column(name="CONTRACT_NBR", nullable=false, length=15)
+	@ColumnDefault("")
 	private String contractNbr;
 
 	@Column(name="CROSS_DOCK", nullable=false, length=10)
@@ -181,11 +182,11 @@ public class EdiShipInfo implements Serializable {
 	@Column(name="GIFT_MESSAGE_2", nullable=false, length=45)
 	private String giftMessage2;
 
-	@Column(name="HDR_DROP_DATE", nullable=false)
+	@Column(name="HDR_DROP_DATE", nullable=false, insertable = false)
 	@ColumnDefault("CURRENT_DATE")
 	private LocalDate hdrDropDate;
 
-	@Column(name="LAST_CHNG_DATE", nullable=false)
+	@Column(name="LAST_CHNG_DATE", nullable=false, insertable = false)
 	@ColumnDefault("CURRENT_DATE")
 	private LocalDateTime lastChngDate;
 
@@ -193,7 +194,7 @@ public class EdiShipInfo implements Serializable {
 	@ColumnDefault("")
 	private String lastChngId;
 
-	@Column(name="NB_DATE", nullable=false)
+	@Column(name="NB_DATE", nullable=false, insertable = false)
 	@ColumnDefault("CURRENT_DATE")
 	private LocalDate nbDate;
 
@@ -204,23 +205,23 @@ public class EdiShipInfo implements Serializable {
 	@ColumnDefault("")
 	private String onlineType;
 
-	@Column(name="ORDER_MER_COST", nullable=false, precision=13, scale=4)
+	@Column(name="ORDER_MER_COST", nullable=false, insertable = false, precision=13, scale=4)
 	@ColumnDefault("")
 	private long orderMerCost;
 
-	@Column(name="ORDER_RET_HAND", nullable=false, precision=13, scale=4)
+	@Column(name="ORDER_RET_HAND", nullable=false, insertable = false, precision=13, scale=4)
 	@ColumnDefault("")
 	private long orderRetHand;
 
-	@Column(name="ORDER_RET_SH", nullable=false, precision=13, scale=4)
+	@Column(name="ORDER_RET_SH", nullable=false, insertable = false, precision=13, scale=4)
 	@ColumnDefault("")
 	private long orderRetSh;
 
-	@Column(name="ORDER_RET_TAX", nullable=false, precision=13, scale=4)
+	@Column(name="ORDER_RET_TAX", nullable=false, insertable = false, precision=13, scale=4)
 	@ColumnDefault("")
 	private long orderRetTax;
 
-	@Column(name="ORDER_RET_TOTAL", nullable=false, precision=13, scale=4)
+	@Column(name="ORDER_RET_TOTAL", nullable=false, insertable = false, precision=13, scale=4)
 	@ColumnDefault("")
 	private long orderRetTotal;
 
@@ -236,11 +237,11 @@ public class EdiShipInfo implements Serializable {
 	@Column(name="PO_DATE", nullable=false)
 	private LocalDate poDate;
 
-	@Column(name="PO_TYPE_SUFFIX", nullable=false, length=10)
+	@Column(name="PO_TYPE_SUFFIX", nullable=false, insertable = false, length=10)
 	@ColumnDefault("")
 	private String poTypeSuffix;
 
-	@Column(name="PS_MSG", nullable=false, length=255)
+	@Column(name="PS_MSG", nullable=false, insertable = false, length=255)
 	@ColumnDefault("")
 	private String psMsg;
 
@@ -250,30 +251,29 @@ public class EdiShipInfo implements Serializable {
 	@Column(name="RECEIVING_STORE", nullable=false, length=10)
 	private String receivingStore;
 
-	@Column(name="REF_TC_NBR", nullable=false, length=20)
+	@Column(name="REF_TC_NBR", nullable=false, insertable = false, length=20)
 	@ColumnDefault("")
 	private String refTcNbr;
 
-	@Column(name="RETURN_MSG", nullable=false, length=35)
+	@Column(name="RETURN_MSG", nullable=false, insertable = false, length=35)
 	@ColumnDefault("")
 	private String returnMsg;
 
-	@Column(name="ROUTE_BY_DATE", nullable=false)
+	@Column(name="ROUTE_BY_DATE", nullable=false, insertable = false)
 	@ColumnDefault("CURRENT_DATE")
 	private LocalDate routeByDate;
 
 	@Column(name="SALES_CHECK_NO", nullable=false, length=30)
 	private String salesCheckNo;
 
-	@Column(name="SALES_REQ_CODE", nullable=false, length=2)
+	@Column(name="SALES_REQ_CODE", nullable=false, insertable = false, length=2)
 	@ColumnDefault("")
 	private String salesReqCode;
 
 	@Column(name="SHIP_BY_DATE")
-	@ColumnDefault("CURRENT_DATE")
 	private LocalDate shipByDate;
 
-	@Column(name="SHIP_CANCEL_DATE", nullable=false)
+	@Column(name="SHIP_CANCEL_DATE", nullable=false, insertable = false)
 	@ColumnDefault("CURRENT_DATE")
 	private LocalDate shipCancelDate;
 

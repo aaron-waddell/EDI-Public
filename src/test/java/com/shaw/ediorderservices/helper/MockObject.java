@@ -52,9 +52,13 @@ public class MockObject<Any> {
 	{
     	List<Field> fields = collectFields(clazz).collect(Collectors.toList());
 		fields = fields.parallelStream()
-				.filter(f->Modifier.isStatic(f.getModifiers())==false && Modifier.isFinal(f.getModifiers())==false)
+				.filter(fi->Modifier.isStatic(fi.getModifiers())==false 
+							&& Modifier.isFinal(fi.getModifiers())==false
+							&& Modifier.isTransient(fi.getModifiers())==false
+							&& Modifier.isVolatile(fi.getModifiers())==false)
 				.filter(f->f.getAnnotation(GeneratedValue.class)==null)
 				.collect(Collectors.toList());
+
 		fields.parallelStream().forEach(m->m.setAccessible(true));
 		Object obj;
 		try {
@@ -63,7 +67,7 @@ public class MockObject<Any> {
 			return (Any) obj;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		return null;
 	}
@@ -80,6 +84,7 @@ public class MockObject<Any> {
 
     private static void setMockValue(Object obj, Field f) {
 		f.setAccessible(true);
+
 		int strLength = f.getAnnotation(Column.class)!=null?f.getAnnotation(Column.class).length():20;  //limit length of Strings for data columns
 		Object value = null;
 		if (f.getType().getSimpleName().equals("String") && f.getName().toLowerCase().endsWith("date"))
@@ -98,6 +103,11 @@ public class MockObject<Any> {
 			value = randomDate();
 		else if (f.getType().isAssignableFrom(LocalDateTime.class))
 			value = randomDateTime();
+		else if (f.getType().isAssignableFrom(List.class))
+			value = null;
+		else
+			value = build(f.getType());
+
 		try {
 			f.set(obj,value);
 		} catch (IllegalArgumentException | IllegalAccessException e) {
