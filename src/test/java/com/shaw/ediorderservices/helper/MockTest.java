@@ -1,7 +1,8 @@
 package com.shaw.ediorderservices.helper;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -21,6 +22,7 @@ import com.shaw.ediorderservices.persistance.db2.dao.EdiReasonCodeRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiReasonCode;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiSplStoreXref;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
@@ -63,6 +65,7 @@ public abstract class MockTest {
 	protected static HashMap<String, String> validationMap = new HashMap<String,String>();
 	protected static EdiOrdValidation ediOrdValidation = MockObject.build(EdiOrdValidation.class);
 	protected static OrderHeader orderHeaderView = MockObject.build(OrderHeader.class);
+	protected static List<EdiSplStoreXref> xrefList = new ArrayList<EdiSplStoreXref>();
 	
 	static {
 		hsEdiOrder.setOrderType(OrderType.HARDSURFACES.toString());
@@ -75,7 +78,10 @@ public abstract class MockTest {
 		invalidOrder.addValidation(ediValidation);
 		invalidOrder2.setValidations(Lists.newArrayList(ediValidation,ediValidation2));
 		invalidOrder2.getLines().get(0).setValidations(Lists.newArrayList(ediValidation,ediValidation2));
-//		orderHeaderView.setDeliveryDate(MockObject.randomDate().toString());
+		orderHeaderView.setCarrierCode(orderHeaderView.getCarrierCode().substring(0,2));
+		xrefList.add(MockObject.build(EdiSplStoreXref.class));
+		xrefList.add(MockObject.build(EdiSplStoreXref.class));
+		xrefList.add(MockObject.build(EdiSplStoreXref.class));
 	}
 
 	@PostConstruct

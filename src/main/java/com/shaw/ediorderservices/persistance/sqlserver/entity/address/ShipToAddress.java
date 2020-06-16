@@ -24,7 +24,7 @@ public class ShipToAddress extends Address {
 	private String truncFlag = "";
 
 	@OneToOne
-	private EdiOrder ediOrder;
+	private volatile EdiOrder ediOrder;
 
 	public String getDestinationCode() {
 		return destinationCode;

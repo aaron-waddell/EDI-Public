@@ -18,8 +18,13 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
     date = "2020-06-09T08:49:53-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.20.0.v20191203-2131, environment: Java 1.8.0_241 (Oracle Corporation)"
+=======
+    date = "2020-06-09T18:22:02-0400",
+    comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
+>>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
 )
 @Component
 public class ShipInfoMapperImpl implements ShipInfoMapper {
@@ -34,12 +39,28 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
 
         ediShipInfo.setId( ediOrderHeaderToEdiShipInfoPK( header ) );
         ediShipInfo.setConsumerAddress( header.getConsumerAddress() );
+<<<<<<< HEAD
         ediShipInfo.setBillToStoreNbr( header.getBillToStore() );
         ediShipInfo.setPoDate( header.getPoDateValue() );
         ediShipInfo.setAgreementNbr( header.getAgreementNumber() );
         ediShipInfo.setAuthorizationNo( header.getAuthorizationNo() );
         ediShipInfo.setAcctContact( header.getAcctContact() );
         ediShipInfo.setAuthRep( header.getAuthRep() );
+=======
+        ediShipInfo.setVendorNo( header.getVendorNo() );
+        ediShipInfo.setCustPo( header.getPoNumber() );
+        ediShipInfo.setCrossDock( header.getCrossDockCenter() );
+        ediShipInfo.setSalesCheckNo( header.getSalesCheckNumber() );
+        ediShipInfo.setBillToStoreNbr( header.getBillToStore() );
+        ediShipInfo.setPoDate( header.getPoDateValue() );
+        ediShipInfo.setAgreementNbr( header.getAgreementNumber() );
+        ediShipInfo.setSpecPoNumber( header.getSpecialPoNo() );
+        ediShipInfo.setOrderingSys( header.getOrderingSystem() );
+        ediShipInfo.setDepartment( header.getCustDept() );
+        ediShipInfo.setAcctContact( header.getAcctContact() );
+        ediShipInfo.setAuthRep( header.getAuthRep() );
+        ediShipInfo.setAuthorizationNo( header.getAuthorizationNo() );
+>>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
         ediShipInfo.setBsStoreNbr( header.getBsStoreNbr() );
         ediShipInfo.setCommCust( header.getCommCust() );
         ediShipInfo.setConsStatusMsg( header.getConsStatusMsg() );
@@ -54,6 +75,10 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setEventInfo( header.getEventInfo() );
         ediShipInfo.setGiftMessage1( header.getGiftMessage1() );
         ediShipInfo.setGiftMessage2( header.getGiftMessage2() );
+<<<<<<< HEAD
+=======
+        ediShipInfo.setLines( ediOrderLineListToEdiShipInfoLnList( header.getLines() ) );
+>>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
         ediShipInfo.setNbDate( header.getNbDate() );
         ediShipInfo.setNoAsnFlag( header.getNoAsnFlag() );
         ediShipInfo.setOnlineType( header.getOnlineType() );
@@ -84,8 +109,11 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setShipByDate( header.getShipByDate() );
         ediShipInfo.setShipCancelDate( header.getShipCancelDate() );
         ediShipInfo.setStoreName( header.getStoreName() );
+<<<<<<< HEAD
         ediShipInfo.setVendorNo( header.getVendorNo() );
         ediShipInfo.setLines( ediOrderLineListToEdiShipInfoLnList( header.getLines() ) );
+=======
+>>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
 
         return ediShipInfo;
     }
@@ -137,7 +165,10 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
 
         EdiShipInfoLn ediShipInfoLn = new EdiShipInfoLn();
 
+<<<<<<< HEAD
         ediShipInfoLn.setId( ediOrderLinePKToEdiShipInfoLnPK( ediOrderLine.getId() ) );
+=======
+>>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
         ediShipInfoLn.setAddCustProdInfo( ediOrderLine.getAddCustProdInfo() );
         ediShipInfoLn.setConsMsg( ediOrderLine.getConsMsg() );
         ediShipInfoLn.setCustProdDesc( ediOrderLine.getCustProdDesc() );
@@ -148,6 +179,10 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfoLn.setCustSzDesc( ediOrderLine.getCustSzDesc() );
         ediShipInfoLn.setDeptNbr( ediOrderLine.getDeptNbr() );
         ediShipInfoLn.setGtinNbr( ediOrderLine.getGtinNbr() );
+<<<<<<< HEAD
+=======
+        ediShipInfoLn.setId( ediOrderLinePKToEdiShipInfoLnPK( ediOrderLine.getId() ) );
+>>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
         ediShipInfoLn.setPriceUom( ediOrderLine.getPriceUom() );
         ediShipInfoLn.setReceiptId( ediOrderLine.getReceiptId() );
         ediShipInfoLn.setReqDyelot( ediOrderLine.getReqDyelot() );

@@ -13,10 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiSplStoreXref;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 
-class MockObjectTest extends MockTest{
+class MockObjectTest {
 
     protected static final Logger logger = LogManager.getLogger();
 
@@ -38,6 +39,15 @@ class MockObjectTest extends MockTest{
 		assertNotNull(h.getConsumerAddress().getAddressLine1());
 	}
 
+	@Test
+	void testNestedBuild() throws Exception {
+		EdiSplStoreXref x = MockObject.build(EdiSplStoreXref.class);
+		logger.info(x.toString());
+		assertNotNull(x.getId());
+		assertNotNull(x.getId().getOrderingSys());
+	}
+
+	
 	@Test
 	void testGsonDate()
 	{

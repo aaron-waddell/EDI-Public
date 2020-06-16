@@ -11,11 +11,11 @@ public class CSWSServiceFactory implements IFactory {
 
 	@Autowired
 	@Qualifier("samplesCswsService")
-	ICSWSService samplesCswsService;
+	CSWSService samplesCswsService;
 
 	@Autowired
-	@Qualifier("hardsurfacesCswsService")
-	ICSWSService hardsurfacesCswsService;
+//	@Qualifier("hardsurfacesCswsService")
+	CSWSService hardsurfacesCswsService;
 	
 	public  CSWSServiceFactory() {
 		// TODO Auto-generated constructor stub

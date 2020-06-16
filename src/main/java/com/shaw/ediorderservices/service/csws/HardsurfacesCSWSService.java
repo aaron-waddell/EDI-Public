@@ -1,6 +1,7 @@
 package com.shaw.ediorderservices.service.csws;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,6 +10,7 @@ import com.shaw.ediorderservices.csws.CartRequest;
 
 @Service
 @Transactional
+@Primary
 @Qualifier("hardsurfacesCswsService")
 public class HardsurfacesCSWSService extends CSWSService {
 
