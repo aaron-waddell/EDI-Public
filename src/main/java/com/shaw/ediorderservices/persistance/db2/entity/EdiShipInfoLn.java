@@ -1,9 +1,8 @@
 package com.shaw.ediorderservices.persistance.db2.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -14,8 +13,6 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 
@@ -111,11 +108,10 @@ public class EdiShipInfoLn implements Serializable {
 	private String custProdId;
 
 	@Column(name="CUST_QTY", nullable=false, precision=12, scale=2)
-	private BigDecimal custQty;
+	private double custQty;
 
-	@Temporal(TemporalType.DATE)
 	@Column(name="CUST_REQ_SHIP_DATE", nullable=false)
-	private Date custReqShipDate;
+	private LocalDate custReqShipDate;
 
 	@Column(name="CUST_SZ_DESC", nullable=false, length=40)
 	private String custSzDesc;
@@ -133,25 +129,25 @@ public class EdiShipInfoLn implements Serializable {
 	private String gtinNbr;
 
 	@Column(name="LAST_CHNG_DATE", nullable=false)
-	private Timestamp lastChngDate;
+	private LocalDateTime lastChngDate;
 
 	@Column(name="LAST_CHNG_ID", nullable=false, length=8)
 	private String lastChngId;
 
 	@Column(name="\"LENGTH\"", nullable=false, precision=12, scale=2)
-	private BigDecimal length;
+	private double length;
 
 	@Column(name="ORDER_QTY_FT", nullable=false, precision=7)
-	private BigDecimal orderQtyFt;
+	private int orderQtyFt;
 
 	@Column(name="ORDER_QTY_IN", nullable=false, precision=2)
-	private BigDecimal orderQtyIn;
+	private int orderQtyIn;
 
 	@Column(name="PO_LINE_NBR", nullable=false, length=6)
 	private String poLineNbr;
 
 	@Column(nullable=false, precision=12, scale=4)
-	private BigDecimal price;
+	private double price;
 
 	@Column(name="PRICE_UOM", nullable=false, length=3)
 	private String priceUom;
@@ -159,9 +155,8 @@ public class EdiShipInfoLn implements Serializable {
 	@Column(name="RECEIPT_ID", nullable=false, length=50)
 	private String receiptId;
 
-	@Temporal(TemporalType.DATE)
 	@Column(name="REPROM_DATE", nullable=false)
-	private Date repromDate;
+	private LocalDate repromDate;
 
 	@Column(name="REQ_DYELOT", nullable=false, length=20)
 	private String reqDyelot;
@@ -170,25 +165,25 @@ public class EdiShipInfoLn implements Serializable {
 	private String reqDyelotQual;
 
 	@Column(name="REQ_PRICE", precision=12, scale=4)
-	private BigDecimal reqPrice;
+	private double reqPrice;
 
 	@Column(name="RET_LN_TOTAL", nullable=false, precision=13, scale=2)
-	private BigDecimal retLnTotal;
+	private double retLnTotal;
 
 	@Column(name="RET_TX_DESC", nullable=false, length=35)
 	private String retTxDesc;
 
 	@Column(name="RETAIL_ALLOWANCE", nullable=false, precision=13, scale=4)
-	private BigDecimal retailAllowance;
+	private double retailAllowance;
 
 	@Column(name="RETAIL_PRICE", nullable=false, precision=13, scale=4)
-	private BigDecimal retailPrice;
+	private double retailPrice;
 
 	@Column(name="RETAIL_SH_PRICE", nullable=false, precision=13, scale=4)
-	private BigDecimal retailShPrice;
+	private double retailShPrice;
 
 	@Column(name="RETAIL_TAX", nullable=false, precision=15, scale=4)
-	private BigDecimal retailTax;
+	private double retailTax;
 
 	@Column(name="RETURN_MSG", nullable=false, length=45)
 	private String returnMsg;
@@ -203,7 +198,7 @@ public class EdiShipInfoLn implements Serializable {
 	private String styleNbr;
 
 	@Column(name="UNIT_PRICE", nullable=false, precision=13, scale=4)
-	private BigDecimal unitPrice;
+	private double unitPrice;
 
 	@Column(nullable=false, length=2)
 	private String uom;
@@ -212,7 +207,7 @@ public class EdiShipInfoLn implements Serializable {
 	private String upcCode;
 
 	@Column(nullable=false, precision=5, scale=2)
-	private BigDecimal width;
+	private double width;
 
 	public EdiShipInfoLn() {
 	}
@@ -265,19 +260,19 @@ public class EdiShipInfoLn implements Serializable {
 		this.custProdId = custProdId;
 	}
 
-	public BigDecimal getCustQty() {
+	public double getCustQty() {
 		return this.custQty;
 	}
 
-	public void setCustQty(BigDecimal custQty) {
+	public void setCustQty(double custQty) {
 		this.custQty = custQty;
 	}
 
-	public Date getCustReqShipDate() {
+	public LocalDate getCustReqShipDate() {
 		return this.custReqShipDate;
 	}
 
-	public void setCustReqShipDate(Date custReqShipDate) {
+	public void setCustReqShipDate(LocalDate custReqShipDate) {
 		this.custReqShipDate = custReqShipDate;
 	}
 
@@ -321,11 +316,11 @@ public class EdiShipInfoLn implements Serializable {
 		this.gtinNbr = gtinNbr;
 	}
 
-	public Timestamp getLastChngDate() {
+	public LocalDateTime getLastChngDate() {
 		return this.lastChngDate;
 	}
 
-	public void setLastChngDate(Timestamp lastChngDate) {
+	public void setLastChngDate(LocalDateTime lastChngDate) {
 		this.lastChngDate = lastChngDate;
 	}
 
@@ -337,27 +332,27 @@ public class EdiShipInfoLn implements Serializable {
 		this.lastChngId = lastChngId;
 	}
 
-	public BigDecimal getLength() {
+	public double getLength() {
 		return this.length;
 	}
 
-	public void setLength(BigDecimal length) {
+	public void setLength(double length) {
 		this.length = length;
 	}
 
-	public BigDecimal getOrderQtyFt() {
+	public double getOrderQtyFt() {
 		return this.orderQtyFt;
 	}
 
-	public void setOrderQtyFt(BigDecimal orderQtyFt) {
+	public void setOrderQtyFt(int orderQtyFt) {
 		this.orderQtyFt = orderQtyFt;
 	}
 
-	public BigDecimal getOrderQtyIn() {
+	public double getOrderQtyIn() {
 		return this.orderQtyIn;
 	}
 
-	public void setOrderQtyIn(BigDecimal orderQtyIn) {
+	public void setOrderQtyIn(int orderQtyIn) {
 		this.orderQtyIn = orderQtyIn;
 	}
 
@@ -369,11 +364,11 @@ public class EdiShipInfoLn implements Serializable {
 		this.poLineNbr = poLineNbr;
 	}
 
-	public BigDecimal getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -393,11 +388,11 @@ public class EdiShipInfoLn implements Serializable {
 		this.receiptId = receiptId;
 	}
 
-	public Date getRepromDate() {
+	public LocalDate getRepromDate() {
 		return this.repromDate;
 	}
 
-	public void setRepromDate(Date repromDate) {
+	public void setRepromDate(LocalDate repromDate) {
 		this.repromDate = repromDate;
 	}
 
@@ -417,19 +412,19 @@ public class EdiShipInfoLn implements Serializable {
 		this.reqDyelotQual = reqDyelotQual;
 	}
 
-	public BigDecimal getReqPrice() {
+	public double getReqPrice() {
 		return this.reqPrice;
 	}
 
-	public void setReqPrice(BigDecimal reqPrice) {
+	public void setReqPrice(double reqPrice) {
 		this.reqPrice = reqPrice;
 	}
 
-	public BigDecimal getRetLnTotal() {
+	public double getRetLnTotal() {
 		return this.retLnTotal;
 	}
 
-	public void setRetLnTotal(BigDecimal retLnTotal) {
+	public void setRetLnTotal(double retLnTotal) {
 		this.retLnTotal = retLnTotal;
 	}
 
@@ -441,35 +436,35 @@ public class EdiShipInfoLn implements Serializable {
 		this.retTxDesc = retTxDesc;
 	}
 
-	public BigDecimal getRetailAllowance() {
+	public double getRetailAllowance() {
 		return this.retailAllowance;
 	}
 
-	public void setRetailAllowance(BigDecimal retailAllowance) {
+	public void setRetailAllowance(double retailAllowance) {
 		this.retailAllowance = retailAllowance;
 	}
 
-	public BigDecimal getRetailPrice() {
+	public double getRetailPrice() {
 		return this.retailPrice;
 	}
 
-	public void setRetailPrice(BigDecimal retailPrice) {
+	public void setRetailPrice(double retailPrice) {
 		this.retailPrice = retailPrice;
 	}
 
-	public BigDecimal getRetailShPrice() {
+	public double getRetailShPrice() {
 		return this.retailShPrice;
 	}
 
-	public void setRetailShPrice(BigDecimal retailShPrice) {
+	public void setRetailShPrice(double retailShPrice) {
 		this.retailShPrice = retailShPrice;
 	}
 
-	public BigDecimal getRetailTax() {
+	public double getRetailTax() {
 		return this.retailTax;
 	}
 
-	public void setRetailTax(BigDecimal retailTax) {
+	public void setRetailTax(double retailTax) {
 		this.retailTax = retailTax;
 	}
 
@@ -505,11 +500,11 @@ public class EdiShipInfoLn implements Serializable {
 		this.styleNbr = styleNbr;
 	}
 
-	public BigDecimal getUnitPrice() {
+	public double getUnitPrice() {
 		return this.unitPrice;
 	}
 
-	public void setUnitPrice(BigDecimal unitPrice) {
+	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
@@ -529,11 +524,11 @@ public class EdiShipInfoLn implements Serializable {
 		this.upcCode = upcCode;
 	}
 
-	public BigDecimal getWidth() {
+	public double getWidth() {
 		return this.width;
 	}
 
-	public void setWidth(BigDecimal width) {
+	public void setWidth(double width) {
 		this.width = width;
 	}
 

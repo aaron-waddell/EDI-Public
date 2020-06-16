@@ -7,22 +7,23 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo.EdiShipInfoPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn.EdiShipInfoLnPK;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
-import java.math.BigDecimal;
-import java.time.ZoneOffset;
+import com.shaw.ediorderservices.persistance.db2.entity.LegacyShipToAddress;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     date = "2020-06-09T08:49:53-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.20.0.v20191203-2131, environment: Java 1.8.0_241 (Oracle Corporation)"
 =======
     date = "2020-06-09T18:22:02-0400",
+=======
+    date = "2020-06-16T14:23:59-0400",
+>>>>>>> Stashed changes
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 >>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
 )
@@ -38,6 +39,7 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         EdiShipInfo ediShipInfo = new EdiShipInfo();
 
         ediShipInfo.setId( ediOrderHeaderToEdiShipInfoPK( header ) );
+        ediShipInfo.setReceivingStore( header.getMarkForStore() );
         ediShipInfo.setConsumerAddress( header.getConsumerAddress() );
 <<<<<<< HEAD
         ediShipInfo.setBillToStoreNbr( header.getBillToStore() );
@@ -54,6 +56,7 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setBillToStoreNbr( header.getBillToStore() );
         ediShipInfo.setPoDate( header.getPoDateValue() );
         ediShipInfo.setAgreementNbr( header.getAgreementNumber() );
+        ediShipInfo.setShipToDestCode( headerShipToAddressDestCode( header ) );
         ediShipInfo.setSpecPoNumber( header.getSpecialPoNo() );
         ediShipInfo.setOrderingSys( header.getOrderingSystem() );
         ediShipInfo.setDepartment( header.getCustDept() );
@@ -119,17 +122,67 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
     }
 
     @Override
-    public EdiShipInfoLn EdiLineToShipInfoLn(EdiLine line) {
-        if ( line == null ) {
+    public EdiShipInfoLn EdiLineToShipInfoLn(EdiOrderLine ediLine) {
+        if ( ediLine == null ) {
             return null;
         }
 
         EdiShipInfoLn ediShipInfoLn = new EdiShipInfoLn();
 
-        ediShipInfoLn.setId( ediLineToEdiShipInfoLnPK( line ) );
-        if ( line.getCustReqShipDate() != null ) {
-            ediShipInfoLn.setCustReqShipDate( Date.from( line.getCustReqShipDate().atStartOfDay( ZoneOffset.UTC ).toInstant() ) );
+        ediShipInfoLn.setId( ediOrderLinePKToEdiShipInfoLnPK( ediLine.getId() ) );
+        if ( ediLine.getQuantityOrdered() != null ) {
+            ediShipInfoLn.setOrderQtyFt( ediLine.getQuantityOrdered().intValue() );
         }
+        if ( ediLine.getQuantityOrdered() != null ) {
+            ediShipInfoLn.setLength( ediLine.getQuantityOrdered() );
+        }
+        ediShipInfoLn.setEdiItemNbr( ediLine.getItemNo() );
+        ediShipInfoLn.setUom( ediLine.getUomCode() );
+        if ( ediLine.getRetailPrice() != null ) {
+            ediShipInfoLn.setPrice( ediLine.getRetailPrice() );
+        }
+        ediShipInfoLn.setStyleNbr( ediLine.getStyle() );
+        if ( ediLine.getQuantityOrdered() != null ) {
+            ediShipInfoLn.setCustQty( ediLine.getQuantityOrdered() );
+        }
+        ediShipInfoLn.setColorNbr( ediLine.getColor() );
+        ediShipInfoLn.setAddCustProdInfo( ediLine.getAddCustProdInfo() );
+        ediShipInfoLn.setConsMsg( ediLine.getConsMsg() );
+        ediShipInfoLn.setCustProdDesc( ediLine.getCustProdDesc() );
+        ediShipInfoLn.setCustProdId( ediLine.getCustProdId() );
+        ediShipInfoLn.setCustReqShipDate( ediLine.getCustReqShipDate() );
+        ediShipInfoLn.setCustSzDesc( ediLine.getCustSzDesc() );
+        ediShipInfoLn.setDeptNbr( ediLine.getDeptNbr() );
+        ediShipInfoLn.setGtinNbr( ediLine.getGtinNbr() );
+        ediShipInfoLn.setPriceUom( ediLine.getPriceUom() );
+        ediShipInfoLn.setReceiptId( ediLine.getReceiptId() );
+        ediShipInfoLn.setReqDyelot( ediLine.getReqDyelot() );
+        ediShipInfoLn.setReqDyelotQual( ediLine.getReqDyelotQual() );
+        if ( ediLine.getRetLnTotal() != null ) {
+            ediShipInfoLn.setRetLnTotal( ediLine.getRetLnTotal() );
+        }
+        ediShipInfoLn.setRetTxDesc( ediLine.getRetTxDesc() );
+        if ( ediLine.getRetailAllowance() != null ) {
+            ediShipInfoLn.setRetailAllowance( ediLine.getRetailAllowance() );
+        }
+        if ( ediLine.getRetailPrice() != null ) {
+            ediShipInfoLn.setRetailPrice( ediLine.getRetailPrice() );
+        }
+        if ( ediLine.getRetailShPrice() != null ) {
+            ediShipInfoLn.setRetailShPrice( ediLine.getRetailShPrice() );
+        }
+        if ( ediLine.getRetailTax() != null ) {
+            ediShipInfoLn.setRetailTax( ediLine.getRetailTax() );
+        }
+        ediShipInfoLn.setReturnMsg( ediLine.getReturnMsg() );
+        if ( ediLine.getUnitPrice() != null ) {
+            ediShipInfoLn.setUnitPrice( ediLine.getUnitPrice() );
+        }
+        ediShipInfoLn.setUpcCode( ediLine.getUpcCode() );
+
+        ediShipInfoLn.setLastChngId( "" );
+        ediShipInfoLn.setRollNbr( "" );
+        ediShipInfoLn.setOrderQtyIn( 0 );
 
         return ediShipInfoLn;
     }
@@ -148,20 +201,15 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         return ediShipInfoPK;
     }
 
-    protected EdiShipInfoLnPK ediOrderLinePKToEdiShipInfoLnPK(EdiOrderLinePK ediOrderLinePK) {
-        if ( ediOrderLinePK == null ) {
+    private String headerShipToAddressDestCode(EdiOrderHeader ediOrderHeader) {
+        if ( ediOrderHeader == null ) {
             return null;
         }
-
-        EdiShipInfoLnPK ediShipInfoLnPK = new EdiShipInfoLnPK();
-
-        return ediShipInfoLnPK;
-    }
-
-    protected EdiShipInfoLn ediOrderLineToEdiShipInfoLn(EdiOrderLine ediOrderLine) {
-        if ( ediOrderLine == null ) {
+        LegacyShipToAddress shipToAddress = ediOrderHeader.getShipToAddress();
+        if ( shipToAddress == null ) {
             return null;
         }
+<<<<<<< Updated upstream
 
         EdiShipInfoLn ediShipInfoLn = new EdiShipInfoLn();
 
@@ -206,10 +254,13 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfoLn.setReturnMsg( ediOrderLine.getReturnMsg() );
         if ( ediOrderLine.getUnitPrice() != null ) {
             ediShipInfoLn.setUnitPrice( BigDecimal.valueOf( ediOrderLine.getUnitPrice() ) );
+=======
+        String destCode = shipToAddress.getDestCode();
+        if ( destCode == null ) {
+            return null;
+>>>>>>> Stashed changes
         }
-        ediShipInfoLn.setUpcCode( ediOrderLine.getUpcCode() );
-
-        return ediShipInfoLn;
+        return destCode;
     }
 
     protected List<EdiShipInfoLn> ediOrderLineListToEdiShipInfoLnList(List<EdiOrderLine> list) {
@@ -219,20 +270,22 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
 
         List<EdiShipInfoLn> list1 = new ArrayList<EdiShipInfoLn>( list.size() );
         for ( EdiOrderLine ediOrderLine : list ) {
-            list1.add( ediOrderLineToEdiShipInfoLn( ediOrderLine ) );
+            list1.add( EdiLineToShipInfoLn( ediOrderLine ) );
         }
 
         return list1;
     }
 
-    protected EdiShipInfoLnPK ediLineToEdiShipInfoLnPK(EdiLine ediLine) {
-        if ( ediLine == null ) {
+    protected EdiShipInfoLnPK ediOrderLinePKToEdiShipInfoLnPK(EdiOrderLinePK ediOrderLinePK) {
+        if ( ediOrderLinePK == null ) {
             return null;
         }
 
         EdiShipInfoLnPK ediShipInfoLnPK = new EdiShipInfoLnPK();
 
-        ediShipInfoLnPK.setLineNbr( ediLine.getLineNbr() );
+        if ( ediOrderLinePK.getPoLineNo() != null ) {
+            ediShipInfoLnPK.setLineNbr( Long.parseLong( ediOrderLinePK.getPoLineNo() ) );
+        }
 
         return ediShipInfoLnPK;
     }

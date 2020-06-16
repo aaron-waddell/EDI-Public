@@ -46,7 +46,8 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 	@Override
 	public void createShipInfo() {
 		EdiOrderHeader header = ediOrderBean.getLegacyHeader();
-		OrderHeader shawHeader = cswsService.getOrderView(header.getShawOrderNumber());
+//		OrderHeader shawHeader = cswsService.getOrderView(header.getShawOrderNumber());
+		OrderHeader shawHeader = orderHeaderRepository.getById(header.getShawOrderNumber());
 		HashMap<String, String> splMap = getSplValues();
 		EdiShipInfo ediShipInfo = mapper.EdiOrderHeaderToShipInfo(header);
 		ediShipInfo.setSplBillToStore(splMap.get("splBillToStore"));
@@ -70,6 +71,8 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 
 		String splBillToStore = custStoreNbrs.get(ediHeader.getBillToStore());
 		
+		
+		
 		ShipToAddress shipToAddress = ediOrder.getShipToAddress();
 		if (ediHeader.getCrossDockCenter().length()==0)
 			if (shipToAddress.getAddressLine1().length()==0)
@@ -83,9 +86,9 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 				splXdockCenter = custStoreNbrs.get(ediHeader.getShipToAddress().getStore());				
 
 		HashMap<String, String> map = new HashMap<>();
-		map.put("splBillToStore",splBillToStore);
-		map.put("splShipToStore",splShipToStore);
-		map.put("splXdockCenter",splXdockCenter);
+		map.put("splBillToStore",splBillToStore!=null?splBillToStore:"");
+		map.put("splShipToStore",splShipToStore!=null?splShipToStore:"");
+		map.put("splXdockCenter",splXdockCenter!=null?splXdockCenter:"");
 		return map;
 	}
 

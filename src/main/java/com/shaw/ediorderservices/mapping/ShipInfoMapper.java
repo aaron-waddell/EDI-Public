@@ -5,6 +5,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
@@ -29,11 +30,26 @@ public interface ShipInfoMapper {
 	@Mapping(source="specialPoNo",target="specPoNumber")
 	@Mapping(source="salesCheckNumber",target="salesCheckNo")
 	@Mapping(source="orderingSystem",target="orderingSys")
+	@Mapping(source="markForStore",target="receivingStore")
+	@Mapping(source="shipToAddress.destCode",target="shipToDestCode")
 	EdiShipInfo EdiOrderHeaderToShipInfo(EdiOrderHeader header);
 
-    @Mapping(source="lineNbr", target="id.lineNbr")
+    @Mapping(source="id.poLineNo", target="id.lineNbr")
     @Mapping(target="id.ediShipInfo", ignore = true)
+    @Mapping(source="quantityOrdered", target="orderQtyFt")
+    @Mapping(constant="0", target="orderQtyIn")
+    @Mapping(source="uomCode", target="uom")
+    @Mapping(source="style", target="styleNbr")
+    @Mapping(source="color", target="colorNbr")
+    @Mapping(constant="", target="rollNbr")
+    @Mapping(source="quantityOrdered", target="length")
+//    @Mapping(constant="", target="width")
+    @Mapping(source="quantityOrdered", target="custQty")
+    @Mapping(constant="", target="lastChngId")
+    @Mapping(source="itemNo", target="ediItemNbr")
+    @Mapping(source="retailPrice", target="price")
+    
 //	@Mapping(target="id", expression = "java(new EdiShipInfoLnPK(line.getShipInfo(),id.getLineNbr()))")
-	EdiShipInfoLn EdiLineToShipInfoLn(EdiLine line);
+	EdiShipInfoLn EdiLineToShipInfoLn(EdiOrderLine ediLine);
 
 }
