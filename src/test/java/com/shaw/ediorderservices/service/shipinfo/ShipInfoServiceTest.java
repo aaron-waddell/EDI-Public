@@ -65,9 +65,9 @@ class ShipInfoServiceTest extends MockTest {
 
 	@Test
 	void testCreateShipInfo() {
-		when(cswsService.getOrderView(ediOrderHeader.getShawOrderNumber())).thenReturn(orderHeaderView);
+		when(cswsService.getOrderView(ediOrderHeader.getShawOrderNumber())).thenReturn(orderView);
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(samplesEdiOrder.getCustomerCode(), samplesEdiOrder.getOrderingSystem())).thenReturn(xrefList);
-		logger.info(gson.toJson(orderHeaderView));
+		logger.info(gson.toJson(orderView));
 		ediOrderBean.setLegacyHeader(ediOrderHeader);
 		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		service.createShipInfo();

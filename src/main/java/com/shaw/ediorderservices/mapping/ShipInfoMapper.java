@@ -8,7 +8,6 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ShipInfoMapper {

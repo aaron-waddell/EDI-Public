@@ -19,6 +19,7 @@ import com.shaw.ediorderservices.csws.CartRequest;
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
 import com.shaw.ediorderservices.csws.OrderHeader;
+import com.shaw.ediorderservices.csws.OrderViewResponse;
 import com.shaw.ediorderservices.csws.ProcessCartRequest;
 import com.shaw.ediorderservices.csws.ShipInfo;
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
@@ -121,15 +122,15 @@ public abstract class CSWSService implements ICSWSService {
 	}
 
 	@Override
-	public OrderHeader getOrderView(String orderNbr) throws ResourceNotFoundException {
+	public OrderViewResponse getOrderView(String orderNbr) throws ResourceNotFoundException {
 		UriTemplate template = new UriTemplate(config.getCswsServername() + "/orders/{orderNbr}") ;
 		URI uri = template.expand(orderNbr);
 
 		String response = restService.getForObject(uri);
 
-		OrderHeader orderHeader = gson.fromJson(response, OrderHeader.class);
-		logger.info(gson.toJson(orderHeader));
-		return orderHeader ;
+		OrderViewResponse view = gson.fromJson(response, OrderViewResponse.class);
+		logger.info(gson.toJson(view));
+		return view ;
 	}
 
 }

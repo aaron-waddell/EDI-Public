@@ -15,17 +15,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    date = "2020-06-09T08:49:53-0400",
-    comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.20.0.v20191203-2131, environment: Java 1.8.0_241 (Oracle Corporation)"
-=======
-    date = "2020-06-09T18:22:02-0400",
-=======
-    date = "2020-06-16T14:23:59-0400",
->>>>>>> Stashed changes
+    date = "2020-06-19T12:49:43-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
->>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
 )
 @Component
 public class ShipInfoMapperImpl implements ShipInfoMapper {
@@ -41,14 +32,6 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setId( ediOrderHeaderToEdiShipInfoPK( header ) );
         ediShipInfo.setReceivingStore( header.getMarkForStore() );
         ediShipInfo.setConsumerAddress( header.getConsumerAddress() );
-<<<<<<< HEAD
-        ediShipInfo.setBillToStoreNbr( header.getBillToStore() );
-        ediShipInfo.setPoDate( header.getPoDateValue() );
-        ediShipInfo.setAgreementNbr( header.getAgreementNumber() );
-        ediShipInfo.setAuthorizationNo( header.getAuthorizationNo() );
-        ediShipInfo.setAcctContact( header.getAcctContact() );
-        ediShipInfo.setAuthRep( header.getAuthRep() );
-=======
         ediShipInfo.setVendorNo( header.getVendorNo() );
         ediShipInfo.setCustPo( header.getPoNumber() );
         ediShipInfo.setCrossDock( header.getCrossDockCenter() );
@@ -63,7 +46,6 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setAcctContact( header.getAcctContact() );
         ediShipInfo.setAuthRep( header.getAuthRep() );
         ediShipInfo.setAuthorizationNo( header.getAuthorizationNo() );
->>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
         ediShipInfo.setBsStoreNbr( header.getBsStoreNbr() );
         ediShipInfo.setCommCust( header.getCommCust() );
         ediShipInfo.setConsStatusMsg( header.getConsStatusMsg() );
@@ -78,10 +60,6 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setEventInfo( header.getEventInfo() );
         ediShipInfo.setGiftMessage1( header.getGiftMessage1() );
         ediShipInfo.setGiftMessage2( header.getGiftMessage2() );
-<<<<<<< HEAD
-=======
-        ediShipInfo.setLines( ediOrderLineListToEdiShipInfoLnList( header.getLines() ) );
->>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
         ediShipInfo.setNbDate( header.getNbDate() );
         ediShipInfo.setNoAsnFlag( header.getNoAsnFlag() );
         ediShipInfo.setOnlineType( header.getOnlineType() );
@@ -112,11 +90,7 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setShipByDate( header.getShipByDate() );
         ediShipInfo.setShipCancelDate( header.getShipCancelDate() );
         ediShipInfo.setStoreName( header.getStoreName() );
-<<<<<<< HEAD
-        ediShipInfo.setVendorNo( header.getVendorNo() );
         ediShipInfo.setLines( ediOrderLineListToEdiShipInfoLnList( header.getLines() ) );
-=======
->>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
 
         return ediShipInfo;
     }
@@ -209,56 +183,9 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         if ( shipToAddress == null ) {
             return null;
         }
-<<<<<<< Updated upstream
-
-        EdiShipInfoLn ediShipInfoLn = new EdiShipInfoLn();
-
-<<<<<<< HEAD
-        ediShipInfoLn.setId( ediOrderLinePKToEdiShipInfoLnPK( ediOrderLine.getId() ) );
-=======
->>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
-        ediShipInfoLn.setAddCustProdInfo( ediOrderLine.getAddCustProdInfo() );
-        ediShipInfoLn.setConsMsg( ediOrderLine.getConsMsg() );
-        ediShipInfoLn.setCustProdDesc( ediOrderLine.getCustProdDesc() );
-        ediShipInfoLn.setCustProdId( ediOrderLine.getCustProdId() );
-        if ( ediOrderLine.getCustReqShipDate() != null ) {
-            ediShipInfoLn.setCustReqShipDate( Date.from( ediOrderLine.getCustReqShipDate().atStartOfDay( ZoneOffset.UTC ).toInstant() ) );
-        }
-        ediShipInfoLn.setCustSzDesc( ediOrderLine.getCustSzDesc() );
-        ediShipInfoLn.setDeptNbr( ediOrderLine.getDeptNbr() );
-        ediShipInfoLn.setGtinNbr( ediOrderLine.getGtinNbr() );
-<<<<<<< HEAD
-=======
-        ediShipInfoLn.setId( ediOrderLinePKToEdiShipInfoLnPK( ediOrderLine.getId() ) );
->>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
-        ediShipInfoLn.setPriceUom( ediOrderLine.getPriceUom() );
-        ediShipInfoLn.setReceiptId( ediOrderLine.getReceiptId() );
-        ediShipInfoLn.setReqDyelot( ediOrderLine.getReqDyelot() );
-        ediShipInfoLn.setReqDyelotQual( ediOrderLine.getReqDyelotQual() );
-        if ( ediOrderLine.getRetLnTotal() != null ) {
-            ediShipInfoLn.setRetLnTotal( BigDecimal.valueOf( ediOrderLine.getRetLnTotal() ) );
-        }
-        ediShipInfoLn.setRetTxDesc( ediOrderLine.getRetTxDesc() );
-        if ( ediOrderLine.getRetailAllowance() != null ) {
-            ediShipInfoLn.setRetailAllowance( BigDecimal.valueOf( ediOrderLine.getRetailAllowance() ) );
-        }
-        if ( ediOrderLine.getRetailPrice() != null ) {
-            ediShipInfoLn.setRetailPrice( BigDecimal.valueOf( ediOrderLine.getRetailPrice() ) );
-        }
-        if ( ediOrderLine.getRetailShPrice() != null ) {
-            ediShipInfoLn.setRetailShPrice( BigDecimal.valueOf( ediOrderLine.getRetailShPrice() ) );
-        }
-        if ( ediOrderLine.getRetailTax() != null ) {
-            ediShipInfoLn.setRetailTax( BigDecimal.valueOf( ediOrderLine.getRetailTax() ) );
-        }
-        ediShipInfoLn.setReturnMsg( ediOrderLine.getReturnMsg() );
-        if ( ediOrderLine.getUnitPrice() != null ) {
-            ediShipInfoLn.setUnitPrice( BigDecimal.valueOf( ediOrderLine.getUnitPrice() ) );
-=======
         String destCode = shipToAddress.getDestCode();
         if ( destCode == null ) {
             return null;
->>>>>>> Stashed changes
         }
         return destCode;
     }

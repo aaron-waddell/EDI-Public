@@ -9,13 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2020-06-09T08:49:53-0400",
-    comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.20.0.v20191203-2131, environment: Java 1.8.0_241 (Oracle Corporation)"
-=======
-    date = "2020-06-09T09:05:26-0400",
+    date = "2020-06-19T12:49:44-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
->>>>>>> 319fd74e6b77d79ce2f29be4907fd93101894f9c
 )
 @Component
 public class AuditMapperImpl implements AuditMapper {

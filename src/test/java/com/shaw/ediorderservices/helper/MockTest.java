@@ -16,6 +16,7 @@ import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
 import com.shaw.ediorderservices.csws.OrderHeader;
+import com.shaw.ediorderservices.csws.OrderViewResponse;
 import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiReasonCodeRepository;
@@ -64,7 +65,7 @@ public abstract class MockTest {
 	protected static Cart cart = MockObject.build(Cart.class);
 	protected static HashMap<String, String> validationMap = new HashMap<String,String>();
 	protected static EdiOrdValidation ediOrdValidation = MockObject.build(EdiOrdValidation.class);
-	protected static OrderHeader orderHeaderView = MockObject.build(OrderHeader.class);
+	protected static OrderViewResponse orderView = MockObject.build(OrderViewResponse.class);
 	protected static List<EdiSplStoreXref> xrefList = new ArrayList<EdiSplStoreXref>();
 	
 	static {
@@ -78,7 +79,7 @@ public abstract class MockTest {
 		invalidOrder.addValidation(ediValidation);
 		invalidOrder2.setValidations(Lists.newArrayList(ediValidation,ediValidation2));
 		invalidOrder2.getLines().get(0).setValidations(Lists.newArrayList(ediValidation,ediValidation2));
-		orderHeaderView.setCarrierCode(orderHeaderView.getCarrierCode().substring(0,2));
+//		orderHeaderView.setCarrierCode(orderView.getHeader().getCarrierCode().substring(0,2));
 		xrefList.add(MockObject.build(EdiSplStoreXref.class));
 		xrefList.add(MockObject.build(EdiSplStoreXref.class));
 		xrefList.add(MockObject.build(EdiSplStoreXref.class));

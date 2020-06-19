@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shaw.ediorderservices.csws.OrderHeader;
+import com.shaw.ediorderservices.csws.OrderLine;
+import com.shaw.ediorderservices.csws.OrderViewResponse;
 import com.shaw.ediorderservices.mapping.ShipInfoMapper;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiSplStoreXrefRepository;
@@ -46,14 +48,17 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 	@Override
 	public void createShipInfo() {
 		EdiOrderHeader header = ediOrderBean.getLegacyHeader();
-//		OrderHeader shawHeader = cswsService.getOrderView(header.getShawOrderNumber());
-		OrderHeader shawHeader = orderHeaderRepository.getById(header.getShawOrderNumber());
+		OrderViewResponse view = cswsService.getOrderView(header.getShawOrderNumber());
+		OrderHeader shawHeader = view.getHeader();
+		List<OrderLine> shawLines = view.getLines();
 		HashMap<String, String> splMap = getSplValues();
 		EdiShipInfo ediShipInfo = mapper.EdiOrderHeaderToShipInfo(header);
 		ediShipInfo.setSplBillToStore(splMap.get("splBillToStore"));
 		ediShipInfo.setSplShipToStore(splMap.get("splShipToStore"));
 		ediShipInfo.setSplXdockCenter(splMap.get("splXdockCenter"));
 		ediShipInfo.setCarrCode(shawHeader.getCarrierCode());
+		Map<Integer, String> dyelotMap = shawLines.parallelStream().collect(Collectors.toMap(OrderLine::getLineNbr, OrderLine::getDyelot));
+		ediShipInfo.getLines().parallelStream().forEach(l->l.setDyelot(dyelotMap.get(Integer.parseInt(l.getPoLineNbr()))));
 		ediShipInfoRepository.save(ediShipInfo);
 
 	}
