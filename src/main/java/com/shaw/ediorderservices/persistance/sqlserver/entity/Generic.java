@@ -31,7 +31,7 @@ public class Generic extends AuditableEntity implements Serializable {
 	private String value;
 
 	@ManyToOne
-	private EdiOrder ediOrder;
+	volatile private EdiOrder ediOrder;
 
 	public Generic() {
 		// TODO Auto-generated constructor stub

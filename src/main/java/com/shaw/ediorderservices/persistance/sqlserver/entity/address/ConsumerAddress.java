@@ -19,7 +19,7 @@ public class ConsumerAddress extends Address {
 	String shipFlag = "";
 
 	@OneToOne
-	private EdiOrder ediOrder;
+	private volatile EdiOrder ediOrder;
 
 	public LocalDate getPoDate() {
 		return poDate;

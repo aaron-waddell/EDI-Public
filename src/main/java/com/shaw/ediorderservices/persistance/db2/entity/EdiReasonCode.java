@@ -65,7 +65,7 @@ public class EdiReasonCode implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ediReasonCode")
 	@Nullable
-	List<EdiOrdValidation> ediOrdValidations;
+	private volatile List<EdiOrdValidation> ediOrdValidations;
 	
 	public EdiReasonCode() {
 	}

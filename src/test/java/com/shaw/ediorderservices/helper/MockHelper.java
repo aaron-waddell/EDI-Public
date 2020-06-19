@@ -17,6 +17,9 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate.EdiOrderDat
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine.EdiOrderLinePK;
+import com.shaw.ediorderservices.persistance.db2.entity.LegacyConsumerAddress;
+import com.shaw.ediorderservices.persistance.db2.entity.LegacyShipToAddress;
+import com.shaw.ediorderservices.persistance.db2.entity.LegacyThirdPartyAddress;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
@@ -46,6 +49,12 @@ public class MockHelper {
 //		ediOrder.setConsumerAddress(build(ConsumerAddress.class));
 //		ediOrder.setShipToAddress(build(ShipToAddress.class));
 //		ediOrder.setThirdPartyAddress(build(ThirdPartyAddress.class));
+		ediOrder.getConsumerAddress().setEdiOrder(ediOrder);
+		ediOrder.getShipToAddress().setEdiOrder(ediOrder);
+		ediOrder.getThirdPartyAddress().setEdiOrder(ediOrder);
+		ediOrder.getCancelDate().setEdiOrder(ediOrder);
+		ediOrder.getPoDate().setEdiOrder(ediOrder);
+		ediOrder.getShipDate().setEdiOrder(ediOrder);
 		EdiLine ediLine = getLineInstance(orderType.toString());
 		ediLine.setLineType(orderType.toString());
 		ediOrder.addLine(ediLine);
@@ -90,6 +99,8 @@ public class MockHelper {
 		EdiOrderHeader ediOrderHeader = build(EdiOrderHeader.class);
 //		ediOrderHeader.addDate(buildEdiOrderDate());
 //		ediOrderHeader.addLine(buildEdiOrderLine());
+		ediOrderHeader.getDates().forEach(d->d.getPk().setEdiOrderHeader(ediOrderHeader));
+		ediOrderHeader.getLines().forEach(l->l.getId().setEdiOrderHeader(ediOrderHeader));
 //		ediOrderHeader.setConsumerAddress(build(LegacyConsumerAddress.class));
 //		ediOrderHeader.setShipToAddress(build(LegacyShipToAddress.class));
 //		ediOrderHeader.setThirdPartyAddress(build(LegacyThirdPartyAddress.class));

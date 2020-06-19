@@ -46,7 +46,7 @@ public class EdiOrderLine implements Serializable {
 
 		@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	    @JoinColumn(name = "edi_order_number")
-		private EdiOrderHeader ediOrderHeader;
+		volatile private EdiOrderHeader ediOrderHeader;
 
 		public EdiOrderLinePK() {
 		}

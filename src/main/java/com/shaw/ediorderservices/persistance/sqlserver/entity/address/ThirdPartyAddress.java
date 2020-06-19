@@ -17,7 +17,7 @@ public class ThirdPartyAddress extends Address {
 	private String billFlag = "";
 	
 	@OneToOne
-	private EdiOrder ediOrder;
+	private volatile EdiOrder ediOrder;
 
 
 	public ThirdPartyAddress() {

@@ -1,6 +1,8 @@
 package com.shaw.ediorderservices.gson;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -33,7 +35,11 @@ public class MyGson {
 		gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new LocalDateSerializer())
                 .registerTypeAdapter(LocalDate.class, new LocalDateDeserializer())
-                .registerTypeAdapterFactory(orderAdapter)
+                .registerTypeAdapter(LocalTime.class, new LocalTimeSerializer())
+                .registerTypeAdapter(LocalTime.class, new LocalTimeDeserializer())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
+               .registerTypeAdapterFactory(orderAdapter)
                 .registerTypeAdapterFactory(lineAdapter)
                 .setPrettyPrinting()
                 .excludeFieldsWithModifiers(Modifier.VOLATILE, Modifier.STATIC)

@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-19T13:28:16-0400",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 14.0.1 (Oracle Corporation)"
+    date = "2020-06-19T15:10:15-0400",
+    comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
 public class LineMapperImpl implements LineMapper {
@@ -47,9 +47,9 @@ public class LineMapperImpl implements LineMapper {
 
         SamplesEdiLine samplesEdiLine = new SamplesEdiLine();
 
-        samplesEdiLine.setStyle( line.getStyle() );
         samplesEdiLine.setColor( line.getColor() );
         samplesEdiLine.setCustReqShipDate( line.getCustReqShipDate() );
+        samplesEdiLine.setStyle( line.getStyle() );
 
         samplesEdiLine.setId( 0L );
 
@@ -64,9 +64,9 @@ public class LineMapperImpl implements LineMapper {
 
         CarpetEdiLine carpetEdiLine = new CarpetEdiLine();
 
-        carpetEdiLine.setStyle( line.getStyle() );
         carpetEdiLine.setColor( line.getColor() );
         carpetEdiLine.setCustReqShipDate( line.getCustReqShipDate() );
+        carpetEdiLine.setStyle( line.getStyle() );
 
         carpetEdiLine.setId( 0L );
 
@@ -81,9 +81,9 @@ public class LineMapperImpl implements LineMapper {
 
         HardsurfacesEdiLine hardsurfacesEdiLine = new HardsurfacesEdiLine();
 
-        hardsurfacesEdiLine.setStyle( line.getStyle() );
         hardsurfacesEdiLine.setColor( line.getColor() );
         hardsurfacesEdiLine.setCustReqShipDate( line.getCustReqShipDate() );
+        hardsurfacesEdiLine.setStyle( line.getStyle() );
 
         hardsurfacesEdiLine.setId( 0L );
 
@@ -118,15 +118,15 @@ public class LineMapperImpl implements LineMapper {
         samplesLine.setSamplesPrivateStyle( samplesInfo.getSamplesStyleNbr() );
         samplesLine.setTypesetDesc( samplesInfo.getDelVehName() );
         samplesLine.setColorNbr( samplesInfo.getSamplesColorNbr() );
-        samplesLine.setSubset( samplesInfo.getSubset() );
-        samplesLine.setDelVehName( samplesInfo.getDelVehName() );
         samplesLine.setCartonQty( samplesInfo.getCartonQty() );
+        samplesLine.setDelVehName( samplesInfo.getDelVehName() );
         samplesLine.setDelVehNbr( samplesInfo.getDelVehNbr() );
+        samplesLine.setInvPartNbr( samplesInfo.getInvPartNbr() );
         samplesLine.setPackType( samplesInfo.getPackType() );
         samplesLine.setPartNbr( samplesInfo.getPartNbr() );
         samplesLine.setSamplesColorNbr( samplesInfo.getSamplesColorNbr() );
         samplesLine.setSamplesStyleNbr( samplesInfo.getSamplesStyleNbr() );
-        samplesLine.setInvPartNbr( samplesInfo.getInvPartNbr() );
+        samplesLine.setSubset( samplesInfo.getSubset() );
 
         samplesLine.setSidemarkType1( "S" );
         samplesLine.setSidemarkType2( "S" );

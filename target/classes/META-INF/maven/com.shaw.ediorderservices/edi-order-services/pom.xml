@@ -18,7 +18,7 @@
 	  <repository>
 	    <id>mock-repo</id>
 	    <name>Mock Repository</name>
-	    <url>file://Users/waaronwaddell/.m2/repository/com/shaw/mock/mockTest/0.0.1-SNAPSHOT</url>
+	    <url>file://Users/waaronwaddell/.m2/repository/com/shaw/mock/mock-builder/0.0.1-SNAPSHOT</url>
 	  </repository>
 	</repositories>
 
