@@ -16,8 +16,9 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiSplStoreXref;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
+import com.shaw.mock.builder.MockBuilder;
 
-class MockObjectTest {
+class MockHelperTest {
 
     protected static final Logger logger = LogManager.getLogger();
 
@@ -27,13 +28,13 @@ class MockObjectTest {
 
 	@Test
 	void testEdiOrder() throws Exception {
-		EdiOrder ediOrder = MockObject.buildEdiOrder(OrderType.CARPET);
+		EdiOrder ediOrder = MockHelper.buildEdiOrder(OrderType.CARPET);
 		logger.info(ediOrder.toString());
 	}
 
 	@Test
 	void testHeader() throws Exception {
-		EdiOrderHeader h = MockObject.buildEdiOrderHeader(OrderType.CARPET);
+		EdiOrderHeader h = MockHelper.buildEdiOrderHeader(OrderType.CARPET);
 		logger.info(h.toString());
 		assertNotNull(h.getConsumerAddress());
 		assertNotNull(h.getConsumerAddress().getAddressLine1());
@@ -41,7 +42,7 @@ class MockObjectTest {
 
 	@Test
 	void testNestedBuild() throws Exception {
-		EdiSplStoreXref x = MockObject.build(EdiSplStoreXref.class);
+		EdiSplStoreXref x = MockBuilder.build(EdiSplStoreXref.class);
 		logger.info(x.toString());
 		assertNotNull(x.getId());
 		assertNotNull(x.getId().getOrderingSys());

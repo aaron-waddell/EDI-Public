@@ -21,11 +21,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
-import com.shaw.ediorderservices.helper.MockObject;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation.EdiOrdValidationPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
+import com.shaw.mock.builder.MockBuilder;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
@@ -80,7 +80,7 @@ class EdiOrdValidationRepositoryTest extends MockTest {
 
 	@Test
 	void testUpdateStatusByIdEdiOrderNbr() {
-		EdiOrdValidation ediOrdValidation = MockObject.build(EdiOrdValidation.class);
+		EdiOrdValidation ediOrdValidation = MockBuilder.build(EdiOrdValidation.class);
 		ediOrdValidation.setId(new EdiOrdValidationPK(EDI_ORDER_NBR, PO_LINE_NBR));
 		ediOrdValidation.setEdiReasonCode(ediReasonCodeRepository.findById(63).orElse(null));
 		ediOrdValidationRepository.save(ediOrdValidation);

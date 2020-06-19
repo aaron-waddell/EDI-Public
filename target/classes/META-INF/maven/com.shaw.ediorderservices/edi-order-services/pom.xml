@@ -34,7 +34,7 @@
 	
 		<dependency>
 			<groupId>com.shaw.mock</groupId>
-			<artifactId>mockTest</artifactId>
+			<artifactId>mock-builder</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

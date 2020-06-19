@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.shaw.ediorderservices.service.legacy.LegacyServiceTest" time="0.475" tests="3" errors="2" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="14"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public/target/test-classes:/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public/target/classes:/Users/waaronwaddell/.m2/repository/com/shaw/mock/mock-builder/0.0.1-SNAPSHOT/mock-builder-0.0.1-SNAPSHOT.jar:/Users/waaronwaddell/.m2/repository/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar:/Users/waaronwaddell/.m2/repository/org/apache/logging/log4j/log4j-core/2.12.1/log4j-core-2.12.1.jar:/Users/waaronwaddell/.m2/repository/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/2.2.6.RELEASE/spring-boot-starter-data-jpa-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-aop/2.2.6.RELEASE/spring-boot-starter-aop-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-aop/5.2.5.RELEASE/spring-aop-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/2.2.6.RELEASE/spring-boot-starter-jdbc-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/zaxxer/HikariCP/3.4.2/HikariCP-3.4.2.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-jdbc/5.2.5.RELEASE/spring-jdbc-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar:/Users/waaronwaddell/.m2/repository/jakarta/persistence/jakarta.persistence-api/2.2.3/jakarta.persistence-api-2.2.3.jar:/Users/waaronwaddell/.m2/repository/jakarta/transaction/jakarta.transaction-api/1.3.3/jakarta.transaction-api-1.3.3.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/hibernate-core/5.4.12.Final/hibernate-core-5.4.12.Final.jar:/Users/waaronwaddell/.m2/repository/org/javassist/javassist/3.24.0-GA/javassist-3.24.0-GA.jar:/Users/waaronwaddell/.m2/repository/net/bytebuddy/byte-buddy/1.10.8/byte-buddy-1.10.8.jar:/Users/waaronwaddell/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/Users/waaronwaddell/.m2/repository/org/jboss/jandex/2.1.1.Final/jandex-2.1.1.Final.jar:/Users/waaronwaddell/.m2/repository/org/dom4j/dom4j/2.1.1/dom4j-2.1.1.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.1.0.Final/hibernate-commons-annotations-5.1.0.Final.jar:/Users/waaronwaddell/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.jar:/Users/waaronwaddell/.m2/repository/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2.jar:/Users/waaronwaddell/.m2/repository/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8.jar:/Users/waaronwaddell/.m2/repository/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1.jar:/Users/waaronwaddell/.m2/repository/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16.jar:/Users/waaronwaddell/.m2/repository/org/springframework/data/spring-data-jpa/2.2.6.RELEASE/spring-data-jpa-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/data/spring-data-commons/2.2.6.RELEASE/spring-data-commons-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-orm/5.2.5.RELEASE/spring-orm-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-context/5.2.5.RELEASE/spring-context-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-tx/5.2.5.RELEASE/spring-tx-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-beans/5.2.5.RELEASE/spring-beans-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-aspects/5.2.5.RELEASE/spring-aspects-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-web/2.2.6.RELEASE/spring-boot-starter-web-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter/2.2.6.RELEASE/spring-boot-starter-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot/2.2.6.RELEASE/spring-boot-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.2.6.RELEASE/spring-boot-autoconfigure-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.2.6.RELEASE/spring-boot-starter-logging-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/waaronwaddell/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/waaronwaddell/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.12.1/log4j-to-slf4j-2.12.1.jar:/Users/waaronwaddell/.m2/repository/org/slf4j/jul-to-slf4j/1.7.30/jul-to-slf4j-1.7.30.jar:/Users/waaronwaddell/.m2/repository/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar:/Users/waaronwaddell/.m2/repository/org/yaml/snakeyaml/1.25/snakeyaml-1.25.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.2.6.RELEASE/spring-boot-starter-json-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.3/jackson-databind-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.3/jackson-core-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.3/jackson-datatype-jdk8-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.3/jackson-datatype-jsr310-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.10.3/jackson-module-parameter-names-2.10.3.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/2.2.6.RELEASE/spring-boot-starter-tomcat-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.33/tomcat-embed-core-9.0.33.jar:/Users/waaronwaddell/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.33/tomcat-embed-el-9.0.33.jar:/Users/waaronwaddell/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.33/tomcat-embed-websocket-9.0.33.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-validation/2.2.6.RELEASE/spring-boot-starter-validation-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.18.Final/hibernate-validator-6.0.18.Final.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-web/5.2.5.RELEASE/spring-web-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-webmvc/5.2.5.RELEASE/spring-webmvc-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-expression/5.2.5.RELEASE/spring-expression-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/google/collections/google-collections/1.0/google-collections-1.0.jar:/Users/waaronwaddell/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/Users/waaronwaddell/.m2/repository/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar:/Users/waaronwaddell/.m2/repository/org/mapstruct/mapstruct/1.3.1.Final/mapstruct-1.3.1.Final.jar:/Users/waaronwaddell/.m2/repository/com/h2database/h2/1.4.200/h2-1.4.200.jar:/Users/waaronwaddell/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/7.4.1.jre8/mssql-jdbc-7.4.1.jre8.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-swagger2/2.9.2/springfox-swagger2-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/swagger/swagger-annotations/1.5.20/swagger-annotations-1.5.20.jar:/Users/waaronwaddell/.m2/repository/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.3/jackson-annotations-2.10.3.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-spi/2.9.2/springfox-spi-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-core/2.9.2/springfox-core-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-schema/2.9.2/springfox-schema-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-swagger-common/2.9.2/springfox-swagger-common-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-spring-web/2.9.2/springfox-spring-web-2.9.2.jar:/Users/waaronwaddell/.m2/repository/com/google/guava/guava/20.0/guava-20.0.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/Users/waaronwaddell/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/waaronwaddell/.m2/repository/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/plugin/spring-plugin-metadata/1.2.0.RELEASE/spring-plugin-metadata-1.2.0.RELEASE.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-swagger-ui/2.9.2/springfox-swagger-ui-2.9.2.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-test/2.2.6.RELEASE/spring-boot-starter-test-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-test/2.2.6.RELEASE/spring-boot-test-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/2.2.6.RELEASE/spring-boot-test-autoconfigure-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar:/Users/waaronwaddell/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar:/Users/waaronwaddell/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar:/Users/waaronwaddell/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar:/Users/waaronwaddell/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter/5.5.2/junit-jupiter-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/waaronwaddell/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/waaronwaddell/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.2/junit-jupiter-params-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:/Users/waaronwaddell/.m2/repository/org/mockito/mockito-junit-jupiter/3.1.0/mockito-junit-jupiter-3.1.0.jar:/Users/waaronwaddell/.m2/repository/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar:/Users/waaronwaddell/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:/Users/waaronwaddell/.m2/repository/org/mockito/mockito-core/3.1.0/mockito-core-3.1.0.jar:/Users/waaronwaddell/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.8/byte-buddy-agent-1.10.8.jar:/Users/waaronwaddell/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/Users/waaronwaddell/.m2/repository/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar:/Users/waaronwaddell/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-core/5.2.5.RELEASE/spring-core-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-jcl/5.2.5.RELEASE/spring-jcl-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-test/5.2.5.RELEASE/spring-test-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/xmlunit/xmlunit-core/2.6.4/xmlunit-core-2.6.4.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-configuration-processor/2.2.6.RELEASE/spring-boot-configuration-processor-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/hibernate-ehcache/5.4.12.Final/hibernate-ehcache-5.4.12.Final.jar:/Users/waaronwaddell/.m2/repository/org/jboss/logging/jboss-logging/3.4.1.Final/jboss-logging-3.4.1.Final.jar:/Users/waaronwaddell/.m2/repository/net/sf/ehcache/ehcache/2.10.6/ehcache-2.10.6.jar:/Users/waaronwaddell/.m2/repository/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar:/Users/waaronwaddell/.m2/repository/commons-pool/commons-pool/1.6/commons-pool-1.6.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="14"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-14.0.1.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public/target/surefire/surefirebooter1253495891782149255.jar /Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public/target/surefire 2020-06-19T13-28-19_209-jvmRun1 surefire7372129257937609197tmp surefire_07823809038847804982tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public/target/test-classes:/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public/target/classes:/Users/waaronwaddell/.m2/repository/com/shaw/mock/mock-builder/0.0.1-SNAPSHOT/mock-builder-0.0.1-SNAPSHOT.jar:/Users/waaronwaddell/.m2/repository/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar:/Users/waaronwaddell/.m2/repository/org/apache/logging/log4j/log4j-core/2.12.1/log4j-core-2.12.1.jar:/Users/waaronwaddell/.m2/repository/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/2.2.6.RELEASE/spring-boot-starter-data-jpa-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-aop/2.2.6.RELEASE/spring-boot-starter-aop-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-aop/5.2.5.RELEASE/spring-aop-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/2.2.6.RELEASE/spring-boot-starter-jdbc-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/zaxxer/HikariCP/3.4.2/HikariCP-3.4.2.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-jdbc/5.2.5.RELEASE/spring-jdbc-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar:/Users/waaronwaddell/.m2/repository/jakarta/persistence/jakarta.persistence-api/2.2.3/jakarta.persistence-api-2.2.3.jar:/Users/waaronwaddell/.m2/repository/jakarta/transaction/jakarta.transaction-api/1.3.3/jakarta.transaction-api-1.3.3.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/hibernate-core/5.4.12.Final/hibernate-core-5.4.12.Final.jar:/Users/waaronwaddell/.m2/repository/org/javassist/javassist/3.24.0-GA/javassist-3.24.0-GA.jar:/Users/waaronwaddell/.m2/repository/net/bytebuddy/byte-buddy/1.10.8/byte-buddy-1.10.8.jar:/Users/waaronwaddell/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/Users/waaronwaddell/.m2/repository/org/jboss/jandex/2.1.1.Final/jandex-2.1.1.Final.jar:/Users/waaronwaddell/.m2/repository/org/dom4j/dom4j/2.1.1/dom4j-2.1.1.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.1.0.Final/hibernate-commons-annotations-5.1.0.Final.jar:/Users/waaronwaddell/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jaxb-runtime-2.3.2.jar:/Users/waaronwaddell/.m2/repository/org/glassfish/jaxb/txw2/2.3.2/txw2-2.3.2.jar:/Users/waaronwaddell/.m2/repository/com/sun/istack/istack-commons-runtime/3.0.8/istack-commons-runtime-3.0.8.jar:/Users/waaronwaddell/.m2/repository/org/jvnet/staxex/stax-ex/1.8.1/stax-ex-1.8.1.jar:/Users/waaronwaddell/.m2/repository/com/sun/xml/fastinfoset/FastInfoset/1.2.16/FastInfoset-1.2.16.jar:/Users/waaronwaddell/.m2/repository/org/springframework/data/spring-data-jpa/2.2.6.RELEASE/spring-data-jpa-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/data/spring-data-commons/2.2.6.RELEASE/spring-data-commons-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-orm/5.2.5.RELEASE/spring-orm-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-context/5.2.5.RELEASE/spring-context-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-tx/5.2.5.RELEASE/spring-tx-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-beans/5.2.5.RELEASE/spring-beans-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-aspects/5.2.5.RELEASE/spring-aspects-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-web/2.2.6.RELEASE/spring-boot-starter-web-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter/2.2.6.RELEASE/spring-boot-starter-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot/2.2.6.RELEASE/spring-boot-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.2.6.RELEASE/spring-boot-autoconfigure-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.2.6.RELEASE/spring-boot-starter-logging-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/waaronwaddell/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/waaronwaddell/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.12.1/log4j-to-slf4j-2.12.1.jar:/Users/waaronwaddell/.m2/repository/org/slf4j/jul-to-slf4j/1.7.30/jul-to-slf4j-1.7.30.jar:/Users/waaronwaddell/.m2/repository/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar:/Users/waaronwaddell/.m2/repository/org/yaml/snakeyaml/1.25/snakeyaml-1.25.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.2.6.RELEASE/spring-boot-starter-json-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.3/jackson-databind-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.3/jackson-core-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.3/jackson-datatype-jdk8-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.3/jackson-datatype-jsr310-2.10.3.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.10.3/jackson-module-parameter-names-2.10.3.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/2.2.6.RELEASE/spring-boot-starter-tomcat-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.33/tomcat-embed-core-9.0.33.jar:/Users/waaronwaddell/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.33/tomcat-embed-el-9.0.33.jar:/Users/waaronwaddell/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.33/tomcat-embed-websocket-9.0.33.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-validation/2.2.6.RELEASE/spring-boot-starter-validation-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.18.Final/hibernate-validator-6.0.18.Final.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-web/5.2.5.RELEASE/spring-web-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-webmvc/5.2.5.RELEASE/spring-webmvc-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-expression/5.2.5.RELEASE/spring-expression-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/google/collections/google-collections/1.0/google-collections-1.0.jar:/Users/waaronwaddell/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/Users/waaronwaddell/.m2/repository/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar:/Users/waaronwaddell/.m2/repository/org/mapstruct/mapstruct/1.3.1.Final/mapstruct-1.3.1.Final.jar:/Users/waaronwaddell/.m2/repository/com/h2database/h2/1.4.200/h2-1.4.200.jar:/Users/waaronwaddell/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/7.4.1.jre8/mssql-jdbc-7.4.1.jre8.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-swagger2/2.9.2/springfox-swagger2-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/swagger/swagger-annotations/1.5.20/swagger-annotations-1.5.20.jar:/Users/waaronwaddell/.m2/repository/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.3/jackson-annotations-2.10.3.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-spi/2.9.2/springfox-spi-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-core/2.9.2/springfox-core-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-schema/2.9.2/springfox-schema-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-swagger-common/2.9.2/springfox-swagger-common-2.9.2.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-spring-web/2.9.2/springfox-spring-web-2.9.2.jar:/Users/waaronwaddell/.m2/repository/com/google/guava/guava/20.0/guava-20.0.jar:/Users/waaronwaddell/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/Users/waaronwaddell/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/waaronwaddell/.m2/repository/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/plugin/spring-plugin-metadata/1.2.0.RELEASE/spring-plugin-metadata-1.2.0.RELEASE.jar:/Users/waaronwaddell/.m2/repository/io/springfox/springfox-swagger-ui/2.9.2/springfox-swagger-ui-2.9.2.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-starter-test/2.2.6.RELEASE/spring-boot-starter-test-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-test/2.2.6.RELEASE/spring-boot-test-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/2.2.6.RELEASE/spring-boot-test-autoconfigure-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar:/Users/waaronwaddell/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar:/Users/waaronwaddell/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar:/Users/waaronwaddell/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar:/Users/waaronwaddell/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter/5.5.2/junit-jupiter-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/waaronwaddell/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/waaronwaddell/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.2/junit-jupiter-params-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar:/Users/waaronwaddell/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:/Users/waaronwaddell/.m2/repository/org/mockito/mockito-junit-jupiter/3.1.0/mockito-junit-jupiter-3.1.0.jar:/Users/waaronwaddell/.m2/repository/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar:/Users/waaronwaddell/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:/Users/waaronwaddell/.m2/repository/org/mockito/mockito-core/3.1.0/mockito-core-3.1.0.jar:/Users/waaronwaddell/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.8/byte-buddy-agent-1.10.8.jar:/Users/waaronwaddell/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/Users/waaronwaddell/.m2/repository/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar:/Users/waaronwaddell/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-core/5.2.5.RELEASE/spring-core-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-jcl/5.2.5.RELEASE/spring-jcl-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/springframework/spring-test/5.2.5.RELEASE/spring-test-5.2.5.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/xmlunit/xmlunit-core/2.6.4/xmlunit-core-2.6.4.jar:/Users/waaronwaddell/.m2/repository/org/springframework/boot/spring-boot-configuration-processor/2.2.6.RELEASE/spring-boot-configuration-processor-2.2.6.RELEASE.jar:/Users/waaronwaddell/.m2/repository/org/hibernate/hibernate-ehcache/5.4.12.Final/hibernate-ehcache-5.4.12.Final.jar:/Users/waaronwaddell/.m2/repository/org/jboss/logging/jboss-logging/3.4.1.Final/jboss-logging-3.4.1.Final.jar:/Users/waaronwaddell/.m2/repository/net/sf/ehcache/ehcache/2.10.6/ehcache-2.10.6.jar:/Users/waaronwaddell/.m2/repository/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar:/Users/waaronwaddell/.m2/repository/commons-pool/commons-pool/1.6/commons-pool-1.6.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/waaronwaddell"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2020-04-14"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-14.0.1.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="style.color" value="always"/>
+    <property name="basedir" value="/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public/target/surefire/surefirebooter1253495891782149255.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="14.0.1+7"/>
+    <property name="user.name" value="waaronwaddell"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="10.15.5"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/waaronwaddell/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/v1/7ssr3hdd2_qfv951y30bn48w0000gn/T/"/>
+    <property name="java.version" value="14.0.1"/>
+    <property name="user.dir" value="/Users/waaronwaddell/Documents/GitHub/Public/EDI/EDI-Public"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.library.path" value="/Users/waaronwaddell/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="14.0.1+7"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="58.0"/>
+  </properties>
+  <testcase name="testGetOrder" classname="com.shaw.ediorderservices.service.legacy.LegacyServiceTest" time="0.013">
+    <error message="Index 0 out of bounds for length 0" type="java.lang.IndexOutOfBoundsException">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at com.shaw.ediorderservices.service.legacy.LegacyServiceTest.testGetOrder(LegacyServiceTest.java:82)
+</error>
+    <system-out><![CDATA[2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set eventInfo -> szlvrjeospWXrUH
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohStatusCode -> G
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consStatusMsg -> ReJuMdrWJYLfjvaGexNS
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phone -> RznWKnIVaYSoxyz
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set explodeFlag -> u
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onNote -> bPhildWAsquYqdvvhYKh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set contractUsageInd -> W
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set fobPoint -> Te
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onlineType -> o
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set province -> UruHToluIqkGOPoZJNC
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set crossDockCenter -> PozWuCDRAv
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set storeName -> IYOUtQZBpXDYXAEgmEEN
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set frtCode -> i
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderDate -> 1990-10-21
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custDept -> nnrKU
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsNetDays -> Qfd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> YXKgUEAsRrDolDgFLskk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipComplete -> H
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderLoc -> hg
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngLid -> srXzcLTa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsTypeFlag -> Iy
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateValue -> 1984-06-25
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set purchasedBy -> uzStOGqNqECzSRXjzjqS
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set totalBindingFt -> 7618044.543709941
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngTimestamp -> 1970-01-01T02:40:37
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPartCompInd -> Y
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateQualifier -> Kvw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set srvLevel -> Rt
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage1 -> lDgXAdHvuNfpCGXWCCcx
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set commCust -> DVRgqTo
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipInstruction -> OvGFEisLohAsuokxeVfi
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPt -> nX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set statusCode -> W
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set rcdCode -> c
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerCode -> UC
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct1 -> dEODQZGeAIEeZDvOqMBY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set stdCarrAlphaInd -> yYBj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage2 -> PNkkrYyBzBMmcTkpvdzc
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set flag -> 280796
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct2 -> eRsRMnXNbkidSAmiHElj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderMerCost -> 3468569.4170560124
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set hostAlertFlag -> Z
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct3 -> ndiwrUxQIwofIFiSphja
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByCutOffDt -> 1975-02-15
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dunsNbr -> yITrCdGhDHciVAo
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set truncFlag -> z
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> JrYNKjG
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorCode -> Hby
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderingSystem -> xu
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set receivedTimestamp -> 1970-01-01T01:42:23
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerRefNbr -> ORe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> yAwDTSzpKMs
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorDescription -> MWnJAnBUnoowYjhogqWa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerSidemark -> fVcDAUsdPPvnODTPLDIz
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phoneNumber -> jjhXMUIFEvV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorTimestamp -> 1970-01-01T02:04:32
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set store -> kFHSclGhJW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custPmtMeth -> SdGbWBfZDIerSaYgAqib
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poControl -> UsSgn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set deliveryDate -> 1984-08-21
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custSpInst -> ewjqeHqNDYDIcSSNRgGQ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set refTcNbr -> DjlTCySXiJIhGXFnoAOO
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateValue -> 1971-08-23
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set delvCutOffDt -> 1973-08-27
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custWhNbr -> mOnu
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateQualifier -> Fpn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set divDesc -> CYPvgvvYNZMmwnIHKzMV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shawOrderNumber -> iVMiVR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set beg -> HDVvB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesCheckNumber -> KLZoAnFZTNPZxcnlqffk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poNumber -> zSSKXBxMPISuwNrvzzzw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set nbDate -> 1981-03-13
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct4 -> RFTMAAPusRznHjBLSOUG
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesReqCode -> Hq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByDate -> 1978-05-04
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set newStoreInd -> a
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> wa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set sellCo -> TD
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToState -> AF
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set noAsnFlag -> W
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set seqNbr -> 707388
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set country -> pIFOkkMMdOJLZsXgVUN
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poType -> RCtIq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohCancelDateValue -> 1975-07-19
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipCancelDate -> 1992-09-11
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set reserveOrderInd -> J
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cnCity -> mprYWOOmDtcSIgBdxzU
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set inputMethod -> XKEvJszFYY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set returnMsg -> wKMkMjmBwcUgRKSnfnXW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTotal -> 9318101.853922734
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set markForStore -> reJEORHBQy
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set routeByDate -> 1992-06-19
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set destCode -> pW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderType -> I
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poTypeSuffix -> sEhBFpEKkl
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set mediaEventCode -> fh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set agreementNumber -> TxbcPddwsbAbQsP
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderTypeDesc -> JjVYOdxpGaUOFVS
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToStore -> IZIFuJAxbI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderWeight -> 6061203.941040397
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialPoNo -> HrEVwMZOnzPmmvCPDyCC
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set bsStoreNbr -> BGwoxzHmFY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poQual -> Mc
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetHand -> 9523618.40205869
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set psMsg -> hYXZXITveZUyqMVfxKKs
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> jSdrZYWlhWtHmMLgIqSY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> kZRshFi
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acctContact -> YdHFEltWAZKdlLqKOfcV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set assignedAgent -> EIPuQGkp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> YNLEIVogQbWCgFNzMtk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set userId -> zCuZydPP
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetSh -> 8105764.415051292
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cancelDateQualifier -> USE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acknowlegeOrdInd -> O
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authRep -> ZFHbEpjuOBDinpoAahVs
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set vendorNo -> PwGwWKYJACoObeu
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> ogJbVsgDIftbjczXjVIA
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addrKey -> 892834
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authorizationNo -> PrXasaTWdh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set wcStore -> cQoTfMYqMr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set carrierCode -> ss
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTax -> 1398564.723269191
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipToAddress -> LegacyShipToAddress [addressLine1=ogJbVsgDIftbjczXjVIA, addressLine2=jSdrZYWlhWtHmMLgIqSY, city=YNLEIVogQbWCgFNzMtk, cnCity=mprYWOOmDtcSIgBdxzU, country=pIFOkkMMdOJLZsXgVUN, custNbr=kZRshFi, destCode=pW, flag=280796, name=YXKgUEAsRrDolDgFLskk, phone=RznWKnIVaYSoxyz, province=UruHToluIqkGOPoZJNC, state=wa, store=kFHSclGhJW, truncFlag=z, zip=yAwDTSzpKMs]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cbCutLength -> 3516501.0055698045
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cphone -> oexlcTPhLucjEKJCCzNA
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> UsdafFlvwDmVWvFmLWzl
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> FDIxYQuDIZraMCfftKWa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ccountry -> UlMOfcMtQYYxfNHjPMvb
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> JvdhswlHqzXDXwPafJBt
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> gykqZUVqOZrePjTPjma
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> nB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> jokFShbXnEQBdLXMzZSs
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> MEOLEgtzhORjhUdKvfMI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cprovince -> ZHVERrSqZCqiZMTTuhSo
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerPoDateValue -> 1975-01-14
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> ZUmorhVaTnhETnkVObty
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> mJvJerZeW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerShipFlg -> g
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set accountNbr -> EIIbiUtxudgWWqriGSow
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name2 -> cFjfnzYWbxhJaTGOhbIy
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpcountry -> TpQWMgIvDVWrbpSeZXyT
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> at
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerAddress -> LegacyConsumerAddress [cprovince=ZHVERrSqZCqiZMTTuhSo, ccountry=UlMOfcMtQYYxfNHjPMvb, cphone=oexlcTPhLucjEKJCCzNA, addressLine1=MEOLEgtzhORjhUdKvfMI, addressLine2=FDIxYQuDIZraMCfftKWa, city=gykqZUVqOZrePjTPjma, name=jokFShbXnEQBdLXMzZSs, consumerPoDateValue=1975-01-14, consumerShipFlg=g, state=nB, zip=mJvJerZeW]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> CFVuEXfxFVaApNkR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> cWKLOaQMWKsMTpdgylsf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billFlag -> r
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpprovince -> xidqFGKDLTuBLvlSbTaE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpphone -> RGqnJNyfnXriPQeEqDhw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set thirdPartyAddress -> LegacyThirdPartyAddress [tpprovince=xidqFGKDLTuBLvlSbTaE, tpcountry=TpQWMgIvDVWrbpSeZXyT, tpphone=RGqnJNyfnXriPQeEqDhw, addressLine1=JvdhswlHqzXDXwPafJBt, addressLine2=cWKLOaQMWKsMTpdgylsf, accountNbr=EIIbiUtxudgWWqriGSow, billFlag=r, city=UsdafFlvwDmVWvFmLWzl, name=ZUmorhVaTnhETnkVObty, name2=cFjfnzYWbxhJaTGOhbIy, state=at, zip=CFVuEXfxFVaApNkR]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dates -> null
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set lines -> null
+2020-06-19 13:28:30 DEBUG [MockHelper.java:99] EdiOrderHeader [legacyOrderNumber=null, acctContact=YdHFEltWAZKdlLqKOfcV, acknowlegeOrdInd=O, addrKey=892834, agreementNumber=TxbcPddwsbAbQsP, assignedAgent=EIPuQGkp, authRep=ZFHbEpjuOBDinpoAahVs, authorizationNo=PrXasaTWdh, beg=HDVvB, billToState=AF, billToStore=IZIFuJAxbI, bsStoreNbr=BGwoxzHmFY, cancelDateQualifier=USE, carrierCode=ss, cbCutLength=3516501.0055698045, chngLid=srXzcLTa, chngTimestamp=1970-01-01T02:40:37, commCust=DVRgqTo, consStatusMsg=ReJuMdrWJYLfjvaGexNS, contractUsageInd=W, crossDockCenter=PozWuCDRAv, custDept=nnrKU, custPmtMeth=SdGbWBfZDIerSaYgAqib, custSpInst=ewjqeHqNDYDIcSSNRgGQ, custWhNbr=mOnu, customerCode=UC, custNbr=JrYNKjG, customerRefNbr=ORe, customerSidemark=fVcDAUsdPPvnODTPLDIz, deliveryDate=1984-08-21, delvCutOffDt=1973-08-27, divDesc=CYPvgvvYNZMmwnIHKzMV, dunsNbr=yITrCdGhDHciVAo, errorCode=Hby, errorDescription=MWnJAnBUnoowYjhogqWa, errorTimestamp=1970-01-01T02:04:32, eventInfo=szlvrjeospWXrUH, explodeFlag=u, fobPoint=Te, frtCode=i, giftMessage1=lDgXAdHvuNfpCGXWCCcx, giftMessage2=PNkkrYyBzBMmcTkpvdzc, hostAlertFlag=Z, inputMethod=XKEvJszFYY, markForStore=reJEORHBQy, mediaEventCode=fh, nbDate=1981-03-13, newStoreInd=a, noAsnFlag=W, ohCancelDateValue=1975-07-19, ohStatusCode=G, onNote=bPhildWAsquYqdvvhYKh, onlineType=o, orderDate=1990-10-21, orderLoc=01, orderMerCost=3468569.4170560124, shawOrderNumber=iVMiVR, orderRetHand=9523618.40205869, orderRetSh=8105764.415051292, orderRetTax=1398564.723269191, orderRetTotal=9318101.853922734, orderType=S, orderTypeDesc=SAMPLES, orderWeight=6061203.941040397, orderingSystem=xu, phoneNumber=jjhXMUIFEvV, poControl=UsSgn, poDateValue=1971-08-23, poDateQualifier=Fpn, poNumber=zSSKXBxMPISuwNrvzzzw, poQual=Mc, poType=RCtIq, poTypeSuffix=sEhBFpEKkl, psMsg=hYXZXITveZUyqMVfxKKs, purchasedBy=uzStOGqNqECzSRXjzjqS, rcdCode=c, receivedTimestamp=1970-01-01T01:42:23, refTcNbr=DjlTCySXiJIhGXFnoAOO, reserveOrderInd=J, returnMsg=wKMkMjmBwcUgRKSnfnXW, routeByDate=1992-06-19, salesCheckNumber=KLZoAnFZTNPZxcnlqffk, salesReqCode=Hq, sellCo=TD, seqNbr=707388, shipByCutOffDt=1975-02-15, shipByDate=1978-05-04, shipCancelDate=1992-09-11, shipComplete=H, shipDateValue=1984-06-25, shipDateQualifier=Kvw, shipInstruction=OvGFEisLohAsuokxeVfi, shipPartCompInd=Y, shipPt=nX, specialInstruct1=dEODQZGeAIEeZDvOqMBY, specialInstruct2=eRsRMnXNbkidSAmiHElj, specialInstruct3=ndiwrUxQIwofIFiSphja, specialInstruct4=RFTMAAPusRznHjBLSOUG, specialPoNo=HrEVwMZOnzPmmvCPDyCC, srvLevel=Rt, statusCode=W, stdCarrAlphaInd=yYBj, storeName=IYOUtQZBpXDYXAEgmEEN, termsNetDays=Qfd, termsTypeFlag=Iy, totalBindingFt=7618044.543709941, userId=zCuZydPP, vendorNo=PwGwWKYJACoObeu, wcStore=cQoTfMYqMr, consumerAddress=LegacyConsumerAddress [cprovince=ZHVERrSqZCqiZMTTuhSo, ccountry=UlMOfcMtQYYxfNHjPMvb, cphone=oexlcTPhLucjEKJCCzNA, addressLine1=MEOLEgtzhORjhUdKvfMI, addressLine2=FDIxYQuDIZraMCfftKWa, city=gykqZUVqOZrePjTPjma, name=jokFShbXnEQBdLXMzZSs, consumerPoDateValue=1975-01-14, consumerShipFlg=g, state=nB, zip=mJvJerZeW], shipToAddress=LegacyShipToAddress [addressLine1=ogJbVsgDIftbjczXjVIA, addressLine2=jSdrZYWlhWtHmMLgIqSY, city=YNLEIVogQbWCgFNzMtk, cnCity=mprYWOOmDtcSIgBdxzU, country=pIFOkkMMdOJLZsXgVUN, custNbr=kZRshFi, destCode=pW, flag=280796, name=YXKgUEAsRrDolDgFLskk, phone=RznWKnIVaYSoxyz, province=UruHToluIqkGOPoZJNC, state=wa, store=kFHSclGhJW, truncFlag=z, zip=yAwDTSzpKMs], thirdPartyAddress=LegacyThirdPartyAddress [tpprovince=xidqFGKDLTuBLvlSbTaE, tpcountry=TpQWMgIvDVWrbpSeZXyT, tpphone=RGqnJNyfnXriPQeEqDhw, addressLine1=JvdhswlHqzXDXwPafJBt, addressLine2=cWKLOaQMWKsMTpdgylsf, accountNbr=EIIbiUtxudgWWqriGSow, billFlag=r, city=UsdafFlvwDmVWvFmLWzl, name=ZUmorhVaTnhETnkVObty, name2=cFjfnzYWbxhJaTGOhbIy, state=at, zip=CFVuEXfxFVaApNkR], dates=null, lines=null]
+Hibernate: call next value for SHXP.EDI_ORDER_NBR
+Hibernate: insert into EDI_ORDER_HEADER (ACCT_CONTACT, ACKNOWLEGE_ORD_IND, ADDR_KEY, AGREEMENT_NUMBER, ASSIGNED_AGENT, AUTH_REP, AUTHORIZATION_NO, beg, BILL_TO_STATE, BILL_TO_STORE, BS_STORE_NBR, CANCEL_DATE_QUAL, CARRIER_CODE, CB_CUT_LENGTH, CHNG_LID, CHNG_TIMESTAMP, COMM_CUST, CONS_STATUS_MSG, CONSUMER_ADDRESS, CONSUMER_ADDRESS_2, CONSUMER_CITY, CONSUMER_PO_DATE, CONSUMER_SHIP_FLG, CONSUMER_NAME, CONSUMER_STATE, CONSUMER_ZIP, CONTRACT_USAGE_IND, CROSS_DOCK_CENTER, CUST_DEPT, CUSTOMER_NUMBER, CUST_PMT_METH, CUST_SP_INST, CUST_WH_NBR, CUSTOMER_CODE, CUSTOMER_REF_NBR, CUSTOMER_SIDEMARK, DELIVERY_DATE, DELV_CUT_OFF_DT, DIV_DESC, DUNS_NBR, ERROR_CODE, ERROR_DESCRIPTION, ERROR_TIMESTAMP, EVENT_INFO, EXPLODE_FLAG, FOB_POINT, FRT_CODE, GIFT_MESSAGE_1, GIFT_MESSAGE_2, HOST_ALERT_FLAG, INPUT_METHOD, MARK_FOR_STORE, MEDIA_EVENT_CODE, NB_DATE, NEW_STORE_IND, NO_ASN_FLAG, OH_CANCEL_DATE, OH_STATUS_CODE, ON_NOTE, ONLINE_TYPE, ORDER_DATE, ORDER_LOC, ORDER_MER_COST, ORDER_RET_HAND, ORDER_RET_SH, ORDER_RET_TAX, ORDER_RET_TOTAL, ORDER_TYPE, ORDER_TYPE_DESC, ORDER_WEIGHT, ORDERING_SYSTEM, PHONE_NUMBER, PO_CONTROL, PO_DATE_QUAL, PO_DATE, PO_NUMBER, PO_QUAL, PO_TYPE, PO_TYPE_SUFFIX, PS_MSG, PURCHASED_BY, RCD_CODE, RECEIVED_TIMESTAMP, REF_TC_NBR, RESERVE_ORDER_IND, RETURN_MSG, ROUTE_BY_DATE, SALES_CHECK_NUMBER, SALES_REQ_CODE, SELL_CO, SEQ_NBR, ORDER_NUMBER, SHIP_BY_CUT_OFF_DT, SHIP_BY_DATE, SHIP_CANCEL_DATE, SHIP_COMPLETE, SHIP_DATE_QUAL, SHIP_DATE, SHIP_INSTRUCTION, SHIP_PART_COMP_IND, SHIP_PT, SHIP_TO_ADDRESS_1, SHIP_TO_ADDRESS_2, SHIP_TO_CITY, SHIP_TO_CN_CITY, SHIP_TO_COUNTRY, SHIP_TO_CUST_NBR, SHIP_TO_DEST_COD, SHIP_TO_FLAG, SHIP_TO_NAME, SHIP_TO_PHONE, SHIP_TO_PROVENCE, SHIP_TO_STATE, SHIP_TO_STORE, SHIP_TO_TRUNC_FLG, SHIP_TO_ZIP, SPECIAL_INSTRUCT_1, SPECIAL_INSTRUCT_2, SPECIAL_INSTRUCT_3, SPECIAL_INSTRUCT_4, SPECIAL_PO_NO, SRV_LEVEL, STATUS_CODE, STD_CARR_ALPHA_IND, STORE_NAME, TERMS_NET_DAYS, TERMS_TYPE_FLAG, THIRD_PARTY_ACCT_NBR, THIRD_PARTY_ADDR_1, THIRD_PARTY_ADDR_2, THIRD_PARTY_BILL_FLAG, THIRD_PARTY_CITY, THIRD_PARTY_NAME, THIRD_PARTY_NAME_2, THIRD_PARTY_STATE, THIRD_PARTY_ZIP, TOTAL_BINDING_FT, USER_ID, VENDOR_NO, WC_STORE, EDI_ORDER_NUMBER) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [VARCHAR] - [YdHFEltWAZKdlLqKOfcV]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [2] as [VARCHAR] - [O]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [3] as [INTEGER] - [892834]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [4] as [VARCHAR] - [TxbcPddwsbAbQsP]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [5] as [VARCHAR] - [EIPuQGkp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [6] as [VARCHAR] - [ZFHbEpjuOBDinpoAahVs]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [7] as [VARCHAR] - [PrXasaTWdh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [8] as [VARCHAR] - [HDVvB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [9] as [VARCHAR] - [AF]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [10] as [VARCHAR] - [IZIFuJAxbI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [11] as [VARCHAR] - [BGwoxzHmFY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [12] as [VARCHAR] - [USE]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [13] as [VARCHAR] - [ss]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [14] as [DOUBLE] - [3516501.0055698045]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [15] as [VARCHAR] - [srXzcLTa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [16] as [TIMESTAMP] - [1970-01-01T02:40:37]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [17] as [VARCHAR] - [DVRgqTo]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [18] as [VARCHAR] - [ReJuMdrWJYLfjvaGexNS]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [19] as [VARCHAR] - [MEOLEgtzhORjhUdKvfMI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [20] as [VARCHAR] - [FDIxYQuDIZraMCfftKWa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [21] as [VARCHAR] - [gykqZUVqOZrePjTPjma]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [22] as [DATE] - [1975-01-14]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [23] as [VARCHAR] - [g]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [24] as [VARCHAR] - [jokFShbXnEQBdLXMzZSs]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [25] as [VARCHAR] - [nB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [26] as [VARCHAR] - [mJvJerZeW]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [27] as [VARCHAR] - [W]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [28] as [VARCHAR] - [PozWuCDRAv]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [29] as [VARCHAR] - [nnrKU]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [30] as [VARCHAR] - [JrYNKjG]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [31] as [VARCHAR] - [SdGbWBfZDIerSaYgAqib]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [32] as [VARCHAR] - [ewjqeHqNDYDIcSSNRgGQ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [33] as [VARCHAR] - [mOnu]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [34] as [VARCHAR] - [UC]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [35] as [VARCHAR] - [ORe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [36] as [VARCHAR] - [fVcDAUsdPPvnODTPLDIz]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [37] as [DATE] - [1984-08-21]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [38] as [DATE] - [1973-08-27]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [39] as [VARCHAR] - [CYPvgvvYNZMmwnIHKzMV]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [40] as [VARCHAR] - [yITrCdGhDHciVAo]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [41] as [VARCHAR] - [Hby]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [42] as [VARCHAR] - [MWnJAnBUnoowYjhogqWa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [43] as [TIMESTAMP] - [1970-01-01T02:04:32]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [44] as [VARCHAR] - [szlvrjeospWXrUH]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [45] as [VARCHAR] - [u]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [46] as [VARCHAR] - [Te]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [47] as [VARCHAR] - [i]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [48] as [VARCHAR] - [lDgXAdHvuNfpCGXWCCcx]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [49] as [VARCHAR] - [PNkkrYyBzBMmcTkpvdzc]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [50] as [VARCHAR] - [Z]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [51] as [VARCHAR] - [XKEvJszFYY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [52] as [VARCHAR] - [reJEORHBQy]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [53] as [VARCHAR] - [fh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [54] as [DATE] - [1981-03-13]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [55] as [VARCHAR] - [a]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [56] as [VARCHAR] - [W]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [57] as [DATE] - [1975-07-19]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [58] as [VARCHAR] - [G]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [59] as [VARCHAR] - [bPhildWAsquYqdvvhYKh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [60] as [VARCHAR] - [o]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [61] as [DATE] - [1990-10-21]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [62] as [VARCHAR] - [01]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [63] as [DOUBLE] - [3468569.4170560124]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [64] as [DOUBLE] - [9523618.40205869]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [65] as [DOUBLE] - [8105764.415051292]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [66] as [DOUBLE] - [1398564.723269191]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [67] as [DOUBLE] - [9318101.853922734]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [68] as [VARCHAR] - [S]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [69] as [VARCHAR] - [SAMPLES]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [70] as [DOUBLE] - [6061203.941040397]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [71] as [VARCHAR] - [xu]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [72] as [VARCHAR] - [jjhXMUIFEvV]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [73] as [VARCHAR] - [UsSgn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [74] as [VARCHAR] - [Fpn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [75] as [DATE] - [1971-08-23]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [76] as [VARCHAR] - [zSSKXBxMPISuwNrvzzzw]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [77] as [VARCHAR] - [Mc]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [78] as [VARCHAR] - [RCtIq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [79] as [VARCHAR] - [sEhBFpEKkl]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [80] as [VARCHAR] - [hYXZXITveZUyqMVfxKKs]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [81] as [VARCHAR] - [uzStOGqNqECzSRXjzjqS]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [82] as [VARCHAR] - [c]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [83] as [TIMESTAMP] - [1970-01-01T01:42:23]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [84] as [VARCHAR] - [DjlTCySXiJIhGXFnoAOO]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [85] as [VARCHAR] - [J]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [86] as [VARCHAR] - [wKMkMjmBwcUgRKSnfnXW]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [87] as [DATE] - [1992-06-19]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [88] as [VARCHAR] - [KLZoAnFZTNPZxcnlqffk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [89] as [VARCHAR] - [Hq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [90] as [VARCHAR] - [TD]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [91] as [INTEGER] - [707388]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [92] as [VARCHAR] - [iVMiVR]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [93] as [DATE] - [1975-02-15]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [94] as [DATE] - [1978-05-04]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [95] as [DATE] - [1992-09-11]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [96] as [VARCHAR] - [H]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [97] as [VARCHAR] - [Kvw]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [98] as [DATE] - [1984-06-25]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [99] as [VARCHAR] - [OvGFEisLohAsuokxeVfi]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [100] as [VARCHAR] - [Y]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [101] as [VARCHAR] - [nX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [102] as [VARCHAR] - [ogJbVsgDIftbjczXjVIA]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [103] as [VARCHAR] - [jSdrZYWlhWtHmMLgIqSY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [104] as [VARCHAR] - [YNLEIVogQbWCgFNzMtk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [105] as [VARCHAR] - [mprYWOOmDtcSIgBdxzU]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [106] as [VARCHAR] - [pIFOkkMMdOJLZsXgVUN]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [107] as [VARCHAR] - [kZRshFi]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [108] as [VARCHAR] - [pW]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [109] as [INTEGER] - [280796]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [110] as [VARCHAR] - [YXKgUEAsRrDolDgFLskk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [111] as [VARCHAR] - [RznWKnIVaYSoxyz]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [112] as [VARCHAR] - [UruHToluIqkGOPoZJNC]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [113] as [VARCHAR] - [wa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [114] as [VARCHAR] - [kFHSclGhJW]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [115] as [VARCHAR] - [z]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [116] as [VARCHAR] - [yAwDTSzpKMs]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [117] as [VARCHAR] - [dEODQZGeAIEeZDvOqMBY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [118] as [VARCHAR] - [eRsRMnXNbkidSAmiHElj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [119] as [VARCHAR] - [ndiwrUxQIwofIFiSphja]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [120] as [VARCHAR] - [RFTMAAPusRznHjBLSOUG]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [121] as [VARCHAR] - [HrEVwMZOnzPmmvCPDyCC]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [122] as [VARCHAR] - [Rt]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [123] as [VARCHAR] - [W]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [124] as [VARCHAR] - [yYBj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [125] as [VARCHAR] - [IYOUtQZBpXDYXAEgmEEN]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [126] as [VARCHAR] - [Qfd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [127] as [VARCHAR] - [Iy]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [128] as [VARCHAR] - [EIIbiUtxudgWWqriGSow]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [129] as [VARCHAR] - [JvdhswlHqzXDXwPafJBt]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [130] as [VARCHAR] - [cWKLOaQMWKsMTpdgylsf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [131] as [VARCHAR] - [r]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [132] as [VARCHAR] - [UsdafFlvwDmVWvFmLWzl]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [133] as [VARCHAR] - [ZUmorhVaTnhETnkVObty]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [134] as [VARCHAR] - [cFjfnzYWbxhJaTGOhbIy]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [135] as [VARCHAR] - [at]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [136] as [VARCHAR] - [CFVuEXfxFVaApNkR]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [137] as [DOUBLE] - [7618044.543709941]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [138] as [VARCHAR] - [zCuZydPP]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [139] as [VARCHAR] - [PwGwWKYJACoObeu]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [140] as [VARCHAR] - [cQoTfMYqMr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [141] as [BIGINT] - [23]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set eventInfo -> guKIJmKjyGLokhk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerCode -> nB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipComplete -> b
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set beg -> UCjug
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consStatusMsg -> XJsKacdHDtRMtFkIKRFd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set storeName -> nEWCOBawLVubEkljJtAG
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set purchasedBy -> trYNQsDsLGjySpIFylGX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set explodeFlag -> p
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToState -> Zn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set contractUsageInd -> L
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> wQpfvks
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToStore -> dTYLURojtI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsNetDays -> Iub
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set crossDockCenter -> rjRwZRPikj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPartCompInd -> o
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set rcdCode -> n
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set bsStoreNbr -> bnLakGwWWH
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custDept -> pDtAu
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateValue -> 1985-05-06
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsTypeFlag -> dv
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cancelDateQualifier -> NBe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set fobPoint -> qg
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateQualifier -> xaU
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set totalBindingFt -> 2194646.983496477
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerRefNbr -> dvz
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set receivedTimestamp -> 1970-01-01T00:00:55
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipInstruction -> aGVFbkFQAZTIyisrozhv
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPt -> Mr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set srvLevel -> OZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByCutOffDt -> 1972-12-28
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerSidemark -> PZTncutgNclPjwyrIEfy
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngLid -> nWIzmTof
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByDate -> 1988-06-06
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set carrierCode -> Jf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set refTcNbr -> gtYybgqcIUNgnxLqESoj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set frtCode -> z
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custPmtMeth -> hVHoqxwdypeeDNDidqMM
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngTimestamp -> 1970-01-01T02:45:54
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cbCutLength -> 362107.39592807746
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct1 -> sOplfHSPKXFFoSdHIAzZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custSpInst -> GwllbrPGerPhdaHooUAo
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set commCust -> fARrWFF
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set statusCode -> j
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set agreementNumber -> kGyiTXOwoTKrSre
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custWhNbr -> kJhw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipCancelDate -> 1988-05-18
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohStatusCode -> E
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage1 -> QHzOUYFofyeOudXhERdx
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set stdCarrAlphaInd -> fhdY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set assignedAgent -> TroIWkQZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poType -> TmkmP
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set nbDate -> 1990-04-12
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onNote -> YLAjICRWhgoJDSYgCWtz
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage2 -> MobhyyEabdkgOJCsQspm
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderDate -> 1988-10-01
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authRep -> qLCcVfkfcxBIrBOuCgLs
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set newStoreInd -> s
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onlineType -> K
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set hostAlertFlag -> C
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authorizationNo -> XWcqjpANdR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set noAsnFlag -> W
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dunsNbr -> KCiBrRnInLEnDoV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phone -> FCfvmtNelJugvoL
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poTypeSuffix -> hallKOcAkk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderingSystem -> qn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acctContact -> lAwcBgfnJcvqBILbAxJc
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohCancelDateValue -> 1993-11-10
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorCode -> CrF
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set province -> PgOURfnHdTKAhojnwHp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set inputMethod -> rqwfkZZsPd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorDescription -> huieJOLXiwbMXHgTXeIU
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct2 -> OvQKwBVokTzRSxrnjuFr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderLoc -> uV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorTimestamp -> 1970-01-01T02:10:54
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> oxcEnzikUZPvImLjIcXZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set psMsg -> vMJTjcjqaUBrUmfSfYbm
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phoneNumber -> ixrWOvSNyEd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set deliveryDate -> 1977-01-14
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acknowlegeOrdInd -> r
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set markForStore -> uUZlQTCkVM
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set flag -> 376813
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poControl -> FYaJr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set delvCutOffDt -> 1994-03-23
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct3 -> uHPyMXwyhHqrvpHUKAnk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateValue -> 1985-12-10
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addrKey -> 829300
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set truncFlag -> l
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set divDesc -> AMUihHIwvFcLmhOdhXRd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesCheckNumber -> IirNLUMyhatKAQTzaCEr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct4 -> woXmyrTHxgdvqkHmkvSI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderMerCost -> 6880532.806912319
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set mediaEventCode -> em
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateQualifier -> Crc
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set userId -> DydCzSpA
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialPoNo -> DdwMhYdLVbQgBgmhTzsp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shawOrderNumber -> gcDufw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTotal -> 5957180.746847687
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set vendorNo -> tBWSCRRqjQVtMPk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poNumber -> wCHQtBnlXYnewsOkwFCM
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesReqCode -> on
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> VirjQOEnkFuhSOHJnwFM
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set country -> rCpRPYzkfFwVCTLZbhd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderType -> f
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set wcStore -> UDrSPSAwEe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poQual -> Wb
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> GISHYgYIYEweOSxdYyY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cnCity -> tVziHmIURFGhGsTGNCR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set reserveOrderInd -> S
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> WjwMHkQaumoKiPbLsGYY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set destCode -> Gn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set returnMsg -> yjxNeQdnxHoUnFLRGpZm
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> BhUdpaztmlgEcHDHVhqM
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> biLPcktojdj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetHand -> 19184.772573793845
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set store -> WHyLKGsfdh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderTypeDesc -> vqaytdkTRTazsLf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetSh -> 3728924.545463818
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set sellCo -> CL
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> pqqayql
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cphone -> GMMzfNnDPSAWXbRZBLiW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderWeight -> 6170577.70343583
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTax -> 9317160.411372513
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerPoDateValue -> 1980-09-16
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cprovince -> bpGBtkaGJfzbAnqYiJmK
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> nZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> qh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> dFAlzVJMFEVOmWZigGkB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> wlXcAndosnGnLblQxZPK
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set routeByDate -> 1984-05-10
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipToAddress -> LegacyShipToAddress [addressLine1=WjwMHkQaumoKiPbLsGYY, addressLine2=VirjQOEnkFuhSOHJnwFM, city=GISHYgYIYEweOSxdYyY, cnCity=tVziHmIURFGhGsTGNCR, country=rCpRPYzkfFwVCTLZbhd, custNbr=pqqayql, destCode=Gn, flag=376813, name=oxcEnzikUZPvImLjIcXZ, phone=FCfvmtNelJugvoL, province=PgOURfnHdTKAhojnwHp, state=nZ, store=WHyLKGsfdh, truncFlag=l, zip=biLPcktojdj]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> DvBTYfYZS
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ccountry -> ZcEdOpGiTPNytbsnACYr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerShipFlg -> h
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> vJeLfEgvITSUyuqWKzf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set seqNbr -> 265899
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerAddress -> LegacyConsumerAddress [cprovince=bpGBtkaGJfzbAnqYiJmK, ccountry=ZcEdOpGiTPNytbsnACYr, cphone=GMMzfNnDPSAWXbRZBLiW, addressLine1=wlXcAndosnGnLblQxZPK, addressLine2=dFAlzVJMFEVOmWZigGkB, city=vJeLfEgvITSUyuqWKzf, name=BhUdpaztmlgEcHDHVhqM, consumerPoDateValue=1980-09-16, consumerShipFlg=h, state=qh, zip=DvBTYfYZS]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> CxOJwZtIBmQceDvjnxOK
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> pI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> sTErdDneeTykORtHQNWH
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billFlag -> z
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpcountry -> WuBAVFMhIPitmKAajspE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpprovince -> keYdLhvURtTbJPPJdTON
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> YFcGtCMBNLuTsSXAhztn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set accountNbr -> lggkvMfzQTnqYvwPoQMD
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpphone -> yNARjQSafjebdmjyoFsz
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> lQtpWQHEGqioVzHp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> xVourXHpYTIwJgldxRVI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name2 -> ILmdZSheenQKrPEQCIxJ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set thirdPartyAddress -> LegacyThirdPartyAddress [tpprovince=keYdLhvURtTbJPPJdTON, tpcountry=WuBAVFMhIPitmKAajspE, tpphone=yNARjQSafjebdmjyoFsz, addressLine1=CxOJwZtIBmQceDvjnxOK, addressLine2=sTErdDneeTykORtHQNWH, accountNbr=lggkvMfzQTnqYvwPoQMD, billFlag=z, city=YFcGtCMBNLuTsSXAhztn, name=xVourXHpYTIwJgldxRVI, name2=ILmdZSheenQKrPEQCIxJ, state=pI, zip=lQtpWQHEGqioVzHp]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dates -> null
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set lines -> null
+2020-06-19 13:28:30 DEBUG [MockHelper.java:99] EdiOrderHeader [legacyOrderNumber=null, acctContact=lAwcBgfnJcvqBILbAxJc, acknowlegeOrdInd=r, addrKey=829300, agreementNumber=kGyiTXOwoTKrSre, assignedAgent=TroIWkQZ, authRep=qLCcVfkfcxBIrBOuCgLs, authorizationNo=XWcqjpANdR, beg=UCjug, billToState=Zn, billToStore=dTYLURojtI, bsStoreNbr=bnLakGwWWH, cancelDateQualifier=NBe, carrierCode=Jf, cbCutLength=362107.39592807746, chngLid=nWIzmTof, chngTimestamp=1970-01-01T02:45:54, commCust=fARrWFF, consStatusMsg=XJsKacdHDtRMtFkIKRFd, contractUsageInd=L, crossDockCenter=rjRwZRPikj, custDept=pDtAu, custPmtMeth=hVHoqxwdypeeDNDidqMM, custSpInst=GwllbrPGerPhdaHooUAo, custWhNbr=kJhw, customerCode=nB, custNbr=wQpfvks, customerRefNbr=dvz, customerSidemark=PZTncutgNclPjwyrIEfy, deliveryDate=1977-01-14, delvCutOffDt=1994-03-23, divDesc=AMUihHIwvFcLmhOdhXRd, dunsNbr=KCiBrRnInLEnDoV, errorCode=CrF, errorDescription=huieJOLXiwbMXHgTXeIU, errorTimestamp=1970-01-01T02:10:54, eventInfo=guKIJmKjyGLokhk, explodeFlag=p, fobPoint=qg, frtCode=z, giftMessage1=QHzOUYFofyeOudXhERdx, giftMessage2=MobhyyEabdkgOJCsQspm, hostAlertFlag=C, inputMethod=rqwfkZZsPd, markForStore=uUZlQTCkVM, mediaEventCode=em, nbDate=1990-04-12, newStoreInd=s, noAsnFlag=W, ohCancelDateValue=1993-11-10, ohStatusCode=E, onNote=YLAjICRWhgoJDSYgCWtz, onlineType=K, orderDate=1988-10-01, orderLoc=01, orderMerCost=6880532.806912319, shawOrderNumber=gcDufw, orderRetHand=19184.772573793845, orderRetSh=3728924.545463818, orderRetTax=9317160.411372513, orderRetTotal=5957180.746847687, orderType=H, orderTypeDesc=HARDSURFACES, orderWeight=6170577.70343583, orderingSystem=qn, phoneNumber=ixrWOvSNyEd, poControl=FYaJr, poDateValue=1985-12-10, poDateQualifier=Crc, poNumber=wCHQtBnlXYnewsOkwFCM, poQual=Wb, poType=TmkmP, poTypeSuffix=hallKOcAkk, psMsg=vMJTjcjqaUBrUmfSfYbm, purchasedBy=trYNQsDsLGjySpIFylGX, rcdCode=n, receivedTimestamp=1970-01-01T00:00:55, refTcNbr=gtYybgqcIUNgnxLqESoj, reserveOrderInd=S, returnMsg=yjxNeQdnxHoUnFLRGpZm, routeByDate=1984-05-10, salesCheckNumber=IirNLUMyhatKAQTzaCEr, salesReqCode=on, sellCo=CL, seqNbr=265899, shipByCutOffDt=1972-12-28, shipByDate=1988-06-06, shipCancelDate=1988-05-18, shipComplete=b, shipDateValue=1985-05-06, shipDateQualifier=xaU, shipInstruction=aGVFbkFQAZTIyisrozhv, shipPartCompInd=o, shipPt=Mr, specialInstruct1=sOplfHSPKXFFoSdHIAzZ, specialInstruct2=OvQKwBVokTzRSxrnjuFr, specialInstruct3=uHPyMXwyhHqrvpHUKAnk, specialInstruct4=woXmyrTHxgdvqkHmkvSI, specialPoNo=DdwMhYdLVbQgBgmhTzsp, srvLevel=OZ, statusCode=j, stdCarrAlphaInd=fhdY, storeName=nEWCOBawLVubEkljJtAG, termsNetDays=Iub, termsTypeFlag=dv, totalBindingFt=2194646.983496477, userId=DydCzSpA, vendorNo=tBWSCRRqjQVtMPk, wcStore=UDrSPSAwEe, consumerAddress=LegacyConsumerAddress [cprovince=bpGBtkaGJfzbAnqYiJmK, ccountry=ZcEdOpGiTPNytbsnACYr, cphone=GMMzfNnDPSAWXbRZBLiW, addressLine1=wlXcAndosnGnLblQxZPK, addressLine2=dFAlzVJMFEVOmWZigGkB, city=vJeLfEgvITSUyuqWKzf, name=BhUdpaztmlgEcHDHVhqM, consumerPoDateValue=1980-09-16, consumerShipFlg=h, state=qh, zip=DvBTYfYZS], shipToAddress=LegacyShipToAddress [addressLine1=WjwMHkQaumoKiPbLsGYY, addressLine2=VirjQOEnkFuhSOHJnwFM, city=GISHYgYIYEweOSxdYyY, cnCity=tVziHmIURFGhGsTGNCR, country=rCpRPYzkfFwVCTLZbhd, custNbr=pqqayql, destCode=Gn, flag=376813, name=oxcEnzikUZPvImLjIcXZ, phone=FCfvmtNelJugvoL, province=PgOURfnHdTKAhojnwHp, state=nZ, store=WHyLKGsfdh, truncFlag=l, zip=biLPcktojdj], thirdPartyAddress=LegacyThirdPartyAddress [tpprovince=keYdLhvURtTbJPPJdTON, tpcountry=WuBAVFMhIPitmKAajspE, tpphone=yNARjQSafjebdmjyoFsz, addressLine1=CxOJwZtIBmQceDvjnxOK, addressLine2=sTErdDneeTykORtHQNWH, accountNbr=lggkvMfzQTnqYvwPoQMD, billFlag=z, city=YFcGtCMBNLuTsSXAhztn, name=xVourXHpYTIwJgldxRVI, name2=ILmdZSheenQKrPEQCIxJ, state=pI, zip=lQtpWQHEGqioVzHp], dates=null, lines=null]
+Hibernate: call next value for SHXP.EDI_ORDER_NBR
+Hibernate: insert into EDI_ORDER_HEADER (ACCT_CONTACT, ACKNOWLEGE_ORD_IND, ADDR_KEY, AGREEMENT_NUMBER, ASSIGNED_AGENT, AUTH_REP, AUTHORIZATION_NO, beg, BILL_TO_STATE, BILL_TO_STORE, BS_STORE_NBR, CANCEL_DATE_QUAL, CARRIER_CODE, CB_CUT_LENGTH, CHNG_LID, CHNG_TIMESTAMP, COMM_CUST, CONS_STATUS_MSG, CONSUMER_ADDRESS, CONSUMER_ADDRESS_2, CONSUMER_CITY, CONSUMER_PO_DATE, CONSUMER_SHIP_FLG, CONSUMER_NAME, CONSUMER_STATE, CONSUMER_ZIP, CONTRACT_USAGE_IND, CROSS_DOCK_CENTER, CUST_DEPT, CUSTOMER_NUMBER, CUST_PMT_METH, CUST_SP_INST, CUST_WH_NBR, CUSTOMER_CODE, CUSTOMER_REF_NBR, CUSTOMER_SIDEMARK, DELIVERY_DATE, DELV_CUT_OFF_DT, DIV_DESC, DUNS_NBR, ERROR_CODE, ERROR_DESCRIPTION, ERROR_TIMESTAMP, EVENT_INFO, EXPLODE_FLAG, FOB_POINT, FRT_CODE, GIFT_MESSAGE_1, GIFT_MESSAGE_2, HOST_ALERT_FLAG, INPUT_METHOD, MARK_FOR_STORE, MEDIA_EVENT_CODE, NB_DATE, NEW_STORE_IND, NO_ASN_FLAG, OH_CANCEL_DATE, OH_STATUS_CODE, ON_NOTE, ONLINE_TYPE, ORDER_DATE, ORDER_LOC, ORDER_MER_COST, ORDER_RET_HAND, ORDER_RET_SH, ORDER_RET_TAX, ORDER_RET_TOTAL, ORDER_TYPE, ORDER_TYPE_DESC, ORDER_WEIGHT, ORDERING_SYSTEM, PHONE_NUMBER, PO_CONTROL, PO_DATE_QUAL, PO_DATE, PO_NUMBER, PO_QUAL, PO_TYPE, PO_TYPE_SUFFIX, PS_MSG, PURCHASED_BY, RCD_CODE, RECEIVED_TIMESTAMP, REF_TC_NBR, RESERVE_ORDER_IND, RETURN_MSG, ROUTE_BY_DATE, SALES_CHECK_NUMBER, SALES_REQ_CODE, SELL_CO, SEQ_NBR, ORDER_NUMBER, SHIP_BY_CUT_OFF_DT, SHIP_BY_DATE, SHIP_CANCEL_DATE, SHIP_COMPLETE, SHIP_DATE_QUAL, SHIP_DATE, SHIP_INSTRUCTION, SHIP_PART_COMP_IND, SHIP_PT, SHIP_TO_ADDRESS_1, SHIP_TO_ADDRESS_2, SHIP_TO_CITY, SHIP_TO_CN_CITY, SHIP_TO_COUNTRY, SHIP_TO_CUST_NBR, SHIP_TO_DEST_COD, SHIP_TO_FLAG, SHIP_TO_NAME, SHIP_TO_PHONE, SHIP_TO_PROVENCE, SHIP_TO_STATE, SHIP_TO_STORE, SHIP_TO_TRUNC_FLG, SHIP_TO_ZIP, SPECIAL_INSTRUCT_1, SPECIAL_INSTRUCT_2, SPECIAL_INSTRUCT_3, SPECIAL_INSTRUCT_4, SPECIAL_PO_NO, SRV_LEVEL, STATUS_CODE, STD_CARR_ALPHA_IND, STORE_NAME, TERMS_NET_DAYS, TERMS_TYPE_FLAG, THIRD_PARTY_ACCT_NBR, THIRD_PARTY_ADDR_1, THIRD_PARTY_ADDR_2, THIRD_PARTY_BILL_FLAG, THIRD_PARTY_CITY, THIRD_PARTY_NAME, THIRD_PARTY_NAME_2, THIRD_PARTY_STATE, THIRD_PARTY_ZIP, TOTAL_BINDING_FT, USER_ID, VENDOR_NO, WC_STORE, EDI_ORDER_NUMBER) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [VARCHAR] - [lAwcBgfnJcvqBILbAxJc]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [2] as [VARCHAR] - [r]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [3] as [INTEGER] - [829300]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [4] as [VARCHAR] - [kGyiTXOwoTKrSre]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [5] as [VARCHAR] - [TroIWkQZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [6] as [VARCHAR] - [qLCcVfkfcxBIrBOuCgLs]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [7] as [VARCHAR] - [XWcqjpANdR]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [8] as [VARCHAR] - [UCjug]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [9] as [VARCHAR] - [Zn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [10] as [VARCHAR] - [dTYLURojtI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [11] as [VARCHAR] - [bnLakGwWWH]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [12] as [VARCHAR] - [NBe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [13] as [VARCHAR] - [Jf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [14] as [DOUBLE] - [362107.39592807746]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [15] as [VARCHAR] - [nWIzmTof]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [16] as [TIMESTAMP] - [1970-01-01T02:45:54]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [17] as [VARCHAR] - [fARrWFF]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [18] as [VARCHAR] - [XJsKacdHDtRMtFkIKRFd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [19] as [VARCHAR] - [wlXcAndosnGnLblQxZPK]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [20] as [VARCHAR] - [dFAlzVJMFEVOmWZigGkB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [21] as [VARCHAR] - [vJeLfEgvITSUyuqWKzf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [22] as [DATE] - [1980-09-16]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [23] as [VARCHAR] - [h]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [24] as [VARCHAR] - [BhUdpaztmlgEcHDHVhqM]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [25] as [VARCHAR] - [qh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [26] as [VARCHAR] - [DvBTYfYZS]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [27] as [VARCHAR] - [L]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [28] as [VARCHAR] - [rjRwZRPikj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [29] as [VARCHAR] - [pDtAu]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [30] as [VARCHAR] - [wQpfvks]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [31] as [VARCHAR] - [hVHoqxwdypeeDNDidqMM]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [32] as [VARCHAR] - [GwllbrPGerPhdaHooUAo]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [33] as [VARCHAR] - [kJhw]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [34] as [VARCHAR] - [nB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [35] as [VARCHAR] - [dvz]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [36] as [VARCHAR] - [PZTncutgNclPjwyrIEfy]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [37] as [DATE] - [1977-01-14]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [38] as [DATE] - [1994-03-23]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [39] as [VARCHAR] - [AMUihHIwvFcLmhOdhXRd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [40] as [VARCHAR] - [KCiBrRnInLEnDoV]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [41] as [VARCHAR] - [CrF]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [42] as [VARCHAR] - [huieJOLXiwbMXHgTXeIU]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [43] as [TIMESTAMP] - [1970-01-01T02:10:54]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [44] as [VARCHAR] - [guKIJmKjyGLokhk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [45] as [VARCHAR] - [p]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [46] as [VARCHAR] - [qg]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [47] as [VARCHAR] - [z]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [48] as [VARCHAR] - [QHzOUYFofyeOudXhERdx]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [49] as [VARCHAR] - [MobhyyEabdkgOJCsQspm]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [50] as [VARCHAR] - [C]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [51] as [VARCHAR] - [rqwfkZZsPd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [52] as [VARCHAR] - [uUZlQTCkVM]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [53] as [VARCHAR] - [em]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [54] as [DATE] - [1990-04-12]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [55] as [VARCHAR] - [s]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [56] as [VARCHAR] - [W]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [57] as [DATE] - [1993-11-10]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [58] as [VARCHAR] - [E]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [59] as [VARCHAR] - [YLAjICRWhgoJDSYgCWtz]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [60] as [VARCHAR] - [K]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [61] as [DATE] - [1988-10-01]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [62] as [VARCHAR] - [01]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [63] as [DOUBLE] - [6880532.806912319]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [64] as [DOUBLE] - [19184.772573793845]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [65] as [DOUBLE] - [3728924.545463818]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [66] as [DOUBLE] - [9317160.411372513]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [67] as [DOUBLE] - [5957180.746847687]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [68] as [VARCHAR] - [H]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [69] as [VARCHAR] - [HARDSURFACES]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [70] as [DOUBLE] - [6170577.70343583]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [71] as [VARCHAR] - [qn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [72] as [VARCHAR] - [ixrWOvSNyEd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [73] as [VARCHAR] - [FYaJr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [74] as [VARCHAR] - [Crc]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [75] as [DATE] - [1985-12-10]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [76] as [VARCHAR] - [wCHQtBnlXYnewsOkwFCM]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [77] as [VARCHAR] - [Wb]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [78] as [VARCHAR] - [TmkmP]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [79] as [VARCHAR] - [hallKOcAkk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [80] as [VARCHAR] - [vMJTjcjqaUBrUmfSfYbm]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [81] as [VARCHAR] - [trYNQsDsLGjySpIFylGX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [82] as [VARCHAR] - [n]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [83] as [TIMESTAMP] - [1970-01-01T00:00:55]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [84] as [VARCHAR] - [gtYybgqcIUNgnxLqESoj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [85] as [VARCHAR] - [S]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [86] as [VARCHAR] - [yjxNeQdnxHoUnFLRGpZm]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [87] as [DATE] - [1984-05-10]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [88] as [VARCHAR] - [IirNLUMyhatKAQTzaCEr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [89] as [VARCHAR] - [on]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [90] as [VARCHAR] - [CL]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [91] as [INTEGER] - [265899]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [92] as [VARCHAR] - [gcDufw]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [93] as [DATE] - [1972-12-28]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [94] as [DATE] - [1988-06-06]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [95] as [DATE] - [1988-05-18]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [96] as [VARCHAR] - [b]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [97] as [VARCHAR] - [xaU]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [98] as [DATE] - [1985-05-06]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [99] as [VARCHAR] - [aGVFbkFQAZTIyisrozhv]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [100] as [VARCHAR] - [o]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [101] as [VARCHAR] - [Mr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [102] as [VARCHAR] - [WjwMHkQaumoKiPbLsGYY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [103] as [VARCHAR] - [VirjQOEnkFuhSOHJnwFM]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [104] as [VARCHAR] - [GISHYgYIYEweOSxdYyY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [105] as [VARCHAR] - [tVziHmIURFGhGsTGNCR]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [106] as [VARCHAR] - [rCpRPYzkfFwVCTLZbhd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [107] as [VARCHAR] - [pqqayql]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [108] as [VARCHAR] - [Gn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [109] as [INTEGER] - [376813]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [110] as [VARCHAR] - [oxcEnzikUZPvImLjIcXZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [111] as [VARCHAR] - [FCfvmtNelJugvoL]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [112] as [VARCHAR] - [PgOURfnHdTKAhojnwHp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [113] as [VARCHAR] - [nZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [114] as [VARCHAR] - [WHyLKGsfdh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [115] as [VARCHAR] - [l]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [116] as [VARCHAR] - [biLPcktojdj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [117] as [VARCHAR] - [sOplfHSPKXFFoSdHIAzZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [118] as [VARCHAR] - [OvQKwBVokTzRSxrnjuFr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [119] as [VARCHAR] - [uHPyMXwyhHqrvpHUKAnk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [120] as [VARCHAR] - [woXmyrTHxgdvqkHmkvSI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [121] as [VARCHAR] - [DdwMhYdLVbQgBgmhTzsp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [122] as [VARCHAR] - [OZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [123] as [VARCHAR] - [j]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [124] as [VARCHAR] - [fhdY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [125] as [VARCHAR] - [nEWCOBawLVubEkljJtAG]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [126] as [VARCHAR] - [Iub]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [127] as [VARCHAR] - [dv]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [128] as [VARCHAR] - [lggkvMfzQTnqYvwPoQMD]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [129] as [VARCHAR] - [CxOJwZtIBmQceDvjnxOK]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [130] as [VARCHAR] - [sTErdDneeTykORtHQNWH]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [131] as [VARCHAR] - [z]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [132] as [VARCHAR] - [YFcGtCMBNLuTsSXAhztn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [133] as [VARCHAR] - [xVourXHpYTIwJgldxRVI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [134] as [VARCHAR] - [ILmdZSheenQKrPEQCIxJ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [135] as [VARCHAR] - [pI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [136] as [VARCHAR] - [lQtpWQHEGqioVzHp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [137] as [DOUBLE] - [2194646.983496477]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [138] as [VARCHAR] - [DydCzSpA]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [139] as [VARCHAR] - [tBWSCRRqjQVtMPk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [140] as [VARCHAR] - [UDrSPSAwEe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [141] as [BIGINT] - [24]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set precedence -> 326070.2291859361
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set changeTimestamp -> 1970-01-01T00:18:46
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set createTimestamp -> 1970-01-01T00:58:15
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set autoCreateFlag -> P
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set createdBy -> gtIFGpjK
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set changedBy -> zSJscDVE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ediReasonCode -> 451977
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ediOrdValidations -> null
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set description -> cpJucvXjrZeuDmjPJjyD
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set level -> w
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set defaultAction -> x
+Hibernate: select edireasonc0_.EDI_REASON_CODE as edi_reas1_6_1_, edireasonc0_.AUTO_CREATE_FLAG as auto_cre2_6_1_, edireasonc0_.CHANGE_TIMESTAMP as change_t3_6_1_, edireasonc0_.CHANGED_BY as changed_4_6_1_, edireasonc0_.CREATE_TIMESTAMP as create_t5_6_1_, edireasonc0_.CREATED_BY as created_6_6_1_, edireasonc0_.DEFAULT_ACTION as default_7_6_1_, edireasonc0_.description as descript8_6_1_, edireasonc0_.LEVEL as level9_6_1_, edireasonc0_.precedence as precede10_6_1_, ediordvali1_.edi_reason_code as edi_rea11_2_3_, ediordvali1_.EDI_ORDER_NBR as edi_orde1_2_3_, ediordvali1_.PO_LINE_NBR as po_line_2_2_3_, ediordvali1_.TIME_STAMP as time_sta3_2_3_, ediordvali1_.EDI_ORDER_NBR as edi_orde1_2_0_, ediordvali1_.PO_LINE_NBR as po_line_2_2_0_, ediordvali1_.TIME_STAMP as time_sta3_2_0_, ediordvali1_.ACTION_CODE as action_c4_2_0_, ediordvali1_.ASSIGNED_TO as assigned5_2_0_, ediordvali1_.CHANGED_BY as changed_6_2_0_, ediordvali1_.CHANGED_TIMESTAMP as changed_7_2_0_, ediordvali1_.CREATED_BY as created_8_2_0_, ediordvali1_.CREATED_TIMESTAMP as created_9_2_0_, ediordvali1_.edi_reason_code as edi_rea11_2_0_, ediordvali1_.status as status10_2_0_ from EDI_REASON_CODE edireasonc0_ left outer join EDI_ORD_VALIDATION ediordvali1_ on edireasonc0_.EDI_REASON_CODE=ediordvali1_.edi_reason_code where edireasonc0_.EDI_REASON_CODE=?
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [INTEGER] - [63]
+Hibernate: select ediorderhe0_.EDI_ORDER_NUMBER as edi_orde1_4_, ediorderhe0_.ACCT_CONTACT as acct_con2_4_, ediorderhe0_.ACKNOWLEGE_ORD_IND as acknowle3_4_, ediorderhe0_.ADDR_KEY as addr_key4_4_, ediorderhe0_.AGREEMENT_NUMBER as agreemen5_4_, ediorderhe0_.ASSIGNED_AGENT as assigned6_4_, ediorderhe0_.AUTH_REP as auth_rep7_4_, ediorderhe0_.AUTHORIZATION_NO as authoriz8_4_, ediorderhe0_.beg as beg9_4_, ediorderhe0_.BILL_TO_STATE as bill_to10_4_, ediorderhe0_.BILL_TO_STORE as bill_to11_4_, ediorderhe0_.BS_STORE_NBR as bs_stor12_4_, ediorderhe0_.CANCEL_DATE_QUAL as cancel_13_4_, ediorderhe0_.CARRIER_CODE as carrier14_4_, ediorderhe0_.CB_CUT_LENGTH as cb_cut_15_4_, ediorderhe0_.CHNG_LID as chng_li16_4_, ediorderhe0_.CHNG_TIMESTAMP as chng_ti17_4_, ediorderhe0_.COMM_CUST as comm_cu18_4_, ediorderhe0_.CONS_STATUS_MSG as cons_st19_4_, ediorderhe0_.CONSUMER_ADDRESS as consume20_4_, ediorderhe0_.CONSUMER_ADDRESS_2 as CONSUME21_4_, ediorderhe0_.CONSUMER_CITY as consume22_4_, ediorderhe0_.CONSUMER_PO_DATE as consume23_4_, ediorderhe0_.CONSUMER_SHIP_FLG as consume24_4_, ediorderhe0_.CONSUMER_NAME as consume25_4_, ediorderhe0_.CONSUMER_STATE as consume26_4_, ediorderhe0_.CONSUMER_ZIP as consume27_4_, ediorderhe0_.CONTRACT_USAGE_IND as contrac28_4_, ediorderhe0_.CROSS_DOCK_CENTER as cross_d29_4_, ediorderhe0_.CUST_DEPT as cust_de30_4_, ediorderhe0_.CUSTOMER_NUMBER as custome31_4_, ediorderhe0_.CUST_PMT_METH as cust_pm32_4_, ediorderhe0_.CUST_SP_INST as cust_sp33_4_, ediorderhe0_.CUST_WH_NBR as cust_wh34_4_, ediorderhe0_.CUSTOMER_CODE as custome35_4_, ediorderhe0_.CUSTOMER_REF_NBR as custome36_4_, ediorderhe0_.CUSTOMER_SIDEMARK as custome37_4_, ediorderhe0_.DELIVERY_DATE as deliver38_4_, ediorderhe0_.DELV_CUT_OFF_DT as delv_cu39_4_, ediorderhe0_.DIV_DESC as div_des40_4_, ediorderhe0_.DUNS_NBR as duns_nb41_4_, ediorderhe0_.ERROR_CODE as error_c42_4_, ediorderhe0_.ERROR_DESCRIPTION as error_d43_4_, ediorderhe0_.ERROR_TIMESTAMP as error_t44_4_, ediorderhe0_.EVENT_INFO as event_i45_4_, ediorderhe0_.EXPLODE_FLAG as explode46_4_, ediorderhe0_.FOB_POINT as fob_poi47_4_, ediorderhe0_.FRT_CODE as frt_cod48_4_, ediorderhe0_.GIFT_MESSAGE_1 as GIFT_ME49_4_, ediorderhe0_.GIFT_MESSAGE_2 as GIFT_ME50_4_, ediorderhe0_.HOST_ALERT_FLAG as host_al51_4_, ediorderhe0_.INPUT_METHOD as input_m52_4_, ediorderhe0_.MARK_FOR_STORE as mark_fo53_4_, ediorderhe0_.MEDIA_EVENT_CODE as media_e54_4_, ediorderhe0_.NB_DATE as nb_date55_4_, ediorderhe0_.NEW_STORE_IND as new_sto56_4_, ediorderhe0_.NO_ASN_FLAG as no_asn_57_4_, ediorderhe0_.OH_CANCEL_DATE as oh_canc58_4_, ediorderhe0_.OH_STATUS_CODE as oh_stat59_4_, ediorderhe0_.ON_NOTE as on_note60_4_, ediorderhe0_.ONLINE_TYPE as online_61_4_, ediorderhe0_.ORDER_DATE as order_d62_4_, ediorderhe0_.ORDER_LOC as order_l63_4_, ediorderhe0_.ORDER_MER_COST as order_m64_4_, ediorderhe0_.ORDER_RET_HAND as order_r65_4_, ediorderhe0_.ORDER_RET_SH as order_r66_4_, ediorderhe0_.ORDER_RET_TAX as order_r67_4_, ediorderhe0_.ORDER_RET_TOTAL as order_r68_4_, ediorderhe0_.ORDER_TYPE as order_t69_4_, ediorderhe0_.ORDER_TYPE_DESC as order_t70_4_, ediorderhe0_.ORDER_WEIGHT as order_w71_4_, ediorderhe0_.ORDERING_SYSTEM as orderin72_4_, ediorderhe0_.PHONE_NUMBER as phone_n73_4_, ediorderhe0_.PO_CONTROL as po_cont74_4_, ediorderhe0_.PO_DATE_QUAL as po_date75_4_, ediorderhe0_.PO_DATE as po_date76_4_, ediorderhe0_.PO_NUMBER as po_numb77_4_, ediorderhe0_.PO_QUAL as po_qual78_4_, ediorderhe0_.PO_TYPE as po_type79_4_, ediorderhe0_.PO_TYPE_SUFFIX as po_type80_4_, ediorderhe0_.PS_MSG as ps_msg81_4_, ediorderhe0_.PURCHASED_BY as purchas82_4_, ediorderhe0_.RCD_CODE as rcd_cod83_4_, ediorderhe0_.RECEIVED_TIMESTAMP as receive84_4_, ediorderhe0_.REF_TC_NBR as ref_tc_85_4_, ediorderhe0_.RESERVE_ORDER_IND as reserve86_4_, ediorderhe0_.RETURN_MSG as return_87_4_, ediorderhe0_.ROUTE_BY_DATE as route_b88_4_, ediorderhe0_.SALES_CHECK_NUMBER as sales_c89_4_, ediorderhe0_.SALES_REQ_CODE as sales_r90_4_, ediorderhe0_.SELL_CO as sell_co91_4_, ediorderhe0_.SEQ_NBR as seq_nbr92_4_, ediorderhe0_.ORDER_NUMBER as order_n93_4_, ediorderhe0_.SHIP_BY_CUT_OFF_DT as ship_by94_4_, ediorderhe0_.SHIP_BY_DATE as ship_by95_4_, ediorderhe0_.SHIP_CANCEL_DATE as ship_ca96_4_, ediorderhe0_.SHIP_COMPLETE as ship_co97_4_, ediorderhe0_.SHIP_DATE_QUAL as ship_da98_4_, ediorderhe0_.SHIP_DATE as ship_da99_4_, ediorderhe0_.SHIP_INSTRUCTION as ship_i100_4_, ediorderhe0_.SHIP_PART_COMP_IND as ship_p101_4_, ediorderhe0_.SHIP_PT as ship_p102_4_, ediorderhe0_.SHIP_TO_ADDRESS_1 as SHIP_T103_4_, ediorderhe0_.SHIP_TO_ADDRESS_2 as SHIP_T104_4_, ediorderhe0_.SHIP_TO_CITY as ship_t105_4_, ediorderhe0_.SHIP_TO_CN_CITY as ship_t106_4_, ediorderhe0_.SHIP_TO_COUNTRY as ship_t107_4_, ediorderhe0_.SHIP_TO_CUST_NBR as ship_t108_4_, ediorderhe0_.SHIP_TO_DEST_COD as ship_t109_4_, ediorderhe0_.SHIP_TO_FLAG as ship_t110_4_, ediorderhe0_.SHIP_TO_NAME as ship_t111_4_, ediorderhe0_.SHIP_TO_PHONE as ship_t112_4_, ediorderhe0_.SHIP_TO_PROVENCE as ship_t113_4_, ediorderhe0_.SHIP_TO_STATE as ship_t114_4_, ediorderhe0_.SHIP_TO_STORE as ship_t115_4_, ediorderhe0_.SHIP_TO_TRUNC_FLG as ship_t116_4_, ediorderhe0_.SHIP_TO_ZIP as ship_t117_4_, ediorderhe0_.SPECIAL_INSTRUCT_1 as SPECIA118_4_, ediorderhe0_.SPECIAL_INSTRUCT_2 as SPECIA119_4_, ediorderhe0_.SPECIAL_INSTRUCT_3 as SPECIA120_4_, ediorderhe0_.SPECIAL_INSTRUCT_4 as SPECIA121_4_, ediorderhe0_.SPECIAL_PO_NO as specia122_4_, ediorderhe0_.SRV_LEVEL as srv_le123_4_, ediorderhe0_.STATUS_CODE as status124_4_, ediorderhe0_.STD_CARR_ALPHA_IND as std_ca125_4_, ediorderhe0_.STORE_NAME as store_126_4_, ediorderhe0_.TERMS_NET_DAYS as terms_127_4_, ediorderhe0_.TERMS_TYPE_FLAG as terms_128_4_, ediorderhe0_.THIRD_PARTY_ACCT_NBR as third_129_4_, ediorderhe0_.THIRD_PARTY_ADDR_1 as THIRD_130_4_, ediorderhe0_.THIRD_PARTY_ADDR_2 as THIRD_131_4_, ediorderhe0_.THIRD_PARTY_BILL_FLAG as third_132_4_, ediorderhe0_.THIRD_PARTY_CITY as third_133_4_, ediorderhe0_.THIRD_PARTY_NAME as third_134_4_, ediorderhe0_.THIRD_PARTY_NAME_2 as THIRD_135_4_, ediorderhe0_.THIRD_PARTY_STATE as third_136_4_, ediorderhe0_.THIRD_PARTY_ZIP as third_137_4_, ediorderhe0_.TOTAL_BINDING_FT as total_138_4_, ediorderhe0_.USER_ID as user_i139_4_, ediorderhe0_.VENDOR_NO as vendor140_4_, ediorderhe0_.WC_STORE as wc_sto141_4_ from EDI_ORDER_HEADER ediorderhe0_ where ediorderhe0_.ORDER_TYPE=? limit ?
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [VARCHAR] - [H]
+Hibernate: select ediorderli0_.edi_order_number as edi_ord73_5_, ediorderli0_.PO_LINE_NO as po_line_1_5_, ediorderli0_.ADD_CUST_PROD_INFO as add_cust2_5_, ediorderli0_.AGREEMENT_PRICE as agreemen3_5_, ediorderli0_.AGREEMENT_UOM as agreemen4_5_, ediorderli0_.BACKORDERED_FLAG as backorde5_5_, ediorderli0_.BILL_TO_STORE as bill_to_6_5_, ediorderli0_.BINDING_FT as binding_7_5_, ediorderli0_.CALC_PRICE as calc_pri8_5_, ediorderli0_.CHNG_LID as chng_lid9_5_, ediorderli0_.CHNG_TIMESTAMP as chng_ti10_5_, ediorderli0_.SELL_COLOR_NUMBER as sell_co11_5_, ediorderli0_.CONS_MSG as cons_ms12_5_, ediorderli0_.CONV_FACTOR as conv_fa13_5_, ediorderli0_.CONV_QTY as conv_qt14_5_, ediorderli0_.CONV_UOM as conv_uo15_5_, ediorderli0_.CONV_WEIGHT as conv_we16_5_, ediorderli0_.CUST_PO_LINE_NBR as cust_po17_5_, ediorderli0_.CUST_PROD_DESC as cust_pr18_5_, ediorderli0_.CUST_PROD_ID as cust_pr19_5_, ediorderli0_.CUST_PROD_QUAL as cust_pr20_5_, ediorderli0_.CUST_REQ_SHIP_DATE as cust_re21_5_, ediorderli0_.CUST_SZ_DESC as cust_sz22_5_, ediorderli0_.CUST_UNIT_PRICE as cust_un23_5_, ediorderli0_.CUSTOMER_CODE as custome24_5_, ediorderli0_.CUSTOMER_NUMBER as custome25_5_, ediorderli0_.CUT_LENGTH as cut_len26_5_, ediorderli0_.DEPT_NBR as dept_nb27_5_, ediorderli0_.DISC_PCT as disc_pc28_5_, ediorderli0_.ERROR_CODE as error_c29_5_, ediorderli0_.ERROR_DESCRIPTION as error_d30_5_, ediorderli0_.ERROR_TIMESTAMP as error_t31_5_, ediorderli0_.GTIN_NBR as gtin_nb32_5_, ediorderli0_.ITEM_NO as item_no33_5_, ediorderli0_.ITEM_QUAL as item_qu34_5_, ediorderli0_.ITEM_SIZE as item_si35_5_, ediorderli0_.LI_INSTRUCTION as li_inst36_5_, ediorderli0_.LINE_NUMBER as line_nu37_5_, ediorderli0_.ORDER_NUMBER as order_n38_5_, ediorderli0_.ORDER_QUANTITY as order_q39_5_, ediorderli0_.ORDER_UOM as order_u40_5_, ediorderli0_.ORDERING_SYS as orderin41_5_, ediorderli0_.PO_CONTROL as po_cont42_5_, ediorderli0_.PO_NUMBER as po_numb43_5_, ediorderli0_.PRICE_QUAL as price_q44_5_, ediorderli0_.PRICE_UOM as price_u45_5_, ediorderli0_.PROD_STATUS as prod_st46_5_, ediorderli0_.QUANTITY_ORDERED as quantit47_5_, ediorderli0_.RECEIPT_ID as receipt48_5_, ediorderli0_.REQ_DYELOT as req_dye49_5_, ediorderli0_.REQ_DYELOT_QUAL as req_dye50_5_, ediorderli0_.RESERVED_IND as reserve51_5_, ediorderli0_.RET_LN_TOTAL as ret_ln_52_5_, ediorderli0_.RET_TX_DESC as ret_tx_53_5_, ediorderli0_.RETAIL_ALLOWANCE as retail_54_5_, ediorderli0_.RETAIL_PRICE as retail_55_5_, ediorderli0_.RETAIL_SH_PRICE as retail_56_5_, ediorderli0_.RETAIL_TAX as retail_57_5_, ediorderli0_.RETURN_MSG as return_58_5_, ediorderli0_.ROLL_LENGTH as roll_le59_5_, ediorderli0_.ROLL_MAX as roll_ma60_5_, ediorderli0_.ROLL_MIN as roll_mi61_5_, ediorderli0_.ROLL_WIDTH as roll_wi62_5_, ediorderli0_.ROUNDED_FLAG as rounded63_5_, ediorderli0_.SAME_DYELOT_IND as same_dy64_5_, ediorderli0_.SHIP_DATE_QUAL as ship_da65_5_, ediorderli0_.SHIP_DATE as ship_da66_5_, ediorderli0_.STATUS_CODE as status_67_5_, ediorderli0_.SELL_STYLE_NUMBER as sell_st68_5_, ediorderli0_.SUMMARIZE_FLAG as summari69_5_, ediorderli0_.UNIT_PRICE as unit_pr70_5_, ediorderli0_.UOM_CODE as uom_cod71_5_, ediorderli0_.UPC_CODE as upc_cod72_5_ from EDI_ORDER_LINE ediorderli0_ where ediorderli0_.edi_order_number=?
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [BIGINT] - [2]
+]]></system-out>
+  </testcase>
+  <testcase name="testConvertLegacyOrder" classname="com.shaw.ediorderservices.service.legacy.LegacyServiceTest" time="0.134">
+    <error message="Index 0 out of bounds for length 0" type="java.lang.IndexOutOfBoundsException">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at com.shaw.ediorderservices.service.legacy.LegacyServiceTest.testConvertLegacyOrder(LegacyServiceTest.java:64)
+</error>
+    <system-out><![CDATA[2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPartCompInd -> F
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderingSystem -> lg
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPt -> dh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phoneNumber -> FLyqiPqfkve
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct1 -> vPLpxKGzzbVixmNDmvEX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poControl -> AbqkO
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set purchasedBy -> LocdomENmACfiLVsTQhE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set eventInfo -> IGELuwtrKbeaavi
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct2 -> awWyIeehAtwdlyueeLog
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set explodeFlag -> I
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateValue -> 1976-08-14
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct3 -> uWOIJiUAsoDyZOadNhxf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set storeName -> vqliqxEAdgorRgNtrYXL
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateQualifier -> ChS
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipComplete -> t
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct4 -> YlEXBJjwVdDcfOOkrimh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poNumber -> wppbvTOvKRbDYBhFRvvW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateValue -> 1985-01-30
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poQual -> Ug
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateQualifier -> wBo
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByCutOffDt -> 1983-07-07
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consStatusMsg -> UIVQtyioFXChfSUOGCGh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipInstruction -> YAvGhCveSWcOCCsZREAr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTotal -> 4875032.777955925
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set contractUsageInd -> g
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set beg -> yFXii
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set crossDockCenter -> cjVTijmBxq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByDate -> 1971-05-20
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set fobPoint -> LU
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set rcdCode -> H
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsNetDays -> Gqh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialPoNo -> qWGsNLeBVjCwfgKucqQl
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsTypeFlag -> TX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderType -> N
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set totalBindingFt -> 1983192.4300125928
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderTypeDesc -> kAKrfoheYIkzgpk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set receivedTimestamp -> 1970-01-01T01:11:03
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderWeight -> 3307378.6386074303
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phone -> wIkOiwRzscoyiln
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetHand -> 7251424.524258471
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set refTcNbr -> foAyZmMkGdsSaAxPLtlZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetSh -> 602387.9425678927
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set province -> OkoPPNCvRomYiqiwciE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTax -> 9450807.539732534
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> fLzXMNuudpzsbrGXWgtX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poType -> zvmNg
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesCheckNumber -> ubtjbjtUGRLHrwvojOPf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesReqCode -> qF
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set flag -> 974695
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set sellCo -> gn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poTypeSuffix -> lrTVVeCbwN
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set truncFlag -> Y
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToState -> bf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToStore -> XTmgWDYjau
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custDept -> LmMzO
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set psMsg -> XFGaLXkwXoeWZtxEcGdj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipCancelDate -> 1986-10-25
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set bsStoreNbr -> ExovDouBTX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set frtCode -> Q
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set agreementNumber -> SwComGBOmarvXeZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngLid -> QriZUtem
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set assignedAgent -> xbcqQULd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cancelDateQualifier -> NOX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set srvLevel -> qQ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set carrierCode -> ao
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set statusCode -> B
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set seqNbr -> 673110
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> RItWoRciGop
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set reserveOrderInd -> E
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage1 -> GFzaNZnmUdQXIAuWfFZf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set store -> PvdjzFTjcv
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngTimestamp -> 1970-01-01T00:59:25
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set returnMsg -> drAiZrJaspdOhzLCEDKT
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage2 -> IrUTWjRgdOoZpLUxRSWR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set commCust -> itlJPBd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set routeByDate -> 1980-06-27
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set hostAlertFlag -> P
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerCode -> Rn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custPmtMeth -> MyyhECzZEhLuvjIRNylV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dunsNbr -> neKfBikJxbOrCNT
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> AyxQRcS
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custSpInst -> NzAbZmajkztILqezSLBL
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorCode -> IUP
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerRefNbr -> IvH
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custWhNbr -> MEuM
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorDescription -> cWVYJeVfacQHdpPhPPFe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerSidemark -> cBdjwqTBdxQzMJJAHPRl
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acctContact -> FubGaDOgcodqoKllyKqB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorTimestamp -> 1970-01-01T01:32:22
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohStatusCode -> W
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acknowlegeOrdInd -> n
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set deliveryDate -> 1991-04-02
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onNote -> qzCqRNLGMUjgdlfsYOoY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addrKey -> 706642
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set delvCutOffDt -> 1980-06-06
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onlineType -> X
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set nbDate -> 1993-06-11
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set divDesc -> dTtGxLLZdKtlQxUSOjsG
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderDate -> 1983-06-29
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set newStoreInd -> u
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set inputMethod -> oIvSPkAzPp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderLoc -> Fn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set noAsnFlag -> d
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set markForStore -> YKekIUbJGy
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderMerCost -> 7572423.538492113
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set mediaEventCode -> lK
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shawOrderNumber -> tXznBk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> za
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set userId -> qbhmbAVi
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set country -> zKYoGmabIvZJtDoidIj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set vendorNo -> razXYfPnLOPKIEd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> qqgPcqfDQNkCZeFKgdtn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cnCity -> wszfCZlhLszpLZkuIfp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set wcStore -> MjZBWWrGjn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> AYsSOKJaWWUnOuRtEcaD
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set destCode -> Tf
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authRep -> YABzlPtLLcZcHnGrRMLj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> smpjRUMacqYYkDDnqpe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authorizationNo -> CBBrAZpCql
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> cVZWgDNLjCrgytlRhhzh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cbCutLength -> 9964728.272357948
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cphone -> LMJOzcmvPxJgDfbOUkYl
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set stdCarrAlphaInd -> DcbH
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerPoDateValue -> 1973-05-23
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> FW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ccountry -> MAPPpeQRZgTYGGKVQEjX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> MaXKqqTnp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> flICGSXxpQzwsYScjOE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cprovince -> RDcpjYPCahSiWyGtseUF
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerShipFlg -> O
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohCancelDateValue -> 1982-09-30
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> lLHKgDE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> xvCrfSYeWAzcxGuuAOAE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> pCJjLEBPjkIShlbmufBc
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipToAddress -> LegacyShipToAddress [addressLine1=AYsSOKJaWWUnOuRtEcaD, addressLine2=qqgPcqfDQNkCZeFKgdtn, city=smpjRUMacqYYkDDnqpe, cnCity=wszfCZlhLszpLZkuIfp, country=zKYoGmabIvZJtDoidIj, custNbr=lLHKgDE, destCode=Tf, flag=974695, name=fLzXMNuudpzsbrGXWgtX, phone=wIkOiwRzscoyiln, province=OkoPPNCvRomYiqiwciE, state=za, store=PvdjzFTjcv, truncFlag=Y, zip=RItWoRciGop]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerAddress -> LegacyConsumerAddress [cprovince=RDcpjYPCahSiWyGtseUF, ccountry=MAPPpeQRZgTYGGKVQEjX, cphone=LMJOzcmvPxJgDfbOUkYl, addressLine1=pCJjLEBPjkIShlbmufBc, addressLine2=xvCrfSYeWAzcxGuuAOAE, city=flICGSXxpQzwsYScjOE, name=cVZWgDNLjCrgytlRhhzh, consumerPoDateValue=1973-05-23, consumerShipFlg=O, state=FW, zip=MaXKqqTnp]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> DLEADYsUBQUmwUltueBe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> LoREHxiDEhQKnbQHWhKa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set accountNbr -> hUCBkPiDUsYSOnkhoBfc
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> GveqwERmBiFwoRwtTVfr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpphone -> eqjXRxuhPcKEGnzqlaXD
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> DT
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name2 -> IXboryTlTvqzQcsFUhif
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billFlag -> M
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpcountry -> MYrNrsvoHykLumtNTFRO
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> DqLbcuicTKXRYkor
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpprovince -> UakmamSCyhPoBwdIDqUt
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> nBNHkqUCmNgOfIPMQxjm
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set thirdPartyAddress -> LegacyThirdPartyAddress [tpprovince=UakmamSCyhPoBwdIDqUt, tpcountry=MYrNrsvoHykLumtNTFRO, tpphone=eqjXRxuhPcKEGnzqlaXD, addressLine1=DLEADYsUBQUmwUltueBe, addressLine2=GveqwERmBiFwoRwtTVfr, accountNbr=hUCBkPiDUsYSOnkhoBfc, billFlag=M, city=LoREHxiDEhQKnbQHWhKa, name=nBNHkqUCmNgOfIPMQxjm, name2=IXboryTlTvqzQcsFUhif, state=DT, zip=DqLbcuicTKXRYkor]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dates -> null
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set lines -> null
+2020-06-19 13:28:30 DEBUG [MockHelper.java:99] EdiOrderHeader [legacyOrderNumber=null, acctContact=FubGaDOgcodqoKllyKqB, acknowlegeOrdInd=n, addrKey=706642, agreementNumber=SwComGBOmarvXeZ, assignedAgent=xbcqQULd, authRep=YABzlPtLLcZcHnGrRMLj, authorizationNo=CBBrAZpCql, beg=yFXii, billToState=bf, billToStore=XTmgWDYjau, bsStoreNbr=ExovDouBTX, cancelDateQualifier=NOX, carrierCode=ao, cbCutLength=9964728.272357948, chngLid=QriZUtem, chngTimestamp=1970-01-01T00:59:25, commCust=itlJPBd, consStatusMsg=UIVQtyioFXChfSUOGCGh, contractUsageInd=g, crossDockCenter=cjVTijmBxq, custDept=LmMzO, custPmtMeth=MyyhECzZEhLuvjIRNylV, custSpInst=NzAbZmajkztILqezSLBL, custWhNbr=MEuM, customerCode=Rn, custNbr=AyxQRcS, customerRefNbr=IvH, customerSidemark=cBdjwqTBdxQzMJJAHPRl, deliveryDate=1991-04-02, delvCutOffDt=1980-06-06, divDesc=dTtGxLLZdKtlQxUSOjsG, dunsNbr=neKfBikJxbOrCNT, errorCode=IUP, errorDescription=cWVYJeVfacQHdpPhPPFe, errorTimestamp=1970-01-01T01:32:22, eventInfo=IGELuwtrKbeaavi, explodeFlag=I, fobPoint=LU, frtCode=Q, giftMessage1=GFzaNZnmUdQXIAuWfFZf, giftMessage2=IrUTWjRgdOoZpLUxRSWR, hostAlertFlag=P, inputMethod=oIvSPkAzPp, markForStore=YKekIUbJGy, mediaEventCode=lK, nbDate=1993-06-11, newStoreInd=u, noAsnFlag=d, ohCancelDateValue=1982-09-30, ohStatusCode=W, onNote=qzCqRNLGMUjgdlfsYOoY, onlineType=X, orderDate=1983-06-29, orderLoc=01, orderMerCost=7572423.538492113, shawOrderNumber=tXznBk, orderRetHand=7251424.524258471, orderRetSh=602387.9425678927, orderRetTax=9450807.539732534, orderRetTotal=4875032.777955925, orderType=S, orderTypeDesc=SAMPLES, orderWeight=3307378.6386074303, orderingSystem=lg, phoneNumber=FLyqiPqfkve, poControl=AbqkO, poDateValue=1976-08-14, poDateQualifier=ChS, poNumber=wppbvTOvKRbDYBhFRvvW, poQual=Ug, poType=zvmNg, poTypeSuffix=lrTVVeCbwN, psMsg=XFGaLXkwXoeWZtxEcGdj, purchasedBy=LocdomENmACfiLVsTQhE, rcdCode=H, receivedTimestamp=1970-01-01T01:11:03, refTcNbr=foAyZmMkGdsSaAxPLtlZ, reserveOrderInd=E, returnMsg=drAiZrJaspdOhzLCEDKT, routeByDate=1980-06-27, salesCheckNumber=ubtjbjtUGRLHrwvojOPf, salesReqCode=qF, sellCo=gn, seqNbr=673110, shipByCutOffDt=1983-07-07, shipByDate=1971-05-20, shipCancelDate=1986-10-25, shipComplete=t, shipDateValue=1985-01-30, shipDateQualifier=wBo, shipInstruction=YAvGhCveSWcOCCsZREAr, shipPartCompInd=F, shipPt=dh, specialInstruct1=vPLpxKGzzbVixmNDmvEX, specialInstruct2=awWyIeehAtwdlyueeLog, specialInstruct3=uWOIJiUAsoDyZOadNhxf, specialInstruct4=YlEXBJjwVdDcfOOkrimh, specialPoNo=qWGsNLeBVjCwfgKucqQl, srvLevel=qQ, statusCode=B, stdCarrAlphaInd=DcbH, storeName=vqliqxEAdgorRgNtrYXL, termsNetDays=Gqh, termsTypeFlag=TX, totalBindingFt=1983192.4300125928, userId=qbhmbAVi, vendorNo=razXYfPnLOPKIEd, wcStore=MjZBWWrGjn, consumerAddress=LegacyConsumerAddress [cprovince=RDcpjYPCahSiWyGtseUF, ccountry=MAPPpeQRZgTYGGKVQEjX, cphone=LMJOzcmvPxJgDfbOUkYl, addressLine1=pCJjLEBPjkIShlbmufBc, addressLine2=xvCrfSYeWAzcxGuuAOAE, city=flICGSXxpQzwsYScjOE, name=cVZWgDNLjCrgytlRhhzh, consumerPoDateValue=1973-05-23, consumerShipFlg=O, state=FW, zip=MaXKqqTnp], shipToAddress=LegacyShipToAddress [addressLine1=AYsSOKJaWWUnOuRtEcaD, addressLine2=qqgPcqfDQNkCZeFKgdtn, city=smpjRUMacqYYkDDnqpe, cnCity=wszfCZlhLszpLZkuIfp, country=zKYoGmabIvZJtDoidIj, custNbr=lLHKgDE, destCode=Tf, flag=974695, name=fLzXMNuudpzsbrGXWgtX, phone=wIkOiwRzscoyiln, province=OkoPPNCvRomYiqiwciE, state=za, store=PvdjzFTjcv, truncFlag=Y, zip=RItWoRciGop], thirdPartyAddress=LegacyThirdPartyAddress [tpprovince=UakmamSCyhPoBwdIDqUt, tpcountry=MYrNrsvoHykLumtNTFRO, tpphone=eqjXRxuhPcKEGnzqlaXD, addressLine1=DLEADYsUBQUmwUltueBe, addressLine2=GveqwERmBiFwoRwtTVfr, accountNbr=hUCBkPiDUsYSOnkhoBfc, billFlag=M, city=LoREHxiDEhQKnbQHWhKa, name=nBNHkqUCmNgOfIPMQxjm, name2=IXboryTlTvqzQcsFUhif, state=DT, zip=DqLbcuicTKXRYkor], dates=null, lines=null]
+Hibernate: call next value for SHXP.EDI_ORDER_NBR
+Hibernate: insert into EDI_ORDER_HEADER (ACCT_CONTACT, ACKNOWLEGE_ORD_IND, ADDR_KEY, AGREEMENT_NUMBER, ASSIGNED_AGENT, AUTH_REP, AUTHORIZATION_NO, beg, BILL_TO_STATE, BILL_TO_STORE, BS_STORE_NBR, CANCEL_DATE_QUAL, CARRIER_CODE, CB_CUT_LENGTH, CHNG_LID, CHNG_TIMESTAMP, COMM_CUST, CONS_STATUS_MSG, CONSUMER_ADDRESS, CONSUMER_ADDRESS_2, CONSUMER_CITY, CONSUMER_PO_DATE, CONSUMER_SHIP_FLG, CONSUMER_NAME, CONSUMER_STATE, CONSUMER_ZIP, CONTRACT_USAGE_IND, CROSS_DOCK_CENTER, CUST_DEPT, CUSTOMER_NUMBER, CUST_PMT_METH, CUST_SP_INST, CUST_WH_NBR, CUSTOMER_CODE, CUSTOMER_REF_NBR, CUSTOMER_SIDEMARK, DELIVERY_DATE, DELV_CUT_OFF_DT, DIV_DESC, DUNS_NBR, ERROR_CODE, ERROR_DESCRIPTION, ERROR_TIMESTAMP, EVENT_INFO, EXPLODE_FLAG, FOB_POINT, FRT_CODE, GIFT_MESSAGE_1, GIFT_MESSAGE_2, HOST_ALERT_FLAG, INPUT_METHOD, MARK_FOR_STORE, MEDIA_EVENT_CODE, NB_DATE, NEW_STORE_IND, NO_ASN_FLAG, OH_CANCEL_DATE, OH_STATUS_CODE, ON_NOTE, ONLINE_TYPE, ORDER_DATE, ORDER_LOC, ORDER_MER_COST, ORDER_RET_HAND, ORDER_RET_SH, ORDER_RET_TAX, ORDER_RET_TOTAL, ORDER_TYPE, ORDER_TYPE_DESC, ORDER_WEIGHT, ORDERING_SYSTEM, PHONE_NUMBER, PO_CONTROL, PO_DATE_QUAL, PO_DATE, PO_NUMBER, PO_QUAL, PO_TYPE, PO_TYPE_SUFFIX, PS_MSG, PURCHASED_BY, RCD_CODE, RECEIVED_TIMESTAMP, REF_TC_NBR, RESERVE_ORDER_IND, RETURN_MSG, ROUTE_BY_DATE, SALES_CHECK_NUMBER, SALES_REQ_CODE, SELL_CO, SEQ_NBR, ORDER_NUMBER, SHIP_BY_CUT_OFF_DT, SHIP_BY_DATE, SHIP_CANCEL_DATE, SHIP_COMPLETE, SHIP_DATE_QUAL, SHIP_DATE, SHIP_INSTRUCTION, SHIP_PART_COMP_IND, SHIP_PT, SHIP_TO_ADDRESS_1, SHIP_TO_ADDRESS_2, SHIP_TO_CITY, SHIP_TO_CN_CITY, SHIP_TO_COUNTRY, SHIP_TO_CUST_NBR, SHIP_TO_DEST_COD, SHIP_TO_FLAG, SHIP_TO_NAME, SHIP_TO_PHONE, SHIP_TO_PROVENCE, SHIP_TO_STATE, SHIP_TO_STORE, SHIP_TO_TRUNC_FLG, SHIP_TO_ZIP, SPECIAL_INSTRUCT_1, SPECIAL_INSTRUCT_2, SPECIAL_INSTRUCT_3, SPECIAL_INSTRUCT_4, SPECIAL_PO_NO, SRV_LEVEL, STATUS_CODE, STD_CARR_ALPHA_IND, STORE_NAME, TERMS_NET_DAYS, TERMS_TYPE_FLAG, THIRD_PARTY_ACCT_NBR, THIRD_PARTY_ADDR_1, THIRD_PARTY_ADDR_2, THIRD_PARTY_BILL_FLAG, THIRD_PARTY_CITY, THIRD_PARTY_NAME, THIRD_PARTY_NAME_2, THIRD_PARTY_STATE, THIRD_PARTY_ZIP, TOTAL_BINDING_FT, USER_ID, VENDOR_NO, WC_STORE, EDI_ORDER_NUMBER) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [VARCHAR] - [FubGaDOgcodqoKllyKqB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [2] as [VARCHAR] - [n]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [3] as [INTEGER] - [706642]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [4] as [VARCHAR] - [SwComGBOmarvXeZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [5] as [VARCHAR] - [xbcqQULd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [6] as [VARCHAR] - [YABzlPtLLcZcHnGrRMLj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [7] as [VARCHAR] - [CBBrAZpCql]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [8] as [VARCHAR] - [yFXii]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [9] as [VARCHAR] - [bf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [10] as [VARCHAR] - [XTmgWDYjau]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [11] as [VARCHAR] - [ExovDouBTX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [12] as [VARCHAR] - [NOX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [13] as [VARCHAR] - [ao]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [14] as [DOUBLE] - [9964728.272357948]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [15] as [VARCHAR] - [QriZUtem]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [16] as [TIMESTAMP] - [1970-01-01T00:59:25]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [17] as [VARCHAR] - [itlJPBd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [18] as [VARCHAR] - [UIVQtyioFXChfSUOGCGh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [19] as [VARCHAR] - [pCJjLEBPjkIShlbmufBc]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [20] as [VARCHAR] - [xvCrfSYeWAzcxGuuAOAE]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [21] as [VARCHAR] - [flICGSXxpQzwsYScjOE]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [22] as [DATE] - [1973-05-23]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [23] as [VARCHAR] - [O]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [24] as [VARCHAR] - [cVZWgDNLjCrgytlRhhzh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [25] as [VARCHAR] - [FW]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [26] as [VARCHAR] - [MaXKqqTnp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [27] as [VARCHAR] - [g]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [28] as [VARCHAR] - [cjVTijmBxq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [29] as [VARCHAR] - [LmMzO]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [30] as [VARCHAR] - [AyxQRcS]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [31] as [VARCHAR] - [MyyhECzZEhLuvjIRNylV]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [32] as [VARCHAR] - [NzAbZmajkztILqezSLBL]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [33] as [VARCHAR] - [MEuM]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [34] as [VARCHAR] - [Rn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [35] as [VARCHAR] - [IvH]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [36] as [VARCHAR] - [cBdjwqTBdxQzMJJAHPRl]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [37] as [DATE] - [1991-04-02]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [38] as [DATE] - [1980-06-06]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [39] as [VARCHAR] - [dTtGxLLZdKtlQxUSOjsG]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [40] as [VARCHAR] - [neKfBikJxbOrCNT]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [41] as [VARCHAR] - [IUP]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [42] as [VARCHAR] - [cWVYJeVfacQHdpPhPPFe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [43] as [TIMESTAMP] - [1970-01-01T01:32:22]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [44] as [VARCHAR] - [IGELuwtrKbeaavi]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [45] as [VARCHAR] - [I]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [46] as [VARCHAR] - [LU]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [47] as [VARCHAR] - [Q]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [48] as [VARCHAR] - [GFzaNZnmUdQXIAuWfFZf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [49] as [VARCHAR] - [IrUTWjRgdOoZpLUxRSWR]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [50] as [VARCHAR] - [P]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [51] as [VARCHAR] - [oIvSPkAzPp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [52] as [VARCHAR] - [YKekIUbJGy]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [53] as [VARCHAR] - [lK]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [54] as [DATE] - [1993-06-11]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [55] as [VARCHAR] - [u]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [56] as [VARCHAR] - [d]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [57] as [DATE] - [1982-09-30]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [58] as [VARCHAR] - [W]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [59] as [VARCHAR] - [qzCqRNLGMUjgdlfsYOoY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [60] as [VARCHAR] - [X]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [61] as [DATE] - [1983-06-29]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [62] as [VARCHAR] - [01]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [63] as [DOUBLE] - [7572423.538492113]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [64] as [DOUBLE] - [7251424.524258471]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [65] as [DOUBLE] - [602387.9425678927]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [66] as [DOUBLE] - [9450807.539732534]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [67] as [DOUBLE] - [4875032.777955925]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [68] as [VARCHAR] - [S]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [69] as [VARCHAR] - [SAMPLES]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [70] as [DOUBLE] - [3307378.6386074303]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [71] as [VARCHAR] - [lg]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [72] as [VARCHAR] - [FLyqiPqfkve]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [73] as [VARCHAR] - [AbqkO]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [74] as [VARCHAR] - [ChS]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [75] as [DATE] - [1976-08-14]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [76] as [VARCHAR] - [wppbvTOvKRbDYBhFRvvW]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [77] as [VARCHAR] - [Ug]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [78] as [VARCHAR] - [zvmNg]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [79] as [VARCHAR] - [lrTVVeCbwN]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [80] as [VARCHAR] - [XFGaLXkwXoeWZtxEcGdj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [81] as [VARCHAR] - [LocdomENmACfiLVsTQhE]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [82] as [VARCHAR] - [H]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [83] as [TIMESTAMP] - [1970-01-01T01:11:03]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [84] as [VARCHAR] - [foAyZmMkGdsSaAxPLtlZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [85] as [VARCHAR] - [E]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [86] as [VARCHAR] - [drAiZrJaspdOhzLCEDKT]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [87] as [DATE] - [1980-06-27]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [88] as [VARCHAR] - [ubtjbjtUGRLHrwvojOPf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [89] as [VARCHAR] - [qF]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [90] as [VARCHAR] - [gn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [91] as [INTEGER] - [673110]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [92] as [VARCHAR] - [tXznBk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [93] as [DATE] - [1983-07-07]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [94] as [DATE] - [1971-05-20]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [95] as [DATE] - [1986-10-25]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [96] as [VARCHAR] - [t]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [97] as [VARCHAR] - [wBo]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [98] as [DATE] - [1985-01-30]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [99] as [VARCHAR] - [YAvGhCveSWcOCCsZREAr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [100] as [VARCHAR] - [F]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [101] as [VARCHAR] - [dh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [102] as [VARCHAR] - [AYsSOKJaWWUnOuRtEcaD]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [103] as [VARCHAR] - [qqgPcqfDQNkCZeFKgdtn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [104] as [VARCHAR] - [smpjRUMacqYYkDDnqpe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [105] as [VARCHAR] - [wszfCZlhLszpLZkuIfp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [106] as [VARCHAR] - [zKYoGmabIvZJtDoidIj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [107] as [VARCHAR] - [lLHKgDE]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [108] as [VARCHAR] - [Tf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [109] as [INTEGER] - [974695]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [110] as [VARCHAR] - [fLzXMNuudpzsbrGXWgtX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [111] as [VARCHAR] - [wIkOiwRzscoyiln]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [112] as [VARCHAR] - [OkoPPNCvRomYiqiwciE]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [113] as [VARCHAR] - [za]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [114] as [VARCHAR] - [PvdjzFTjcv]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [115] as [VARCHAR] - [Y]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [116] as [VARCHAR] - [RItWoRciGop]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [117] as [VARCHAR] - [vPLpxKGzzbVixmNDmvEX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [118] as [VARCHAR] - [awWyIeehAtwdlyueeLog]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [119] as [VARCHAR] - [uWOIJiUAsoDyZOadNhxf]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [120] as [VARCHAR] - [YlEXBJjwVdDcfOOkrimh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [121] as [VARCHAR] - [qWGsNLeBVjCwfgKucqQl]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [122] as [VARCHAR] - [qQ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [123] as [VARCHAR] - [B]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [124] as [VARCHAR] - [DcbH]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [125] as [VARCHAR] - [vqliqxEAdgorRgNtrYXL]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [126] as [VARCHAR] - [Gqh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [127] as [VARCHAR] - [TX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [128] as [VARCHAR] - [hUCBkPiDUsYSOnkhoBfc]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [129] as [VARCHAR] - [DLEADYsUBQUmwUltueBe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [130] as [VARCHAR] - [GveqwERmBiFwoRwtTVfr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [131] as [VARCHAR] - [M]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [132] as [VARCHAR] - [LoREHxiDEhQKnbQHWhKa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [133] as [VARCHAR] - [nBNHkqUCmNgOfIPMQxjm]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [134] as [VARCHAR] - [IXboryTlTvqzQcsFUhif]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [135] as [VARCHAR] - [DT]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [136] as [VARCHAR] - [DqLbcuicTKXRYkor]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [137] as [DOUBLE] - [1983192.4300125928]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [138] as [VARCHAR] - [qbhmbAVi]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [139] as [VARCHAR] - [razXYfPnLOPKIEd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [140] as [VARCHAR] - [MjZBWWrGjn]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [141] as [BIGINT] - [25]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set eventInfo -> kgTskpZdWHJBddo
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set storeName -> SzNteHkKqZliPYfcmvLP
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set purchasedBy -> GTZsgfHnlsAwanNXXNOC
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poType -> cbrTb
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set explodeFlag -> m
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPartCompInd -> z
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set fobPoint -> eq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTotal -> 3174272.300564736
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set rcdCode -> v
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsNetDays -> hqg
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set frtCode -> T
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipPt -> Ll
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderType -> f
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage1 -> RDNZatuYJjnNupLdwVeP
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderingSystem -> sg
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderTypeDesc -> qUfgRJRubOoEQxT
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesCheckNumber -> NQlfmjzuhIIdWwyaxWxV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set receivedTimestamp -> 1970-01-01T01:52:35
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poTypeSuffix -> aSvorRbTum
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phoneNumber -> QGWIxWVsXsa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set termsTypeFlag -> oq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct1 -> YRjvMwNsrlxGkENAmbDa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poControl -> NZDHI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set giftMessage2 -> ywXTXdNtnjAPmwkNqUbR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderWeight -> 6205000.696631566
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct2 -> ZcMxqurruqEcNPgCEqsv
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set salesReqCode -> ih
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateValue -> 1972-10-21
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set psMsg -> fjvNsavYlXfMInFyqDRD
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetHand -> 5295409.998353402
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set hostAlertFlag -> L
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poDateQualifier -> Cxq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set refTcNbr -> GMYOyKDUHjdFWEXxiAXJ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set sellCo -> OQ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipComplete -> Q
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dunsNbr -> RoYknbAkcqlmgft
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poNumber -> IjYXzXCTqGQFKiqYhxDe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set totalBindingFt -> 9815786.837175516
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetSh -> 8701438.434901876
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateValue -> 1970-08-12
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorCode -> Ifd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set poQual -> jx
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct3 -> DmCPuHxqfyCMtMpfokGv
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderRetTax -> 9713717.819123281
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set seqNbr -> 868998
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorDescription -> loRhebLtyFqaYSEfBeML
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set srvLevel -> CX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialInstruct4 -> mdYwAUirnwYukwvJXLtB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipDateQualifier -> jDe
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByCutOffDt -> 1985-08-17
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set specialPoNo -> ucxDJGsybTEEJAcNoTuG
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set reserveOrderInd -> v
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipInstruction -> iDwKdutjxYFBZBheKQYx
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set statusCode -> R
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipByDate -> 1989-07-05
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set userId -> FCJkkmrh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set returnMsg -> uFfBJvinlRTCGsUqXWZO
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set country -> JWiCQKQqyPAJTttuPLW
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set stdCarrAlphaInd -> TtYu
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set errorTimestamp -> 1970-01-01T00:46:19
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set vendorNo -> PoTqxMNvTgeBPda
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cnCity -> feUeXGVvrKloBggxoQa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set phone -> QeRRImjtReNNORi
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set routeByDate -> 1971-05-09
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consStatusMsg -> zZiuvfjzgiWuqolwjEKr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set wcStore -> aTJxBVrcYc
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set destCode -> Yb
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set deliveryDate -> 1980-02-09
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set truncFlag -> G
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set contractUsageInd -> R
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set province -> kZmNzKDySdkiVyFouMa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> mwmitkq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set delvCutOffDt -> 1971-10-07
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> puMjyAPqXXB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set crossDockCenter -> NaVkuqCfHt
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> tePnfqvbggHLxwGsxHBN
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> BKkMnutCHZXEdahFoUJs
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set store -> LIchjgOsqd
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custDept -> DxuUX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> dpyCshbcPGBYVkGDHCMO
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set flag -> 264472
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> vcQOpvMiZnLVlsVZBKC
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> Wx
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipCancelDate -> 1996-05-31
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set divDesc -> HBXBQHKEpthXlyvljenB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cphone -> wVRGEpwLOGOsugoNpDGC
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngLid -> eddLtdlr
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ccountry -> cWdQZkWqxapviBvgxMHz
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerPoDateValue -> 1996-12-08
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> dOtvsAHnlsRJgJgJpOUw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> jvqenGWJbUzgwtbNZJLY
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set chngTimestamp -> 1970-01-01T01:07:41
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set beg -> iqaFq
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shipToAddress -> LegacyShipToAddress [addressLine1=dOtvsAHnlsRJgJgJpOUw, addressLine2=BKkMnutCHZXEdahFoUJs, city=vcQOpvMiZnLVlsVZBKC, cnCity=feUeXGVvrKloBggxoQa, country=JWiCQKQqyPAJTttuPLW, custNbr=mwmitkq, destCode=Yb, flag=264472, name=tePnfqvbggHLxwGsxHBN, phone=QeRRImjtReNNORi, province=kZmNzKDySdkiVyFouMa, state=Wx, store=LIchjgOsqd, truncFlag=G, zip=puMjyAPqXXB]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cprovince -> yjguWRyzCRJGpSbstfuR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> zFPQEMhyNXZlJzeywilm
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohStatusCode -> X
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set commCust -> DiuNFwB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToState -> bb
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> fyfJFfhfaEkEQjvelYt
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerShipFlg -> W
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerCode -> Kv
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set city -> WarNwGxZiPZPwPsRURwX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onNote -> nRDSeeOCBPGjcLrGeANp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custPmtMeth -> mcDfLjnarDkTnUQVkEVw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billToStore -> tRmALjsfWa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> wO
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name -> EefYpfQVVejhhGyBfgIj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custNbr -> pTQYHro
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set onlineType -> g
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set bsStoreNbr -> phHcKmohQx
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> FNvoDWvXR
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerRefNbr -> uCh
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine1 -> IASdpVzCjSQavCFdTJXB
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderDate -> 1972-09-05
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cancelDateQualifier -> AlQ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custSpInst -> VXQmkuHAcoknFfDSEYyk
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set consumerAddress -> LegacyConsumerAddress [cprovince=yjguWRyzCRJGpSbstfuR, ccountry=cWdQZkWqxapviBvgxMHz, cphone=wVRGEpwLOGOsugoNpDGC, addressLine1=zFPQEMhyNXZlJzeywilm, addressLine2=jvqenGWJbUzgwtbNZJLY, city=fyfJFfhfaEkEQjvelYt, name=dpyCshbcPGBYVkGDHCMO, consumerPoDateValue=1996-12-08, consumerShipFlg=W, state=wO, zip=FNvoDWvXR]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set customerSidemark -> dqzDmKIRVVYIfDOMshyj
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set accountNbr -> CaUIpLZzBynVyDvcUbvH
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set carrierCode -> Ir
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set state -> hz
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set billFlag -> s
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set nbDate -> 1971-04-14
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set cbCutLength -> 3771738.053219488
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderLoc -> Xy
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set custWhNbr -> mejM
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set zip -> XSikZVDgdsDaCDTZ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addressLine2 -> FOrPiZTTDzhRDjELpIZa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set agreementNumber -> hejCdvveQLiwlce
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set orderMerCost -> 7650506.656308856
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set name2 -> HBlNXtVsmmgvXlBznwBV
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set inputMethod -> BXwgYMMoTS
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set assignedAgent -> tzHMWKtp
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set shawOrderNumber -> PMssHa
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpprovince -> sBDSSqqyTdlClyhMsrGn
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpphone -> HnPGmDthLFzPQaAifoQH
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set newStoreInd -> p
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set tpcountry -> snGnNTuzpYaoEzMhlalb
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authRep -> bEcovpHAuYKlWgWyEpOP
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acctContact -> LnyqcBAYOxNipQoMrwaJ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set markForStore -> lTwNKKyMyQ
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set thirdPartyAddress -> LegacyThirdPartyAddress [tpprovince=sBDSSqqyTdlClyhMsrGn, tpcountry=snGnNTuzpYaoEzMhlalb, tpphone=HnPGmDthLFzPQaAifoQH, addressLine1=IASdpVzCjSQavCFdTJXB, addressLine2=FOrPiZTTDzhRDjELpIZa, accountNbr=CaUIpLZzBynVyDvcUbvH, billFlag=s, city=WarNwGxZiPZPwPsRURwX, name=EefYpfQVVejhhGyBfgIj, name2=HBlNXtVsmmgvXlBznwBV, state=hz, zip=XSikZVDgdsDaCDTZ]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set authorizationNo -> tfXhHYNaAE
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set noAsnFlag -> N
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set mediaEventCode -> tI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set acknowlegeOrdInd -> d
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set dates -> null
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ohCancelDateValue -> 1985-12-18
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set addrKey -> 153181
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set lines -> null
+2020-06-19 13:28:30 DEBUG [MockHelper.java:99] EdiOrderHeader [legacyOrderNumber=null, acctContact=LnyqcBAYOxNipQoMrwaJ, acknowlegeOrdInd=d, addrKey=153181, agreementNumber=hejCdvveQLiwlce, assignedAgent=tzHMWKtp, authRep=bEcovpHAuYKlWgWyEpOP, authorizationNo=tfXhHYNaAE, beg=iqaFq, billToState=bb, billToStore=tRmALjsfWa, bsStoreNbr=phHcKmohQx, cancelDateQualifier=AlQ, carrierCode=Ir, cbCutLength=3771738.053219488, chngLid=eddLtdlr, chngTimestamp=1970-01-01T01:07:41, commCust=DiuNFwB, consStatusMsg=zZiuvfjzgiWuqolwjEKr, contractUsageInd=R, crossDockCenter=NaVkuqCfHt, custDept=DxuUX, custPmtMeth=mcDfLjnarDkTnUQVkEVw, custSpInst=VXQmkuHAcoknFfDSEYyk, custWhNbr=mejM, customerCode=Kv, custNbr=pTQYHro, customerRefNbr=uCh, customerSidemark=dqzDmKIRVVYIfDOMshyj, deliveryDate=1980-02-09, delvCutOffDt=1971-10-07, divDesc=HBXBQHKEpthXlyvljenB, dunsNbr=RoYknbAkcqlmgft, errorCode=Ifd, errorDescription=loRhebLtyFqaYSEfBeML, errorTimestamp=1970-01-01T00:46:19, eventInfo=kgTskpZdWHJBddo, explodeFlag=m, fobPoint=eq, frtCode=T, giftMessage1=RDNZatuYJjnNupLdwVeP, giftMessage2=ywXTXdNtnjAPmwkNqUbR, hostAlertFlag=L, inputMethod=BXwgYMMoTS, markForStore=lTwNKKyMyQ, mediaEventCode=tI, nbDate=1971-04-14, newStoreInd=p, noAsnFlag=N, ohCancelDateValue=1985-12-18, ohStatusCode=X, onNote=nRDSeeOCBPGjcLrGeANp, onlineType=g, orderDate=1972-09-05, orderLoc=01, orderMerCost=7650506.656308856, shawOrderNumber=PMssHa, orderRetHand=5295409.998353402, orderRetSh=8701438.434901876, orderRetTax=9713717.819123281, orderRetTotal=3174272.300564736, orderType=H, orderTypeDesc=HARDSURFACES, orderWeight=6205000.696631566, orderingSystem=sg, phoneNumber=QGWIxWVsXsa, poControl=NZDHI, poDateValue=1972-10-21, poDateQualifier=Cxq, poNumber=IjYXzXCTqGQFKiqYhxDe, poQual=jx, poType=cbrTb, poTypeSuffix=aSvorRbTum, psMsg=fjvNsavYlXfMInFyqDRD, purchasedBy=GTZsgfHnlsAwanNXXNOC, rcdCode=v, receivedTimestamp=1970-01-01T01:52:35, refTcNbr=GMYOyKDUHjdFWEXxiAXJ, reserveOrderInd=v, returnMsg=uFfBJvinlRTCGsUqXWZO, routeByDate=1971-05-09, salesCheckNumber=NQlfmjzuhIIdWwyaxWxV, salesReqCode=ih, sellCo=OQ, seqNbr=868998, shipByCutOffDt=1985-08-17, shipByDate=1989-07-05, shipCancelDate=1996-05-31, shipComplete=Q, shipDateValue=1970-08-12, shipDateQualifier=jDe, shipInstruction=iDwKdutjxYFBZBheKQYx, shipPartCompInd=z, shipPt=Ll, specialInstruct1=YRjvMwNsrlxGkENAmbDa, specialInstruct2=ZcMxqurruqEcNPgCEqsv, specialInstruct3=DmCPuHxqfyCMtMpfokGv, specialInstruct4=mdYwAUirnwYukwvJXLtB, specialPoNo=ucxDJGsybTEEJAcNoTuG, srvLevel=CX, statusCode=R, stdCarrAlphaInd=TtYu, storeName=SzNteHkKqZliPYfcmvLP, termsNetDays=hqg, termsTypeFlag=oq, totalBindingFt=9815786.837175516, userId=FCJkkmrh, vendorNo=PoTqxMNvTgeBPda, wcStore=aTJxBVrcYc, consumerAddress=LegacyConsumerAddress [cprovince=yjguWRyzCRJGpSbstfuR, ccountry=cWdQZkWqxapviBvgxMHz, cphone=wVRGEpwLOGOsugoNpDGC, addressLine1=zFPQEMhyNXZlJzeywilm, addressLine2=jvqenGWJbUzgwtbNZJLY, city=fyfJFfhfaEkEQjvelYt, name=dpyCshbcPGBYVkGDHCMO, consumerPoDateValue=1996-12-08, consumerShipFlg=W, state=wO, zip=FNvoDWvXR], shipToAddress=LegacyShipToAddress [addressLine1=dOtvsAHnlsRJgJgJpOUw, addressLine2=BKkMnutCHZXEdahFoUJs, city=vcQOpvMiZnLVlsVZBKC, cnCity=feUeXGVvrKloBggxoQa, country=JWiCQKQqyPAJTttuPLW, custNbr=mwmitkq, destCode=Yb, flag=264472, name=tePnfqvbggHLxwGsxHBN, phone=QeRRImjtReNNORi, province=kZmNzKDySdkiVyFouMa, state=Wx, store=LIchjgOsqd, truncFlag=G, zip=puMjyAPqXXB], thirdPartyAddress=LegacyThirdPartyAddress [tpprovince=sBDSSqqyTdlClyhMsrGn, tpcountry=snGnNTuzpYaoEzMhlalb, tpphone=HnPGmDthLFzPQaAifoQH, addressLine1=IASdpVzCjSQavCFdTJXB, addressLine2=FOrPiZTTDzhRDjELpIZa, accountNbr=CaUIpLZzBynVyDvcUbvH, billFlag=s, city=WarNwGxZiPZPwPsRURwX, name=EefYpfQVVejhhGyBfgIj, name2=HBlNXtVsmmgvXlBznwBV, state=hz, zip=XSikZVDgdsDaCDTZ], dates=null, lines=null]
+Hibernate: call next value for SHXP.EDI_ORDER_NBR
+Hibernate: insert into EDI_ORDER_HEADER (ACCT_CONTACT, ACKNOWLEGE_ORD_IND, ADDR_KEY, AGREEMENT_NUMBER, ASSIGNED_AGENT, AUTH_REP, AUTHORIZATION_NO, beg, BILL_TO_STATE, BILL_TO_STORE, BS_STORE_NBR, CANCEL_DATE_QUAL, CARRIER_CODE, CB_CUT_LENGTH, CHNG_LID, CHNG_TIMESTAMP, COMM_CUST, CONS_STATUS_MSG, CONSUMER_ADDRESS, CONSUMER_ADDRESS_2, CONSUMER_CITY, CONSUMER_PO_DATE, CONSUMER_SHIP_FLG, CONSUMER_NAME, CONSUMER_STATE, CONSUMER_ZIP, CONTRACT_USAGE_IND, CROSS_DOCK_CENTER, CUST_DEPT, CUSTOMER_NUMBER, CUST_PMT_METH, CUST_SP_INST, CUST_WH_NBR, CUSTOMER_CODE, CUSTOMER_REF_NBR, CUSTOMER_SIDEMARK, DELIVERY_DATE, DELV_CUT_OFF_DT, DIV_DESC, DUNS_NBR, ERROR_CODE, ERROR_DESCRIPTION, ERROR_TIMESTAMP, EVENT_INFO, EXPLODE_FLAG, FOB_POINT, FRT_CODE, GIFT_MESSAGE_1, GIFT_MESSAGE_2, HOST_ALERT_FLAG, INPUT_METHOD, MARK_FOR_STORE, MEDIA_EVENT_CODE, NB_DATE, NEW_STORE_IND, NO_ASN_FLAG, OH_CANCEL_DATE, OH_STATUS_CODE, ON_NOTE, ONLINE_TYPE, ORDER_DATE, ORDER_LOC, ORDER_MER_COST, ORDER_RET_HAND, ORDER_RET_SH, ORDER_RET_TAX, ORDER_RET_TOTAL, ORDER_TYPE, ORDER_TYPE_DESC, ORDER_WEIGHT, ORDERING_SYSTEM, PHONE_NUMBER, PO_CONTROL, PO_DATE_QUAL, PO_DATE, PO_NUMBER, PO_QUAL, PO_TYPE, PO_TYPE_SUFFIX, PS_MSG, PURCHASED_BY, RCD_CODE, RECEIVED_TIMESTAMP, REF_TC_NBR, RESERVE_ORDER_IND, RETURN_MSG, ROUTE_BY_DATE, SALES_CHECK_NUMBER, SALES_REQ_CODE, SELL_CO, SEQ_NBR, ORDER_NUMBER, SHIP_BY_CUT_OFF_DT, SHIP_BY_DATE, SHIP_CANCEL_DATE, SHIP_COMPLETE, SHIP_DATE_QUAL, SHIP_DATE, SHIP_INSTRUCTION, SHIP_PART_COMP_IND, SHIP_PT, SHIP_TO_ADDRESS_1, SHIP_TO_ADDRESS_2, SHIP_TO_CITY, SHIP_TO_CN_CITY, SHIP_TO_COUNTRY, SHIP_TO_CUST_NBR, SHIP_TO_DEST_COD, SHIP_TO_FLAG, SHIP_TO_NAME, SHIP_TO_PHONE, SHIP_TO_PROVENCE, SHIP_TO_STATE, SHIP_TO_STORE, SHIP_TO_TRUNC_FLG, SHIP_TO_ZIP, SPECIAL_INSTRUCT_1, SPECIAL_INSTRUCT_2, SPECIAL_INSTRUCT_3, SPECIAL_INSTRUCT_4, SPECIAL_PO_NO, SRV_LEVEL, STATUS_CODE, STD_CARR_ALPHA_IND, STORE_NAME, TERMS_NET_DAYS, TERMS_TYPE_FLAG, THIRD_PARTY_ACCT_NBR, THIRD_PARTY_ADDR_1, THIRD_PARTY_ADDR_2, THIRD_PARTY_BILL_FLAG, THIRD_PARTY_CITY, THIRD_PARTY_NAME, THIRD_PARTY_NAME_2, THIRD_PARTY_STATE, THIRD_PARTY_ZIP, TOTAL_BINDING_FT, USER_ID, VENDOR_NO, WC_STORE, EDI_ORDER_NUMBER) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [VARCHAR] - [LnyqcBAYOxNipQoMrwaJ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [2] as [VARCHAR] - [d]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [3] as [INTEGER] - [153181]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [4] as [VARCHAR] - [hejCdvveQLiwlce]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [5] as [VARCHAR] - [tzHMWKtp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [6] as [VARCHAR] - [bEcovpHAuYKlWgWyEpOP]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [7] as [VARCHAR] - [tfXhHYNaAE]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [8] as [VARCHAR] - [iqaFq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [9] as [VARCHAR] - [bb]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [10] as [VARCHAR] - [tRmALjsfWa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [11] as [VARCHAR] - [phHcKmohQx]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [12] as [VARCHAR] - [AlQ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [13] as [VARCHAR] - [Ir]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [14] as [DOUBLE] - [3771738.053219488]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [15] as [VARCHAR] - [eddLtdlr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [16] as [TIMESTAMP] - [1970-01-01T01:07:41]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [17] as [VARCHAR] - [DiuNFwB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [18] as [VARCHAR] - [zZiuvfjzgiWuqolwjEKr]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [19] as [VARCHAR] - [zFPQEMhyNXZlJzeywilm]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [20] as [VARCHAR] - [jvqenGWJbUzgwtbNZJLY]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [21] as [VARCHAR] - [fyfJFfhfaEkEQjvelYt]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [22] as [DATE] - [1996-12-08]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [23] as [VARCHAR] - [W]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [24] as [VARCHAR] - [dpyCshbcPGBYVkGDHCMO]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [25] as [VARCHAR] - [wO]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [26] as [VARCHAR] - [FNvoDWvXR]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [27] as [VARCHAR] - [R]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [28] as [VARCHAR] - [NaVkuqCfHt]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [29] as [VARCHAR] - [DxuUX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [30] as [VARCHAR] - [pTQYHro]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [31] as [VARCHAR] - [mcDfLjnarDkTnUQVkEVw]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [32] as [VARCHAR] - [VXQmkuHAcoknFfDSEYyk]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [33] as [VARCHAR] - [mejM]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [34] as [VARCHAR] - [Kv]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [35] as [VARCHAR] - [uCh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [36] as [VARCHAR] - [dqzDmKIRVVYIfDOMshyj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [37] as [DATE] - [1980-02-09]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [38] as [DATE] - [1971-10-07]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [39] as [VARCHAR] - [HBXBQHKEpthXlyvljenB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [40] as [VARCHAR] - [RoYknbAkcqlmgft]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [41] as [VARCHAR] - [Ifd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [42] as [VARCHAR] - [loRhebLtyFqaYSEfBeML]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [43] as [TIMESTAMP] - [1970-01-01T00:46:19]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [44] as [VARCHAR] - [kgTskpZdWHJBddo]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [45] as [VARCHAR] - [m]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [46] as [VARCHAR] - [eq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [47] as [VARCHAR] - [T]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [48] as [VARCHAR] - [RDNZatuYJjnNupLdwVeP]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [49] as [VARCHAR] - [ywXTXdNtnjAPmwkNqUbR]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [50] as [VARCHAR] - [L]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [51] as [VARCHAR] - [BXwgYMMoTS]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [52] as [VARCHAR] - [lTwNKKyMyQ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [53] as [VARCHAR] - [tI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [54] as [DATE] - [1971-04-14]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [55] as [VARCHAR] - [p]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [56] as [VARCHAR] - [N]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [57] as [DATE] - [1985-12-18]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [58] as [VARCHAR] - [X]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [59] as [VARCHAR] - [nRDSeeOCBPGjcLrGeANp]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [60] as [VARCHAR] - [g]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [61] as [DATE] - [1972-09-05]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [62] as [VARCHAR] - [01]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [63] as [DOUBLE] - [7650506.656308856]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [64] as [DOUBLE] - [5295409.998353402]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [65] as [DOUBLE] - [8701438.434901876]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [66] as [DOUBLE] - [9713717.819123281]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [67] as [DOUBLE] - [3174272.300564736]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [68] as [VARCHAR] - [H]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [69] as [VARCHAR] - [HARDSURFACES]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [70] as [DOUBLE] - [6205000.696631566]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [71] as [VARCHAR] - [sg]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [72] as [VARCHAR] - [QGWIxWVsXsa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [73] as [VARCHAR] - [NZDHI]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [74] as [VARCHAR] - [Cxq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [75] as [DATE] - [1972-10-21]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [76] as [VARCHAR] - [IjYXzXCTqGQFKiqYhxDe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [77] as [VARCHAR] - [jx]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [78] as [VARCHAR] - [cbrTb]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [79] as [VARCHAR] - [aSvorRbTum]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [80] as [VARCHAR] - [fjvNsavYlXfMInFyqDRD]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [81] as [VARCHAR] - [GTZsgfHnlsAwanNXXNOC]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [82] as [VARCHAR] - [v]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [83] as [TIMESTAMP] - [1970-01-01T01:52:35]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [84] as [VARCHAR] - [GMYOyKDUHjdFWEXxiAXJ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [85] as [VARCHAR] - [v]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [86] as [VARCHAR] - [uFfBJvinlRTCGsUqXWZO]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [87] as [DATE] - [1971-05-09]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [88] as [VARCHAR] - [NQlfmjzuhIIdWwyaxWxV]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [89] as [VARCHAR] - [ih]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [90] as [VARCHAR] - [OQ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [91] as [INTEGER] - [868998]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [92] as [VARCHAR] - [PMssHa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [93] as [DATE] - [1985-08-17]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [94] as [DATE] - [1989-07-05]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [95] as [DATE] - [1996-05-31]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [96] as [VARCHAR] - [Q]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [97] as [VARCHAR] - [jDe]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [98] as [DATE] - [1970-08-12]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [99] as [VARCHAR] - [iDwKdutjxYFBZBheKQYx]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [100] as [VARCHAR] - [z]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [101] as [VARCHAR] - [Ll]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [102] as [VARCHAR] - [dOtvsAHnlsRJgJgJpOUw]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [103] as [VARCHAR] - [BKkMnutCHZXEdahFoUJs]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [104] as [VARCHAR] - [vcQOpvMiZnLVlsVZBKC]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [105] as [VARCHAR] - [feUeXGVvrKloBggxoQa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [106] as [VARCHAR] - [JWiCQKQqyPAJTttuPLW]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [107] as [VARCHAR] - [mwmitkq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [108] as [VARCHAR] - [Yb]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [109] as [INTEGER] - [264472]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [110] as [VARCHAR] - [tePnfqvbggHLxwGsxHBN]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [111] as [VARCHAR] - [QeRRImjtReNNORi]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [112] as [VARCHAR] - [kZmNzKDySdkiVyFouMa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [113] as [VARCHAR] - [Wx]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [114] as [VARCHAR] - [LIchjgOsqd]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [115] as [VARCHAR] - [G]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [116] as [VARCHAR] - [puMjyAPqXXB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [117] as [VARCHAR] - [YRjvMwNsrlxGkENAmbDa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [118] as [VARCHAR] - [ZcMxqurruqEcNPgCEqsv]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [119] as [VARCHAR] - [DmCPuHxqfyCMtMpfokGv]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [120] as [VARCHAR] - [mdYwAUirnwYukwvJXLtB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [121] as [VARCHAR] - [ucxDJGsybTEEJAcNoTuG]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [122] as [VARCHAR] - [CX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [123] as [VARCHAR] - [R]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [124] as [VARCHAR] - [TtYu]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [125] as [VARCHAR] - [SzNteHkKqZliPYfcmvLP]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [126] as [VARCHAR] - [hqg]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [127] as [VARCHAR] - [oq]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [128] as [VARCHAR] - [CaUIpLZzBynVyDvcUbvH]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [129] as [VARCHAR] - [IASdpVzCjSQavCFdTJXB]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [130] as [VARCHAR] - [FOrPiZTTDzhRDjELpIZa]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [131] as [VARCHAR] - [s]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [132] as [VARCHAR] - [WarNwGxZiPZPwPsRURwX]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [133] as [VARCHAR] - [EefYpfQVVejhhGyBfgIj]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [134] as [VARCHAR] - [HBlNXtVsmmgvXlBznwBV]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [135] as [VARCHAR] - [hz]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [136] as [VARCHAR] - [XSikZVDgdsDaCDTZ]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [137] as [DOUBLE] - [9815786.837175516]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [138] as [VARCHAR] - [FCJkkmrh]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [139] as [VARCHAR] - [PoTqxMNvTgeBPda]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [140] as [VARCHAR] - [aTJxBVrcYc]
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [141] as [BIGINT] - [26]
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set createTimestamp -> 1970-01-01T00:38:18
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set defaultAction -> k
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set precedence -> 1989144.2929238125
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set createdBy -> OzMQOaLI
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set changeTimestamp -> 1970-01-01T01:37:09
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ediReasonCode -> 137449
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set autoCreateFlag -> p
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set changedBy -> BhPhtXfw
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set level -> o
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set description -> dPWbPKTPOFPfKsxvTizX
+2020-06-19 13:28:30 DEBUG [MockBuilder.java:94] set ediOrdValidations -> null
+Hibernate: select edireasonc0_.EDI_REASON_CODE as edi_reas1_6_1_, edireasonc0_.AUTO_CREATE_FLAG as auto_cre2_6_1_, edireasonc0_.CHANGE_TIMESTAMP as change_t3_6_1_, edireasonc0_.CHANGED_BY as changed_4_6_1_, edireasonc0_.CREATE_TIMESTAMP as create_t5_6_1_, edireasonc0_.CREATED_BY as created_6_6_1_, edireasonc0_.DEFAULT_ACTION as default_7_6_1_, edireasonc0_.description as descript8_6_1_, edireasonc0_.LEVEL as level9_6_1_, edireasonc0_.precedence as precede10_6_1_, ediordvali1_.edi_reason_code as edi_rea11_2_3_, ediordvali1_.EDI_ORDER_NBR as edi_orde1_2_3_, ediordvali1_.PO_LINE_NBR as po_line_2_2_3_, ediordvali1_.TIME_STAMP as time_sta3_2_3_, ediordvali1_.EDI_ORDER_NBR as edi_orde1_2_0_, ediordvali1_.PO_LINE_NBR as po_line_2_2_0_, ediordvali1_.TIME_STAMP as time_sta3_2_0_, ediordvali1_.ACTION_CODE as action_c4_2_0_, ediordvali1_.ASSIGNED_TO as assigned5_2_0_, ediordvali1_.CHANGED_BY as changed_6_2_0_, ediordvali1_.CHANGED_TIMESTAMP as changed_7_2_0_, ediordvali1_.CREATED_BY as created_8_2_0_, ediordvali1_.CREATED_TIMESTAMP as created_9_2_0_, ediordvali1_.edi_reason_code as edi_rea11_2_0_, ediordvali1_.status as status10_2_0_ from EDI_REASON_CODE edireasonc0_ left outer join EDI_ORD_VALIDATION ediordvali1_ on edireasonc0_.EDI_REASON_CODE=ediordvali1_.edi_reason_code where edireasonc0_.EDI_REASON_CODE=?
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [INTEGER] - [63]
+Hibernate: select ediorderhe0_.EDI_ORDER_NUMBER as edi_orde1_4_, ediorderhe0_.ACCT_CONTACT as acct_con2_4_, ediorderhe0_.ACKNOWLEGE_ORD_IND as acknowle3_4_, ediorderhe0_.ADDR_KEY as addr_key4_4_, ediorderhe0_.AGREEMENT_NUMBER as agreemen5_4_, ediorderhe0_.ASSIGNED_AGENT as assigned6_4_, ediorderhe0_.AUTH_REP as auth_rep7_4_, ediorderhe0_.AUTHORIZATION_NO as authoriz8_4_, ediorderhe0_.beg as beg9_4_, ediorderhe0_.BILL_TO_STATE as bill_to10_4_, ediorderhe0_.BILL_TO_STORE as bill_to11_4_, ediorderhe0_.BS_STORE_NBR as bs_stor12_4_, ediorderhe0_.CANCEL_DATE_QUAL as cancel_13_4_, ediorderhe0_.CARRIER_CODE as carrier14_4_, ediorderhe0_.CB_CUT_LENGTH as cb_cut_15_4_, ediorderhe0_.CHNG_LID as chng_li16_4_, ediorderhe0_.CHNG_TIMESTAMP as chng_ti17_4_, ediorderhe0_.COMM_CUST as comm_cu18_4_, ediorderhe0_.CONS_STATUS_MSG as cons_st19_4_, ediorderhe0_.CONSUMER_ADDRESS as consume20_4_, ediorderhe0_.CONSUMER_ADDRESS_2 as CONSUME21_4_, ediorderhe0_.CONSUMER_CITY as consume22_4_, ediorderhe0_.CONSUMER_PO_DATE as consume23_4_, ediorderhe0_.CONSUMER_SHIP_FLG as consume24_4_, ediorderhe0_.CONSUMER_NAME as consume25_4_, ediorderhe0_.CONSUMER_STATE as consume26_4_, ediorderhe0_.CONSUMER_ZIP as consume27_4_, ediorderhe0_.CONTRACT_USAGE_IND as contrac28_4_, ediorderhe0_.CROSS_DOCK_CENTER as cross_d29_4_, ediorderhe0_.CUST_DEPT as cust_de30_4_, ediorderhe0_.CUSTOMER_NUMBER as custome31_4_, ediorderhe0_.CUST_PMT_METH as cust_pm32_4_, ediorderhe0_.CUST_SP_INST as cust_sp33_4_, ediorderhe0_.CUST_WH_NBR as cust_wh34_4_, ediorderhe0_.CUSTOMER_CODE as custome35_4_, ediorderhe0_.CUSTOMER_REF_NBR as custome36_4_, ediorderhe0_.CUSTOMER_SIDEMARK as custome37_4_, ediorderhe0_.DELIVERY_DATE as deliver38_4_, ediorderhe0_.DELV_CUT_OFF_DT as delv_cu39_4_, ediorderhe0_.DIV_DESC as div_des40_4_, ediorderhe0_.DUNS_NBR as duns_nb41_4_, ediorderhe0_.ERROR_CODE as error_c42_4_, ediorderhe0_.ERROR_DESCRIPTION as error_d43_4_, ediorderhe0_.ERROR_TIMESTAMP as error_t44_4_, ediorderhe0_.EVENT_INFO as event_i45_4_, ediorderhe0_.EXPLODE_FLAG as explode46_4_, ediorderhe0_.FOB_POINT as fob_poi47_4_, ediorderhe0_.FRT_CODE as frt_cod48_4_, ediorderhe0_.GIFT_MESSAGE_1 as GIFT_ME49_4_, ediorderhe0_.GIFT_MESSAGE_2 as GIFT_ME50_4_, ediorderhe0_.HOST_ALERT_FLAG as host_al51_4_, ediorderhe0_.INPUT_METHOD as input_m52_4_, ediorderhe0_.MARK_FOR_STORE as mark_fo53_4_, ediorderhe0_.MEDIA_EVENT_CODE as media_e54_4_, ediorderhe0_.NB_DATE as nb_date55_4_, ediorderhe0_.NEW_STORE_IND as new_sto56_4_, ediorderhe0_.NO_ASN_FLAG as no_asn_57_4_, ediorderhe0_.OH_CANCEL_DATE as oh_canc58_4_, ediorderhe0_.OH_STATUS_CODE as oh_stat59_4_, ediorderhe0_.ON_NOTE as on_note60_4_, ediorderhe0_.ONLINE_TYPE as online_61_4_, ediorderhe0_.ORDER_DATE as order_d62_4_, ediorderhe0_.ORDER_LOC as order_l63_4_, ediorderhe0_.ORDER_MER_COST as order_m64_4_, ediorderhe0_.ORDER_RET_HAND as order_r65_4_, ediorderhe0_.ORDER_RET_SH as order_r66_4_, ediorderhe0_.ORDER_RET_TAX as order_r67_4_, ediorderhe0_.ORDER_RET_TOTAL as order_r68_4_, ediorderhe0_.ORDER_TYPE as order_t69_4_, ediorderhe0_.ORDER_TYPE_DESC as order_t70_4_, ediorderhe0_.ORDER_WEIGHT as order_w71_4_, ediorderhe0_.ORDERING_SYSTEM as orderin72_4_, ediorderhe0_.PHONE_NUMBER as phone_n73_4_, ediorderhe0_.PO_CONTROL as po_cont74_4_, ediorderhe0_.PO_DATE_QUAL as po_date75_4_, ediorderhe0_.PO_DATE as po_date76_4_, ediorderhe0_.PO_NUMBER as po_numb77_4_, ediorderhe0_.PO_QUAL as po_qual78_4_, ediorderhe0_.PO_TYPE as po_type79_4_, ediorderhe0_.PO_TYPE_SUFFIX as po_type80_4_, ediorderhe0_.PS_MSG as ps_msg81_4_, ediorderhe0_.PURCHASED_BY as purchas82_4_, ediorderhe0_.RCD_CODE as rcd_cod83_4_, ediorderhe0_.RECEIVED_TIMESTAMP as receive84_4_, ediorderhe0_.REF_TC_NBR as ref_tc_85_4_, ediorderhe0_.RESERVE_ORDER_IND as reserve86_4_, ediorderhe0_.RETURN_MSG as return_87_4_, ediorderhe0_.ROUTE_BY_DATE as route_b88_4_, ediorderhe0_.SALES_CHECK_NUMBER as sales_c89_4_, ediorderhe0_.SALES_REQ_CODE as sales_r90_4_, ediorderhe0_.SELL_CO as sell_co91_4_, ediorderhe0_.SEQ_NBR as seq_nbr92_4_, ediorderhe0_.ORDER_NUMBER as order_n93_4_, ediorderhe0_.SHIP_BY_CUT_OFF_DT as ship_by94_4_, ediorderhe0_.SHIP_BY_DATE as ship_by95_4_, ediorderhe0_.SHIP_CANCEL_DATE as ship_ca96_4_, ediorderhe0_.SHIP_COMPLETE as ship_co97_4_, ediorderhe0_.SHIP_DATE_QUAL as ship_da98_4_, ediorderhe0_.SHIP_DATE as ship_da99_4_, ediorderhe0_.SHIP_INSTRUCTION as ship_i100_4_, ediorderhe0_.SHIP_PART_COMP_IND as ship_p101_4_, ediorderhe0_.SHIP_PT as ship_p102_4_, ediorderhe0_.SHIP_TO_ADDRESS_1 as SHIP_T103_4_, ediorderhe0_.SHIP_TO_ADDRESS_2 as SHIP_T104_4_, ediorderhe0_.SHIP_TO_CITY as ship_t105_4_, ediorderhe0_.SHIP_TO_CN_CITY as ship_t106_4_, ediorderhe0_.SHIP_TO_COUNTRY as ship_t107_4_, ediorderhe0_.SHIP_TO_CUST_NBR as ship_t108_4_, ediorderhe0_.SHIP_TO_DEST_COD as ship_t109_4_, ediorderhe0_.SHIP_TO_FLAG as ship_t110_4_, ediorderhe0_.SHIP_TO_NAME as ship_t111_4_, ediorderhe0_.SHIP_TO_PHONE as ship_t112_4_, ediorderhe0_.SHIP_TO_PROVENCE as ship_t113_4_, ediorderhe0_.SHIP_TO_STATE as ship_t114_4_, ediorderhe0_.SHIP_TO_STORE as ship_t115_4_, ediorderhe0_.SHIP_TO_TRUNC_FLG as ship_t116_4_, ediorderhe0_.SHIP_TO_ZIP as ship_t117_4_, ediorderhe0_.SPECIAL_INSTRUCT_1 as SPECIA118_4_, ediorderhe0_.SPECIAL_INSTRUCT_2 as SPECIA119_4_, ediorderhe0_.SPECIAL_INSTRUCT_3 as SPECIA120_4_, ediorderhe0_.SPECIAL_INSTRUCT_4 as SPECIA121_4_, ediorderhe0_.SPECIAL_PO_NO as specia122_4_, ediorderhe0_.SRV_LEVEL as srv_le123_4_, ediorderhe0_.STATUS_CODE as status124_4_, ediorderhe0_.STD_CARR_ALPHA_IND as std_ca125_4_, ediorderhe0_.STORE_NAME as store_126_4_, ediorderhe0_.TERMS_NET_DAYS as terms_127_4_, ediorderhe0_.TERMS_TYPE_FLAG as terms_128_4_, ediorderhe0_.THIRD_PARTY_ACCT_NBR as third_129_4_, ediorderhe0_.THIRD_PARTY_ADDR_1 as THIRD_130_4_, ediorderhe0_.THIRD_PARTY_ADDR_2 as THIRD_131_4_, ediorderhe0_.THIRD_PARTY_BILL_FLAG as third_132_4_, ediorderhe0_.THIRD_PARTY_CITY as third_133_4_, ediorderhe0_.THIRD_PARTY_NAME as third_134_4_, ediorderhe0_.THIRD_PARTY_NAME_2 as THIRD_135_4_, ediorderhe0_.THIRD_PARTY_STATE as third_136_4_, ediorderhe0_.THIRD_PARTY_ZIP as third_137_4_, ediorderhe0_.TOTAL_BINDING_FT as total_138_4_, ediorderhe0_.USER_ID as user_i139_4_, ediorderhe0_.VENDOR_NO as vendor140_4_, ediorderhe0_.WC_STORE as wc_sto141_4_ from EDI_ORDER_HEADER ediorderhe0_ where ediorderhe0_.ORDER_TYPE=? limit ?
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [VARCHAR] - [H]
+Hibernate: select ediorderli0_.edi_order_number as edi_ord73_5_, ediorderli0_.PO_LINE_NO as po_line_1_5_, ediorderli0_.ADD_CUST_PROD_INFO as add_cust2_5_, ediorderli0_.AGREEMENT_PRICE as agreemen3_5_, ediorderli0_.AGREEMENT_UOM as agreemen4_5_, ediorderli0_.BACKORDERED_FLAG as backorde5_5_, ediorderli0_.BILL_TO_STORE as bill_to_6_5_, ediorderli0_.BINDING_FT as binding_7_5_, ediorderli0_.CALC_PRICE as calc_pri8_5_, ediorderli0_.CHNG_LID as chng_lid9_5_, ediorderli0_.CHNG_TIMESTAMP as chng_ti10_5_, ediorderli0_.SELL_COLOR_NUMBER as sell_co11_5_, ediorderli0_.CONS_MSG as cons_ms12_5_, ediorderli0_.CONV_FACTOR as conv_fa13_5_, ediorderli0_.CONV_QTY as conv_qt14_5_, ediorderli0_.CONV_UOM as conv_uo15_5_, ediorderli0_.CONV_WEIGHT as conv_we16_5_, ediorderli0_.CUST_PO_LINE_NBR as cust_po17_5_, ediorderli0_.CUST_PROD_DESC as cust_pr18_5_, ediorderli0_.CUST_PROD_ID as cust_pr19_5_, ediorderli0_.CUST_PROD_QUAL as cust_pr20_5_, ediorderli0_.CUST_REQ_SHIP_DATE as cust_re21_5_, ediorderli0_.CUST_SZ_DESC as cust_sz22_5_, ediorderli0_.CUST_UNIT_PRICE as cust_un23_5_, ediorderli0_.CUSTOMER_CODE as custome24_5_, ediorderli0_.CUSTOMER_NUMBER as custome25_5_, ediorderli0_.CUT_LENGTH as cut_len26_5_, ediorderli0_.DEPT_NBR as dept_nb27_5_, ediorderli0_.DISC_PCT as disc_pc28_5_, ediorderli0_.ERROR_CODE as error_c29_5_, ediorderli0_.ERROR_DESCRIPTION as error_d30_5_, ediorderli0_.ERROR_TIMESTAMP as error_t31_5_, ediorderli0_.GTIN_NBR as gtin_nb32_5_, ediorderli0_.ITEM_NO as item_no33_5_, ediorderli0_.ITEM_QUAL as item_qu34_5_, ediorderli0_.ITEM_SIZE as item_si35_5_, ediorderli0_.LI_INSTRUCTION as li_inst36_5_, ediorderli0_.LINE_NUMBER as line_nu37_5_, ediorderli0_.ORDER_NUMBER as order_n38_5_, ediorderli0_.ORDER_QUANTITY as order_q39_5_, ediorderli0_.ORDER_UOM as order_u40_5_, ediorderli0_.ORDERING_SYS as orderin41_5_, ediorderli0_.PO_CONTROL as po_cont42_5_, ediorderli0_.PO_NUMBER as po_numb43_5_, ediorderli0_.PRICE_QUAL as price_q44_5_, ediorderli0_.PRICE_UOM as price_u45_5_, ediorderli0_.PROD_STATUS as prod_st46_5_, ediorderli0_.QUANTITY_ORDERED as quantit47_5_, ediorderli0_.RECEIPT_ID as receipt48_5_, ediorderli0_.REQ_DYELOT as req_dye49_5_, ediorderli0_.REQ_DYELOT_QUAL as req_dye50_5_, ediorderli0_.RESERVED_IND as reserve51_5_, ediorderli0_.RET_LN_TOTAL as ret_ln_52_5_, ediorderli0_.RET_TX_DESC as ret_tx_53_5_, ediorderli0_.RETAIL_ALLOWANCE as retail_54_5_, ediorderli0_.RETAIL_PRICE as retail_55_5_, ediorderli0_.RETAIL_SH_PRICE as retail_56_5_, ediorderli0_.RETAIL_TAX as retail_57_5_, ediorderli0_.RETURN_MSG as return_58_5_, ediorderli0_.ROLL_LENGTH as roll_le59_5_, ediorderli0_.ROLL_MAX as roll_ma60_5_, ediorderli0_.ROLL_MIN as roll_mi61_5_, ediorderli0_.ROLL_WIDTH as roll_wi62_5_, ediorderli0_.ROUNDED_FLAG as rounded63_5_, ediorderli0_.SAME_DYELOT_IND as same_dy64_5_, ediorderli0_.SHIP_DATE_QUAL as ship_da65_5_, ediorderli0_.SHIP_DATE as ship_da66_5_, ediorderli0_.STATUS_CODE as status_67_5_, ediorderli0_.SELL_STYLE_NUMBER as sell_st68_5_, ediorderli0_.SUMMARIZE_FLAG as summari69_5_, ediorderli0_.UNIT_PRICE as unit_pr70_5_, ediorderli0_.UOM_CODE as uom_cod71_5_, ediorderli0_.UPC_CODE as upc_cod72_5_ from EDI_ORDER_LINE ediorderli0_ where ediorderli0_.edi_order_number=?
+2020-06-19 13:28:30 TRACE [BasicBinder.java:64] binding parameter [1] as [BIGINT] - [2]
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateLegacyOrder" classname="com.shaw.ediorderservices.service.legacy.LegacyServiceTest" time="0.208"/>
+</testsuite>

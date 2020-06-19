@@ -24,7 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
-import com.shaw.ediorderservices.helper.MockObject;
+import com.shaw.ediorderservices.helper.MockHelper;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiSplStoreXrefRepository;
@@ -37,6 +37,7 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.ediorderservices.service.csws.CSWSService;
 import com.shaw.ediorderservices.service.shipInfo.ShipInfoService;
+import com.shaw.mock.builder.MockBuilder;
 
 @WebAppConfiguration
 @ContextConfiguration
@@ -87,9 +88,9 @@ class ShipInfoServiceTest extends MockTest {
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(samplesEdiOrder.getCustomerCode(), samplesEdiOrder.getOrderingSystem())).thenReturn(xrefList);
 
 		//blank xdock, blank address
-		EdiOrderHeader blankXDock = MockObject.build(EdiOrderHeader.class);
+		EdiOrderHeader blankXDock = MockBuilder.build(EdiOrderHeader.class);
 		blankXDock.setCrossDockCenter("");
-		EdiOrder blankAddress = MockObject.buildEdiOrder(OrderType.SAMPLES);
+		EdiOrder blankAddress = MockHelper.buildEdiOrder(OrderType.SAMPLES);
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(blankAddress.getCustomerCode(), blankAddress.getOrderingSystem())).thenReturn(xrefList);
 		blankAddress.getShipToAddress().setAddressLine1("");
 		ediOrderBean.setLegacyHeader(blankXDock);

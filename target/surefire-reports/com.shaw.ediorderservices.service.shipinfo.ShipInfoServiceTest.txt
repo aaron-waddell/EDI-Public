@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.shaw.ediorderservices.service.shipinfo.ShipInfoServiceTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 1.508 s <<< FAILURE! - in com.shaw.ediorderservices.service.shipinfo.ShipInfoServiceTest
+testCreateShipInfo  Time elapsed: 0.008 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.shaw.ediorderservices.service.shipinfo.ShipInfoServiceTest.testCreateShipInfo(ShipInfoServiceTest.java:74)
+
+testGetSplValues  Time elapsed: 0.166 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <RIgDorzbbu> but was: <>
+	at com.shaw.ediorderservices.service.shipinfo.ShipInfoServiceTest.testGetSplValues(ShipInfoServiceTest.java:99)
+

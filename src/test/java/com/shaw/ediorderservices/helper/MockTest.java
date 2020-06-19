@@ -1,5 +1,7 @@
 package com.shaw.ediorderservices.helper;
 
+import static com.shaw.mock.builder.MockBuilder.build;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +17,6 @@ import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
-import com.shaw.ediorderservices.csws.OrderHeader;
 import com.shaw.ediorderservices.csws.OrderViewResponse;
 import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
@@ -49,40 +50,40 @@ public abstract class MockTest {
 //	@Autowired
 //	protected static EdiOrderHeader legacyOrderBean;
 
-	protected static final CustInfo custInfo = MockObject.build(CustInfo.class);
-	protected static final SamplesInfo samplesInfo = MockObject.build(SamplesInfo.class);
-	protected static final Order shawOrder = MockObject.build(Order.class);
-	protected static final EdiValidation ediValidation = MockObject.build(EdiValidation.class);
-	protected static final EdiValidation ediValidation2 = MockObject.build(EdiValidation.class);
-	protected static final EdiOrderHeader ediOrderHeader = MockObject.buildEdiOrderHeader(OrderType.CARPET);
+	protected static final CustInfo custInfo = build(CustInfo.class);
+	protected static final SamplesInfo samplesInfo = build(SamplesInfo.class);
+	protected static final Order shawOrder = build(Order.class);
+	protected static final EdiValidation ediValidation = build(EdiValidation.class);
+	protected static final EdiValidation ediValidation2 = build(EdiValidation.class);
+	protected static final EdiOrderHeader ediOrderHeader = MockHelper.buildEdiOrderHeader(OrderType.CARPET);
 
-	protected static EdiOrder samplesEdiOrder = MockObject.buildEdiOrder(OrderType.SAMPLES);
-	protected static EdiOrder hsEdiOrder = MockObject.buildEdiOrder(OrderType.HARDSURFACES);
-	protected static EdiOrder cptEdiOrder = MockObject.buildEdiOrder(OrderType.CARPET);
-	protected static EdiOrder validOrder = MockObject.buildEdiOrder(OrderType.SAMPLES);
-	protected static EdiOrder invalidOrder = MockObject.buildEdiOrder(OrderType.SAMPLES);
-	protected static EdiOrder invalidOrder2 = MockObject.buildEdiOrder(OrderType.SAMPLES);
-	protected static Cart cart = MockObject.build(Cart.class);
+	protected static EdiOrder samplesEdiOrder = MockHelper.buildEdiOrder(OrderType.SAMPLES);
+	protected static EdiOrder hsEdiOrder = MockHelper.buildEdiOrder(OrderType.HARDSURFACES);
+	protected static EdiOrder cptEdiOrder = MockHelper.buildEdiOrder(OrderType.CARPET);
+	protected static EdiOrder validOrder = MockHelper.buildEdiOrder(OrderType.SAMPLES);
+	protected static EdiOrder invalidOrder = MockHelper.buildEdiOrder(OrderType.SAMPLES);
+	protected static EdiOrder invalidOrder2 = MockHelper.buildEdiOrder(OrderType.SAMPLES);
+	protected static Cart cart = build(Cart.class);
 	protected static HashMap<String, String> validationMap = new HashMap<String,String>();
-	protected static EdiOrdValidation ediOrdValidation = MockObject.build(EdiOrdValidation.class);
-	protected static OrderViewResponse orderView = MockObject.build(OrderViewResponse.class);
+	protected static EdiOrdValidation ediOrdValidation = build(EdiOrdValidation.class);
+	protected static OrderViewResponse orderView = build(OrderViewResponse.class);
 	protected static List<EdiSplStoreXref> xrefList = new ArrayList<EdiSplStoreXref>();
 	
 	static {
 		hsEdiOrder.setOrderType(OrderType.HARDSURFACES.toString());
 		samplesEdiOrder.setOrderType(OrderType.SAMPLES.toString());
-		cart.addLine(MockObject.build(CartLine.class));
+		cart.addLine(build(CartLine.class));
 		validationMap.put("out_err_code","");
-		ediOrdValidation.setEdiReasonCode(MockObject.build(EdiReasonCode.class));
+		ediOrdValidation.setEdiReasonCode(build(EdiReasonCode.class));
 		validOrder.addValidation(new EdiValidation("ACCEPTED", "ACCEPTED"));
 		validOrder.setOrderType(OrderType.SAMPLES.toString());
 		invalidOrder.addValidation(ediValidation);
 		invalidOrder2.setValidations(Lists.newArrayList(ediValidation,ediValidation2));
 		invalidOrder2.getLines().get(0).setValidations(Lists.newArrayList(ediValidation,ediValidation2));
 //		orderHeaderView.setCarrierCode(orderView.getHeader().getCarrierCode().substring(0,2));
-		xrefList.add(MockObject.build(EdiSplStoreXref.class));
-		xrefList.add(MockObject.build(EdiSplStoreXref.class));
-		xrefList.add(MockObject.build(EdiSplStoreXref.class));
+		xrefList.add(build(EdiSplStoreXref.class));
+		xrefList.add(build(EdiSplStoreXref.class));
+		xrefList.add(build(EdiSplStoreXref.class));
 	}
 
 	@PostConstruct
@@ -90,13 +91,13 @@ public abstract class MockTest {
 	{
 		if (config.getDatabaseRegion().equals("embedded"))
 		{
-			EdiOrderHeader saveHeader = MockObject.buildEdiOrderHeader(OrderType.SAMPLES);
+			EdiOrderHeader saveHeader = MockHelper.buildEdiOrderHeader(OrderType.SAMPLES);
 			ediOrderHeaderRepository.save(saveHeader);
 			
-			saveHeader = MockObject.buildEdiOrderHeader(OrderType.HARDSURFACES);
+			saveHeader = MockHelper.buildEdiOrderHeader(OrderType.HARDSURFACES);
 			ediOrderHeaderRepository.save(saveHeader);
 			
-			EdiReasonCode reasonCode = MockObject.build(EdiReasonCode.class);
+			EdiReasonCode reasonCode = build(EdiReasonCode.class);
 			reasonCode.setEdiReasonCode(63);
 			ediReasonCodeRepository.save(reasonCode);
 		
