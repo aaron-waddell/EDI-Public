@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-19T15:10:15-0400",
+    date = "2020-06-19T17:53:21-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -60,7 +60,6 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setEventInfo( header.getEventInfo() );
         ediShipInfo.setGiftMessage1( header.getGiftMessage1() );
         ediShipInfo.setGiftMessage2( header.getGiftMessage2() );
-        ediShipInfo.setLines( ediOrderLineListToEdiShipInfoLnList( header.getLines() ) );
         ediShipInfo.setNbDate( header.getNbDate() );
         ediShipInfo.setNoAsnFlag( header.getNoAsnFlag() );
         ediShipInfo.setOnlineType( header.getOnlineType() );
@@ -91,6 +90,7 @@ public class ShipInfoMapperImpl implements ShipInfoMapper {
         ediShipInfo.setShipByDate( header.getShipByDate() );
         ediShipInfo.setShipCancelDate( header.getShipCancelDate() );
         ediShipInfo.setStoreName( header.getStoreName() );
+        ediShipInfo.setLines( ediOrderLineListToEdiShipInfoLnList( header.getLines() ) );
 
         return ediShipInfo;
     }

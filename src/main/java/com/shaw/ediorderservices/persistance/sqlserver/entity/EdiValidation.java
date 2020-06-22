@@ -56,7 +56,7 @@ public class EdiValidation  extends AuditableEntity implements Serializable {
 	private volatile EdiOrder ediOrder;
 
 	public EdiValidation() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public EdiValidation(String description, String status) {

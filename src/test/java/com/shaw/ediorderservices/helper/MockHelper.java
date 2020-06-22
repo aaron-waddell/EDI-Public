@@ -1,6 +1,5 @@
 package com.shaw.ediorderservices.helper;
 
-import static com.shaw.mock.builder.MockBuilder.build;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import java.time.LocalDate;
@@ -10,16 +9,17 @@ import java.time.ZoneOffset;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.shaw.ediorderservices.AppConfig;
 import com.shaw.ediorderservices.exception.ResourceCreationException;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate.EdiOrderDatePK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine.EdiOrderLinePK;
-import com.shaw.ediorderservices.persistance.db2.entity.LegacyConsumerAddress;
-import com.shaw.ediorderservices.persistance.db2.entity.LegacyShipToAddress;
-import com.shaw.ediorderservices.persistance.db2.entity.LegacyThirdPartyAddress;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
@@ -29,9 +29,10 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
+import com.shaw.mock.builder.MockBuilder;
 
 public class MockHelper {
-
+ 	
     protected static final Logger logger = LogManager.getLogger();
 
 	static LocalDate randomDate() {
@@ -42,7 +43,14 @@ public class MockHelper {
 		return LocalDateTime.ofEpochSecond(RandomUtils.nextInt(0,10000), 0, ZoneOffset.UTC);
 	}
 
-	public static EdiOrder buildEdiOrder(OrderType orderType)
+	private static MockBuilder mockBuilder;
+	
+	static {
+	    ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		mockBuilder = new MockBuilder(context);		
+	}
+
+	public EdiOrder buildEdiOrder(OrderType orderType)
 	{
 		EdiOrder ediOrder = getOrderInstance(orderType.toString());
 		
@@ -68,35 +76,35 @@ public class MockHelper {
 		return ediOrder;
 	}
 
-	private static EdiOrder getOrderInstance(String orderType) {
+	private EdiOrder getOrderInstance(String orderType) {
 		switch (orderType) {
 		case "SAMPLES":
-			return build(SamplesEdiOrder.class);
+			return mockBuilder.build(SamplesEdiOrder.class);
 		case "CARPET":
-			return build(CarpetEdiOrder.class);
+			return mockBuilder.build(CarpetEdiOrder.class);
 		case "HARDSURFACES":
-			return build(HardsurfacesEdiOrder.class);
+			return mockBuilder.build(HardsurfacesEdiOrder.class);
 		default:
 			throw new ResourceCreationException("EdiOrder for " + orderType);
 		}
 	}
 
-	private static EdiLine getLineInstance(String orderType) {
+	private EdiLine getLineInstance(String orderType) {
 		switch (orderType) {
 		case "SAMPLES":
-			return build(SamplesEdiLine.class);
+			return mockBuilder.build(SamplesEdiLine.class);
 		case "CARPET":
-			return build(CarpetEdiLine.class);
+			return mockBuilder.build(CarpetEdiLine.class);
 		case "HARDSURFACES":
-			return build(HardsurfacesEdiLine.class);
+			return mockBuilder.build(HardsurfacesEdiLine.class);
 		default:
 			throw new ResourceCreationException("EdiLine for " + orderType);
 		}
 	}
 
-	public static EdiOrderHeader buildEdiOrderHeader(OrderType orderType)
+	public EdiOrderHeader buildEdiOrderHeader(OrderType orderType)
 	{
-		EdiOrderHeader ediOrderHeader = build(EdiOrderHeader.class);
+		EdiOrderHeader ediOrderHeader = mockBuilder.build(EdiOrderHeader.class);
 //		ediOrderHeader.addDate(buildEdiOrderDate());
 //		ediOrderHeader.addLine(buildEdiOrderLine());
 		ediOrderHeader.getDates().forEach(d->d.getPk().setEdiOrderHeader(ediOrderHeader));
@@ -111,17 +119,17 @@ public class MockHelper {
 		return ediOrderHeader;
 	}
 
-	public static EdiOrderDate buildEdiOrderDate()
+	public EdiOrderDate buildEdiOrderDate()
 	{
-		EdiOrderDate ediOrderDate = build(EdiOrderDate.class);
+		EdiOrderDate ediOrderDate = mockBuilder.build(EdiOrderDate.class);
 		ediOrderDate.setPk(new EdiOrderDatePK(randomAlphabetic(3),null));
 		logger.debug(ediOrderDate.toString());
 		return ediOrderDate;
 	}
 
-	public static EdiOrderLine buildEdiOrderLine()
+	public EdiOrderLine buildEdiOrderLine()
 	{
-		EdiOrderLine ediOrderLine = build(EdiOrderLine.class);
+		EdiOrderLine ediOrderLine = mockBuilder.build(EdiOrderLine.class);
 		ediOrderLine.setId(new EdiOrderLinePK(null,randomAlphabetic(10)));
 		logger.debug(ediOrderLine.toString());
 		return ediOrderLine;

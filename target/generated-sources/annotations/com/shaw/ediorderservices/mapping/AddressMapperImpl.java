@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-19T15:32:31-0400",
+    date = "2020-06-19T17:53:21-0400",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -27,9 +27,9 @@ public class AddressMapperImpl implements AddressMapper {
 
         legacyConsumerAddress.setConsumerShipFlg( addr.getShipFlag() );
         legacyConsumerAddress.setConsumerPoDateValue( addr.getPoDate() );
+        legacyConsumerAddress.setName( addr.getName() );
         legacyConsumerAddress.setAddressLine1( addr.getAddressLine1() );
         legacyConsumerAddress.setAddressLine2( addr.getAddressLine2() );
-        legacyConsumerAddress.setName( addr.getName() );
         legacyConsumerAddress.setState( addr.getState() );
 
         legacyConsumerAddress.setZip( (addr.getZip() + "         ").substring(0,9) );
@@ -46,14 +46,14 @@ public class AddressMapperImpl implements AddressMapper {
 
         LegacyShipToAddress legacyShipToAddress = new LegacyShipToAddress();
 
+        legacyShipToAddress.setName( addr.getName() );
         legacyShipToAddress.setAddressLine1( addr.getAddressLine1() );
         legacyShipToAddress.setAddressLine2( addr.getAddressLine2() );
-        legacyShipToAddress.setCountry( addr.getCountry() );
-        legacyShipToAddress.setCustNbr( addr.getCustNbr() );
-        legacyShipToAddress.setName( addr.getName() );
-        legacyShipToAddress.setPhone( addr.getPhone() );
-        legacyShipToAddress.setProvince( addr.getProvince() );
         legacyShipToAddress.setState( addr.getState() );
+        legacyShipToAddress.setProvince( addr.getProvince() );
+        legacyShipToAddress.setCountry( addr.getCountry() );
+        legacyShipToAddress.setPhone( addr.getPhone() );
+        legacyShipToAddress.setCustNbr( addr.getCustNbr() );
         legacyShipToAddress.setTruncFlag( addr.getTruncFlag() );
 
         legacyShipToAddress.setZip( (addr.getZip() + "           ").substring(0,11) );
@@ -70,13 +70,13 @@ public class AddressMapperImpl implements AddressMapper {
 
         LegacyThirdPartyAddress legacyThirdPartyAddress = new LegacyThirdPartyAddress();
 
-        legacyThirdPartyAddress.setAccountNbr( addr.getAccountNbr() );
+        legacyThirdPartyAddress.setName( addr.getName() );
         legacyThirdPartyAddress.setAddressLine1( addr.getAddressLine1() );
         legacyThirdPartyAddress.setAddressLine2( addr.getAddressLine2() );
-        legacyThirdPartyAddress.setBillFlag( addr.getBillFlag() );
         legacyThirdPartyAddress.setCity( addr.getCity() );
-        legacyThirdPartyAddress.setName( addr.getName() );
         legacyThirdPartyAddress.setState( addr.getState() );
+        legacyThirdPartyAddress.setAccountNbr( addr.getAccountNbr() );
+        legacyThirdPartyAddress.setBillFlag( addr.getBillFlag() );
 
         legacyThirdPartyAddress.setZip( (addr.getZip() + "         ").substring(0,9) );
 
@@ -91,14 +91,14 @@ public class AddressMapperImpl implements AddressMapper {
 
         ShipToAddress shipToAddress = new ShipToAddress();
 
+        shipToAddress.setName( addr.getName() );
         shipToAddress.setAddressLine1( addr.getAddressLine1() );
         shipToAddress.setAddressLine2( addr.getAddressLine2() );
         shipToAddress.setCity( addr.getCity() );
-        shipToAddress.setName( addr.getName() );
-        shipToAddress.setPhone( addr.getPhone() );
-        shipToAddress.setProvince( addr.getProvince() );
         shipToAddress.setState( addr.getState() );
+        shipToAddress.setProvince( addr.getProvince() );
         shipToAddress.setZip( addr.getZip() );
+        shipToAddress.setPhone( addr.getPhone() );
         shipToAddress.setCustNbr( addr.getCustNbr() );
         shipToAddress.setTruncFlag( addr.getTruncFlag() );
 
