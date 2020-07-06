@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.shaw.ediorderservices.service.csws.SamplesCSWSServiceTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.468 s - in com.shaw.ediorderservices.service.csws.SamplesCSWSServiceTest

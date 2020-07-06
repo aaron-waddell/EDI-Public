@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.shaw.ediorderservices.persistance.db2.dao.EdiReasonCodeRepositoryTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.674 s - in com.shaw.ediorderservices.persistance.db2.dao.EdiReasonCodeRepositoryTest

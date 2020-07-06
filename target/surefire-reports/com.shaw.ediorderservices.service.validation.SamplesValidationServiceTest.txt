@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.shaw.ediorderservices.service.validation.SamplesValidationServiceTest
--------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.026 s - in com.shaw.ediorderservices.service.validation.SamplesValidationServiceTest

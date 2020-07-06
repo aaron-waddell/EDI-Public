@@ -88,7 +88,7 @@ class ShipInfoServiceTest extends MockTest {
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(samplesEdiOrder.getCustomerCode(), samplesEdiOrder.getOrderingSystem())).thenReturn(xrefList);
 
 		//blank xdock, blank address
-		EdiOrderHeader blankXDock = MockBuilder.build(EdiOrderHeader.class);
+		EdiOrderHeader blankXDock = mockBuilder.build(EdiOrderHeader.class);
 		blankXDock.setCrossDockCenter("");
 		EdiOrder blankAddress = MockHelper.buildEdiOrder(OrderType.SAMPLES);
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(blankAddress.getCustomerCode(), blankAddress.getOrderingSystem())).thenReturn(xrefList);
