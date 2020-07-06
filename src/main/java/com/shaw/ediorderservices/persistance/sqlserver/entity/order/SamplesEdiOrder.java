@@ -45,6 +45,7 @@ public class SamplesEdiOrder extends EdiOrder {
 		if (lines==null)
 			lines = new ArrayList<EdiLine>();
 		this.lines.add(line);
+		line.setEdiOrder(this);
 	}
 	
 	

@@ -3,6 +3,7 @@ package com.shaw.ediorderservices.persistance.sqlserver.entity.date;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;

@@ -447,7 +447,7 @@ public abstract class EdiOrder  extends AuditableEntity implements Serializable,
 
 	@Override
 	public void addValidation(EdiValidation v) {
-		if (validations==null);
+		if (validations==null)
 			validations = new ArrayList<EdiValidation>();
 		if (v.getEdiLine()==null)
 		{

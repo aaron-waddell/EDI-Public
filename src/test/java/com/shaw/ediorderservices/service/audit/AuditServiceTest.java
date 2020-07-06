@@ -43,7 +43,7 @@ class AuditServiceTest extends MockTest {
 	@Test
 	void testCreateCarrierAudit() {
 		ediOrderBean.setEdiOrder(hsEdiOrder);
-		ediOrderBean.setLegacyHeader(ediOrderHeader);
+		ediOrderBean.setLegacyHeader(samplesOrderHeader);
 		
 		service.createCarrierAudit(true);
 		

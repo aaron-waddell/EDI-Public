@@ -27,6 +27,7 @@ public class HardsurfacesEdiOrder extends StandardEdiOrder {
 		if (lines==null)
 			lines = new ArrayList<EdiLine>();
 		this.lines.add(line);
+		line.setEdiOrder(this);
 	}
 
 }

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +22,11 @@ public class ConsumerAddress extends Address {
 	@OneToOne
 	private volatile EdiOrder ediOrder;
 
+	public ConsumerAddress() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	public LocalDate getPoDate() {
 		return poDate;
 	}

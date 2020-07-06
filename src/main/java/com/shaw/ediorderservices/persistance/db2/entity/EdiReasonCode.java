@@ -26,7 +26,7 @@ import org.springframework.lang.Nullable;
  */
 @Entity
 @Immutable @Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+//@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Table(name="EDI_REASON_CODE")
 @NamedQuery(name="EdiReasonCode.findAll", query="SELECT e FROM EdiReasonCode e")
 public class EdiReasonCode implements Serializable {

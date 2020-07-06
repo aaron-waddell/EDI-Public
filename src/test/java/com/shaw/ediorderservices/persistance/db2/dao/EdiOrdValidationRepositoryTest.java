@@ -49,6 +49,9 @@ class EdiOrdValidationRepositoryTest extends MockTest {
 	@Autowired
 	EdiOrderHeaderRepository ediOrderHeaderRepository;
 
+    @Autowired
+    MockBuilder mockBuilder;
+ 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -80,7 +83,7 @@ class EdiOrdValidationRepositoryTest extends MockTest {
 
 	@Test
 	void testUpdateStatusByIdEdiOrderNbr() {
-		EdiOrdValidation ediOrdValidation = MockBuilder.build(EdiOrdValidation.class);
+		EdiOrdValidation ediOrdValidation = mockBuilder.build(EdiOrdValidation.class);
 		ediOrdValidation.setId(new EdiOrdValidationPK(EDI_ORDER_NBR, PO_LINE_NBR));
 		ediOrdValidation.setEdiReasonCode(ediReasonCodeRepository.findById(63).orElse(null));
 		ediOrdValidationRepository.save(ediOrdValidation);

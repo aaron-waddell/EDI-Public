@@ -12,9 +12,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.shaw.ediorderservices.AppConfig;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiSplStoreXref;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.mock.builder.MockBuilder;
@@ -23,13 +27,18 @@ class MockHelperTest {
 
     protected static final Logger logger = LogManager.getLogger();
 
+    private static MockBuilder mockBuilder;
+    private static MockHelper mockHelper;
+    
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		mockBuilder = new MockBuilder();	
+		mockHelper = new MockHelper();	
 	}
 
 	@Test
 	void testEdiOrder() throws Exception {
-		EdiOrder ediOrder = MockHelper.buildEdiOrder(OrderType.CARPET);
+		EdiOrder ediOrder = mockHelper.buildEdiOrder(OrderType.CARPET);
 		logger.info(ediOrder.toString());
 		assertNotNull(ediOrder.getLines());
 		assertNotNull(ediOrder.getLines().get(0));
@@ -44,12 +53,12 @@ class MockHelperTest {
 
 	@Test
 	void testHeader() throws Exception {
-		EdiOrderHeader h = MockHelper.buildEdiOrderHeader(OrderType.CARPET);
+		EdiOrderHeader h = mockHelper.buildEdiOrderHeader(OrderType.CARPET);
 		logger.info(h.toString());
 		assertNotNull(h.getLines());
 		assertNotNull(h.getLines().get(0));
 		assertNotNull(h.getLines().get(0).getColor());
-		assertEquals(h,h.getLines().get(0).getId().getEdiOrderHeader());
+		assertEquals(h,h.getLines().get(0).getEdiOrderHeader());
 		
 		assertNotNull(h.getConsumerAddress());
 		assertNotNull(h.getConsumerAddress().getAddressLine1());
@@ -57,12 +66,19 @@ class MockHelperTest {
 
 	@Test
 	void testNestedBuild() throws Exception {
-		EdiSplStoreXref x = MockBuilder.build(EdiSplStoreXref.class);
+		EdiSplStoreXref x = mockBuilder.build(EdiSplStoreXref.class);
 		logger.info(x.toString());
 		assertNotNull(x.getId());
 		assertNotNull(x.getId().getOrderingSys());
 	}
 
+	@Test
+	void testEdiValidationBuild() throws Exception {
+		EdiValidation x = mockBuilder.build(EdiValidation.class);
+		logger.info(x.toString());
+		assertNotNull(x.getId());
+		assertNotNull(x.getActionCode());
+	}
 	
 	@Test
 	void testGsonDate()

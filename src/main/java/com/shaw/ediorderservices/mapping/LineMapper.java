@@ -29,7 +29,7 @@ public interface LineMapper {
 //    @Mapping(expression = "java(new EdiOrderLinePK(ediOrder,lineNbr))", target = "id")
 //    @Mapping(source="ediOrder", target="id.ediOrderHeader")
     @Mapping(source="lineNbr", target="id.poLineNo")
-    @Mapping(target="id.ediOrderHeader", ignore = true)
+    @Mapping(target="ediOrderHeader", ignore = true)
     EdiOrderLine ediLineToLegacy(EdiLine ediLine);
 
     @Mapping(target = "id", constant =  "0L")

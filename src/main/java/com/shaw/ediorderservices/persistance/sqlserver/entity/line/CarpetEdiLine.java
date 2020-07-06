@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 
 @Entity @Table(schema = "CSD")
-@PrimaryKeyJoinColumn(name = "hardsurfacesLineId")
+@PrimaryKeyJoinColumn(name = "carpetLineId")
 
 public class CarpetEdiLine extends EdiLine {
 
@@ -19,5 +19,5 @@ public class CarpetEdiLine extends EdiLine {
 	}
 
 	@Column
-	private String hsValue;
+	private String carpetValue;
 }

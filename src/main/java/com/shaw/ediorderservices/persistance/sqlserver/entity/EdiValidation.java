@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -49,14 +50,16 @@ public class EdiValidation  extends AuditableEntity implements Serializable {
 	
 	@Nullable
 	@ManyToOne
+	@MapsId
 	private volatile EdiLine ediLine;
 
 	@Nullable
 	@ManyToOne
+	@MapsId
 	private volatile EdiOrder ediOrder;
 
 	public EdiValidation() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public EdiValidation(String description, String status) {
