@@ -28,16 +28,17 @@ class MockHelperTest {
     protected static final Logger logger = LogManager.getLogger();
 
     private static MockBuilder mockBuilder;
+    private static MockHelper mockHelper;
     
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-	    ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		mockBuilder = new MockBuilder(context);	
+		mockBuilder = new MockBuilder();	
+		mockHelper = new MockHelper();	
 	}
 
 	@Test
 	void testEdiOrder() throws Exception {
-		EdiOrder ediOrder = new MockHelper().buildEdiOrder(OrderType.CARPET);
+		EdiOrder ediOrder = mockHelper.buildEdiOrder(OrderType.CARPET);
 		logger.info(ediOrder.toString());
 		assertNotNull(ediOrder.getLines());
 		assertNotNull(ediOrder.getLines().get(0));
@@ -52,12 +53,12 @@ class MockHelperTest {
 
 	@Test
 	void testHeader() throws Exception {
-		EdiOrderHeader h = new MockHelper().buildEdiOrderHeader(OrderType.CARPET);
+		EdiOrderHeader h = mockHelper.buildEdiOrderHeader(OrderType.CARPET);
 		logger.info(h.toString());
 		assertNotNull(h.getLines());
 		assertNotNull(h.getLines().get(0));
 		assertNotNull(h.getLines().get(0).getColor());
-		assertEquals(h,h.getLines().get(0).getId().getEdiOrderHeader());
+		assertEquals(h,h.getLines().get(0).getEdiOrderHeader());
 		
 		assertNotNull(h.getConsumerAddress());
 		assertNotNull(h.getConsumerAddress().getAddressLine1());

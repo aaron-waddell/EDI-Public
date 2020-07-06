@@ -52,9 +52,6 @@ class ShipInfoServiceTest extends MockTest {
 	@Autowired
 	EdiShipInfoRepository shipInfoRepository;
 
-	@Autowired
-	MockBuilder mockBuilder;
-
 	@MockBean
 	CSWSService cswsService;
 	
@@ -69,18 +66,18 @@ class ShipInfoServiceTest extends MockTest {
 
 	@Test
 	void testCreateShipInfo() {
-		when(cswsService.getOrderView(ediOrderHeader.getShawOrderNumber())).thenReturn(orderView);
+		when(cswsService.getOrderView(samplesOrderHeader.getShawOrderNumber())).thenReturn(orderView);
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(samplesEdiOrder.getCustomerCode(), samplesEdiOrder.getOrderingSystem())).thenReturn(xrefList);
 		logger.info(gson.toJson(orderView));
-		ediOrderBean.setLegacyHeader(ediOrderHeader);
+		ediOrderBean.setLegacyHeader(samplesOrderHeader);
 		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		service.createShipInfo();
-		EdiShipInfo shipInfo = shipInfoRepository.findById(new EdiShipInfoPK(ediOrderHeader.getShawOrderNumber(), LocalDate.now())).orElseThrow(()->new ResourceNotFoundException());
+		EdiShipInfo shipInfo = shipInfoRepository.findById(new EdiShipInfoPK(samplesOrderHeader.getShawOrderNumber(), LocalDate.now())).orElseThrow(()->new ResourceNotFoundException());
 		logger.info(shipInfo.toString());
-		verify(cswsService).getOrderView(ediOrderHeader.getShawOrderNumber());
-		assertEquals(ediOrderHeader.getCustDept(),shipInfo.getDepartment());
+		verify(cswsService).getOrderView(samplesOrderHeader.getShawOrderNumber());
+		assertEquals(samplesOrderHeader.getCustDept(),shipInfo.getDepartment());
 		EdiShipInfoLn ln = shipInfo.getLines().get(0);
-		EdiOrderLine samplesLine = ediOrderHeader.getLines().get(0);
+		EdiOrderLine samplesLine = samplesOrderHeader.getLines().get(0);
 		logger.info(ln.toString());
 		assertEquals(samplesLine.getColor(), ln.getColorNbr());
 	}
@@ -93,7 +90,7 @@ class ShipInfoServiceTest extends MockTest {
 		//blank xdock, blank address
 		EdiOrderHeader blankXDock = mockBuilder.build(EdiOrderHeader.class);
 		blankXDock.setCrossDockCenter("");
-		EdiOrder blankAddress = new MockHelper().buildEdiOrder(OrderType.SAMPLES);
+		EdiOrder blankAddress = mockHelper.buildEdiOrder(OrderType.SAMPLES);
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(blankAddress.getCustomerCode(), blankAddress.getOrderingSystem())).thenReturn(xrefList);
 		blankAddress.getShipToAddress().setAddressLine1("");
 		ediOrderBean.setLegacyHeader(blankXDock);
@@ -112,7 +109,7 @@ class ShipInfoServiceTest extends MockTest {
 		assertEquals("", map.get("splXdockCenter"));
 
 		//non-blank xdock, blank address
-		ediOrderBean.setLegacyHeader(ediOrderHeader);
+		ediOrderBean.setLegacyHeader(samplesOrderHeader);
 		ediOrderBean.setEdiOrder(blankAddress);
 		map = service.getSplValues();
 		assertEquals(blankXDock.getBillToStore(), map.get("splBillToStore"));
@@ -120,7 +117,7 @@ class ShipInfoServiceTest extends MockTest {
 		assertEquals(blankXDock.getBillToStore(), map.get("splXdockCenter"));
 
 		//non-blank xdock, non-blank address
-		ediOrderBean.setLegacyHeader(ediOrderHeader);
+		ediOrderBean.setLegacyHeader(samplesOrderHeader);
 		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		map = service.getSplValues();
 		assertEquals(blankXDock.getBillToStore(), map.get("splBillToStore"));

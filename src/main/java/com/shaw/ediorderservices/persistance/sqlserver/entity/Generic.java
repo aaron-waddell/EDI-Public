@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -31,6 +32,7 @@ public class Generic extends AuditableEntity implements Serializable {
 	private String value;
 
 	@ManyToOne
+	@MapsId
 	volatile private EdiOrder ediOrder;
 
 	public Generic() {

@@ -9,11 +9,7 @@ import java.time.ZoneOffset;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.shaw.ediorderservices.AppConfig;
 import com.shaw.ediorderservices.exception.ResourceCreationException;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderDate.EdiOrderDatePK;
@@ -45,9 +41,8 @@ public class MockHelper {
 
 	private static MockBuilder mockBuilder;
 	
-	static {
-	    ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		mockBuilder = new MockBuilder(context);		
+	public MockHelper() {
+		mockBuilder = new MockBuilder();		
 	}
 
 	public EdiOrder buildEdiOrder(OrderType orderType)
@@ -71,6 +66,7 @@ public class MockHelper {
 //		ediOrder.setShipDate(build(ShipDate.class));
 
 		ediOrder.getConsumerAddress().setShipFlag("N");
+		ediOrder.setOrderType(orderType.toString());
 		
 		logger.debug(ediOrder.toString());
 		return ediOrder;
@@ -107,13 +103,14 @@ public class MockHelper {
 		EdiOrderHeader ediOrderHeader = mockBuilder.build(EdiOrderHeader.class);
 //		ediOrderHeader.addDate(buildEdiOrderDate());
 //		ediOrderHeader.addLine(buildEdiOrderLine());
-		ediOrderHeader.getDates().forEach(d->d.getPk().setEdiOrderHeader(ediOrderHeader));
-		ediOrderHeader.getLines().forEach(l->l.getId().setEdiOrderHeader(ediOrderHeader));
+		ediOrderHeader.getDates().forEach(d->d.setEdiOrderHeader(ediOrderHeader));
+		ediOrderHeader.getLines().forEach(l->l.setEdiOrderHeader(ediOrderHeader));
 //		ediOrderHeader.setConsumerAddress(build(LegacyConsumerAddress.class));
 //		ediOrderHeader.setShipToAddress(build(LegacyShipToAddress.class));
 //		ediOrderHeader.setThirdPartyAddress(build(LegacyThirdPartyAddress.class));
 		ediOrderHeader.setOrderType(orderType.toString().substring(0,1));
 		ediOrderHeader.setOrderTypeDesc(orderType.toString());
+//		ediOrderHeader.setLegacyOrderNumber(RandomUtils.nextLong(0,999999999));
 		ediOrderHeader.setOrderLoc("01");
 		logger.debug(ediOrderHeader.toString());
 		return ediOrderHeader;

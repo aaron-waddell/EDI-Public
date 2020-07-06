@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 
@@ -33,19 +34,17 @@ public class EdiOrderDate implements Serializable {
 		@Column(name="DATE_QUALIFIER", nullable=false, length=3)
 		private String qualifier;
 		
-		@ManyToOne(optional = false, fetch = FetchType.LAZY)
-		@JoinColumn(name = "edi_order_number")
-		volatile private EdiOrderHeader ediOrderHeader;
+		Long legacyOrderNumber;
 
 
 		public EdiOrderDatePK() {
 			super();
 		}
 
-		public EdiOrderDatePK(String qualifier, EdiOrderHeader ediOrderHeader) {
+		public EdiOrderDatePK(String qualifier, Long legacyOrderNumber) {
 			super();
 			this.qualifier = qualifier;
-			this.ediOrderHeader = ediOrderHeader;
+			this.legacyOrderNumber = legacyOrderNumber;
 		}
 
 		public String getQualifier() {
@@ -56,24 +55,25 @@ public class EdiOrderDate implements Serializable {
 			this.qualifier = qualifier;
 		}
 
-		public EdiOrderHeader getEdiOrderHeader() {
-			return ediOrderHeader;
+
+		public Long getLegacyOrderNumber() {
+			return legacyOrderNumber;
 		}
 
-		public void setEdiOrderHeader(EdiOrderHeader ediOrderHeader) {
-			this.ediOrderHeader = ediOrderHeader;		
+		public void setLegacyOrderNumber(Long legacyOrderNumber) {
+			this.legacyOrderNumber = legacyOrderNumber;
 		}
 
 		@Override
 		public String toString() {
-			return "EdiOrderDatePK [qualifier=" + qualifier + ", ediOrderHeader=" + (ediOrderHeader!=null?ediOrderHeader.getLegacyOrderNumber():"null") + "]";
+			return "EdiOrderDatePK [qualifier=" + qualifier + ", legacyOrderNumber=" + legacyOrderNumber + "]";
 		}
 
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((ediOrderHeader == null) ? 0 : ediOrderHeader.hashCode());
+			result = prime * result + (int) (legacyOrderNumber ^ (legacyOrderNumber >>> 32));
 			result = prime * result + ((qualifier == null) ? 0 : qualifier.hashCode());
 			return result;
 		}
@@ -87,10 +87,7 @@ public class EdiOrderDate implements Serializable {
 			if (getClass() != obj.getClass())
 				return false;
 			EdiOrderDatePK other = (EdiOrderDatePK) obj;
-			if (ediOrderHeader == null) {
-				if (other.ediOrderHeader != null)
-					return false;
-			} else if (!ediOrderHeader.equals(other.ediOrderHeader))
+			if (legacyOrderNumber != other.legacyOrderNumber)
 				return false;
 			if (qualifier == null) {
 				if (other.qualifier != null)
@@ -99,7 +96,6 @@ public class EdiOrderDate implements Serializable {
 				return false;
 			return true;
 		}
-
 	}
 
 //	@Id
@@ -110,39 +106,35 @@ public class EdiOrderDate implements Serializable {
 	@EmbeddedId
 	EdiOrderDatePK id;
 	
+	@MapsId("legacyOrderNumber")
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	EdiOrderHeader ediOrderHeader;
+	
 	@Column(name="HEADER_DATE", nullable=false)
 	private LocalDate dateValue;
 
 	public EdiOrderDate() {
 	}
 
-	public EdiOrderDate(EdiOrderDatePK pk, LocalDate dt) {
-		this.id = pk;
+	public EdiOrderDate(EdiOrderDatePK id, LocalDate dt) {
+		this.id = id;
 		this.dateValue = dt;
 	}
 	
-//	public long getId() {
-//		return id;
-//	}
-//
-//	public void setId(long id) {
-//		this.id = id;
-//	}
-
-//	public long getEdiOrderNumber() {
-//		return this.ediOrderNumber;
-//	}
-//
-//	public void setEdiOrderNumber(long ediOrderNumber) {
-//		this.ediOrderNumber = ediOrderNumber;
-//	}
-
 	public EdiOrderDatePK getPk() {
 		return id;
 	}
 
-	public void setPk(EdiOrderDatePK pk) {
-		this.id = pk;
+	public void setPk(EdiOrderDatePK id) {
+		this.id = id;
+	}
+
+	public EdiOrderHeader getEdiOrderHeader() {
+		return ediOrderHeader;
+	}
+
+	public void setEdiOrderHeader(EdiOrderHeader ediOrderHeader) {
+		this.ediOrderHeader = ediOrderHeader;
 	}
 
 	public LocalDate getDateValue() {
@@ -154,10 +146,11 @@ public class EdiOrderDate implements Serializable {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "EdiOrderDate [pk =" + id 
-				+ ", dateValue=" + dateValue + "]";
+		String legacyOrderNumber = ediOrderHeader!=null&&ediOrderHeader.getLegacyOrderNumber()!=null?ediOrderHeader.getLegacyOrderNumber().toString():"null hdr";
+		return "EdiOrderDate [id=" + id + ", ediOrderHeader=" + legacyOrderNumber  + ", dateValue=" + dateValue + "]";
 	}
 
 	@Override

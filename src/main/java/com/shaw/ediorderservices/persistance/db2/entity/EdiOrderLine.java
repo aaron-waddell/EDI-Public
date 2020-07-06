@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -38,34 +39,28 @@ public class EdiOrderLine implements Serializable {
 		//default serial version id, required for serializable classes.
 		private static final long serialVersionUID = 1L;
 
-//		@Column(name="EDI_ORDER_NUMBER", insertable=false, updatable=false, unique=true, nullable=false, precision=10)
-//		private long ediOrderNumber;
+		@Column(name="EDI_ORDER_NUMBER", insertable=false, updatable=false, unique=true, nullable=false, precision=10)
+		private Long legacyOrderNumber;
 
 		@Column(name="PO_LINE_NO", unique=true, nullable=false, length=10)
 		private String poLineNo = "";
 
-		@ManyToOne(optional = false, fetch = FetchType.LAZY)
-	    @JoinColumn(name = "edi_order_number")
-		volatile private EdiOrderHeader ediOrderHeader;
-
 		public EdiOrderLinePK() {
 		}
 		
-		public EdiOrderLinePK(EdiOrderHeader ediOrderHeader, String poLineNo) {
-			this.ediOrderHeader = ediOrderHeader;
+		public EdiOrderLinePK(Long legacyOrderNumber, String poLineNo) {
+			this.legacyOrderNumber = legacyOrderNumber;
 			this.poLineNo = poLineNo;
 		}
 
-		//	public EdiOrderLinePK(Long ediOrderNbr, String poLineNo) {
-//			this.ediOrderNumber = ediOrderNbr;
-//			this.poLineNo = poLineNo;
-//		}
-//		public long getEdiOrderNumber() {
-//			return this.ediOrderNumber;
-//		}
-//		public void setEdiOrderNumber(long ediOrderNumber) {
-//			this.ediOrderNumber = ediOrderNumber;
-//		}
+		public Long getLegacyOrderNumber() {
+			return legacyOrderNumber;
+		}
+
+		public void setLegacyOrderNumber(Long legacyOrderNumber) {
+			this.legacyOrderNumber = legacyOrderNumber;
+		}
+
 		public String getPoLineNo() {
 			return this.poLineNo;
 		}
@@ -73,45 +68,53 @@ public class EdiOrderLine implements Serializable {
 			this.poLineNo = poLineNo;
 		}
 
-		public EdiOrderHeader getEdiOrderHeader() {
-			return ediOrderHeader;
-		}
-		public void setEdiOrderHeader(EdiOrderHeader ediOrderHeader) {
-			this.ediOrderHeader = ediOrderHeader;
-		}
-		public boolean equals(Object other) {
-			if (this == other) {
-				return true;
-			}
-			if (!(other instanceof EdiOrderLinePK)) {
-				return false;
-			}
-			EdiOrderLinePK castOther = (EdiOrderLinePK)other;
-			return 
-				(this.ediOrderHeader.getLegacyOrderNumber() == castOther.ediOrderHeader.getLegacyOrderNumber())
-				&& this.poLineNo.equals(castOther.poLineNo);
-		}
 
+		@Override
 		public int hashCode() {
 			final int prime = 31;
-			int hash = 17;
-			hash = hash * prime + ((int) (this.ediOrderHeader.getLegacyOrderNumber() ^ (this.ediOrderHeader.getLegacyOrderNumber() >>> 32)));
-			hash = hash * prime + this.poLineNo.hashCode();
-			
-			return hash;
+			int result = 1;
+			result = prime * result + ((legacyOrderNumber == null) ? 0 : legacyOrderNumber.hashCode());
+			result = prime * result + ((poLineNo == null) ? 0 : poLineNo.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			EdiOrderLinePK other = (EdiOrderLinePK) obj;
+			if (legacyOrderNumber == null) {
+				if (other.legacyOrderNumber != null)
+					return false;
+			} else if (!legacyOrderNumber.equals(other.legacyOrderNumber))
+				return false;
+			if (poLineNo == null) {
+				if (other.poLineNo != null)
+					return false;
+			} else if (!poLineNo.equals(other.poLineNo))
+				return false;
+			return true;
 		}
 
 		@Override
 		public String toString() {
 			return "EdiOrderLinePK [poLineNo=" + poLineNo 
-//					+ ", ediOrderHeader=" + ediOrderHeader!=null?"hdr":"null" 
+					+ ", ediOrderHeader=" + legacyOrderNumber 
 			+ "]";
 		}
 	}
 	
 	@EmbeddedId
 	private EdiOrderLinePK id;
-	
+
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @MapsId("legacyOrderNumber")
+	volatile private EdiOrderHeader ediOrderHeader;
+
 	@Column(name="ADD_CUST_PROD_INFO", nullable=false, length=40)
 	private String addCustProdInfo = "";
 
@@ -342,6 +345,13 @@ public class EdiOrderLine implements Serializable {
 
 	public void setId(EdiOrderLinePK id) {
 		this.id = id;
+	}
+
+	public EdiOrderHeader getEdiOrderHeader() {
+		return ediOrderHeader;
+	}
+	public void setEdiOrderHeader(EdiOrderHeader ediOrderHeader) {
+		this.ediOrderHeader = ediOrderHeader;
 	}
 
 	public String getAddCustProdInfo() {

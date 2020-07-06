@@ -22,7 +22,7 @@ public class EdiLineFactory implements IFactory {
 
     @SuppressWarnings("unchecked")
 	public <T extends EdiLine> T mapToEdiLine(EdiOrderLine l) {
-		String orderType = l.getId().getEdiOrderHeader().getOrderType();
+		String orderType = l.getEdiOrderHeader().getOrderType();
 		switch (orderType ) {
 		case "S":
 			return (T) mapper.legacyLineToSamplesEdiLine(l);
@@ -40,7 +40,7 @@ public class EdiLineFactory implements IFactory {
 	@SuppressWarnings("unchecked")
 	@ObjectFactory
     public <T extends EdiLine> T createMapperInstance(EdiOrderLine l, @TargetType Class<T> clazz) {
-		return (T) getInstance(l.getId().getEdiOrderHeader().getOrderType());
+		return (T) getInstance(l.getEdiOrderHeader().getOrderType());
     }
     
 //	@ObjectFactory

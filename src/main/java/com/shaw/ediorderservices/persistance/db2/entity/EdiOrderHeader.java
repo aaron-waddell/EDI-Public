@@ -380,10 +380,10 @@ public class EdiOrderHeader implements Serializable {
 	@Embedded
 	private LegacyThirdPartyAddress thirdPartyAddress;
 	
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "id.ediOrderHeader", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ediOrderHeader", orphanRemoval = true)
     private List<EdiOrderDate> dates = new ArrayList<EdiOrderDate>();
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "id.ediOrderHeader", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ediOrderHeader", orphanRemoval = true)
 	private List<EdiOrderLine> lines = new ArrayList<EdiOrderLine>();
 
 
@@ -1305,12 +1305,12 @@ public class EdiOrderHeader implements Serializable {
 		if (dates==null)
 			this.dates = new ArrayList<EdiOrderDate>();			
 		dates.add(d);
-	    d.id.setEdiOrderHeader(this);
+	    d.setEdiOrderHeader(this);
 	}
 	 
 	public void removeDate(EdiOrderDate d) {
 	    dates.remove(d);
-	    d.id.setEdiOrderHeader(null);
+	    d.setEdiOrderHeader(null);
 	}
 
 	public List<EdiOrderLine> getLines() {
@@ -1326,12 +1326,14 @@ public class EdiOrderHeader implements Serializable {
 		if (lines==null)
 			this.lines = new ArrayList<EdiOrderLine>();			
 		lines.add(l);
-		l.setId(new EdiOrderLinePK(this,Integer.toString(l.getLineNumber())));
+		l.setEdiOrderHeader(this);
+		l.setId(new EdiOrderLinePK(null,Integer.toString(l.getLineNumber())));
 	}
 	 
 	public void removeLine(EdiOrderLine l) {
 		lines.remove(l);
-	    l.getId().setEdiOrderHeader(null);
+	    l.setEdiOrderHeader(null);
+	    l.getId().setLegacyOrderNumber(null);
 	}
 
 	@Override

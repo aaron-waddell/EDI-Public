@@ -27,6 +27,7 @@ public interface OrderMapper {
     @Mapping(target = "legacyOrderNumber", ignore = true)
 //    @Mapping(target = "lines", source = "lines")
     @Mapping(target = "lines", expression="java(ediOrder.getLines().stream().map(lineMapper::ediLineToLegacy).collect(java.util.stream.Collectors.toList()))")
+    @Mapping(target = "dates", expression="java(ediOrder.getDates().stream().map(dateMapper::ediDateToLegacy).collect(java.util.stream.Collectors.toList()))")
     EdiOrderHeader ediOrderToLegacy(EdiOrder ediOrder);//, EdiDate poDate, EdiDate cancelDate, EdiDate shipDate);
 
     @Mapping(target = "id", constant =  "0L")
@@ -62,7 +63,7 @@ public interface OrderMapper {
        ,@Mapping(target = "shipStateI", constant = "")
        ,@Mapping(target = "shipZipI", constant = "")
        ,@Mapping(target = "shipName2", constant = "")
-       ,@Mapping(source = "ediOrder.shipDate.dateValue",target = "shipDate")
+       ,@Mapping(target = "shipDate", source = "ediOrder.shipDate.dateValue")
        ,@Mapping(target = "shipZip", expression = "java(shipInfo.getDestCountry().equals(\"US\")?ediOrder.getShipToAddress().getZip().substring(0,5):ediOrder.getShipToAddress().getZip())")
        ,@Mapping(target = "shipCountry", source = "ediOrder.shipToAddress.country")
        ,@Mapping(target = "destCountry", source = "ediOrder.shipToAddress.country")
