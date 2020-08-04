@@ -7,7 +7,6 @@ import org.mapstruct.ReportingPolicy;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyConsumerAddress;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyShipToAddress;
 import com.shaw.ediorderservices.persistance.db2.entity.LegacyThirdPartyAddress;
-import com.shaw.ediorderservices.persistance.db2.entity.OrderHeaderExt;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ConsumerAddress;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ShipToAddress;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.address.ThirdPartyAddress;

@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -23,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -30,13 +30,12 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.CartRequest;
 import com.shaw.ediorderservices.csws.CustInfo;
+import com.shaw.ediorderservices.csws.OrderViewResponse;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.dao.SamplesInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 import com.shaw.ediorderservices.service.common.IEntityBody;
-import com.shaw.ediorderservices.service.csws.SamplesCSWSService;
-import com.shaw.ediorderservices.service.csws.CSWSService;
 import com.shaw.ediorderservices.service.rest.RestService;
 
 
@@ -49,12 +48,13 @@ class SamplesCSWSServiceTest extends MockTest{
 
 	final static Logger logger = LoggerFactory.getLogger(SamplesCSWSServiceTest.class);
 	private static final String CUST_NBR = randomAlphabetic(6);
+	private static final String ORDER_NBR = randomAlphabetic(6);
 
 	@Autowired
 //	@Qualifier("cswsSamplesService")
 	SamplesCSWSService service;	
 
-	@MockBean
+	@SpyBean
 	RestService restService;
 	
 	@MockBean
@@ -118,11 +118,20 @@ class SamplesCSWSServiceTest extends MockTest{
 	}
 
 	@Test
-	void testgetCustInfo() throws Exception {
+	void testGetCustInfo() throws Exception {
 		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		when(restService.postForObject(any(URI.class))).thenReturn(gson.toJson(custInfo));
 		CustInfo result = service.getCustomerInfo(CUST_NBR);
 		verify(restService).postForObject(any(URI.class));
+		logger.info(gson.toJson(result));
+		assertNotNull(result);	
+	}
+
+	@Test
+	void testGetOrderView() throws Exception {
+//		when(restService.postForObject(any(URI.class))).thenReturn(gson.toJson(orderHeaderView));
+		OrderViewResponse result = service.getOrderView(ORDER_NBR);
+//		verify(restService).postForObject(any(URI.class));
 		logger.info(gson.toJson(result));
 		assertNotNull(result);	
 	}

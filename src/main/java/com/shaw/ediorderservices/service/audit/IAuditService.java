@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import com.shaw.ediorderservices.IOperations;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiAudit;
-import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 
 public interface IAuditService extends IOperations<EdiAudit> {
 

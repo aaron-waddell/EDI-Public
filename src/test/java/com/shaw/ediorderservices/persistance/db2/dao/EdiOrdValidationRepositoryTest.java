@@ -25,7 +25,6 @@ import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation.EdiOrdValidationPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
-import com.shaw.mock.builder.MockBuilder;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
@@ -49,9 +48,6 @@ class EdiOrdValidationRepositoryTest extends MockTest {
 	@Autowired
 	EdiOrderHeaderRepository ediOrderHeaderRepository;
 
-    @Autowired
-    MockBuilder mockBuilder;
- 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}

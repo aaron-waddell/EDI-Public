@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
-
 @Service
 @Transactional
 @Qualifier("samplesLegacyService")

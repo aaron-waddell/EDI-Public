@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -34,6 +35,7 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 	EdiShipInfoRepository ediShipInfoRepository;
 
 	@Autowired
+	@Qualifier("hardsurfacesCswsService")
 	CSWSService cswsService;
 
 	@Autowired
@@ -51,7 +53,7 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 		OrderViewResponse view = cswsService.getOrderView(header.getShawOrderNumber());
 		OrderHeader shawHeader = view.getHeader();
 		List<OrderLine> shawLines = view.getLines();
-		HashMap<String, String> splMap = getSplValues();
+		Map<String, String> splMap = getSplValues();
 		EdiShipInfo ediShipInfo = mapper.EdiOrderHeaderToShipInfo(header);
 		ediShipInfo.setSplBillToStore(splMap.get("splBillToStore"));
 		ediShipInfo.setSplShipToStore(splMap.get("splShipToStore"));
@@ -63,7 +65,7 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 
 	}
 
-	public HashMap<String,String> getSplValues() {
+	public Map<String,String> getSplValues() {
 		EdiOrder ediOrder = ediOrderBean.getEdiOrder();
 		EdiOrderHeader ediHeader = ediOrderBean.getLegacyHeader();
 

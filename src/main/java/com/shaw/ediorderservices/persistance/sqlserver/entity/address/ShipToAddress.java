@@ -2,7 +2,6 @@ package com.shaw.ediorderservices.persistance.sqlserver.entity.address;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 

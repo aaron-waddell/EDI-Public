@@ -20,6 +20,11 @@ import javax.persistence.Table;
 @NamedQuery(name="EdiSplStoreXref.findAll", query="SELECT e FROM EdiSplStoreXref e")
 public class EdiSplStoreXref implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3888094062088523911L;
+
 	@Embeddable
 	public static class EdiSplStoreXrefPK implements Serializable {
 		//default serial version id, required for serializable classes.

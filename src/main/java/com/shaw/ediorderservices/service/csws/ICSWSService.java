@@ -1,7 +1,6 @@
 package com.shaw.ediorderservices.service.csws;
 
 import com.shaw.ediorderservices.csws.Order;
-import com.shaw.ediorderservices.csws.OrderHeader;
 import com.shaw.ediorderservices.csws.OrderViewResponse;
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 

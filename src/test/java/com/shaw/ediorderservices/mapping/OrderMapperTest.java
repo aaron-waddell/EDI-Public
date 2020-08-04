@@ -1,7 +1,6 @@
 package com.shaw.ediorderservices.mapping;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -17,7 +16,6 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
-import com.shaw.ediorderservices.service.order.SamplesOrderService;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)

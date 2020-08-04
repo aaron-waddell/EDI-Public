@@ -7,8 +7,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shaw.ediorderservices.ServiceConfig;
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
-import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.mapping.AddressMapper;
 import com.shaw.ediorderservices.mapping.OrderMapper;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;

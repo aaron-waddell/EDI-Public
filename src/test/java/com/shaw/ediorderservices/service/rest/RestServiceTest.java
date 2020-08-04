@@ -40,6 +40,7 @@ class RestServiceTest extends MockTest {
 	final void testPostForObjectURIIEntityBody() {
 		String result = restService.postForObject(uri, new IEntityBody() {
 		});
+		logger.info(result);
 	}
 
 	@Test

@@ -18,7 +18,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderLineRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
@@ -47,8 +46,9 @@ class LegacyServiceTest extends MockTest {
 	@BeforeEach
 	private void  before()
 	{
-		when(ediOrderLineRepository.findByIdEdiOrderHeader(samplesOrderHeader)).thenReturn((samplesOrderHeader.getLines()));
+		when(ediOrderLineRepository.findByIdLegacyOrderNumber(samplesOrderHeader.getLegacyOrderNumber())).thenReturn((samplesOrderHeader.getLines()));
 	}
+
 	@Test
 	void testCreateLegacyOrder() {
 //		when(ediOrderHeaderRepository.save(any(EdiOrderHeader.class))).thenCallRealMethod();
@@ -66,7 +66,7 @@ class LegacyServiceTest extends MockTest {
 
 	@Test
 	void testConvertLegacyOrder() {
-		EdiOrderLine line = ediOrderLineRepository.findByIdEdiOrderHeader(samplesOrderHeader).get(0);
+		EdiOrderLine line = ediOrderLineRepository.findByIdLegacyOrderNumber(samplesOrderHeader.getLegacyOrderNumber()).get(0);
 //		when(ediOrderHeaderRepository.save(any(EdiOrderHeader.class))).thenCallRealMethod();
 //		legacyOrderService.getOrder(header.getLegacyOrderNumber());
 //		assertNotNull(ediOrderBean.getLegacyHeader());
@@ -85,7 +85,7 @@ class LegacyServiceTest extends MockTest {
 	@Test
 	@Disabled
 	void testGetOrder() {
-		EdiOrderLine line = ediOrderLineRepository.findByIdEdiOrderHeader(samplesOrderHeader).get(0);
+		EdiOrderLine line = ediOrderLineRepository.findByIdLegacyOrderNumber(samplesOrderHeader.getLegacyOrderNumber()).get(0);
 //		when(ediOrderHeaderRepository.findById(testEdiOrder.getLegacyId())).thenReturn(Optional.of(ediOrderHeader));
 //		EdiOrderHeader result = ediOrderHeaderRepository.save(ediOrderHeader);
 		legacyOrderService.getOrder(samplesOrderHeader.getLegacyOrderNumber());

@@ -8,17 +8,14 @@ import javax.annotation.PostConstruct;
 
 import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shaw.ediorderservices.AppConfig;
+import com.shaw.ediorderservices.ServiceConfig;
 import com.shaw.ediorderservices.csws.Cart;
 import com.shaw.ediorderservices.csws.CustInfo;
 import com.shaw.ediorderservices.csws.Order;
 import com.shaw.ediorderservices.csws.OrderViewResponse;
-import com.shaw.ediorderservices.hibernate.ServiceConfig;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiReasonCodeRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrdValidation;
@@ -47,9 +44,6 @@ public abstract class MockTest {
 	@Autowired
 	private ServiceConfig config;
 
-    @Autowired
-    private static ApplicationContext ctx;
-	
 //
 //	@Autowired
 //	protected static EdiOrderHeader legacyOrderBean;
@@ -84,9 +78,9 @@ public abstract class MockTest {
 		validationMap.put("out_err_code","");
 //		ediOrdValidation.setEdiReasonCode(mockBuilder.build(EdiReasonCode.class));
 //		orderHeaderView.setCarrierCode(orderView.getHeader().getCarrierCode().substring(0,2));
-//		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
-//		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
-//		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
+		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
+		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
+		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
 //	    context = new AnnotationConfigApplicationContext(AppConfig.class);
 		mockBuilder = new MockBuilder();
 		mockHelper = new MockHelper();

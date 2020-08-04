@@ -2,11 +2,6 @@ package com.shaw.ediorderservices.helper;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-
-import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,22 +23,10 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOr
 import com.shaw.mock.builder.MockBuilder;
 
 public class MockHelper {
- 	
+
     protected static final Logger logger = LogManager.getLogger();
 
-	static LocalDate randomDate() {
-		return LocalDate.ofEpochDay(RandomUtils.nextInt(0,10000));
-	}
-
-	static LocalDateTime randomDateTime() {
-		return LocalDateTime.ofEpochSecond(RandomUtils.nextInt(0,10000), 0, ZoneOffset.UTC);
-	}
-
-	private static MockBuilder mockBuilder;
-	
-	public MockHelper() {
-		mockBuilder = new MockBuilder();		
-	}
+	protected static MockBuilder mockBuilder = new MockBuilder();
 
 	public EdiOrder buildEdiOrder(OrderType orderType)
 	{

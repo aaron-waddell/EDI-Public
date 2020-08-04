@@ -7,7 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
-import com.shaw.ediorderservices.helper.MockHelper;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiSplStoreXrefRepository;
@@ -37,7 +36,6 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.ediorderservices.service.csws.CSWSService;
 import com.shaw.ediorderservices.service.shipInfo.ShipInfoService;
-import com.shaw.mock.builder.MockBuilder;
 
 @WebAppConfiguration
 @ContextConfiguration
@@ -95,7 +93,7 @@ class ShipInfoServiceTest extends MockTest {
 		blankAddress.getShipToAddress().setAddressLine1("");
 		ediOrderBean.setLegacyHeader(blankXDock);
 		ediOrderBean.setEdiOrder(blankAddress);
-		HashMap<String, String> map = service.getSplValues();
+		Map<String, String> map = service.getSplValues();
 		assertEquals(blankXDock.getBillToStore(), map.get("splBillToStore"));
 		assertEquals(blankXDock.getBillToStore(), map.get("splShipToStore"));
 		assertEquals("", map.get("splXdockCenter"));

@@ -22,7 +22,6 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
-import com.shaw.ediorderservices.service.legacy.ILegacyService;
 
 @Service
 @Qualifier("samplesValidationService")

@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.shaw.ediorderservices.hibernate.ServiceConfig;
+import com.shaw.ediorderservices.ServiceConfig;
 import com.shaw.ediorderservices.service.common.IEntityBody;
 
 @Service
@@ -48,7 +48,7 @@ public class RestService implements IRestService {
 				.add("userId", "EDIS")
 				.add("applicationId", "EDIS")
 				.add("businessFunc", "Edi Order Create")
-//				.add("applicationGuid", config.getAppGuid())
+				.add("applicationGuid", config.getAppGuid())
 //				.setContentType(MediaType.APPLICATION_JSON);
 				.add("x-3scale-proxy-secret-token", config.getSecretToken())
 				.add("user-key", config.getUserKey())

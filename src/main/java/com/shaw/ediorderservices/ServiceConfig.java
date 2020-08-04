@@ -1,4 +1,4 @@
-package com.shaw.ediorderservices.hibernate;
+package com.shaw.ediorderservices;
 
 import javax.validation.constraints.NotNull;
 
