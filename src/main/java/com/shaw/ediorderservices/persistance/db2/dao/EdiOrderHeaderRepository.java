@@ -5,27 +5,25 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 
 public interface EdiOrderHeaderRepository extends PagingAndSortingRepository<EdiOrderHeader, Long> {
 
-	public default EdiOrderHeader getHeader(Long id)
-	{
-		EdiOrderHeader legacyHeader = getHeaderDates(id).orElseThrow(()->new ResourceNotFoundException("legacy header"));
-		legacyHeader = getHeaderLines(id).orElseThrow(()->new ResourceNotFoundException("legacy header"));
-		return legacyHeader;		
-	}
+//	public default EdiOrderHeader getHeader(Long id)
+//	{
+//		EdiOrderHeader legacyHeader = getHeaderDates(id).orElseThrow(()->new ResourceNotFoundException("legacy header"));
+//		legacyHeader = getHeaderLines(id).orElseThrow(()->new ResourceNotFoundException("legacy header"));
+//		return legacyHeader;		
+//	}
 	
-	@Query("SELECT oh FROM EdiOrderHeader oh LEFT JOIN FETCH oh.dates WHERE oh.legacyOrderNumber = :id")
-	Optional<EdiOrderHeader> getHeaderDates(@Param("id") Long id);
-	
-	@Query("SELECT oh FROM EdiOrderHeader oh JOIN FETCH oh.lines WHERE oh.legacyOrderNumber = :id")
-	Optional<EdiOrderHeader> getHeaderLines(@Param("id") Long id);
+//	@Query("SELECT oh FROM EdiOrderHeader oh LEFT JOIN FETCH oh.dates WHERE oh.legacyOrderNumber = :id")
+//	Optional<EdiOrderHeader> getHeaderDates(@Param("id") Long id);
+//	
+//	@Query("SELECT oh FROM EdiOrderHeader oh JOIN FETCH oh.lines WHERE oh.legacyOrderNumber = :id")
+//	Optional<EdiOrderHeader> getHeaderLines(@Param("id") Long id);
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Modifying @Query(name = "EdiOrderHeader.updateAgent")

@@ -143,8 +143,8 @@ public class EdiShipInfoLn implements Serializable {
 	@Column(name="ORDER_QTY_IN", nullable=false, precision=2)
 	private int orderQtyIn;
 
-	@Column(name="PO_LINE_NBR", nullable=false, length=6)
-	private String poLineNbr;
+	@Column(name="PO_LINE_NBR", nullable=false)
+	private int poLineNbr;
 
 	@Column(nullable=false, precision=12, scale=4)
 	private double price;
@@ -356,11 +356,11 @@ public class EdiShipInfoLn implements Serializable {
 		this.orderQtyIn = orderQtyIn;
 	}
 
-	public String getPoLineNbr() {
+	public int getPoLineNbr() {
 		return this.poLineNbr;
 	}
 
-	public void setPoLineNbr(String poLineNbr) {
+	public void setPoLineNbr(int poLineNbr) {
 		this.poLineNbr = poLineNbr;
 	}
 

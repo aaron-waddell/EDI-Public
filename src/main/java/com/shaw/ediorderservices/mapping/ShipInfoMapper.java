@@ -13,9 +13,9 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
 public interface ShipInfoMapper {
 
 //    @Mapping(source="ediOrder.poDate.dateValue", target="poDate")
-//	@Mapping(target="id", expression = "java(new EdiShipInfoPK(header.getId().getOrderNbr(),java.time.LocalDate.now()))")
-	@Mapping(target="id.dateStamp", expression="java(java.time.LocalDate.now())")
-    @Mapping(source="shawOrderNumber", target="id.orderNbr")
+	@Mapping(target="id", expression = "java(new com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo.EdiShipInfoPK(header.getShawOrderNumber(),java.time.LocalDate.now()))")
+//	@Mapping(target="id.dateStamp", expression="java(java.time.LocalDate.now())")
+//    @Mapping(source="shawOrderNumber", target="id.orderNbr")
 	@Mapping(source="poDateValue", target="poDate")
 	@Mapping(source="agreementNumber",target="agreementNbr")
 //	@Mapping(source="authorizationNo",target="authorizationNo")

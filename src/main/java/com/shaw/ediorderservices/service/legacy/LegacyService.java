@@ -1,6 +1,7 @@
 package com.shaw.ediorderservices.service.legacy;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -12,8 +13,10 @@ import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.mapping.AddressMapper;
 import com.shaw.ediorderservices.mapping.OrderMapper;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
+import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderLineRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.OrderHeaderExtRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.OrderHeaderExt;
 import com.shaw.ediorderservices.persistance.sqlserver.dao.EdiOrderRepository;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
@@ -31,6 +34,9 @@ public abstract class LegacyService extends AbstractService<EdiOrderHeader> impl
 
 	@Autowired
 	EdiOrderHeaderRepository ediOrderHeaderRepository;
+
+	@Autowired
+	EdiOrderLineRepository ediOrderLineRepository;
 
 	@Autowired
 	EdiOrderRepository ediOrderRepository;
@@ -93,7 +99,7 @@ public abstract class LegacyService extends AbstractService<EdiOrderHeader> impl
 	public void getOrder(long ediOrderNbr) throws ResourceNotFoundException {
 //		Supplier<ResourceNotFoundException> s = ResourceNotFoundException::new;
 		// TODO Auto-generated method stub
-		EdiOrderHeader legacyHeader = ediOrderHeaderRepository.getHeader(ediOrderNbr);
+		EdiOrderHeader legacyHeader = ediOrderHeaderRepository.findById(ediOrderNbr).orElseThrow(()->new ResourceNotFoundException("legacy header"));
 //		legacyHeader = ediOrderHeaderRepository.getHeaderLines(ediOrderNbr).orElseThrow(()->new ResourceNotFoundException("legacy header"));
 		ediOrderBean.setLegacyHeader(legacyHeader);
 	}
@@ -106,12 +112,15 @@ public abstract class LegacyService extends AbstractService<EdiOrderHeader> impl
 		ediOrder.setShawOrderNbr(shawOrderNbr);
 		header.setShawOrderNumber(shawOrderNbr);
 		header.setStatusCode(OrderStatus.COMPLETE);
-		header.getLines().forEach(l->l.setStatusCode(OrderStatus.COMPLETE));
+//		header.getLines().forEach(l->l.setStatusCode(OrderStatus.COMPLETE));
 		header.setOrderDate(LocalDate.now());
 //TODO		
 //		OrderHeaderExt ext = new OrderHeaderExt(); 
 		ediOrderBean.setEdiOrder(ediOrder);
 		ediOrderHeaderRepository.save(header);
+		List<EdiOrderLine> lines = ediOrderLineRepository.findByIdLegacyOrderNumber(header.getLegacyOrderNumber());
+		lines.forEach(l->l.setStatusCode(OrderStatus.COMPLETE));
+		ediOrderLineRepository.saveAll(lines);
 //		OrderHeader shawHeader = orderHeaderRepository.findById(shawOrderNbr).orElseThrow(ResourceNotFoundException::new);
 		OrderHeaderExt ext = orderHeaderExtRepository.findById(shawOrderNbr).orElseThrow(ResourceNotFoundException::new);
 		ext.setThirdPartyAddress(addressMapper.thirdPartyAddressToLegacyThirdPartyAddress(ediOrder.getThirdPartyAddress()));

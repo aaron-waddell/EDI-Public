@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -11,8 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.shaw.mock.builder.Mockable;
 
 
 /**
@@ -21,13 +23,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="EDI_ORDER_LINE")
-@NamedQuery(name="EdiOrderLine.findAll", query="SELECT e FROM EdiOrderLine e")
 public class EdiOrderLine implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private long id;
 
 	/**
 	 * The primary key class for the EDI_ORDER_LINE database table.
@@ -39,15 +36,16 @@ public class EdiOrderLine implements Serializable {
 		private static final long serialVersionUID = 1L;
 
 		@Column(name="EDI_ORDER_NUMBER", insertable=false, updatable=false, unique=true, nullable=false, precision=10)
+		@Mockable(false)
 		private Long legacyOrderNumber;
 
 		@Column(name="PO_LINE_NO", unique=true, nullable=false, length=10)
-		private String poLineNo = "";
+		private int poLineNo = 0;
 
 		public EdiOrderLinePK() {
 		}
 		
-		public EdiOrderLinePK(Long legacyOrderNumber, String poLineNo) {
+		public EdiOrderLinePK(Long legacyOrderNumber, int poLineNo) {
 			this.legacyOrderNumber = legacyOrderNumber;
 			this.poLineNo = poLineNo;
 		}
@@ -60,20 +58,19 @@ public class EdiOrderLine implements Serializable {
 			this.legacyOrderNumber = legacyOrderNumber;
 		}
 
-		public String getPoLineNo() {
+		public int getPoLineNo() {
 			return this.poLineNo;
 		}
-		public void setPoLineNo(String poLineNo) {
+		public void setPoLineNo(int poLineNo) {
 			this.poLineNo = poLineNo;
 		}
-
 
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
 			result = prime * result + ((legacyOrderNumber == null) ? 0 : legacyOrderNumber.hashCode());
-			result = prime * result + ((poLineNo == null) ? 0 : poLineNo.hashCode());
+			result = prime * result + poLineNo;
 			return result;
 		}
 
@@ -91,10 +88,7 @@ public class EdiOrderLine implements Serializable {
 					return false;
 			} else if (!legacyOrderNumber.equals(other.legacyOrderNumber))
 				return false;
-			if (poLineNo == null) {
-				if (other.poLineNo != null)
-					return false;
-			} else if (!poLineNo.equals(other.poLineNo))
+			if (poLineNo != other.poLineNo)
 				return false;
 			return true;
 		}
@@ -110,7 +104,7 @@ public class EdiOrderLine implements Serializable {
 	@EmbeddedId
 	private EdiOrderLinePK id;
 
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @MapsId("legacyOrderNumber")
 	volatile private EdiOrderHeader ediOrderHeader;
 

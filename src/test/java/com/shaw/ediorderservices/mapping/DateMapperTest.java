@@ -30,14 +30,14 @@ class DateMapperTest extends MockTest{
 	final void testEdiDateToLegacy() {
 		EdiOrderDate result = dateMapper.ediDateToLegacy(ediDate);
 		assertEquals(ediDate.getDateValue(),result.getDateValue());
-		assertEquals(ediDate.getQualifier(),result.getPk().getQualifier());
+		assertEquals(ediDate.getQualifier(),result.getId().getQualifier());
 	}
 
 	@Test
 	final void testLegacyDateToEdiDate() {
 		EdiDate result = dateMapper.legacyDateToEdiDate(ediOrderDate);
 		assertEquals(ediOrderDate.getDateValue(),result.getDateValue());
-		assertEquals(ediOrderDate.getPk().getQualifier(),result.getQualifier());
+		assertEquals(ediOrderDate.getId().getQualifier(),result.getQualifier());
 	}
 
 }

@@ -3,6 +3,7 @@ package com.shaw.ediorderservices.persistance.db2.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -11,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+
+import com.shaw.mock.builder.Mockable;
 
 
 /**
@@ -22,38 +25,29 @@ import javax.persistence.Table;
 public class EdiOrderDate implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The primary key class for the EDI_ORDER_DATE database table.
+	 * 
+	 */
 	@Embeddable
 	public static class EdiOrderDatePK implements Serializable {
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 		
+		@Column(name="EDI_ORDER_NUMBER", insertable=false, updatable=false, nullable=false, precision=10)
+		@Mockable(false)
+		private Long legacyOrderNumber;
+
 		@Column(name="DATE_QUALIFIER", nullable=false, length=3)
 		private String qualifier;
 		
-		Long legacyOrderNumber;
-
-
 		public EdiOrderDatePK() {
-			super();
 		}
 
 		public EdiOrderDatePK(String qualifier, Long legacyOrderNumber) {
-			super();
 			this.qualifier = qualifier;
 			this.legacyOrderNumber = legacyOrderNumber;
 		}
-
-		public String getQualifier() {
-			return this.qualifier;
-		}
-
-		public void setQualifier(String qualifier) {
-			this.qualifier = qualifier;
-		}
-
 
 		public Long getLegacyOrderNumber() {
 			return legacyOrderNumber;
@@ -63,9 +57,12 @@ public class EdiOrderDate implements Serializable {
 			this.legacyOrderNumber = legacyOrderNumber;
 		}
 
-		@Override
-		public String toString() {
-			return "EdiOrderDatePK [qualifier=" + qualifier + ", legacyOrderNumber=" + legacyOrderNumber + "]";
+		public String getQualifier() {
+			return this.qualifier;
+		}
+
+		public void setQualifier(String qualifier) {
+			this.qualifier = qualifier;
 		}
 
 		@Override
@@ -95,6 +92,13 @@ public class EdiOrderDate implements Serializable {
 				return false;
 			return true;
 		}
+
+		@Override
+		public String toString() {
+			return "EdiOrderDatePK [ediOrderHeader=" + legacyOrderNumber + ", qualifier=" + qualifier + "]";
+		}
+		
+		
 	}
 
 //	@Id
@@ -105,36 +109,43 @@ public class EdiOrderDate implements Serializable {
 	@EmbeddedId
 	EdiOrderDatePK id;
 	
+	@ManyToOne(optional = false, fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@MapsId("legacyOrderNumber")
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
-	EdiOrderHeader ediOrderHeader;
+//	@JoinColumn(name = "EDI_ORDER_NUMBER")
+	volatile private EdiOrderHeader ediOrderHeader;
 	
 	@Column(name="HEADER_DATE", nullable=false)
 	private LocalDate dateValue;
 
 	public EdiOrderDate() {
+		super();
 	}
+
+//	public EdiOrderDate(EdiOrderHeader hdr) {
+//		this();
+//		this.ediOrderHeader = hdr;
+//	}
 
 	public EdiOrderDate(EdiOrderDatePK id, LocalDate dt) {
 		this.id = id;
 		this.dateValue = dt;
 	}
 	
-	public EdiOrderDatePK getPk() {
+	public EdiOrderDatePK getId() {
 		return id;
 	}
 
-	public void setPk(EdiOrderDatePK id) {
+	public void setId(EdiOrderDatePK id) {
 		this.id = id;
 	}
 
-	public EdiOrderHeader getEdiOrderHeader() {
-		return ediOrderHeader;
-	}
-
-	public void setEdiOrderHeader(EdiOrderHeader ediOrderHeader) {
-		this.ediOrderHeader = ediOrderHeader;
-	}
+//	public EdiOrderHeader getEdiOrderHeader() {
+//		return ediOrderHeader;
+//	}
+//
+//	public void setEdiOrderHeader(EdiOrderHeader ediOrderHeader) {
+//		this.ediOrderHeader = ediOrderHeader;
+//	}
 
 	public LocalDate getDateValue() {
 		return this.dateValue;
@@ -148,8 +159,7 @@ public class EdiOrderDate implements Serializable {
 
 	@Override
 	public String toString() {
-		String legacyOrderNumber = ediOrderHeader!=null&&ediOrderHeader.getLegacyOrderNumber()!=null?ediOrderHeader.getLegacyOrderNumber().toString():"null hdr";
-		return "EdiOrderDate [id=" + id + ", ediOrderHeader=" + legacyOrderNumber  + ", dateValue=" + dateValue + "]";
+		return "EdiOrderDate [id=" + id + ", dateValue=" + dateValue + "]";
 	}
 
 	@Override

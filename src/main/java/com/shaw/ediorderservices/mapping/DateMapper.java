@@ -13,10 +13,11 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrderFact
 public interface DateMapper {
 
 //    @Mapping(source = "ediOrder.legacyId", target = "ediOrderNumber")
-//    @Mapping(source="qualifier", target="pk.qualifier")
+    @Mapping(source="qualifier", target="id.qualifier")
+//    @Mapping(target="ediOrderHeader", ignore = true)
     EdiOrderDate ediDateToLegacy(EdiDate ediDate);
 
     @Mapping(target = "id", constant =  "0")
-    @Mapping(source="pk.qualifier", target="qualifier")
+    @Mapping(source="id.qualifier", target="qualifier")
     GenericDate legacyDateToEdiDate(EdiOrderDate ediOrderDate);
 }

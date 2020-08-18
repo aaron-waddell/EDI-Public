@@ -3,8 +3,8 @@ package com.shaw.ediorderservices.service.legacy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
 
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -15,13 +15,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.shaw.ediorderservices.helper.MockTest;
-import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderLineRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
-import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 
 @SpringBootTest
@@ -37,16 +34,13 @@ class LegacyServiceTest extends MockTest {
 //	@Autowired
 //	EdiOrderHeaderRepository ediOrderHeaderRepository;
 
-	@MockBean
-	EdiOrderLineRepository ediOrderLineRepository;
-
 //	static EdiOrderHeader header = ediOrderHeader;
 	//		static EdiOrderHeader header = ediOrderHeaderRepository.findFirstByOrderType("H").orElseThrow(ResourceNotFoundException::new);
 
 	@BeforeEach
 	private void  before()
 	{
-		when(ediOrderLineRepository.findByIdLegacyOrderNumber(samplesOrderHeader.getLegacyOrderNumber())).thenReturn((samplesOrderHeader.getLines()));
+		samplesOrderHeader.setLegacyOrderNumber(RandomUtils.nextLong()); //can't store null
 	}
 
 	@Test
@@ -58,7 +52,6 @@ class LegacyServiceTest extends MockTest {
 		assertNotNull(legacyHeader);
 		assertEquals(hsEdiOrder.getCustomerCode(),legacyHeader.getCustomerCode());
 		assertEquals(hsEdiOrder.getShipDate().getDateValue(),legacyHeader.getShipDateValue());
-		assertEquals(hsEdiOrder.getLines().get(0).getColor(),legacyHeader.getLines().get(0).getColor());
 		logger.info(legacyHeader.toString());
 //		verify(ediOrderHeaderRepository).save(ediOrderHeader);
 		assertNotEquals(0,legacyHeader.getLegacyOrderNumber());
@@ -66,7 +59,6 @@ class LegacyServiceTest extends MockTest {
 
 	@Test
 	void testConvertLegacyOrder() {
-		EdiOrderLine line = ediOrderLineRepository.findByIdLegacyOrderNumber(samplesOrderHeader.getLegacyOrderNumber()).get(0);
 //		when(ediOrderHeaderRepository.save(any(EdiOrderHeader.class))).thenCallRealMethod();
 //		legacyOrderService.getOrder(header.getLegacyOrderNumber());
 //		assertNotNull(ediOrderBean.getLegacyHeader());
@@ -77,7 +69,6 @@ class LegacyServiceTest extends MockTest {
 		logger.info(ediOrderBean.getEdiOrder().toString());
 		assertEquals(samplesOrderHeader.getCustomerCode(),result.getCustomerCode());
 		assertEquals(samplesOrderHeader.getShipDateValue(), result.getShipDate().getDateValue());
-		assertEquals(line.getColor(), result.getLines().get(0).getColor());
 //		verify(ediOrderBeanRepository).save(ediOrderHeader);
 		assertNotEquals(0,result.getLegacyOrderNumber());
 	}
@@ -85,18 +76,16 @@ class LegacyServiceTest extends MockTest {
 	@Test
 	@Disabled
 	void testGetOrder() {
-		EdiOrderLine line = ediOrderLineRepository.findByIdLegacyOrderNumber(samplesOrderHeader.getLegacyOrderNumber()).get(0);
 //		when(ediOrderHeaderRepository.findById(testEdiOrder.getLegacyId())).thenReturn(Optional.of(ediOrderHeader));
 //		EdiOrderHeader result = ediOrderHeaderRepository.save(ediOrderHeader);
 		legacyOrderService.getOrder(samplesOrderHeader.getLegacyOrderNumber());
-		EdiOrderHeader result = ediOrderBean.getLegacyHeader();
-		assertNotNull(result);
-		logger.info(result.toString());
-		assertEquals(samplesOrderHeader.getCustomerCode(),result.getCustomerCode());
-		assertEquals(samplesOrderHeader.getConsumerAddress().getCity(),result.getConsumerAddress().getCity());
-		assertEquals(line.getAddCustProdInfo(),result.getLines().get(0).getAddCustProdInfo());
+		EdiOrderHeader legacyHeader = ediOrderBean.getLegacyHeader();
+		assertNotNull(legacyHeader);
+		logger.info(legacyHeader.toString());
+		assertEquals(samplesOrderHeader.getCustomerCode(),legacyHeader.getCustomerCode());
+		assertEquals(samplesOrderHeader.getConsumerAddress().getCity(),legacyHeader.getConsumerAddress().getCity());
 //		verify(ediOrderHeaderRepository).findById(ediOrder.getLegacyId());
-		assertNotEquals(0,result.getLegacyOrderNumber());
+		assertNotEquals(0,legacyHeader.getLegacyOrderNumber());
 	}
 	
 }

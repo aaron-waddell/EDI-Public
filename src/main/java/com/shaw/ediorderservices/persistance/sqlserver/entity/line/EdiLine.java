@@ -33,7 +33,6 @@ public abstract class EdiLine extends AuditableEntity implements Serializable, I
 	private static final long serialVersionUID = 1L;
 
 	public EdiLine() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public EdiLine(String orderType) {

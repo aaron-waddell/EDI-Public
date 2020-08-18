@@ -32,6 +32,7 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.date.GenericDate;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.date.PoDate;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.date.ShipDate;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
+import com.shaw.mock.builder.Mockable;
 
 //@JsonTypeInfo(
 //		  use = JsonTypeInfo.Id.NAME, 
@@ -119,6 +120,7 @@ public abstract class EdiOrder  extends AuditableEntity implements Serializable,
 	private PoDate poDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ediOrder")
+	@Mockable(false)
 	private List<GenericDate> dates = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "ediOrder")
@@ -131,13 +133,15 @@ public abstract class EdiOrder  extends AuditableEntity implements Serializable,
 	private ThirdPartyAddress thirdPartyAddress;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ediOrder")
+	@Mockable(false)
 	protected List<EdiLine> lines = new ArrayList<EdiLine>();
 
-
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ediOrder")
+	@Mockable(false)
 	private List<Generic> generics = new ArrayList<Generic>();
 
 	@OneToMany(mappedBy = "ediOrder")
+	@Mockable(false)
 	private List<EdiValidation> validations = new ArrayList<EdiValidation>();
 
 	
@@ -433,6 +437,7 @@ public abstract class EdiOrder  extends AuditableEntity implements Serializable,
 
 	@Override
 	public void setLines(List<EdiLine> lines) {
+		this.lines = new ArrayList<EdiLine>();
 		lines.stream().forEach(this::addLine);
 	}
 

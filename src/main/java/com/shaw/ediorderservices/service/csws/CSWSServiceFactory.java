@@ -14,7 +14,7 @@ public class CSWSServiceFactory implements IFactory {
 	CSWSService samplesCswsService;
 
 	@Autowired
-//	@Qualifier("hardsurfacesCswsService")
+	@Qualifier("hardsurfacesCswsService")
 	CSWSService hardsurfacesCswsService;
 	
 	public  CSWSServiceFactory() {

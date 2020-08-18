@@ -61,7 +61,7 @@ class EmailServiceTest extends MockTest {
 
 		assertNotNull(emailsSent);
 		logger.info(emailsSent.toString());
-		assertEquals(1,emailsSent.size());
+		assertEquals(2,emailsSent.size());
 	}
 
 	@Test

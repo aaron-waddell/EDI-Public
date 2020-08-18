@@ -3,23 +3,16 @@ package com.shaw.ediorderservices.persistance.db2.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine.EdiOrderLinePK;
 
 
 /**
@@ -380,11 +373,11 @@ public class EdiOrderHeader implements Serializable {
 	@Embedded
 	private LegacyThirdPartyAddress thirdPartyAddress;
 	
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ediOrderHeader", orphanRemoval = true)
-    private List<EdiOrderDate> dates = new ArrayList<EdiOrderDate>();
-
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ediOrderHeader", orphanRemoval = true)
-	private List<EdiOrderLine> lines = new ArrayList<EdiOrderLine>();
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<EdiOrderDate> dates = new ArrayList<EdiOrderDate>();
+//
+//	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ediOrderHeader", orphanRemoval = true)
+//	private List<EdiOrderLine> lines = new ArrayList<EdiOrderLine>();
 
 
 	public EdiOrderHeader() {
@@ -847,7 +840,7 @@ public class EdiOrderHeader implements Serializable {
 
 	public void setShawOrderNumber(String shawOrderNumber) {
 		this.shawOrderNumber = shawOrderNumber;
-		lines.forEach(l->l.setOrderNumber(shawOrderNumber));  //keep lines in sync
+//		lines.forEach(l->l.setOrderNumber(shawOrderNumber));  //keep lines in sync
 	}
 
 	public Double getOrderRetHand() {
@@ -1290,51 +1283,51 @@ public class EdiOrderHeader implements Serializable {
 		this.thirdPartyAddress = thirdPartyAddress;
 	}
 
-	public List<EdiOrderDate> getDates() {
-		return dates;
-	}
-
-	private void setDates(List<EdiOrderDate> dates) {
-		this.dates = dates;
-//		this.dates = new ArrayList<EdiOrderDate>();
-//		if (dates!=null)
-//			dates.stream().forEach(this::addDate);
-	}
-
-	public void addDate(EdiOrderDate d) {
-		if (dates==null)
-			this.dates = new ArrayList<EdiOrderDate>();			
-		dates.add(d);
-	    d.setEdiOrderHeader(this);
-	}
-	 
-	public void removeDate(EdiOrderDate d) {
-	    dates.remove(d);
-	    d.setEdiOrderHeader(null);
-	}
-
-	public List<EdiOrderLine> getLines() {
-		return lines;
-	}
-
-	public void setLines(List<EdiOrderLine> lines) {
-//		this.lines= lines;
-		this.lines = new ArrayList<EdiOrderLine>();
-		lines.stream().forEach(this::addLine);
-	}
-	public void addLine(EdiOrderLine l) {
-		if (lines==null)
-			this.lines = new ArrayList<EdiOrderLine>();			
-		lines.add(l);
-		l.setEdiOrderHeader(this);
-		l.setId(new EdiOrderLinePK(null,Integer.toString(l.getLineNumber())));
-	}
-	 
-	public void removeLine(EdiOrderLine l) {
-		lines.remove(l);
-	    l.setEdiOrderHeader(null);
-	    l.getId().setLegacyOrderNumber(null);
-	}
+//	public List<EdiOrderDate> getDates() {
+//		return dates;
+//	}
+//
+//	public void setDates(List<EdiOrderDate> dates) {
+//		this.dates = dates;
+////		this.dates = new ArrayList<EdiOrderDate>();
+////		if (dates!=null)
+////			dates.stream().forEach(this::addDate);
+//	}
+//
+//	public void addDate(EdiOrderDate d) {
+//		if (dates==null)
+//			this.dates = new ArrayList<EdiOrderDate>();			
+//		dates.add(d);
+////	    d.setEdiOrderHeader(this);
+//	}
+//	 
+//	public void removeDate(EdiOrderDate d) {
+//	    dates.remove(d);
+////	    d.setEdiOrderHeader(null);
+//	}
+//
+//	public List<EdiOrderLine> getLines() {
+//		return lines;
+//	}
+//
+//	public void setLines(List<EdiOrderLine> lines) {
+////		this.lines= lines;
+//		this.lines = new ArrayList<EdiOrderLine>();
+//		lines.stream().forEach(this::addLine);
+//	}
+//	public void addLine(EdiOrderLine l) {
+//		if (lines==null)
+//			this.lines = new ArrayList<EdiOrderLine>();			
+//		lines.add(l);
+//		l.setEdiOrderHeader(this);
+//		l.setId(new EdiOrderLinePK(null,l.getLineNumber()));
+//	}
+//	 
+//	public void removeLine(EdiOrderLine l) {
+//		lines.remove(l);
+//	    l.setEdiOrderHeader(null);
+//	    l.getId().setLegacyOrderNumber(null);
+//	}
 
 	@Override
 	public String toString() {
@@ -1377,7 +1370,9 @@ public class EdiOrderHeader implements Serializable {
 				+ ", termsNetDays=" + termsNetDays + ", termsTypeFlag=" + termsTypeFlag + ", totalBindingFt="
 				+ totalBindingFt + ", userId=" + userId + ", vendorNo=" + vendorNo + ", wcStore=" + wcStore
 				+ ", consumerAddress=" + consumerAddress + ", shipToAddress=" + shipToAddress + ", thirdPartyAddress="
-				+ thirdPartyAddress + ", dates=" + dates + ", lines=" + lines + "]";
+				+ thirdPartyAddress
+//				+ ", dates=" + dates + ", lines=" + lines 
+				+ "]";
 	}
 
 	

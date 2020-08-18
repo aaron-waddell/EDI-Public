@@ -22,7 +22,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -54,7 +53,7 @@ class SamplesCSWSServiceTest extends MockTest{
 //	@Qualifier("cswsSamplesService")
 	SamplesCSWSService service;	
 
-	@SpyBean
+	@MockBean
 	RestService restService;
 	
 	@MockBean
@@ -129,9 +128,9 @@ class SamplesCSWSServiceTest extends MockTest{
 
 	@Test
 	void testGetOrderView() throws Exception {
-//		when(restService.postForObject(any(URI.class))).thenReturn(gson.toJson(orderHeaderView));
+		when(restService.getForObject(any(URI.class))).thenReturn(gson.toJson(orderHeaderView));
 		OrderViewResponse result = service.getOrderView(ORDER_NBR);
-//		verify(restService).postForObject(any(URI.class));
+		verify(restService).getForObject(any(URI.class));
 		logger.info(gson.toJson(result));
 		assertNotNull(result);	
 	}

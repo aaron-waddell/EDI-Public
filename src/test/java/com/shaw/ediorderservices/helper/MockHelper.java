@@ -2,6 +2,9 @@ package com.shaw.ediorderservices.helper;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
+import java.util.ArrayList;
+
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,6 +46,7 @@ public class MockHelper {
 		ediOrder.getShipDate().setEdiOrder(ediOrder);
 		EdiLine ediLine = getLineInstance(orderType.toString());
 		ediLine.setLineType(orderType.toString());
+		ediOrder.setLines(new ArrayList<EdiLine>());
 		ediOrder.addLine(ediLine);
 //		ediOrder.setCancelDate(build(CancelDate.class));
 //		ediOrder.setPoDate(build(PoDate.class));
@@ -84,10 +88,11 @@ public class MockHelper {
 	public EdiOrderHeader buildEdiOrderHeader(OrderType orderType)
 	{
 		EdiOrderHeader ediOrderHeader = mockBuilder.build(EdiOrderHeader.class);
+//		ediOrderHeader.setLegacyOrderNumber(RandomUtils.nextLong());
 //		ediOrderHeader.addDate(buildEdiOrderDate());
 //		ediOrderHeader.addLine(buildEdiOrderLine());
-		ediOrderHeader.getDates().forEach(d->d.setEdiOrderHeader(ediOrderHeader));
-		ediOrderHeader.getLines().forEach(l->l.setEdiOrderHeader(ediOrderHeader));
+//		ediOrderHeader.getDates().forEach(d->d.setEdiOrderHeader(ediOrderHeader));
+//		ediOrderHeader.getLines().forEach(l->l.setEdiOrderHeader(ediOrderHeader));
 //		ediOrderHeader.setConsumerAddress(build(LegacyConsumerAddress.class));
 //		ediOrderHeader.setShipToAddress(build(LegacyShipToAddress.class));
 //		ediOrderHeader.setThirdPartyAddress(build(LegacyThirdPartyAddress.class));
@@ -102,7 +107,7 @@ public class MockHelper {
 	public EdiOrderDate buildEdiOrderDate()
 	{
 		EdiOrderDate ediOrderDate = mockBuilder.build(EdiOrderDate.class);
-		ediOrderDate.setPk(new EdiOrderDatePK(randomAlphabetic(3),null));
+		ediOrderDate.setId(new EdiOrderDatePK(randomAlphabetic(3),null));
 		logger.debug(ediOrderDate.toString());
 		return ediOrderDate;
 	}
@@ -110,7 +115,7 @@ public class MockHelper {
 	public EdiOrderLine buildEdiOrderLine()
 	{
 		EdiOrderLine ediOrderLine = mockBuilder.build(EdiOrderLine.class);
-		ediOrderLine.setId(new EdiOrderLinePK(null,randomAlphabetic(10)));
+		ediOrderLine.setId(new EdiOrderLinePK(null,RandomUtils.nextInt(0, 999)));
 		logger.debug(ediOrderLine.toString());
 		return ediOrderLine;
 	}

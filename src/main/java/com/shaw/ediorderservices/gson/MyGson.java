@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
@@ -39,7 +41,9 @@ public class MyGson {
                 .registerTypeAdapter(LocalTime.class, new LocalTimeDeserializer())
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
-               .registerTypeAdapterFactory(orderAdapter)
+                .registerTypeAdapter(XMLGregorianCalendar.class, new XMLGregorianCalendarSerializer())
+                .registerTypeAdapter(XMLGregorianCalendar.class, new XMLGregorianCalendarDeserializer())
+                .registerTypeAdapterFactory(orderAdapter)
                 .registerTypeAdapterFactory(lineAdapter)
                 .setPrettyPrinting()
                 .excludeFieldsWithModifiers(Modifier.VOLATILE, Modifier.STATIC)
