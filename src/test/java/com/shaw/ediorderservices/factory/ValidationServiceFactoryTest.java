@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
-import com.shaw.ediorderservices.service.validation.HardsurfacesValidationService;
+import com.shaw.ediorderservices.service.validation.UnitsValidationService;
 import com.shaw.ediorderservices.service.validation.SamplesValidationService;
 import com.shaw.ediorderservices.service.validation.ValidationService;
 import com.shaw.ediorderservices.service.validation.ValidationServiceFactory;
@@ -28,8 +28,8 @@ class ValidationServiceFactoryTest extends MockTest {
 		ValidationService s = factory.getInstance(OrderType.SAMPLES.toString());
 		assertTrue(s.getClass().getSimpleName().contains(SamplesValidationService.class.getSimpleName()));
 		
-		s = factory.getInstance(OrderType.HARDSURFACES.toString());
-		assertTrue(s.getClass().getSimpleName().contains(HardsurfacesValidationService.class.getSimpleName()));
+		s = factory.getInstance(OrderType.UNITS.toString());
+		assertTrue(s.getClass().getSimpleName().contains(UnitsValidationService.class.getSimpleName()));
 		
 		assertThrows(UnsupportedOperationException.class, ()->factory.getInstance(OrderType.CARPET.toString()));
 	}

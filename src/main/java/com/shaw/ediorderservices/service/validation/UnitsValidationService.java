@@ -10,9 +10,9 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiReasonCode;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 
 @Service
-@Qualifier("hardsurfacesValidationService")
+@Qualifier("unitsValidationService")
 @Transactional(propagation = Propagation.REQUIRES_NEW)
-public class HardsurfacesValidationService extends ValidationService {
+public class UnitsValidationService extends ValidationService {
 
 	@Override
 	public EdiOrdValidation processSystemRule( EdiReasonCode systemRule) {
@@ -35,7 +35,7 @@ public class HardsurfacesValidationService extends ValidationService {
 //	@Override
 //	public void validate() {
 //		logger.info("validate hs order");
-//		if (ediOrder.getOrderType().equals(OrderType.HARDSURFACES.toString())==false)
+//		if (ediOrder.getOrderType().equals(OrderType.UNITS.toString())==false)
 //			//TODO add validation to order
 //			return null;
 //		return ediOrder;

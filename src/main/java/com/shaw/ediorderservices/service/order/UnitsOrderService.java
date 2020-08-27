@@ -17,15 +17,15 @@ import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 @Service
 @Transactional
 @Primary
-@Qualifier("hardsurfacesOrderService")
-public class HardsurfacesOrderService extends  OrderService {
+@Qualifier("unitsOrderService")
+public class UnitsOrderService extends  OrderService {
 
-	final static Logger logger = LoggerFactory.getLogger(HardsurfacesOrderService.class);
+	final static Logger logger = LoggerFactory.getLogger(UnitsOrderService.class);
 
 	@Autowired
 	EdiOrderRepository ediOrderRepository;
 
-	public HardsurfacesOrderService() {
+	public UnitsOrderService() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -44,15 +44,15 @@ public class HardsurfacesOrderService extends  OrderService {
 		throw new NotImplementedException();
 	}
 
-	@Override
-	public Order convert() {
-		// TODO Auto-generated method stub
-		throw new NotImplementedException();
-	}
+//	@Override
+//	public Order convert() {
+//		// TODO Auto-generated method stub
+//		throw new NotImplementedException();
+//	}
 
 //	@Override
 //	public Class<? extends EdiOrder> appliesTo() {
-//		return HardsurfacesEdiOrder.class;
+//		return UnitsEdiOrder.class;
 //	}
 
 }

@@ -67,23 +67,20 @@ public abstract class MockTest {
 	protected static EdiValidation ediValidation2;
 	protected static EdiOrderHeader ediOrderHeader;
 	protected static EdiOrderHeader samplesOrderHeader;
-	protected static List<EdiOrderLine> samplesLines = new ArrayList<EdiOrderLine>();
+	protected static List<EdiOrderLine> samplesLines;
 	protected static EdiOrderHeader cptOrderHeader;
 	protected static EdiOrderHeader hsOrderHeader;
 
 	protected static EdiOrder samplesEdiOrder;
-	protected static EdiOrder hsEdiOrder;
+	protected static EdiOrder unitsEdiOrder;
 	protected static EdiOrder cptEdiOrder;
-	protected static EdiOrder validOrder;
-	protected static EdiOrder invalidOrder;
-	protected static EdiOrder invalidOrder2;
 	protected static Cart cart;
-	protected static HashMap<String, String> validationMap = new HashMap<String,String>();
+	protected static HashMap<String, String> validationMap;
 	protected static EdiOrdValidation ediOrdValidation;
 	protected static OrderViewResponse orderView;
 	protected static OrderHeader orderHeaderView;
 	protected static EdiShipInfo ediShipInfo;
-	protected static List<EdiSplStoreXref> xrefList = new ArrayList<EdiSplStoreXref>();
+	protected static List<EdiSplStoreXref> xrefList;;
 
 	static {
 		mockBuilder = new MockBuilder();
@@ -93,6 +90,9 @@ public abstract class MockTest {
 	@BeforeEach
 	private void createTestObjects()
 	{
+		samplesLines = new ArrayList<EdiOrderLine>();
+		validationMap = new HashMap<String,String>();
+		xrefList = new ArrayList<EdiSplStoreXref>();
 		custInfo = mockBuilder.build(CustInfo.class);
 		samplesInfo = mockBuilder.build(SamplesInfo.class);
 		shawOrder = mockBuilder.build(Order.class);
@@ -101,32 +101,24 @@ public abstract class MockTest {
 		ediOrderHeader = mockHelper.buildEdiOrderHeader(OrderType.CARPET);
 		samplesOrderHeader = mockHelper.buildEdiOrderHeader(OrderType.SAMPLES);
 		cptOrderHeader = mockHelper.buildEdiOrderHeader(OrderType.CARPET);
-		hsOrderHeader = mockHelper.buildEdiOrderHeader(OrderType.HARDSURFACES);		
+		hsOrderHeader = mockHelper.buildEdiOrderHeader(OrderType.UNITS);		
 
 		samplesEdiOrder = mockHelper.buildEdiOrder(OrderType.SAMPLES);
 		samplesLines.add(mockBuilder.build(EdiOrderLine.class));
 		samplesLines.add(mockBuilder.build(EdiOrderLine.class));
-		hsEdiOrder = mockHelper.buildEdiOrder(OrderType.HARDSURFACES);
+		unitsEdiOrder = mockHelper.buildEdiOrder(OrderType.UNITS);
 		cptEdiOrder = mockHelper.buildEdiOrder(OrderType.CARPET);
-		validOrder = mockHelper.buildEdiOrder(OrderType.SAMPLES);
-		invalidOrder = mockHelper.buildEdiOrder(OrderType.SAMPLES);
-		invalidOrder2 = mockHelper.buildEdiOrder(OrderType.SAMPLES);
 		cart = mockBuilder.build(Cart.class);
 		validationMap = new HashMap<String,String>();
 		ediOrdValidation = mockBuilder.build(EdiOrdValidation.class);
 		orderHeaderView = mockBuilder.build(OrderHeader.class);
 		ediShipInfo = mockBuilder.build(EdiShipInfo.class);
 
-		hsEdiOrder.setOrderType(OrderType.HARDSURFACES.toString());
+		unitsEdiOrder.setOrderType(OrderType.UNITS.toString());
 		samplesEdiOrder.setOrderType(OrderType.SAMPLES.toString());
 		cart.addLine(mockBuilder.build(CartLine.class));
 		validationMap.put("out_err_code","");
 		ediOrdValidation.setEdiReasonCode(mockBuilder.build(EdiReasonCode.class));
-		validOrder.addValidation(new EdiValidation("ACCEPTED", "ACCEPTED"));
-		validOrder.setOrderType(OrderType.SAMPLES.toString());
-		invalidOrder.addValidation(ediValidation);
-		invalidOrder2.setValidations(Lists.newArrayList(ediValidation,ediValidation2));
-		invalidOrder2.getLines().get(0).setValidations(Lists.newArrayList(ediValidation,ediValidation2));
 
 		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
 		xrefList.add(mockBuilder.build(EdiSplStoreXref.class));
@@ -145,7 +137,7 @@ public abstract class MockTest {
 			EdiOrderHeader saveHeader = mockHelper.buildEdiOrderHeader(OrderType.SAMPLES);
 			ediOrderHeaderRepository.save(saveHeader);
 			
-			saveHeader = mockHelper.buildEdiOrderHeader(OrderType.HARDSURFACES);
+			saveHeader = mockHelper.buildEdiOrderHeader(OrderType.UNITS);
 			ediOrderHeaderRepository.save(saveHeader);
 			
 			EdiReasonCode reasonCode = mockBuilder.build(EdiReasonCode.class);

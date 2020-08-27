@@ -14,8 +14,8 @@ public class CSWSServiceFactory implements IFactory {
 	CSWSService samplesCswsService;
 
 	@Autowired
-	@Qualifier("hardsurfacesCswsService")
-	CSWSService hardsurfacesCswsService;
+	@Qualifier("unitsCswsService")
+	CSWSService unitsCswsService;
 	
 	public  CSWSServiceFactory() {
 		// TODO Auto-generated constructor stub
@@ -26,8 +26,8 @@ public class CSWSServiceFactory implements IFactory {
 		switch (orderType) {
 		case "SAMPLES":
 			return samplesCswsService;
-		case "HARDSURFACES":
-			return hardsurfacesCswsService;
+		case "UNITS":
+			return unitsCswsService;
 
 		default:
 			throw new UnsupportedOperationException("Unsupported OrderType: " + orderType);

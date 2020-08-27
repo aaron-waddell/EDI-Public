@@ -1,15 +1,19 @@
 package com.shaw.ediorderservices.service.shipinfo;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static com.shaw.ediorderservices.gson.MyGson.gson;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.any;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,20 +27,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderLineRepository;
+import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoLnRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiSplStoreXrefRepository;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
-import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo.EdiShipInfoPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn;
+import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfoLn.EdiShipInfoLnPK;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiSplStoreXref;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
@@ -56,8 +63,11 @@ class ShipInfoServiceTest extends MockTest {
 	@Autowired
 	EdiShipInfoRepository shipInfoRepository;
 
+	@Autowired
+	EdiShipInfoLnRepository shipInfoLnRepository;
+
 	@MockBean
-	@Qualifier("hardsurfacesCswsService")
+	@Qualifier("unitsCswsService")
 	CSWSService cswsService;
 	
 	@MockBean
@@ -75,6 +85,8 @@ class ShipInfoServiceTest extends MockTest {
 	@Test
 	void testCreateShipInfo() {
 		orderView.getHeader().setCarrierCode(randomAlphabetic(2));
+//		orderView.getLines().get(0).setPoLineNbr(samplesLines.get(0).getId().getPoLineNo());
+		IntStream.rangeClosed(0, 1).forEach(i->orderView.getLines().get(i).setPoLineNbr(samplesLines.get(i).getId().getPoLineNo()));
 		samplesOrderHeader.setLegacyOrderNumber(RandomUtils.nextLong());
 		when(cswsService.getOrderView(samplesOrderHeader.getShawOrderNumber())).thenReturn(orderView);
 		when(ediSplStoreXrefRepository.findByIdCustCodeAndIdOrderingSys(samplesEdiOrder.getCustomerCode(), samplesEdiOrder.getOrderingSystem())).thenReturn(xrefList);
@@ -82,13 +94,22 @@ class ShipInfoServiceTest extends MockTest {
 		logger.info(gson.toJson(orderView));
 		ediOrderBean.setLegacyHeader(samplesOrderHeader);
 		ediOrderBean.setEdiOrder(samplesEdiOrder);
+		try {
+			shipInfoRepository.deleteById(new EdiShipInfoPK(samplesOrderHeader.getShawOrderNumber(), LocalDate.now()));
+		} catch (EmptyResultDataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		service.createShipInfo();
 		verify(ediOrderLineRepository).findByIdLegacyOrderNumber(any(Long.class));
+		verify(cswsService).getOrderView(samplesOrderHeader.getShawOrderNumber());
 		EdiShipInfo shipInfo = shipInfoRepository.findById(new EdiShipInfoPK(samplesOrderHeader.getShawOrderNumber(), LocalDate.now())).orElseThrow(()->new ResourceNotFoundException());
 		logger.info(shipInfo.toString());
-		verify(cswsService).getOrderView(samplesOrderHeader.getShawOrderNumber());
 		assertEquals(samplesOrderHeader.getCustDept(),shipInfo.getDepartment());
-		EdiShipInfoLn ln = shipInfo.getLines().get(0);
+		List<EdiShipInfoLn> lines = shipInfoLnRepository.findAllByIdEdiShipInfo(shipInfo);
+		assertNotNull(lines);
+		assertNotEquals(0, lines.size());
+		EdiShipInfoLn ln = lines.get(0);
 //		EdiOrderLine samplesLine = samplesOrderHeader.getLines().get(0);
 		logger.info(ln.toString());
 //		assertEquals(samplesLine.getColor(), ln.getColorNbr());

@@ -8,14 +8,14 @@ import javax.persistence.Table;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 
 @Entity @Table(schema = "CSD")
-@PrimaryKeyJoinColumn(name = "hardsurfacesLineId")
+@PrimaryKeyJoinColumn(name = "unitsLineId")
 
-public class HardsurfacesEdiLine extends EdiLine {
+public class UnitsEdiLine extends EdiLine {
 
 	private static final long serialVersionUID = 1L;
 
-	public HardsurfacesEdiLine() {
-		super(OrderType.HARDSURFACES.toString());
+	public UnitsEdiLine() {
+		super(OrderType.UNITS.toString());
 	}
 
 	@Column

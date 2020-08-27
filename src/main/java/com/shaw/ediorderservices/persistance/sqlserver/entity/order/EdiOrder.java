@@ -40,7 +40,7 @@ import com.shaw.mock.builder.Mockable;
 //		  property = "orderType")
 //		@JsonSubTypes({ 
 //		  @Type(value = SamplesEdiOrder.class, name = "SAMPLES"), 
-//		  @Type(value = HardsurfacesEdiOrder.class, name = "HARDSURFACES"), 
+//		  @Type(value = UnitsEdiOrder.class, name = "UNITS"), 
 //		  @Type(value = CarpetEdiOrder.class, name = "CARPET") 		  
 //		})
 @Entity @Table(schema = "CSD")

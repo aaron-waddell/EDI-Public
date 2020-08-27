@@ -14,8 +14,8 @@ public class ValidationServiceFactory implements IFactory {
 	private ValidationService samplesValidationService;
 
 	@Autowired
-	@Qualifier("hardsurfacesValidationService")
-	private ValidationService hardsurfacesValidationService;
+	@Qualifier("unitsValidationService")
+	private ValidationService unitsValidationService;
 	
 	public  ValidationServiceFactory() {
 		// TODO Auto-generated constructor stub
@@ -26,8 +26,8 @@ public class ValidationServiceFactory implements IFactory {
 		switch (orderType) {
 		case "SAMPLES":
 			return samplesValidationService;
-		case "HARDSURFACES":
-			return hardsurfacesValidationService;
+		case "UNITS":
+			return unitsValidationService;
 
 		default:
 			throw new UnsupportedOperationException("Unsupported OrderType: " + orderType);

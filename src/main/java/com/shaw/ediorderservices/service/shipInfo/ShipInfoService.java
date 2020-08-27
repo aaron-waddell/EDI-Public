@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shaw.ediorderservices.csws.OrderHeader;
 import com.shaw.ediorderservices.csws.OrderLine;
 import com.shaw.ediorderservices.csws.OrderViewResponse;
+import com.shaw.ediorderservices.exception.ResourceNotFoundException;
 import com.shaw.ediorderservices.mapping.ShipInfoMapper;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderLineRepository;
 import com.shaw.ediorderservices.persistance.db2.dao.EdiShipInfoRepository;
@@ -40,7 +42,7 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 	EdiOrderLineRepository ediOrderLineRepository;
 
 	@Autowired
-	@Qualifier("hardsurfacesCswsService")
+	@Qualifier("unitsCswsService")
 	CSWSService cswsService;
 
 	@Autowired
@@ -61,13 +63,15 @@ public class ShipInfoService extends AbstractService<EdiShipInfo> implements ISh
 		Map<String, String> splMap = getSplValues();
 		EdiShipInfo ediShipInfo = mapper.EdiOrderHeaderToShipInfo(header);
 		List<EdiOrderLine> lines = ediOrderLineRepository.findByIdLegacyOrderNumber(header.getLegacyOrderNumber());
-		lines.forEach(l->ediShipInfo.addLine(mapper.EdiLineToShipInfoLn(l)));
+		lines.forEach(l->ediShipInfo
+				.addLine(mapper.EdiLineAndOrderLineToShipInfoLn(l,shawLines.parallelStream()
+						.filter(s->l.getId().getPoLineNo()==s.getPoLineNbr()).findFirst().orElseThrow(()->new ResourceNotFoundException()))));
 		ediShipInfo.setSplBillToStore(splMap.get("splBillToStore"));
 		ediShipInfo.setSplShipToStore(splMap.get("splShipToStore"));
 		ediShipInfo.setSplXdockCenter(splMap.get("splXdockCenter"));
 		ediShipInfo.setCarrCode(shawHeader.getCarrierCode());
-		Map<Integer, String> dyelotMap = shawLines.parallelStream().collect(Collectors.toMap(OrderLine::getLineNbr, OrderLine::getDyelot));
-		ediShipInfo.getLines().parallelStream().forEach(l->l.setDyelot(dyelotMap.get(Integer.valueOf(l.getPoLineNbr()))));
+		Map<Integer, String> dyelotMap = shawLines.parallelStream().collect(Collectors.toMap(OrderLine::getPoLineNbr, OrderLine::getDyelot));
+		ediShipInfo.getLines().parallelStream().forEach(l->l.setDyelot(StringUtils.truncate(dyelotMap.get(Integer.valueOf(l.getPoLineNbr())),6)));
 		ediShipInfoRepository.save(ediShipInfo);
 
 	}

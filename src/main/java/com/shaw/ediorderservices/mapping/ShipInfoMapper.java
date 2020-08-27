@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
+import com.shaw.ediorderservices.csws.OrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiShipInfo;
@@ -33,22 +34,27 @@ public interface ShipInfoMapper {
 	@Mapping(source="shipToAddress.destCode",target="shipToDestCode")
 	EdiShipInfo EdiOrderHeaderToShipInfo(EdiOrderHeader header);
 
-    @Mapping(source="id.poLineNo", target="id.lineNbr")
+//    @Mapping(source="id.poLineNo", target="id.lineNbr")
     @Mapping(target="id.ediShipInfo", ignore = true)
-    @Mapping(source="quantityOrdered", target="orderQtyFt")
+    @Mapping(source="ediLine.quantityOrdered", target="orderQtyFt")
     @Mapping(constant="0", target="orderQtyIn")
-    @Mapping(source="uomCode", target="uom")
-    @Mapping(source="style", target="styleNbr")
-    @Mapping(source="color", target="colorNbr")
+	@Mapping(expression = "java(org.apache.commons.lang3.StringUtils.truncate(ediLine.getUomCode(),2))", target="uom")
+    @Mapping(source="ediLine.style", target="styleNbr")
+    @Mapping(source="ediLine.color", target="colorNbr")
     @Mapping(constant="", target="rollNbr")
-    @Mapping(source="quantityOrdered", target="length")
+    @Mapping(source="ediLine.quantityOrdered", target="length")
 //    @Mapping(constant="", target="width")
-    @Mapping(source="quantityOrdered", target="custQty")
+    @Mapping(source="ediLine.quantityOrdered", target="custQty")
     @Mapping(constant="", target="lastChngId")
-    @Mapping(source="itemNo", target="ediItemNbr")
-    @Mapping(source="retailPrice", target="price")
-    
+    @Mapping(source="ediLine.itemNo", target="ediItemNbr")
+    @Mapping(source="ediLine.retailPrice", target="price")
+    @Mapping(source="ediLine.unitPrice", target="unitPrice")
 //	@Mapping(target="id", expression = "java(new EdiShipInfoLnPK(line.getShipInfo(),id.getLineNbr()))")
-	EdiShipInfoLn EdiLineToShipInfoLn(EdiOrderLine ediLine);
+    @Mapping(source="ediLine.id.poLineNo", target="poLineNbr")
+    @Mapping(source="ediLine.id.poLineNo", target="id.lineNbr")
+	@Mapping(target="lastChngDate", expression = "java(java.time.LocalDateTime.now())")
+	@Mapping(source = "orderLine.repromDate", target="repromDate")
+	@Mapping(expression = "java(org.apache.commons.lang3.StringUtils.truncate(orderLine.getStatusCode(),1))", target="status")
+	EdiShipInfoLn EdiLineAndOrderLineToShipInfoLn(EdiOrderLine ediLine, OrderLine orderLine);
 
 }

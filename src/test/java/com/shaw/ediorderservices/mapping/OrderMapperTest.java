@@ -14,7 +14,7 @@ import com.shaw.ediorderservices.csws.ShipInfo;
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.UnitsEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
 
 @SpringBootTest
@@ -44,15 +44,15 @@ class OrderMapperTest extends MockTest {
 	}
 
 	@Test
-	final void testLegacyHeaderToHardsurfacesEdiOrder() {
-		HardsurfacesEdiOrder result = orderMapper.legacyHeaderToHardsurfacesEdiOrder(hsOrderHeader);
+	final void testLegacyHeaderToUnitsEdiOrder() {
+		UnitsEdiOrder result = orderMapper.legacyHeaderToUnitsEdiOrder(hsOrderHeader);
 		assertEquals(hsOrderHeader.getBeg(),result.getBeg());
 	}
 
 	@Test
 	final void testEdiOrderAndCustInfoToShipInfo() {
-		ShipInfo result = orderMapper.ediOrderAndCustInfoToShipInfo(hsEdiOrder,custInfo);
-		assertEquals(hsEdiOrder.getShipToAddress().getCountry(),result.getShipCountry());
+		ShipInfo result = orderMapper.ediOrderAndCustInfoToShipInfo(unitsEdiOrder,custInfo);
+		assertEquals(unitsEdiOrder.getShipToAddress().getCountry(),result.getShipCountry());
 		assertEquals(custInfo.getSpecialInst1(),result.getSpecialInst1());
 	}
 

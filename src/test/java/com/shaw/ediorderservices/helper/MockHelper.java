@@ -16,11 +16,11 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine.EdiOrderLinePK;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.UnitsEdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.SamplesEdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.UnitsEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
 import com.shaw.mock.builder.MockBuilder;
@@ -65,8 +65,8 @@ public class MockHelper {
 			return mockBuilder.build(SamplesEdiOrder.class);
 		case "CARPET":
 			return mockBuilder.build(CarpetEdiOrder.class);
-		case "HARDSURFACES":
-			return mockBuilder.build(HardsurfacesEdiOrder.class);
+		case "UNITS":
+			return mockBuilder.build(UnitsEdiOrder.class);
 		default:
 			throw new ResourceCreationException("EdiOrder for " + orderType);
 		}
@@ -78,8 +78,8 @@ public class MockHelper {
 			return mockBuilder.build(SamplesEdiLine.class);
 		case "CARPET":
 			return mockBuilder.build(CarpetEdiLine.class);
-		case "HARDSURFACES":
-			return mockBuilder.build(HardsurfacesEdiLine.class);
+		case "UNITS":
+			return mockBuilder.build(UnitsEdiLine.class);
 		default:
 			throw new ResourceCreationException("EdiLine for " + orderType);
 		}

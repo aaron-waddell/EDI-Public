@@ -66,13 +66,13 @@ class SamplesCSWSServiceTest extends MockTest{
 //		service = spy(CSWSSamplesService.class);
 //		samplesInfoRepository = spy(SamplesInfoRepository.class);
 //		when(service.getCustomerInfo(anyString())).thenReturn(custInfo);
+		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		ediLine = samplesEdiOrder.getLines().get(0);
 		when(samplesInfoRepository.getSamplesInfo(ediLine.getStyle() + ediLine.getColor())).thenReturn(Optional.of(samplesInfo));
 	}
 
 	@Test
 	void testCreateCart() {
-		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		when(restService.putForObject(any(URI.class),any(CartRequest.class))).thenReturn(gson.toJson(cart));
 		Cart result = service.createCart();
 		verify(restService).putForObject(any(URI.class),any(CartRequest.class));
@@ -82,7 +82,6 @@ class SamplesCSWSServiceTest extends MockTest{
 
 	@Test
 	void testCreateCartRequest() {
-		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		CartRequest result = service.createCartRequest();
 		logger.info(gson.toJson(result));
 		assertEquals(samplesInfo.getSamplesStyleNbr(),result.getSamplesLines().get(0).getStyleNbr());
@@ -95,7 +94,6 @@ class SamplesCSWSServiceTest extends MockTest{
 
 	@Test
 	void testConvert() {
-		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		when(restService.postForObject(any(URI.class))).thenReturn(gson.toJson(custInfo));
 		when(restService.postForObject(any(URI.class),any(IEntityBody.class))).thenReturn(gson.toJson(shawOrder));
 		service.convert(cart);
@@ -109,7 +107,6 @@ class SamplesCSWSServiceTest extends MockTest{
 
 	@Test
 	void testGetSamplesInfo() {
-		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		SamplesInfo result = service.getSamplesInfo(ediLine);
 		verify(samplesInfoRepository).getSamplesInfo(ediLine.getStyle() + ediLine.getColor());
 		logger.info(gson.toJson(result));
@@ -118,7 +115,6 @@ class SamplesCSWSServiceTest extends MockTest{
 
 	@Test
 	void testGetCustInfo() throws Exception {
-		ediOrderBean.setEdiOrder(samplesEdiOrder);
 		when(restService.postForObject(any(URI.class))).thenReturn(gson.toJson(custInfo));
 		CustInfo result = service.getCustomerInfo(CUST_NBR);
 		verify(restService).postForObject(any(URI.class));

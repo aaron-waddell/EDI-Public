@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-@Qualifier("hardsurfacesLegacyService")
+@Qualifier("unitsLegacyService")
 @Primary
-public class HardsurfacesLegacyService extends LegacyService {
+public class UnitsLegacyService extends LegacyService {
 
 }

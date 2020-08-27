@@ -28,7 +28,7 @@ public class EdiOrderFactory implements IFactory {
 		case "C":
 			return (T) mapper.legacyHeaderToCarpetEdiOrder(h);
 		case "H":
-			return (T) mapper.legacyHeaderToHardsurfacesEdiOrder(h);
+			return (T) mapper.legacyHeaderToUnitsEdiOrder(h);
 
 		default:
 			
@@ -55,8 +55,8 @@ public class EdiOrderFactory implements IFactory {
 			return new SamplesEdiOrder();
 		case "C":
 			return new CarpetEdiOrder();
-		case "H":
-			return new HardsurfacesEdiOrder();
+		case "U":
+			return new UnitsEdiOrder();
 
 		default:
 			

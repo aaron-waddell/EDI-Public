@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.shaw.ediorderservices.helper.MockTest;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
-import com.shaw.ediorderservices.service.order.HardsurfacesOrderService;
+import com.shaw.ediorderservices.service.order.UnitsOrderService;
 import com.shaw.ediorderservices.service.order.OrderService;
 import com.shaw.ediorderservices.service.order.OrderServiceFactory;
 import com.shaw.ediorderservices.service.order.SamplesOrderService;
@@ -35,8 +35,8 @@ class OrderServiceFactoryTest extends MockTest {
 		OrderService s = orderServiceFactory.getInstance(OrderType.SAMPLES.toString());
 		assertTrue(s.getClass().getSimpleName().contains(SamplesOrderService.class.getSimpleName()));
 		
-		s = orderServiceFactory.getInstance(OrderType.HARDSURFACES.toString());
-		assertTrue(s.getClass().getSimpleName().contains(HardsurfacesOrderService.class.getSimpleName()));
+		s = orderServiceFactory.getInstance(OrderType.UNITS.toString());
+		assertTrue(s.getClass().getSimpleName().contains(UnitsOrderService.class.getSimpleName()));
 		
 		assertThrows(UnsupportedOperationException.class, ()->orderServiceFactory.getInstance(OrderType.CARPET.toString()));
 	}

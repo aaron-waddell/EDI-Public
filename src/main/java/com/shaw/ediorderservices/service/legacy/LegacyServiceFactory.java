@@ -14,8 +14,8 @@ public class LegacyServiceFactory implements IFactory{
 	private LegacyService samplesLegacyService;
 
 	@Autowired
-	@Qualifier("hardsurfacesLegacyService")
-	private LegacyService hardsurfacesLegacyService;
+	@Qualifier("unitsLegacyService")
+	private LegacyService unitsLegacyService;
 	
 	public  LegacyServiceFactory() {
 		// TODO Auto-generated constructor stub
@@ -26,8 +26,8 @@ public class LegacyServiceFactory implements IFactory{
 		switch (orderType) {
 		case "SAMPLES":
 			return samplesLegacyService;
-		case "HARDSURFACES":
-			return hardsurfacesLegacyService;
+		case "UNITS":
+			return unitsLegacyService;
 
 		default:
 			throw new UnsupportedOperationException("Unsupported OrderType: " + orderType);

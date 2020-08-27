@@ -50,7 +50,7 @@ public abstract class ValidationService extends AbstractService<EdiValidation> i
 	private EdiOrdValidationRepository ediOrdValidationRepository;
 
 	@Autowired
-	@Qualifier("hardsurfacesLegacyService")
+	@Qualifier("unitsLegacyService")
 	ILegacyService legacyService;
 
 	@Autowired

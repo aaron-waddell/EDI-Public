@@ -46,12 +46,12 @@ class LegacyServiceTest extends MockTest {
 	@Test
 	void testCreateLegacyOrder() {
 //		when(ediOrderHeaderRepository.save(any(EdiOrderHeader.class))).thenCallRealMethod();
-		ediOrderBean.setEdiOrder(hsEdiOrder);
+		ediOrderBean.setEdiOrder(unitsEdiOrder);
 		legacyOrderService.createLegacyOrder();
 		EdiOrderHeader legacyHeader = ediOrderBean.getLegacyHeader();
 		assertNotNull(legacyHeader);
-		assertEquals(hsEdiOrder.getCustomerCode(),legacyHeader.getCustomerCode());
-		assertEquals(hsEdiOrder.getShipDate().getDateValue(),legacyHeader.getShipDateValue());
+		assertEquals(unitsEdiOrder.getCustomerCode(),legacyHeader.getCustomerCode());
+		assertEquals(unitsEdiOrder.getShipDate().getDateValue(),legacyHeader.getShipDateValue());
 		logger.info(legacyHeader.toString());
 //		verify(ediOrderHeaderRepository).save(ediOrderHeader);
 		assertNotEquals(0,legacyHeader.getLegacyOrderNumber());

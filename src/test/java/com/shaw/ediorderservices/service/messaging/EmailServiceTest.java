@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import java.net.URI;
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -22,9 +23,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.shaw.ediorderservices.helper.MockTest;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.ediorderservices.service.EdiOrderBean;
 import com.shaw.ediorderservices.service.common.IEntityBody;
-import com.shaw.ediorderservices.service.messaging.EmailService;
 import com.shaw.ediorderservices.service.rest.RestService;
 
 @SpringBootTest
@@ -45,17 +47,22 @@ class EmailServiceTest extends MockTest {
 
 //	@Autowired 
 //	ServiceConfig config;
-	
+
+	private static EdiOrder invalidOrder;
+
 	@BeforeEach
 	void setup()
 	{
+		invalidOrder = mockHelper.buildEdiOrder(OrderType.SAMPLES);
+		invalidOrder.setValidations(Lists.newArrayList(ediValidation,ediValidation2));
+		invalidOrder.getLines().get(0).setValidations(Lists.newArrayList(ediValidation,ediValidation2));
 		when(restService.postForObject(any(URI.class),any(IEntityBody.class))).thenReturn("Email Sent");
 	}
 	
 	@Test
 	final void testSendEmails() {
 
-		ediOrderBean.setEdiOrder(invalidOrder2);
+		ediOrderBean.setEdiOrder(invalidOrder);
 		List<String> emailsSent = emailService.sendEmails();
 		verify(restService).postForObject(any(URI.class),any(IEntityBody.class));
 

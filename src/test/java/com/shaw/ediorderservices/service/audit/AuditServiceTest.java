@@ -42,12 +42,12 @@ class AuditServiceTest extends MockTest {
 
 	@Test
 	void testCreateCarrierAudit() {
-		ediOrderBean.setEdiOrder(hsEdiOrder);
+		ediOrderBean.setEdiOrder(unitsEdiOrder);
 		ediOrderBean.setLegacyHeader(samplesOrderHeader);
 		
 		service.createCarrierAudit(true);
 		
-		EdiAudit audit = ediAuditRepository.findByEdiOrderNumber(hsEdiOrder.getLegacyOrderNumber()).get(0);
+		EdiAudit audit = ediAuditRepository.findByEdiOrderNumber(unitsEdiOrder.getLegacyOrderNumber()).get(0);
 		assertNotNull(audit);
 		logger.info(audit.toString());
 		assertTrue(audit.getAuditMsg().contains("MANHATTAN"));

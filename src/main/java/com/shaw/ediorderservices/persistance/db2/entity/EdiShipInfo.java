@@ -206,23 +206,23 @@ public class EdiShipInfo implements Serializable {
 	private String onlineType;
 
 	@Column(name="ORDER_MER_COST", nullable=false, insertable = false, precision=13, scale=4)
-	@ColumnDefault("")
+	@ColumnDefault("0.0")
 	private long orderMerCost;
 
 	@Column(name="ORDER_RET_HAND", nullable=false, insertable = false, precision=13, scale=4)
-	@ColumnDefault("")
+	@ColumnDefault("0.0")
 	private long orderRetHand;
 
 	@Column(name="ORDER_RET_SH", nullable=false, insertable = false, precision=13, scale=4)
-	@ColumnDefault("")
+	@ColumnDefault("0.0")
 	private long orderRetSh;
 
 	@Column(name="ORDER_RET_TAX", nullable=false, insertable = false, precision=13, scale=4)
-	@ColumnDefault("")
+	@ColumnDefault("0.0")
 	private long orderRetTax;
 
 	@Column(name="ORDER_RET_TOTAL", nullable=false, insertable = false, precision=13, scale=4)
-	@ColumnDefault("")
+	@ColumnDefault("0.0")
 	private long orderRetTotal;
 
 	@Column(name="ORDER_TYPE", nullable=false, length=1)
@@ -834,7 +834,9 @@ public class EdiShipInfo implements Serializable {
 				+ ", shipByDate=" + shipByDate + ", shipCancelDate=" + shipCancelDate + ", shipToDestCode="
 				+ shipToDestCode + ", specPoNumber=" + specPoNumber + ", splBillToStore=" + splBillToStore
 				+ ", splShipToStore=" + splShipToStore + ", splXdockCenter=" + splXdockCenter + ", storeName="
-				+ storeName + ", vendorNo=" + vendorNo + ", lines=" + lines + "]";
+				+ storeName + ", vendorNo=" + vendorNo 
+//				+ ", lines=" + lines 
+				+ "]";
 	}
 
 	

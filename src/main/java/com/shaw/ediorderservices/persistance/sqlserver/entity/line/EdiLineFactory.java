@@ -29,7 +29,7 @@ public class EdiLineFactory implements IFactory {
 		case "C":
 			return (T) mapper.legacyLineToCarpetEdiLine(l);
 		case "H":
-			return (T) mapper.legacyLineToHardsurfacesEdiLine(l);
+			return (T) mapper.legacyLineToUnitsEdiLine(l);
 
 		default:
 			
@@ -56,8 +56,8 @@ public class EdiLineFactory implements IFactory {
 			return new SamplesEdiLine();
 		case "CARPET":
 			return new CarpetEdiLine();
-		case "HARDSURFACES":
-			return new HardsurfacesEdiLine();
+		case "UNITS":
+			return new UnitsEdiLine();
 
 		default:
 			

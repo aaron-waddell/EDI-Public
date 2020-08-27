@@ -1,17 +1,19 @@
 package com.shaw.ediorderservices.mapping;
 
+import java.time.LocalDate;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 
-import com.shaw.ediorderservices.csws.CartLine;
 import com.shaw.ediorderservices.csws.SamplesLine;
+import com.shaw.ediorderservices.csws.UnitsLine;
 import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderLine;
 import com.shaw.ediorderservices.persistance.db2.entity.SamplesInfo;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.CarpetEdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.line.HardsurfacesEdiLine;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.line.UnitsEdiLine;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.SamplesEdiLine;
 
 @Mapper(uses = ValidationMapper.class
@@ -41,25 +43,34 @@ public interface LineMapper {
     CarpetEdiLine legacyLineToCarpetEdiLine(EdiOrderLine line);
 
     @Mapping(target = "id", constant =  "0L")
-    @Named("ToHardsurfacesLine")
-    HardsurfacesEdiLine legacyLineToHardsurfacesEdiLine(EdiOrderLine line);
+    @Named("ToUnitsLine")
+    UnitsEdiLine legacyLineToUnitsEdiLine(EdiOrderLine line);
 
-    CartLine ediLineToCartLine(EdiLine ediLine);
+    @Mapping(target = "grade", constant = "A")
+    @Mapping(target = "location", constant = "01")
+    @Mapping(target = "styleNbr", source = "ediLine.style")
+    @Mapping(target = "colorNbr", source = "ediLine.color")
+    @Mapping(target = "sidemarkType1", constant = "S")
+    @Mapping(target = "sidemarkType2", constant = "S")
+    @Mapping(target = "uom", constant = "EA")
+    @Mapping(target = "shipDate", expression = "java(date.format(com.shaw.ediorderservices.service.csws.CSWSService.USA_FORMAT))")
+    UnitsLine ediLineAndShipDateToUnitsLine(EdiLine ediLine, LocalDate date);
 
 //    EdiLine CartLineToEdiLine(CartLine cartLine);
 
     @Mapping(target = "grade", constant = "A")
     @Mapping(target = "location", constant = "01")
-    @Mapping(target = "samplesPrivateStyle", source = "samplesStyleNbr")
-    @Mapping(target = "styleNbr", source = "samplesStyleNbr")
-    @Mapping(target = "colorNbr", source = "samplesColorNbr")
+    @Mapping(target = "samplesPrivateStyle", source = "samplesInfo.samplesStyleNbr")
+    @Mapping(target = "styleNbr", source = "samplesInfo.samplesStyleNbr")
+    @Mapping(target = "colorNbr", source = "samplesInfo.samplesColorNbr")
     @Mapping(target = "samplesSeqNbr", constant = "")
-    @Mapping(target = "typesetDesc", source = "delVehName")
+    @Mapping(target = "typesetDesc", source = "samplesInfo.delVehName")
     @Mapping(target = "sidemarkType1", constant = "S")
     @Mapping(target = "sidemarkType2", constant = "S")
     @Mapping(target = "genericLabelFlag", constant = "true")
     @Mapping(target = "uom", constant = "EA")
     @Mapping(target = "unitsPerSubset", constant = "1")
     @Mapping(target = "weightUom", constant = "LBS")
-    SamplesLine samplesInfoToSamplesLine(SamplesInfo samplesInfo);
+    @Mapping(target = "shipDate", expression = "java(date.format(com.shaw.ediorderservices.service.csws.CSWSService.USA_FORMAT))")
+    SamplesLine samplesInfoAndShipDateToSamplesLine(SamplesInfo samplesInfo, LocalDate date);
 }

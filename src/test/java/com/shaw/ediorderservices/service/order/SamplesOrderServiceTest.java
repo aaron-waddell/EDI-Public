@@ -29,6 +29,7 @@ import com.shaw.ediorderservices.persistance.db2.dao.EdiOrderHeaderRepository;
 import com.shaw.ediorderservices.persistance.sqlserver.dao.EdiOrderRepository;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.EdiValidation;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.OrderType;
 import com.shaw.ediorderservices.service.csws.SamplesCSWSService;
 import com.shaw.ediorderservices.service.legacy.LegacyService;
 import com.shaw.ediorderservices.service.messaging.EmailService;
@@ -70,16 +71,16 @@ class SamplesOrderServiceTest extends MockTest {
 	@MockBean
 	EdiOrdValidationRepository ediOrdValidationRepository;
 
+	private static EdiOrder validOrder;
 	private static EdiOrder invalidOrder;
 
-	static
-	{
-		invalidOrder = SerializationUtils.clone(samplesEdiOrder);
-		EdiValidation v = new EdiValidation("SYSTEM ERROR","E");
-		invalidOrder.addValidation(v);		
-	}
 	@BeforeEach
 	void setup() {
+		validOrder = SerializationUtils.clone(samplesEdiOrder);
+		invalidOrder = SerializationUtils.clone(samplesEdiOrder);
+		validOrder.addValidation(new EdiValidation("ACCEPTED", "ACCEPTED"));
+		EdiValidation v = new EdiValidation("SYSTEM ERROR","E");
+		invalidOrder.addValidation(v);		
 //		service = spy(SamplesOrderService.class);
 //		when(service.getOrder(any(Long.class))).thenReturn(ediOrder);
 //		when(ediOrderRepository.save(any(EdiOrder.class))).thenCallRealMethod();

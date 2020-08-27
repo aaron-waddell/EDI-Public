@@ -1333,10 +1333,4 @@ public class SamplesLine {
         this.resDelvFlag = value;
     }
 
-	public SamplesLine addShipDate(String shipDate) {
-		// TODO Auto-generated method stub
-		this.shipDate = shipDate;
-		return this;
-	}
-
 }

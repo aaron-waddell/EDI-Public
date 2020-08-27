@@ -14,8 +14,8 @@ public class OrderServiceFactory implements IFactory{
 	private OrderService samplesOrderService;
 
 	@Autowired
-	@Qualifier("hardsurfacesOrderService")
-	private OrderService hardsurfacesOrderService;
+	@Qualifier("unitsOrderService")
+	private OrderService unitsOrderService;
 	
 	public  OrderServiceFactory() {
 		// TODO Auto-generated constructor stub
@@ -26,8 +26,8 @@ public class OrderServiceFactory implements IFactory{
 		switch (orderType) {
 		case "SAMPLES":
 			return samplesOrderService;
-		case "HARDSURFACES":
-			return hardsurfacesOrderService;
+		case "UNITS":
+			return unitsOrderService;
 
 		default:
 			throw new UnsupportedOperationException("Unsupported OrderType: " + orderType);

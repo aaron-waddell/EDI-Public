@@ -9,21 +9,21 @@ import com.shaw.ediorderservices.exception.ResourceCreationException;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.line.EdiLine;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "hardsurfacesOrderId")
+@PrimaryKeyJoinColumn(name = "unitsOrderId")
 
-public class HardsurfacesEdiOrder extends StandardEdiOrder {
+public class UnitsEdiOrder extends StandardEdiOrder {
 
 	private static final long serialVersionUID = 1L;
 	
-	public HardsurfacesEdiOrder() {
+	public UnitsEdiOrder() {
 		// TODO Auto-generated constructor stub
-		super(OrderType.HARDSURFACES.toString());
+		super(OrderType.UNITS.toString());
 	}
 
 	@Override
 	public void addLine(EdiLine line) {
-		if(line.getLineType().equals(OrderType.HARDSURFACES.toString())==false)
-			throw new ResourceCreationException("Hardsurfaces Order: " + line.getLineType());
+		if(line.getLineType().equals(OrderType.UNITS.toString())==false)
+			throw new ResourceCreationException("Units Order: " + line.getLineType());
 		if (lines==null)
 			lines = new ArrayList<EdiLine>();
 		this.lines.add(line);

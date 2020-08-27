@@ -119,7 +119,7 @@ public class EdiShipInfoLn implements Serializable {
 	@Column(name="DEPT_NBR", nullable=false, length=10)
 	private String deptNbr;
 
-	@Column(nullable=false, length=6)
+	@Column(name="DYELOT", nullable=false, length=6)
 	private String dyelot;
 
 	@Column(name="EDI_ITEM_NBR", nullable=false, length=30)
@@ -129,7 +129,7 @@ public class EdiShipInfoLn implements Serializable {
 	private String gtinNbr;
 
 	@Column(name="LAST_CHNG_DATE", nullable=false)
-	private LocalDateTime lastChngDate;
+	private LocalDateTime lastChngDate = LocalDateTime.now();
 
 	@Column(name="LAST_CHNG_ID", nullable=false, length=8)
 	private String lastChngId;
@@ -146,7 +146,7 @@ public class EdiShipInfoLn implements Serializable {
 	@Column(name="PO_LINE_NBR", nullable=false)
 	private int poLineNbr;
 
-	@Column(nullable=false, precision=12, scale=4)
+	@Column(name="PRICE", nullable=false, precision=12, scale=4)
 	private double price;
 
 	@Column(name="PRICE_UOM", nullable=false, length=3)
@@ -191,7 +191,7 @@ public class EdiShipInfoLn implements Serializable {
 	@Column(name="ROLL_NBR", nullable=false, length=7)
 	private String rollNbr;
 
-	@Column(nullable=false, length=1)
+	@Column(name="STATUS", nullable=false, length=1)
 	private String status;
 
 	@Column(name="STYLE_NBR", nullable=false, length=5)
@@ -200,13 +200,13 @@ public class EdiShipInfoLn implements Serializable {
 	@Column(name="UNIT_PRICE", nullable=false, precision=13, scale=4)
 	private double unitPrice;
 
-	@Column(nullable=false, length=2)
+	@Column(name="UOM", nullable=false, length=2)
 	private String uom;
 
 	@Column(name="UPC_CODE", nullable=false, length=15)
 	private String upcCode;
 
-	@Column(nullable=false, precision=5, scale=2)
+	@Column(name="WIDTH",  nullable=false, precision=5, scale=2)
 	private double width;
 
 	public EdiShipInfoLn() {

@@ -40,22 +40,6 @@ public class SamplesCSWSService extends CSWSService {
 		return convert(cart);
 	}
 
-	@Override
-	public Cart createCart() {
-		// TODO Auto-generated method stub
-		CartRequest req = createCartRequest();
-		logger.info(gson.toJson(req));
-
-		UriTemplate template = new UriTemplate(config.getCswsServername() + "/carts/{cartNbr}") ;
-		URI uri = template.expand(0);
-
-		String response = restService.putForObject(uri,req);
-
-		Cart cart = gson.fromJson(response, Cart.class);
-		logger.info(gson.toJson(cart));
-		return cart;
-	}
-
 	protected CartRequest createCartRequest() {
 		CartRequest req = new CartRequest();
 		req.setApplicationId("EDIS");
@@ -68,8 +52,7 @@ public class SamplesCSWSService extends CSWSService {
 		req.setCustNbr(ediOrder.getCustomerNumber());
 		List<SamplesLine> samplesLines = ediOrder.getLines().stream()
 				.map(l->getSamplesInfo(l))
-				.map(lineMapper::samplesInfoToSamplesLine)
-				.map(s->s.addShipDate(ediOrder.getShipDate().getDateValue().format(USA_FORMAT)))
+				.map(l->lineMapper.samplesInfoAndShipDateToSamplesLine(l, ediOrder.getShipDate().getDateValue()))
 				.collect(Collectors.toList());
 		logger.info(samplesLines.toString());
 		req.getSamplesLines().addAll(samplesLines);
@@ -103,7 +86,6 @@ public class SamplesCSWSService extends CSWSService {
 	SamplesInfo getSamplesInfo(EdiLine l) {
 		logger.debug("In getSamplesInfo");
 		return samplesInfoRepository.getSamplesInfo(l.getStyle()+l.getColor()).orElseThrow(()->new RuntimeException("get Samples Info Failed for " + l.getStyle()+l.getColor() ));
-//		return null;
 	}
 
 //	@Override

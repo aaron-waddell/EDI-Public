@@ -11,7 +11,7 @@ import com.shaw.ediorderservices.persistance.db2.entity.EdiOrderHeader;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.CarpetEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.EdiOrderFactory;
-import com.shaw.ediorderservices.persistance.sqlserver.entity.order.HardsurfacesEdiOrder;
+import com.shaw.ediorderservices.persistance.sqlserver.entity.order.UnitsEdiOrder;
 import com.shaw.ediorderservices.persistance.sqlserver.entity.order.SamplesEdiOrder;
 
 @Mapper(uses = {EdiOrderFactory.class,LineMapper.class, DateMapper.class, AddressMapper.class, ValidationMapper.class}, unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
@@ -49,8 +49,8 @@ public interface OrderMapper {
     @Mapping(target = "shipDate", expression = "java(new ShipDate(header.getShipDateQualifier(), header.getShipDateValue()))")
     @Mapping(target = "poDate", expression = "java(new PoDate(header.getPoDateQualifier(), header.getPoDateValue()))")
     @Mapping(target = "cancelDate", expression = "java(new CancelDate(header.getCancelDateQualifier(), header.getOhCancelDateValue()))")
-    @Mapping( target = "lines", qualifiedByName = "ToHardsurfacesLine")
-    HardsurfacesEdiOrder legacyHeaderToHardsurfacesEdiOrder(EdiOrderHeader header);
+    @Mapping( target = "lines", qualifiedByName = "ToUnitsLine")
+    UnitsEdiOrder legacyHeaderToUnitsEdiOrder(EdiOrderHeader header);
 
     @Mappings({
         @Mapping(target = "resDelvFlag", constant = "false")
